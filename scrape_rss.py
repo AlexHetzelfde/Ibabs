@@ -49,6 +49,23 @@ CATEGORIE_REGELS = {
     "sloop": [
         "sloopvergunning", "sloopmelding", "sloop",
     ],
+    "camera": [
+        "cameratoezicht", "bewakingscamera", "camerasysteem", "cameragebied",
+    ],
+    "woningsluiting": [
+        "woningsluiting", "pand gesloten", "sluiting woning",
+        "drugspand", "artikel 13b", "bestuurlijke sluiting",
+    ],
+    "handhaving": [
+        "handhaving", "last onder dwangsom", "bestuursdwang",
+        "dwangsom", "sanctiebesluit",
+    ],
+    "subsidie": [
+        "subsidie", "subsidieverlening", "subsidievaststelling", "subsidieregeling",
+    ],
+    "evenement": [
+        "evenementenvergunning", "evenement", "festiviteit", "kermis", "festival",
+    ],
 }
 
 FILTER_WEG = [
