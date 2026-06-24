@@ -1,0 +1,45 @@
+name: Scrape raadsdata
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'  # Elke maandag om 6:00 UTC (= 7:00 of 8:00 Amsterdam)
+  workflow_dispatch:       # Ook handmatig te starten via de GitHub-UI
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write   # Nodig om data/ terug te committen naar de repo
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Python instellen
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Data-map aanmaken
+        run: mkdir -p data
+
+      - name: Bekendmakingen scrapen
+        run: python scrape_rss.py
+        continue-on-error: true   # Als deze faalt, gaan de rest gewoon door
+
+      - name: Moties scrapen
+        run: python scrape_moties.py
+        continue-on-error: true
+
+      - name: Vergaderingen scrapen
+        run: python scrape_vergaderingen.py
+        continue-on-error: true
+
+      - name: Wijzigingen committen en pushen
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git diff --staged --quiet || git commit -m "data: automatische update $(date +'%Y-%m-%d')"
+          git push
