@@ -88,6 +88,7 @@ def build_moties_body(start, draw):
 def build_stemmingen_body(start, draw):
     return _build_body(STEMMINGEN_COLUMNS, 0, "identity", start, draw)
 
+
 def fetch_stemming_detail(opener, item_id):
     url = f"{BASE_URL}/Reports/Item/{item_id}"
     req = urllib.request.Request(url, headers={**HEADERS, "Accept": "text/html"})
@@ -101,8 +102,8 @@ def fetch_stemming_detail(opener, item_id):
 
     m = re.search(r'vote-summary-bar-in-favour\s+w-(\d+)', html)
     if m:
-        result["voor_pct"]   = int(m.group(1))
-        result["tegen_pct"]  = 100 - int(m.group(1))
+        result["voor_pct"]  = int(m.group(1))
+        result["tegen_pct"] = 100 - int(m.group(1))
 
     m = re.search(
         r'vote-summary-legend-in-favour.*?<div class="text">\s*([^<]+)\s*</div>',
@@ -119,6 +120,8 @@ def fetch_stemming_detail(opener, item_id):
         result["fracties_tegen"] = m.group(1).strip()
 
     return result
+
+
 def parse_datum(s):
     if not s:
         return None
@@ -168,13 +171,13 @@ def fetch_stemmingen(opener):
         time.sleep(0.3)
 
     result = {}
-for row in all_rows:
-    titel    = normalize(row.get("title", ""))
-    status   = (row.get("status") or "").strip().lower()
-    identity = (row.get("identity") or "").strip()
-    if titel and status:
-        result[titel] = {"status": status, "identity": identity}
-return result
+    for row in all_rows:
+        titel    = normalize(row.get("title", ""))
+        status   = (row.get("status") or "").strip().lower()
+        identity = (row.get("identity") or "").strip()
+        if titel and status:
+            result[titel] = {"status": status, "identity": identity}
+    return result
 
 
 def parse_motie(row):
@@ -198,6 +201,10 @@ def parse_motie(row):
         "datum":              parse_datum(row.get("datummotie")),
         "agendapunt":         (row.get("registrationdate") or "").strip(),
         "status":             None,
+        "voor_pct":           None,
+        "tegen_pct":          None,
+        "fracties_voor":      None,
+        "fracties_tegen":     None,
     }
 
 
@@ -278,7 +285,12 @@ def main():
     # Nieuwe moties toevoegen / bestaande updaten
     for row in recente_rows:
         m = parse_motie(row)
-        m["status"] = stemmingen.get(normalize(m["titel"]))
+        stemming = stemmingen.get(normalize(m["titel"]))
+        if stemming:
+            m["status"] = stemming["status"]
+            detail = fetch_stemming_detail(opener, stemming["identity"])
+            m.update(detail)
+            time.sleep(0.3)
         bestaand[m["id"]] = m
 
     # Opslaan: nieuwste eerst
