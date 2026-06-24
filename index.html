@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zaanstad Raad Monitor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:   #0D1B2A;
+      --paper:  #F7F5F0;
+      --rule:   #D8D5CE;
+      --white:  #FFFFFF;
+      --teal:   #006B7B;
+      --teal-bg:#E6F3F5;
+      --go:     #177A3C;
+      --go-bg:  #E6F4EC;
+      --stop:   #B92B27;
+      --stop-bg:#FAE9E9;
+      --hold:   #B86A00;
+      --hold-bg:#FEF3E2;
+      --text:   #111827;
+      --muted:  #6B7280;
+      --ink2:   #374151;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--paper);
+      color: var(--text);
+      min-height: 100vh;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--navy);
+      color: var(--white);
+      height: 56px;
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .header-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .header-icon {
+      width: 28px; height: 28px;
+      background: var(--teal);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px;
+    }
+    .header-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+    .header-sub {
+      font-size: 11px;
+      opacity: 0.45;
+      font-weight: 400;
+      margin-left: 8px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    .header-meta {
+      font-size: 11px;
+      opacity: 0.4;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* ── TABS ── */
+    nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--rule);
+      padding: 0 24px;
+      display: flex;
+      gap: 0;
+      overflow-x: auto;
+    }
+    nav::-webkit-scrollbar { display: none; }
+
+    .tab {
+      padding: 14px 18px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--muted);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+      user-select: none;
+      transition: color 0.1s;
+    }
+    .tab:hover { color: var(--teal); }
+    .tab.active { color: var(--teal); border-bottom-color: var(--teal); }
+
+    /* ── LAYOUT ── */
+    main {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    /* ── STATS GRID ── */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      margin-bottom: 24px;
+    }
+    .stat {
+      background: var(--white);
+      padding: 20px 24px;
+    }
+    .stat-label {
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .stat-value {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 52px;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .stat-sub {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--white);
+      border: 1px solid var(--rule);
+    }
+    .card-header {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .card-title {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      color: var(--muted);
+    }
+    .card-link {
+      font-size: 12px;
+      color: var(--teal);
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-weight: 500;
+      padding: 0;
+    }
+    .card-link:hover { text-decoration: underline; }
+    .card-body { padding: 0; }
+
+    /* ── OVERVIEW GRID ── */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    /* ── MINI LIST (overzicht) ── */
+    .mini-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 20px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .mini-item:last-child { border-bottom: none; }
+    .mini-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      white-space: nowrap;
+      min-width: 60px;
+      margin-top: 2px;
+    }
+    .mini-title {
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .mini-type {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 1px;
+    }
+
+    /* ── MEETING LIST ── */
+    .meeting {
+      border-bottom: 1px solid var(--rule);
+      background: var(--white);
+    }
+    .meeting:last-child { border-bottom: none; }
+    .meeting-row {
+      display: flex;
+      align-items: center;
+      padding: 14px 20px;
+      cursor: pointer;
+      gap: 16px;
+    }
+    .meeting-row:hover { background: var(--paper); }
+    .meeting-date-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--white);
+      background: var(--navy);
+      padding: 3px 8px;
+      white-space: nowrap;
+    }
+    .meeting-info { flex: 1; min-width: 0; }
+    .meeting-title-text {
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .meeting-type-text {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 1px;
+    }
+    .meeting-badges {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .meeting-chevron {
+      color: var(--muted);
+      font-size: 18px;
+      transition: transform 0.2s;
+      font-weight: 300;
+    }
+    .meeting-chevron.open { transform: rotate(90deg); }
+
+    /* ── AGENDA DETAILS ── */
+    .meeting-details {
+      display: none;
+      background: var(--paper);
+      border-top: 1px solid var(--rule);
+    }
+    .meeting-details.open { display: block; }
+
+    .video-section {
+      padding: 12px 20px;
+      border-bottom: 1px solid var(--rule);
+      background: var(--teal-bg);
+    }
+    .video-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 8px;
+    }
+    .video-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      border: 1px solid var(--teal);
+      padding: 8px 12px;
+    }
+    .video-url {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      flex: 1;
+      word-break: break-all;
+      color: var(--ink2);
+    }
+    .video-cmd {
+      margin-top: 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .video-cmd code {
+      background: var(--white);
+      border: 1px solid var(--rule);
+      padding: 2px 6px;
+      color: var(--text);
+    }
+
+    .agenda-item {
+      padding: 10px 20px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .agenda-item:last-child { border-bottom: none; }
+    .agenda-nr {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--muted);
+      margin-right: 6px;
+    }
+    .agenda-title-text {
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .speakers {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+    .speaker-tag {
+      font-size: 11px;
+      background: var(--white);
+      border: 1px solid var(--rule);
+      padding: 2px 8px;
+      color: var(--ink2);
+    }
+    .speaker-time {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+      color: var(--teal);
+    }
+
+    /* ── BADGE ── */
+    .badge {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      letter-spacing: 0.3px;
+    }
+    .badge-teal  { background: var(--teal-bg);  color: var(--teal); }
+    .badge-go    { background: var(--go-bg);    color: var(--go); }
+    .badge-stop  { background: var(--stop-bg);  color: var(--stop); }
+    .badge-hold  { background: var(--hold-bg);  color: var(--hold); }
+    .badge-navy  { background: var(--navy);     color: var(--white); }
+
+    /* ── FILTERS ── */
+    .filter-bar {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .filter-select {
+      padding: 6px 10px;
+      border: 1px solid var(--rule);
+      background: var(--white);
+      font-size: 12px;
+      font-family: inherit;
+      color: var(--text);
+      cursor: pointer;
+    }
+    .filter-select:focus { outline: 2px solid var(--teal); }
+
+    /* ── TABLE ── */
+    table { width: 100%; border-collapse: collapse; }
+    thead { background: var(--paper); }
+    th {
+      text-align: left;
+      padding: 10px 16px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--muted);
+      border-bottom: 2px solid var(--rule);
+      white-space: nowrap;
+    }
+    td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--rule);
+      vertical-align: top;
+      font-size: 13px;
+    }
+    tr:last-child td { border-bottom: none; }
+    tbody tr:hover td { background: var(--paper); }
+    .motie-title { font-weight: 600; margin-bottom: 2px; }
+    .motie-desc  { font-size: 11px; color: var(--muted); }
+
+    /* ── BEKENDMAKINGEN ── */
+    .bk-item {
+      background: var(--white);
+      border-bottom: 1px solid var(--rule);
+      padding: 14px 20px;
+    }
+    .bk-item:last-child { border-bottom: none; }
+    .bk-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .bk-title-link {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .bk-title-link:hover { color: var(--teal); }
+    .bk-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 5px;
+    }
+    .bk-date {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+    .bk-desc {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 5px;
+      line-height: 1.5;
+    }
+    .alert-info {
+      background: var(--teal-bg);
+      border-left: 3px solid var(--teal);
+      padding: 10px 16px;
+      font-size: 12px;
+      color: var(--teal);
+      margin-bottom: 16px;
+    }
+
+    /* ── FACTCHECK ── */
+    .factcheck-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-bottom: 14px;
+    }
+    .form-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--muted);
+    }
+    .form-input, .form-textarea {
+      padding: 9px 12px;
+      border: 1px solid var(--rule);
+      font-size: 13px;
+      font-family: inherit;
+      background: var(--white);
+      color: var(--text);
+      resize: vertical;
+    }
+    .form-input:focus, .form-textarea:focus {
+      outline: 2px solid var(--teal);
+      outline-offset: -1px;
+    }
+    .form-hint {
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .btn-primary {
+      background: var(--teal);
+      color: var(--white);
+      border: none;
+      padding: 10px 20px;
+      font-size: 13px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.1s;
+    }
+    .btn-primary:hover:not(:disabled) { background: #005668; }
+    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-copy {
+      background: var(--teal);
+      color: var(--white);
+      border: none;
+      padding: 4px 10px;
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .claim-item {
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .claim-item:last-child { border-bottom: none; }
+    .claim-num {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .claim-num.hoog { color: var(--stop); }
+    .claim-num.middel { color: var(--hold); }
+    .claim-num.laag { color: var(--muted); }
+    .claim-text {
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .claim-speaker {
+      font-size: 11px;
+      color: var(--teal);
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 6px;
+    }
+    .claim-check {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .factcheck-empty {
+      padding: 32px 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    /* ── EMPTY / LOADING ── */
+    .empty {
+      padding: 32px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .error-msg {
+      padding: 12px 16px;
+      background: var(--stop-bg);
+      border-left: 3px solid var(--stop);
+      font-size: 12px;
+      color: var(--stop);
+      margin: 12px 0;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .stats { grid-template-columns: 1fr 1fr; }
+      .overview-grid { grid-template-columns: 1fr; }
+      .factcheck-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      main { padding: 12px; }
+      .stats { grid-template-columns: 1fr 1fr; }
+      .stat-value { font-size: 36px; }
+      th, td { padding: 8px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════ HEADER ════════════════════════════════ -->
+<header>
+  <div class="header-brand">
+    <div class="header-icon">🏛</div>
+    <span class="header-title">Zaanstad Raad Monitor</span>
+    <span class="header-sub">Gemeenteraad · Data · Factcheck</span>
+  </div>
+  <div class="header-meta" id="headerMeta">—</div>
+</header>
+
+<!-- ════════════════════════════════ TABS ════════════════════════════════ -->
+<nav>
+  <div class="tab active" data-tab="overzicht"      onclick="switchTab(this)">Overzicht</div>
+  <div class="tab"        data-tab="vergaderingen"   onclick="switchTab(this)">Vergaderingen</div>
+  <div class="tab"        data-tab="moties"          onclick="switchTab(this)">Moties &amp; Stemmingen</div>
+  <div class="tab"        data-tab="bekendmakingen"  onclick="switchTab(this)">Bekendmakingen</div>
+  <div class="tab"        data-tab="factcheck"       onclick="switchTab(this)">✦ Factcheck</div>
+</nav>
+
+<!-- ════════════════════════════════ MAIN ════════════════════════════════ -->
+<main>
+
+  <!-- ── OVERZICHT ── -->
+  <div class="tab-content active" id="tab-overzicht">
+
+    <div class="stats" id="statsGrid">
+      <div class="stat">
+        <div class="stat-label">Vergaderingen bijgehouden</div>
+        <div class="stat-value" id="statV">—</div>
+        <div class="stat-sub" id="statVsub">laden...</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Moties ingediend</div>
+        <div class="stat-value" id="statM">—</div>
+        <div class="stat-sub" id="statMsub">laden...</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Bekendmakingen relevant</div>
+        <div class="stat-value" id="statB">—</div>
+        <div class="stat-sub">na filter</div>
+      </div>
+      <div class="stat">
+        <div class="stat-label">Laatste vergadering</div>
+        <div class="stat-value" style="font-size:28px;padding-top:8px;" id="statL">—</div>
+        <div class="stat-sub" id="statLsub">laden...</div>
+      </div>
+    </div>
+
+    <div class="overview-grid">
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Recente vergaderingen</span>
+          <button class="card-link" onclick="switchTab(document.querySelector('[data-tab=vergaderingen]'))">Alle →</button>
+        </div>
+        <div class="card-body" id="ovVerg">
+          <div class="empty">Laden...</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Recente bekendmakingen</span>
+          <button class="card-link" onclick="switchTab(document.querySelector('[data-tab=bekendmakingen]'))">Alle →</button>
+        </div>
+        <div class="card-body" id="ovBk">
+          <div class="empty">Laden...</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── VERGADERINGEN ── -->
+  <div class="tab-content" id="tab-vergaderingen">
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Raadsvergaderingen</span>
+        <span class="card-link" id="vergCount" style="cursor:default;">—</span>
+      </div>
+      <div id="vergList"><div class="empty">Laden...</div></div>
+    </div>
+  </div>
+
+  <!-- ── MOTIES ── -->
+  <div class="tab-content" id="tab-moties">
+    <div class="filter-bar">
+      <select class="filter-select" id="filterPartij" onchange="renderMoties()">
+        <option value="">Alle partijen</option>
+      </select>
+      <select class="filter-select" id="filterStatus" onchange="renderMoties()">
+        <option value="">Alle statussen</option>
+        <option value="aangenomen">Aangenomen</option>
+        <option value="verworpen">Verworpen</option>
+        <option value="aangehouden">Aangehouden</option>
+        <option value="ingetrokken">Ingetrokken</option>
+      </select>
+    </div>
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>Motie / Amendement</th>
+            <th>Partij</th>
+            <th>Datum</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="motiesTable">
+          <tr><td colspan="4" class="empty">Laden...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ── BEKENDMAKINGEN ── -->
+  <div class="tab-content" id="tab-bekendmakingen">
+    <div class="alert-info">
+      Automatisch gefilterd uit officielebekendmakingen.nl — alleen relevante items zoals woningbouw, omgevingsplannen en verkeersbesluiten.
+    </div>
+    <div class="filter-bar">
+      <select class="filter-select" id="filterBkCat" onchange="renderBekendmakingen()">
+        <option value="">Alle categorieën</option>
+        <option value="woningbouw">Woningbouw</option>
+        <option value="omgevingsplan">Omgevingsplan</option>
+        <option value="verkeer">Verkeersbesluit</option>
+        <option value="overig">Overig</option>
+      </select>
+    </div>
+    <div class="card">
+      <div id="bkList"><div class="empty">Laden...</div></div>
+    </div>
+  </div>
+
+  <!-- ── FACTCHECK ── -->
+  <div class="tab-content" id="tab-factcheck">
+    <div class="factcheck-grid">
+
+      <!-- INPUT PANEL -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Transcriptie invoeren</span>
+        </div>
+        <div class="card-body" style="padding:20px;">
+          <div class="form-group">
+            <label class="form-label">Gemini API key</label>
+            <input type="password" class="form-input" id="geminiKey" placeholder="AIzaSy..."
+              oninput="localStorage.setItem('zr_gemini_key', this.value)">
+            <span class="form-hint">Gratis via <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color:var(--teal)">aistudio.google.com</a> — alleen lokaal opgeslagen, nooit verstuurd.</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Context (optioneel)</label>
+            <input type="text" class="form-input" id="fcContext"
+              placeholder="bijv. vergadering 11 juni 2026 – Voorjaarsnota">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Transcriptie</label>
+            <textarea class="form-textarea" id="fcText" rows="14"
+              placeholder="Plak hier de transcriptie van de raadsvergadering...
+
+Hoe transcriptie ophalen:
+1. Download de vergaderingsvideo via het tabblad Vergaderingen
+2. Ga naar aistudio.google.com
+3. Upload het bestand → kies Gemini 1.5 Pro
+4. Vraag: 'Maak een volledige Nederlandse transcriptie met tijdstempels per spreker'
+5. Plak het resultaat hier"></textarea>
+          </div>
+          <button class="btn-primary" id="fcBtn" onclick="analyseerFactcheck()">
+            Analyseer op verifieerbare claims →
+          </button>
+        </div>
+      </div>
+
+      <!-- OUTPUT PANEL -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Factcheck-suggesties</span>
+          <span class="card-link" style="cursor:default;" id="fcStatus">—</span>
+        </div>
+        <div id="claimsList">
+          <div class="factcheck-empty">
+            Vul links een transcriptie in en klik op Analyseer.<br><br>
+            Gemini identificeert verifieerbare claims: cijfers, percentages, beloftes, historische feiten — alles wat een journalist kan controleren.<br><br>
+            <em>De tool stelt alleen vragen voor, factchecken doe jij zelf.</em>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<!-- ════════════════════════════════ JS ════════════════════════════════ -->
+<script>
+// ── STATE ──────────────────────────────────────────────────
+let vergaderingen = [], moties = [], bekendmakingen = [];
+
+// ── INIT ───────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', async () => {
+  const savedKey = localStorage.getItem('zr_gemini_key');
+  if (savedKey) document.getElementById('geminiKey').value = savedKey;
+
+  await Promise.all([loadVerg(), loadMoties(), loadBk()]);
+  updateStats();
+  document.getElementById('headerMeta').textContent =
+    vergaderingen[0]?.bijgewerkt
+      ? 'bijgewerkt ' + vergaderingen[0].bijgewerkt
+      : '';
+});
+
+// ── TABS ───────────────────────────────────────────────────
+function switchTab(el) {
+  const name = el.dataset.tab;
+  document.querySelectorAll('.tab').forEach(t =>
+    t.classList.toggle('active', t.dataset.tab === name));
+  document.querySelectorAll('.tab-content').forEach(c =>
+    c.classList.toggle('active', c.id === 'tab-' + name));
+}
+
+// ── LOAD DATA ──────────────────────────────────────────────
+async function loadVerg() {
+  try {
+    const r = await fetch('./data/vergaderingen.json');
+    if (!r.ok) throw new Error(r.status);
+    vergaderingen = await r.json();
+    renderVerg();
+    renderOvVerg();
+  } catch (e) {
+    document.getElementById('vergList').innerHTML =
+      '<div class="error-msg">Kon vergaderingen.json niet laden: ' + e.message + '</div>';
+  }
+}
+
+async function loadMoties() {
+  try {
+    const r = await fetch('./data/moties.json');
+    if (!r.ok) throw new Error(r.status);
+    moties = await r.json();
+    renderMoties();
+    populatePartijFilter();
+  } catch (e) {
+    document.getElementById('motiesTable').innerHTML =
+      '<tr><td colspan="4" class="error-msg">Kon moties.json niet laden: ' + e.message + '</td></tr>';
+  }
+}
+
+async function loadBk() {
+  try {
+    const r = await fetch('./data/bekendmakingen.json');
+    if (!r.ok) throw new Error(r.status);
+    bekendmakingen = await r.json();
+    renderBekendmakingen();
+    renderOvBk();
+  } catch (e) {
+    document.getElementById('bkList').innerHTML =
+      '<div class="error-msg">Kon bekendmakingen.json niet laden: ' + e.message + '</div>';
+  }
+}
+
+// ── STATS ──────────────────────────────────────────────────
+function updateStats() {
+  document.getElementById('statV').textContent = vergaderingen.length;
+  document.getElementById('statVsub').textContent =
+    vergaderingen.filter(v => v.type?.includes('Raad')).length + ' raad · ' +
+    vergaderingen.filter(v => v.type?.includes('commissie') || v.type?.includes('Commissie')).length + ' commissie';
+
+  document.getElementById('statM').textContent = moties.length;
+  const aang = moties.filter(m => m.status === 'aangenomen').length;
+  const verw = moties.filter(m => m.status === 'verworpen').length;
+  document.getElementById('statMsub').textContent = aang + ' aangenomen · ' + verw + ' verworpen';
+
+  document.getElementById('statB').textContent = bekendmakingen.length;
+
+  if (vergaderingen.length > 0) {
+    const v = vergaderingen[0];
+    const d = new Date(v.datum);
+    document.getElementById('statL').textContent =
+      d.toLocaleDateString('nl-NL', { day: 'numeric', month: 'short' });
+    document.getElementById('statLsub').textContent = v.type || '';
+  }
+}
+
+// ── VERGADERINGEN ──────────────────────────────────────────
+function renderVerg() {
+  document.getElementById('vergCount').textContent = vergaderingen.length + ' vergaderingen';
+  if (!vergaderingen.length) {
+    document.getElementById('vergList').innerHTML =
+      '<div class="empty">Nog geen vergaderingen — draai de GitHub Actions workflow.</div>';
+    return;
+  }
+  document.getElementById('vergList').innerHTML = vergaderingen.map((v, i) => `
+    <div class="meeting">
+      <div class="meeting-row" onclick="toggleMeeting(${i})">
+        <div class="meeting-date-tag">${fmtDate(v.datum, 'short')}</div>
+        <div class="meeting-info">
+          <div class="meeting-title-text">${esc(v.titel)}</div>
+          <div class="meeting-type-text">${esc(v.type || '')}</div>
+        </div>
+        <div class="meeting-badges">
+          ${v.agendapunten?.length ? `<span class="badge badge-teal">${v.agendapunten.length} punten</span>` : ''}
+          ${v.video_link ? '<span class="badge badge-go">Video</span>' : ''}
+        </div>
+        <div class="meeting-chevron" id="ch-${i}">›</div>
+      </div>
+      <div class="meeting-details" id="det-${i}">
+        ${v.video_link ? `
+          <div class="video-section">
+            <div class="video-label">Video downloaden via terminal (yt-dlp)</div>
+            <div class="video-box">
+              <div class="video-url" id="vurl-${i}">${esc(v.video_link)}</div>
+              <button class="btn-copy" onclick="copyUrl(${i}, event)">Kopieer</button>
+            </div>
+            <div class="video-cmd">Terminal: <code>~/yt-dlp "[plak link]" -o vergadering.ts</code></div>
+          </div>
+        ` : ''}
+        ${(v.agendapunten || []).map(ap => `
+          <div class="agenda-item">
+            <span class="agenda-nr">${esc(ap.nummer || '')}</span>
+            <span class="agenda-title-text">${esc(ap.titel || '')}</span>
+            ${(ap.sprekers || []).length ? `
+              <div class="speakers">
+                ${ap.sprekers.map(s => `
+                  <span class="speaker-tag">
+                    ${s.tijd ? `<span class="speaker-time">${esc(s.tijd)}</span> ` : ''}${esc(s.naam)}
+                  </span>
+                `).join('')}
+              </div>
+            ` : ''}
+          </div>
+        `).join('') || '<div class="agenda-item" style="color:var(--muted);font-size:12px;">Geen agendapunten beschikbaar</div>'}
+      </div>
+    </div>
+  `).join('');
+}
+
+function toggleMeeting(i) {
+  const det = document.getElementById('det-' + i);
+  const ch  = document.getElementById('ch-' + i);
+  const open = det.classList.toggle('open');
+  ch.classList.toggle('open', open);
+}
+
+function copyUrl(i, e) {
+  const url = document.getElementById('vurl-' + i).textContent;
+  navigator.clipboard.writeText(url).then(() => {
+    e.target.textContent = '✓ Gekopieerd';
+    setTimeout(() => e.target.textContent = 'Kopieer', 2000);
+  });
+}
+
+function renderOvVerg() {
+  document.getElementById('ovVerg').innerHTML =
+    vergaderingen.slice(0, 5).map(v => `
+      <div class="mini-item">
+        <div class="mini-date">${fmtDate(v.datum, 'short')}</div>
+        <div>
+          <div class="mini-title">${esc(v.titel)}</div>
+          <div class="mini-type">${esc(v.type || '')}</div>
+        </div>
+      </div>
+    `).join('') || '<div class="empty">Geen data</div>';
+}
+
+// ── MOTIES ─────────────────────────────────────────────────
+function populatePartijFilter() {
+  const sel = document.getElementById('filterPartij');
+  const partijen = [...new Set(moties.map(m => m.partij).filter(Boolean))].sort();
+  partijen.forEach(p => {
+    const o = document.createElement('option');
+    o.value = p; o.textContent = p;
+    sel.appendChild(o);
+  });
+}
+
+function renderMoties() {
+  const partij = document.getElementById('filterPartij').value;
+  const status = document.getElementById('filterStatus').value;
+  let f = moties;
+  if (partij) f = f.filter(m => m.partij === partij);
+  if (status) f = f.filter(m => m.status === status);
+
+  document.getElementById('motiesTable').innerHTML =
+    f.length === 0
+      ? '<tr><td colspan="4" class="empty">Geen moties gevonden.</td></tr>'
+      : f.map(m => `
+          <tr>
+            <td>
+              <div class="motie-title">${esc(m.titel)}</div>
+              ${m.omschrijving ? `<div class="motie-desc">${esc(m.omschrijving)}</div>` : ''}
+            </td>
+            <td><span class="badge badge-teal">${esc(m.partij || '—')}</span></td>
+            <td style="font-family:'JetBrains Mono',monospace;font-size:11px;white-space:nowrap;">${fmtDate(m.datum, 'full')}</td>
+            <td>${statusBadge(m.status)}</td>
+          </tr>
+        `).join('');
+}
+
+function statusBadge(s) {
+  const map = {
+    aangenomen:  ['badge-go',   'Aangenomen ✓'],
+    verworpen:   ['badge-stop', 'Verworpen ✗'],
+    ingetrokken: ['badge-hold', 'Ingetrokken'],
+    aangehouden: ['badge-hold', 'Aangehouden'],
+  };
+  const [cls, label] = map[s] || ['badge-teal', s || '—'];
+  return `<span class="badge ${cls}">${label}</span>`;
+}
+
+// ── BEKENDMAKINGEN ─────────────────────────────────────────
+function renderBekendmakingen() {
+  const cat = document.getElementById('filterBkCat').value;
+  const f = cat ? bekendmakingen.filter(b => b.categorie === cat) : bekendmakingen;
+
+  document.getElementById('bkList').innerHTML =
+    f.length === 0
+      ? '<div class="empty">Geen bekendmakingen gevonden.</div>'
+      : f.map(b => `
+          <div class="bk-item">
+            <div class="bk-top">
+              <div>
+                <a class="bk-title-link" href="${b.link || '#'}" target="_blank">${esc(b.titel)}</a>
+                <div class="bk-meta">
+                  ${b.categorie ? `<span class="badge badge-teal">${esc(b.categorie)}</span>` : ''}
+                  <span class="bk-date">${fmtDate(b.datum, 'full')}</span>
+                </div>
+                ${b.omschrijving ? `<div class="bk-desc">${esc(b.omschrijving)}</div>` : ''}
+              </div>
+            </div>
+          </div>
+        `).join('');
+}
+
+function renderOvBk() {
+  document.getElementById('ovBk').innerHTML =
+    bekendmakingen.slice(0, 5).map(b => `
+      <div class="mini-item">
+        <div class="mini-date">${fmtDate(b.datum, 'short')}</div>
+        <div>
+          <div class="mini-title">
+            <a href="${b.link || '#'}" target="_blank" style="color:inherit;text-decoration:none;">${esc(b.titel)}</a>
+          </div>
+          <div class="mini-type">${esc(b.categorie || '')}</div>
+        </div>
+      </div>
+    `).join('') || '<div class="empty">Geen data</div>';
+}
+
+// ── FACTCHECK ──────────────────────────────────────────────
+async function analyseerFactcheck() {
+  const apiKey     = document.getElementById('geminiKey').value.trim();
+  const context    = document.getElementById('fcContext').value.trim();
+  const tekst      = document.getElementById('fcText').value.trim();
+  const btn        = document.getElementById('fcBtn');
+  const status     = document.getElementById('fcStatus');
+  const lijst      = document.getElementById('claimsList');
+
+  if (!apiKey) { alert('Voer eerst een Gemini API key in.'); return; }
+  if (tekst.length < 100) { alert('Voer minimaal 100 tekens transcriptie in.'); return; }
+
+  btn.disabled = true;
+  btn.textContent = 'Analyseren...';
+  status.textContent = 'Gemini is aan het werk…';
+  lijst.innerHTML = '<div class="factcheck-empty">Claims worden geïdentificeerd...</div>';
+
+  const prompt = `Je bent een factcheck-assistent voor een journalist die gemeenteraadsvergaderingen van Zaanstad analyseert.
+${context ? 'Context: ' + context : ''}
+
+Analyseer onderstaande transcriptie en identificeer alle feitelijke claims die verifieerbaar zijn door een journalist.
+Denk aan: getallen, percentages, datums, tijdlijnen, beloftes van het college, historische vergelijkingen, budgetten, aantallen woningen, criminaliteitscijfers.
+
+Geef voor elke claim:
+- De exacte claim (kort geciteerd of geparafraseerd)
+- Wie het zei (als duidelijk in de tekst)
+- Hoe een journalist dit kan controleren (welke bron, welk document)
+- Prioriteit: HOOG (groot publiek belang) / MIDDEL / LAAG
+
+Geef maximaal 10 claims, HOOG eerst.
+
+Antwoord ALLEEN met een JSON-array, geen markdown:
+[{"claim":"...","spreker":"...","verificatie":"...","prioriteit":"HOOG"}]
+
+Transcriptie:
+${tekst.slice(0, 9000)}`;
+
+  try {
+    const res = await fetch(
+      'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=' + apiKey,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [{ text: prompt }] }],
+          generationConfig: { temperature: 0.2, maxOutputTokens: 2048 }
+        })
+      }
+    );
+
+    const data = await res.json();
+    if (data.error) throw new Error(data.error.message);
+
+    const raw   = data.candidates[0].content.parts[0].text;
+    const match = raw.match(/\[[\s\S]*\]/);
+    if (!match) throw new Error('Onverwacht antwoordformaat van Gemini.');
+
+    const claims = JSON.parse(match[0]);
+    status.textContent = claims.length + ' claims gevonden';
+
+    lijst.innerHTML = claims.map((c, i) => `
+      <div class="claim-item">
+        <div class="claim-num ${(c.prioriteit || 'MIDDEL').toLowerCase()}">${i + 1} — ${c.prioriteit || 'MIDDEL'}</div>
+        <div class="claim-text">"${esc(c.claim)}"</div>
+        ${c.spreker ? `<div class="claim-speaker">— ${esc(c.spreker)}</div>` : ''}
+        <div class="claim-check">${esc(c.verificatie)}</div>
+      </div>
+    `).join('');
+
+  } catch (e) {
+    status.textContent = 'Fout';
+    lijst.innerHTML = `
+      <div class="error-msg">
+        Fout: ${esc(e.message)}<br>
+        Controleer je API key op <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color:var(--stop)">aistudio.google.com</a>.
+      </div>`;
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Analyseer op verifieerbare claims →';
+  }
+}
+
+// ── HELPERS ────────────────────────────────────────────────
+function fmtDate(s, mode) {
+  if (!s) return '—';
+  try {
+    const d = new Date(s + 'T00:00:00');
+    if (mode === 'short')
+      return d.toLocaleDateString('nl-NL', { day: 'numeric', month: 'short' });
+    return d.toLocaleDateString('nl-NL', { day: 'numeric', month: 'short', year: 'numeric' });
+  } catch { return s; }
+}
+
+function esc(s) {
+  return String(s || '')
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+</script>
+</body>
+</html>
