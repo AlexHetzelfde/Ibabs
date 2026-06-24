@@ -793,7 +793,7 @@ function renderMoties() {
   const partij = document.getElementById('filterPartij').value;
   const status = document.getElementById('filterStatus').value;
   const type   = document.getElementById('filterType').value;
-  let f = [...moties];
+  let f = moties.filter(m => m.status);   // ← alleen mét stemming
   if (partij) f = f.filter(m => m.partij === partij);
   if (status) f = f.filter(m => m.status === status);
   if (type)   f = f.filter(m => m.type === type);
