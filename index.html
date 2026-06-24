@@ -342,85 +342,74 @@
     .claim-check { font-size: 12px; color: var(--muted); line-height: 1.5; }
     .factcheck-empty { padding: 32px 20px; text-align: center; color: var(--muted); font-size: 13px; line-height: 1.8; }
 
-        /* ── BEKENDMAKINGEN DASHBOARD ── */
-    .bk-dashboard {
+            /* ── BEKENDMAKINGEN DASHBOARD ── */
+    .bk-stats-row {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 16px;
       margin-bottom: 24px;
     }
-    .bk-tile {
+    .bk-stat-card {
       background: var(--white);
       border: 1px solid var(--rule);
-      padding: 18px 20px;
-      min-height: 120px;
+      padding: 20px 24px;
+      text-align: center;
     }
-    .bk-tile-label {
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.7px;
-      color: var(--muted);
-      margin-bottom: 10px;
+    .bk-stat-label {
+      font-size: 12px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.7px;
+      color: var(--muted); margin-bottom: 8px;
     }
-    .bk-tile-value {
+    .bk-stat-value {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 42px;
-      font-weight: 800;
-      color: var(--navy);
-      line-height: 1;
+      font-size: 52px; font-weight: 800;
+      color: var(--navy); line-height: 1;
     }
-    .bk-mini-bar-list {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
+    .bk-charts-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
     }
-    .bk-mini-bar-row {
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    .bk-chart-container {
+      width: 100%;
+      height: 200px;
+      padding: 8px;
     }
-    .bk-mini-bar-label {
-      font-size: 11px;
-      width: 80px;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+    .bk-bar-chart {
+      padding: 12px 20px;
+      min-height: 150px;
+    }
+    .bk-bar-row {
+      display: flex; align-items: center;
+      gap: 10px; margin-bottom: 8px;
+    }
+    .bk-bar-label {
+      width: 110px; font-size: 12px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
       color: var(--text);
     }
-    .bk-mini-bar-track {
-      flex: 1;
-      height: 6px;
-      background: var(--paper);
-      border-radius: 2px;
-      overflow: hidden;
+    .bk-bar-track {
+      flex: 1; height: 16px;
+      background: var(--paper); border-radius: 2px; overflow: hidden;
     }
-    .bk-mini-bar-fill {
-      height: 100%;
-      border-radius: 2px;
-      background: var(--teal);
+    .bk-bar-fill {
+      height: 100%; background: var(--teal);
+      border-radius: 2px; transition: width 0.3s;
     }
-    .bk-mini-bar-count {
+    .bk-bar-count {
+      width: 30px; text-align: right;
       font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      color: var(--muted);
-      width: 24px;
-      text-align: right;
+      font-size: 11px; color: var(--muted);
     }
     .hidden { display: none !important; }
     .btn-text {
-      background: none;
-      border: none;
-      color: var(--teal);
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      padding: 8px 0;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      background: none; border: none;
+      color: var(--teal); font-size: 12px; font-weight: 600;
+      cursor: pointer; padding: 8px 0;
+      text-transform: uppercase; letter-spacing: 0.5px;
     }
     .btn-text:hover { text-decoration: underline; }
-
     /* ── EMPTY / ERROR ── */
     .empty { padding: 32px; text-align: center; color: var(--muted); font-size: 13px; }
     .error-msg {
@@ -575,33 +564,58 @@
     <!-- ── BEKENDMAKINGEN ── -->
   <div class="tab-content" id="tab-bekendmakingen">
     <div class="alert-info">
-      Automatisch gefilterd op cameratoezicht, woningsluitingen & dwangsommen.
+      Automatisch gefilterd op cameratoezicht, woningsluitingen &amp; dwangsommen.
     </div>
-    <div class="bk-dashboard" id="bkDashboard">
-      <div class="bk-tile">
-        <div class="bk-tile-label">Camera's totaal</div>
-        <div class="bk-tile-value" id="bkCamTotaal">—</div>
+
+    <!-- Totaal tegels -->
+    <div class="bk-stats-row" id="bkStatsRow">
+      <div class="bk-stat-card">
+        <div class="bk-stat-label">Camera's totaal</div>
+        <div class="bk-stat-value" id="bkCamTotaal">—</div>
       </div>
-      <div class="bk-tile">
-        <div class="bk-tile-label">Camera's per wijk</div>
-        <div id="bkCamWijk" class="bk-mini-bar-list"></div>
+      <div class="bk-stat-card">
+        <div class="bk-stat-label">Gesloten woningen totaal</div>
+        <div class="bk-stat-value" id="bkWoningTotaal">—</div>
       </div>
-      <div class="bk-tile">
-        <div class="bk-tile-label">Gesloten woningen totaal</div>
-        <div class="bk-tile-value" id="bkWoningTotaal">—</div>
-      </div>
-      <div class="bk-tile">
-        <div class="bk-tile-label">Gesloten woningen per wijk</div>
-        <div id="bkWoningWijk" class="bk-mini-bar-list"></div>
-      </div>
-      <div class="bk-tile">
-        <div class="bk-tile-label">Dwangsommen</div>
-        <div class="bk-tile-value" id="bkDwangsom">—</div>
+      <div class="bk-stat-card">
+        <div class="bk-stat-label">Dwangsommen</div>
+        <div class="bk-stat-value" id="bkDwangsom">—</div>
       </div>
     </div>
+
+    <!-- Grafieken: trend per maand -->
+    <div class="bk-charts-row">
+      <div class="card">
+        <div class="card-header"><span class="card-title">Camera's per maand</span></div>
+        <div class="bk-chart-container" id="bkCamChart"></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-title">Gesloten woningen per maand</span></div>
+        <div class="bk-chart-container" id="bkWoningChart"></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-title">Dwangsommen per maand</span></div>
+        <div class="bk-chart-container" id="bkDwangsomChart"></div>
+      </div>
+    </div>
+
+    <!-- Grafieken: per wijk -->
+    <div class="bk-charts-row">
+      <div class="card">
+        <div class="card-header"><span class="card-title">Camera's per wijk</span></div>
+        <div id="bkCamWijkChart" class="bk-bar-chart"></div>
+      </div>
+      <div class="card">
+        <div class="card-header"><span class="card-title">Gesloten woningen per wijk</span></div>
+        <div id="bkWoningWijkChart" class="bk-bar-chart"></div>
+      </div>
+    </div>
+
+    <!-- Knop voor de ruwe lijst -->
     <button class="btn-text" onclick="document.getElementById('bkLijstContainer').classList.toggle('hidden')">
       Toon / verberg onderliggende berichten
     </button>
+
     <div id="bkLijstContainer" class="hidden">
       <div class="card" style="margin-top:16px;">
         <div class="card-header">
@@ -1045,20 +1059,6 @@ function renderMotiesVisuals() {
   `;
 }
 
-
-  v class="bk-top">
-            <div>
-              <a class="bk-title-link" href="${b.link || '#'}" target="_blank">${esc(b.titel)}</a>
-              <div class="bk-meta">
-                ${b.categorie ? `<span class="badge badge-teal">${esc(catLabel(b.categorie))}</span>` : ''}
-                <span class="bk-date">${fmtDate(b.datum,'full')}</span>
-              </div>
-              ${b.omschrijving ? `<div class="bk-desc">${esc(b.omschrijving)}</div>` : ''}
-            </div>
-          </div>
-        </div>`).join('');
-}
-
 function renderOvBk() {
   document.getElementById('ovBk').innerHTML =
     bekendmakingen.slice(0, 5).map(b => `
@@ -1087,19 +1087,6 @@ function getWijkUitAdres(adres) {
   return parts.length >= 1 ? parts[0] : adres;
 }
 
-function renderBekendmakingenDashboard() {
-  const cam = bekendmakingen.filter(b => b.categorie === 'cameratoezicht');
-  const woning = bekendmakingen.filter(b => b.categorie === 'woningsluiting');
-  const dwang = bekendmakingen.filter(b => b.categorie === 'dwangsom');
-
-  document.getElementById('bkCamTotaal').textContent = cam.length;
-  document.getElementById('bkWoningTotaal').textContent = woning.length;
-  document.getElementById('bkDwangsom').textContent = dwang.length;
-
-  tekenMiniBalken('bkCamWijk', telPerWijk(cam));
-  tekenMiniBalken('bkWoningWijk', telPerWijk(woning));
-}
-
 function telPerWijk(items) {
   const map = {};
   items.forEach(b => {
@@ -1111,22 +1098,107 @@ function telPerWijk(items) {
   return map;
 }
 
-function tekenMiniBalken(containerId, data) {
+function renderBekendmakingenDashboard() {
+  const cam = bekendmakingen.filter(b => b.categorie === 'cameratoezicht');
+  const woning = bekendmakingen.filter(b => b.categorie === 'woningsluiting');
+  const dwang = bekendmakingen.filter(b => b.categorie === 'dwangsom');
+
+  document.getElementById('bkCamTotaal').textContent = cam.length;
+  document.getElementById('bkWoningTotaal').textContent = woning.length;
+  document.getElementById('bkDwangsom').textContent = dwang.length;
+
+  // Maanddata voor de laatste 6 maanden
+  const nu = new Date();
+  const maanden = [];
+  for (let i = 5; i >= 0; i--) {
+    const d = new Date(nu.getFullYear(), nu.getMonth() - i, 1);
+    maanden.push({ maand: d.toISOString().slice(0, 7), count: 0 });
+  }
+
+  const tel = (items) => {
+    const m = {};
+    maanden.forEach(x => m[x.maand] = 0);
+    items.forEach(b => {
+      if (b.datum) {
+        const k = b.datum.slice(0,7);
+        if (k in m) m[k]++;
+      }
+    });
+    return maanden.map(x => ({ maand: x.maand, count: m[x.maand] }));
+  };
+
+  tekenLijnGrafiek('bkCamChart', tel(cam), 'Camera\'s');
+  tekenLijnGrafiek('bkWoningChart', tel(woning), 'Woningsluitingen');
+  tekenLijnGrafiek('bkDwangsomChart', tel(dwang), 'Dwangsommen');
+
+  tekenHorizontaleBalken('bkCamWijkChart', telPerWijk(cam));
+  tekenHorizontaleBalken('bkWoningWijkChart', telPerWijk(woning));
+}
+
+function tekenLijnGrafiek(containerId, data, label) {
   const container = document.getElementById(containerId);
   if (!container) return;
-  const entries = Object.entries(data).sort((a, b) => b[1] - a[1]);
+  if (!data || data.length < 2) {
+    container.innerHTML = '<div class="viz-empty">Onvoldoende data</div>';
+    return;
+  }
+  const W = 500, H = 200, PAD = { t: 10, r: 16, b: 30, l: 40 };
+  const pW = W - PAD.l - PAD.r, pH = H - PAD.t - PAD.b;
+  const maxC = Math.max(...data.map(d => d.count), 1);
+
+  const pts = data.map((d, i) => {
+    const x = PAD.l + (i / (data.length - 1)) * pW;
+    const y = PAD.t + (1 - d.count / maxC) * pH;
+    return [x, y];
+  });
+
+  const line = pts.map(([x,y]) => `${x},${y}`).join(' ');
+  const area = [`${PAD.l},${PAD.t + pH}`, ...pts.map(([x,y]) => `${x},${y}`), `${PAD.l + pW},${PAD.t + pH}`].join(' ');
+
+  const maandNamen = ['Jan','Feb','Mrt','Apr','Mei','Jun','Jul','Aug','Sep','Okt','Nov','Dec'];
+  const labels = data.map((d, i) => {
+    const x = PAD.l + (i / (data.length - 1)) * pW;
+    const m = parseInt(d.maand.split('-')[1]);
+    return `<text x="${x}" y="${H - 8}" text-anchor="middle" font-size="10" fill="#6B7280">${maandNamen[m-1]}</text>`;
+  }).join('');
+
+  const yTicks = [0, Math.ceil(maxC/2), maxC];
+  const yLabels = yTicks.map(v => {
+    const y = PAD.t + (1 - v / maxC) * pH;
+    return `<text x="${PAD.l - 6}" y="${y + 4}" text-anchor="end" font-size="10" fill="#6B7280">${v}</text>`;
+  }).join('');
+
+  const dots = pts.map(([x,y], i) =>
+    `<circle cx="${x}" cy="${y}" r="3" fill="white" stroke="#006B7B" stroke-width="2"><title>${data[i].count} in ${data[i].maand}</title></circle>`
+  ).join('');
+
+  container.innerHTML = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+    <line x1="${PAD.l}" y1="${PAD.t}" x2="${PAD.l}" y2="${PAD.t+pH}" stroke="#D8D5CE" stroke-width="1"/>
+    <line x1="${PAD.l}" y1="${PAD.t+pH}" x2="${PAD.l+pW}" y2="${PAD.t+pH}" stroke="#D8D5CE" stroke-width="1"/>
+    ${yLabels}
+    <polygon points="${area}" fill="#006B7B" fill-opacity="0.06"/>
+    <polyline points="${line}" fill="none" stroke="#006B7B" stroke-width="2.5" stroke-linejoin="round"/>
+    ${dots}
+    ${labels}
+  </svg>`;
+}
+
+function tekenHorizontaleBalken(containerId, data) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  const entries = Object.entries(data).sort((a,b) => b[1] - a[1]);
   if (entries.length === 0) {
-    container.innerHTML = '<div style="color:var(--muted);font-size:11px;">geen data</div>';
+    container.innerHTML = '<div class="viz-empty">geen data</div>';
     return;
   }
   const maxVal = entries[0][1];
   container.innerHTML = entries.map(([wijk, count]) => `
-    <div class="bk-mini-bar-row">
-      <div class="bk-mini-bar-label">${esc(wijk)}</div>
-      <div class="bk-mini-bar-track">
-        <div class="bk-mini-bar-fill" style="width:${Math.round(count/maxVal*100)}%"></div>
+    <div class="bk-bar-row">
+      <div class="bk-bar-label">${esc(wijk)}</div>
+      <div class="bk-bar-track">
+        <div class="bk-bar-fill" style="width:${Math.round(count/maxVal*100)}%"></div>
       </div>
-      <div class="bk-mini-bar-count">${count}</div>
+      <div class="bk-bar-count">${count}</div>
     </div>
   `).join('');
 }
