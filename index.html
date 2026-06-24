@@ -507,6 +507,11 @@
       cursor: pointer;
       white-space: nowrap;
     }
+    .btn-copy-lg {
+  padding: 10px 18px;
+  font-size: 13px;
+  font-weight: 700;
+}
 
     .claim-item {
       padding: 14px 20px;
@@ -678,11 +683,12 @@
       <table>
         <thead>
           <tr>
-            <th>Motie / Amendement</th>
-            <th>Partij</th>
-            <th>Datum</th>
-            <th>Status</th>
-          </tr>
+  <th>Motie / Amendement</th>
+  <th>Partij</th>
+  <th>Datum</th>
+  <th>Status</th>
+  <th>Stemming</th>
+</tr>
         </thead>
         <tbody id="motiesTable">
           <tr><td colspan="4" class="empty">Laden...</td></tr>
@@ -805,8 +811,9 @@ async function loadVerg() {
     renderVerg();
     renderOvVerg();
   } catch (e) {
-    document.getElementById('vergList').innerHTML =
-      '<div class="error-msg">Kon vergaderingen.json niet laden: ' + e.message + '</div>';
+    document.getElementById('vergList').innerHTML = e.message === '404'
+  ? '<div class="empty">Nog geen vergaderingen — draai eerst de GitHub Actions workflow.</div>'
+  : '<div class="error-msg">Kon vergaderingen.json niet laden: ' + e.message + '</div>';
   }
 }
 
@@ -818,8 +825,9 @@ async function loadMoties() {
     renderMoties();
     populatePartijFilter();
   } catch (e) {
-    document.getElementById('motiesTable').innerHTML =
-      '<tr><td colspan="4" class="error-msg">Kon moties.json niet laden: ' + e.message + '</td></tr>';
+    document.getElementById('motiesTable').innerHTML = e.message === '404'
+  ? '<tr><td colspan="4" class="empty">Nog geen moties — draai eerst de GitHub Actions workflow.</td></tr>'
+  : '<tr><td colspan="4" class="error-msg">Kon moties.json niet laden: ' + e.message + '</td></tr>';
   }
 }
 
@@ -831,8 +839,9 @@ async function loadBk() {
     renderBekendmakingen();
     renderOvBk();
   } catch (e) {
-    document.getElementById('bkList').innerHTML =
-      '<div class="error-msg">Kon bekendmakingen.json niet laden: ' + e.message + '</div>';
+    ddocument.getElementById('bkList').innerHTML = e.message === '404'
+  ? '<div class="empty">Nog geen bekendmakingen — draai eerst de GitHub Actions workflow.</div>'
+  : '<div class="error-msg">Kon bekendmakingen.json niet laden: ' + e.message + '</div>';
   }
 }
 
@@ -883,15 +892,18 @@ function renderVerg() {
       </div>
       <div class="meeting-details" id="det-${i}">
         ${v.video_link ? `
-          <div class="video-section">
-            <div class="video-label">Video downloaden via terminal (yt-dlp)</div>
-            <div class="video-box">
-              <div class="video-url" id="vurl-${i}">${esc(v.video_link)}</div>
-              <button class="btn-copy" onclick="copyUrl(${i}, event)">Kopieer</button>
-            </div>
-            <div class="video-cmd">Terminal: <code>~/yt-dlp "[plak link]" -o vergadering.ts</code></div>
-          </div>
-        ` : ''}
+  <div class="video-section">
+    <div class="video-label">⬇ Video beschikbaar</div>
+    <div class="video-box">
+      <div class="video-url" id="vurl-${i}">${esc(v.video_link)}</div>
+      <button class="btn-copy btn-copy-lg" onclick="copyUrl(${i}, event)">Kopieer link</button>
+    </div>
+    <div class="video-cmd" style="display:flex;align-items:center;gap:8px;margin-top:8px;">
+      <code id="vcmd-${i}">yt-dlp "${esc(v.video_link)}" -o vergadering.ts</code>
+      <button class="btn-copy" onclick="copyCmd(${i}, event)">Kopieer commando</button>
+    </div>
+  </div>
+` : ''}
         ${(v.agendapunten || []).map(ap => `
           <div class="agenda-item">
             <span class="agenda-nr">${esc(ap.nummer || '')}</span>
@@ -927,6 +939,14 @@ function copyUrl(i, e) {
   });
 }
 
+function copyCmd(i, e) {
+  const cmd = document.getElementById('vcmd-' + i).textContent;
+  navigator.clipboard.writeText(cmd).then(() => {
+    e.target.textContent = '✓';
+    setTimeout(() => e.target.textContent = 'Kopieer commando', 2000);
+  });
+}
+
 function renderOvVerg() {
   document.getElementById('ovVerg').innerHTML =
     vergaderingen.slice(0, 5).map(v => `
@@ -954,7 +974,7 @@ function populatePartijFilter() {
 function renderMoties() {
   const partij = document.getElementById('filterPartij').value;
   const status = document.getElementById('filterStatus').value;
-  let f = moties;
+  let f = moties.filter(m => m.status);
   if (partij) f = f.filter(m => m.partij === partij);
   if (status) f = f.filter(m => m.status === status);
 
@@ -970,7 +990,8 @@ function renderMoties() {
             <td><span class="badge badge-teal">${esc(m.partij || '—')}</span></td>
             <td style="font-family:'JetBrains Mono',monospace;font-size:11px;white-space:nowrap;">${fmtDate(m.datum, 'full')}</td>
             <td>${statusBadge(m.status)}</td>
-          </tr>
+<td>${stemmingBar(m)}</td>
+</tr>
         `).join('');
 }
 
@@ -983,6 +1004,21 @@ function statusBadge(s) {
   };
   const [cls, label] = map[s] || ['badge-teal', s || '—'];
   return `<span class="badge ${cls}">${label}</span>`;
+}
+
+function stemmingBar(m) {
+  if (!m.voor_pct && !m.tegen_pct)
+    return '<span style="color:var(--muted);font-size:11px;">—</span>';
+  return `
+    <div style="min-width:80px;">
+      <div style="display:flex;height:6px;border-radius:2px;overflow:hidden;margin-bottom:3px;">
+        <div style="width:${m.voor_pct}%;background:var(--go);"></div>
+        <div style="width:${m.tegen_pct}%;background:var(--stop);"></div>
+      </div>
+      <div style="font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--muted);">
+        ${m.voor_pct}% voor · ${m.tegen_pct}% tegen
+      </div>
+    </div>`;
 }
 
 // ── BEKENDMAKINGEN ─────────────────────────────────────────
