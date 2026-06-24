@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 """
-Haalt bekendmakingen op uit officielebekendmakingen.nl (Atom-feed)
-en schrijft ze weg als data/bekendmakingen.json
-
-Filtert automatisch op relevante categorieën voor Zaanstad-journalistiek.
+Haalt bekendmakingen op van afgelopen 7 dagen uit officielebekendmakingen.nl
+en voegt ze toe aan data/bekendmakingen.json
 
 Gebruik:
     python3 scrape_rss.py
@@ -11,10 +9,10 @@ Gebruik:
 
 import json
 import re
+import os
 import urllib.request
 import xml.etree.ElementTree as ET
-from datetime import datetime
-import os
+from datetime import datetime, timedelta
 
 RSS_URL = (
     "https://zoek.officielebekendmakingen.nl/rss"
@@ -33,7 +31,6 @@ RSS_URL = (
 
 OUTPUT = "data/bekendmakingen.json"
 
-# Trefwoorden per categorie — titel wordt getoetst (lowercase)
 CATEGORIE_REGELS = {
     "woningbouw": [
         "woningbouw", "woningen", "appartementen", "woongebouw",
@@ -54,7 +51,6 @@ CATEGORIE_REGELS = {
     ],
 }
 
-# Items die we altijd overslaan (te veel ruis)
 FILTER_WEG = [
     "dakkapel", "erfafscheiding", "schutting", "zonnepanelen",
     "airconditioning", "kozijn", "gevelwijziging", "tuinmuur",
@@ -62,27 +58,19 @@ FILTER_WEG = [
 ]
 
 
-def categoriseer(titel: str) -> str | None:
-    """
-    Geeft categorie terug als de titel relevant is, anders None (overslaan).
-    """
+def categoriseer(titel):
     t = titel.lower()
-
-    # Wegfilteren: te klein, geen journalistieke waarde
     for woord in FILTER_WEG:
         if woord in t:
             return None
-
     for cat, trefwoorden in CATEGORIE_REGELS.items():
         for tw in trefwoorden:
             if tw in t:
                 return cat
-
     return "overig"
 
 
-def parse_datum(s: str) -> str | None:
-    """Probeert diverse datumformaten te parsen naar YYYY-MM-DD."""
+def parse_datum(s):
     if not s:
         return None
     formaten = [
@@ -99,10 +87,10 @@ def parse_datum(s: str) -> str | None:
     return None
 
 
-def fetch_feed() -> list:
-    print(f"Feed ophalen...", end=" ", flush=True)
+def fetch_feed():
+    print("Feed ophalen...", end=" ", flush=True)
     headers = {
-        "User-Agent": "Zaanstad-Raad-Monitor/1.0 (journalistiek dashboard)",
+        "User-Agent": "Zaanstad-Raad-Monitor/1.0",
         "Accept":     "application/rss+xml, application/xml, text/xml",
     }
     req = urllib.request.Request(RSS_URL, headers=headers)
@@ -112,23 +100,15 @@ def fetch_feed() -> list:
     return data
 
 
-def parse_feed(data: bytes) -> list:
-    # RSS/Atom heeft soms een namespace-prefix
-    root = ET.fromstring(data)
-
-    # Detecteer Atom vs RSS
-    ns = {"atom": "http://www.w3.org/2005/Atom"}
+def parse_feed(data):
+    root  = ET.fromstring(data)
     items = []
-
-    # Probeer RSS (<item>)
     for item in root.iter("item"):
         titel = (item.findtext("title") or "").strip()
         link  = (item.findtext("link")  or "").strip()
         datum = parse_datum(item.findtext("pubDate") or "")
         desc  = (item.findtext("description") or "").strip()
         items.append((titel, link, datum, desc))
-
-    # Probeer Atom (<entry>) als RSS niets gaf
     if not items:
         for entry in root.iter("{http://www.w3.org/2005/Atom}entry"):
             titel = (entry.findtext("{http://www.w3.org/2005/Atom}title") or "").strip()
@@ -138,55 +118,72 @@ def parse_feed(data: bytes) -> list:
                 entry.findtext("{http://www.w3.org/2005/Atom}published") or
                 entry.findtext("{http://www.w3.org/2005/Atom}updated") or ""
             )
-            desc  = (entry.findtext("{http://www.w3.org/2005/Atom}summary") or "").strip()
+            desc = (entry.findtext("{http://www.w3.org/2005/Atom}summary") or "").strip()
             items.append((titel, link, datum, desc))
-
     return items
 
 
+def load_existing():
+    """Laad bestaande bekendmakingen.json als die bestaat."""
+    if not os.path.exists(OUTPUT):
+        return {}
+    with open(OUTPUT, encoding="utf-8") as f:
+        data = json.load(f)
+    # Dedup op link-URL
+    return {b["link"]: b for b in data}
+
+
 def main():
-    data = fetch_feed()
+    vandaag      = datetime.now()
+    week_geleden = vandaag - timedelta(days=7)
+    grens_datum  = week_geleden.strftime("%Y-%m-%d")
+
+    print(f"Alleen bekendmakingen vanaf: {grens_datum}")
+
+    data      = fetch_feed()
     raw_items = parse_feed(data)
     print(f"{len(raw_items)} items in feed")
 
-    resultaten = []
+    # Bestaande data inladen
+    bestaand = load_existing()
+    print(f"Bestaande JSON: {len(bestaand)} bekendmakingen")
+
+    nieuw = 0
     overgeslagen = 0
 
     for titel, link, datum, desc in raw_items:
+        # Alleen afgelopen week
+        if (datum or "") < grens_datum:
+            continue
+
         cat = categoriseer(titel)
         if cat is None:
             overgeslagen += 1
             continue
 
-        # Omschrijving: schoon van HTML-tags
         omschrijving = re.sub(r"<[^>]+>", "", desc).strip()
         if len(omschrijving) > 300:
             omschrijving = omschrijving[:300] + "…"
 
-        resultaten.append({
+        bestaand[link] = {
             "titel":        titel,
             "link":         link,
             "datum":        datum,
             "categorie":    cat,
             "omschrijving": omschrijving or None,
-        })
+        }
+        nieuw += 1
 
-    # Sorteren: nieuwste eerst
-    resultaten.sort(key=lambda x: x.get("datum") or "", reverse=True)
-
+    # Opslaan: nieuwste eerst
+    resultaat = sorted(bestaand.values(), key=lambda x: x.get("datum") or "", reverse=True)
     os.makedirs("data", exist_ok=True)
     with open(OUTPUT, "w", encoding="utf-8") as f:
-        json.dump(resultaten, f, ensure_ascii=False, indent=2)
+        json.dump(resultaat, f, ensure_ascii=False, indent=2)
 
     print(f"\n✓ Weggeschreven naar {OUTPUT}")
-    print(f"  {len(resultaten)} relevante bekendmakingen")
-    print(f"  {overgeslagen} items weggefilterd (dakkapellen e.d.)")
-
-    # Overzicht per categorie
-    for cat in ["woningbouw", "omgevingsplan", "verkeer", "sloop", "overig"]:
-        n = sum(1 for b in resultaten if b["categorie"] == cat)
-        if n:
-            print(f"  {cat}: {n}")
+    print(f"  {nieuw} nieuwe bekendmakingen toegevoegd")
+    print(f"  {overgeslagen} weggefilterd (dakkapellen e.d.)")
+    print(f"  {len(resultaat)} totaal in JSON")
 
 
 if __name__ == "__main__":
