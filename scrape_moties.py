@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-Haalt alle moties en amendementen op uit iBabs Zaanstad,
-koppelt de stemstatus via het stemmingen-endpoint,
-en schrijft alles weg als data/moties.json
+Haalt moties en amendementen op van de afgelopen 7 dagen,
+koppelt stemstatus via het stemmingen-endpoint,
+en voegt ze toe aan data/moties.json
 
 Gebruik:
     python3 scrape_moties.py
@@ -15,16 +15,13 @@ import sys
 import os
 import urllib.request
 import urllib.parse
-import urllib.error
 import http.cookiejar
+from datetime import datetime, timedelta
 
-BASE_URL  = "https://zaanstad.bestuurlijkeinformatie.nl"
+BASE_URL = "https://zaanstad.bestuurlijkeinformatie.nl"
 
-# ── Moties-endpoint ────────────────────────────────────────
-MOTIES_PAGE_URL = f"{BASE_URL}/Reports/Details/4b5dcb7b-adc3-4253-bad3-7bfd16341021"
-MOTIES_DATA_URL = f"{BASE_URL}/Reports/GetReportData/4b5dcb7b-adc3-4253-bad3-7bfd16341021"
-
-# ── Stemmingen-endpoint ────────────────────────────────────
+MOTIES_PAGE_URL     = f"{BASE_URL}/Reports/Details/4b5dcb7b-adc3-4253-bad3-7bfd16341021"
+MOTIES_DATA_URL     = f"{BASE_URL}/Reports/GetReportData/4b5dcb7b-adc3-4253-bad3-7bfd16341021"
 STEMMINGEN_PAGE_URL = f"{BASE_URL}/Reports/Details/8e7af291-79d7-457f-88ca-e3c780df6eb2"
 STEMMINGEN_DATA_URL = f"{BASE_URL}/Reports/GetReportData/8e7af291-79d7-457f-88ca-e3c780df6eb2"
 
@@ -43,21 +40,16 @@ HEADERS = {
     "Origin":           BASE_URL,
 }
 
-
-# ── POST-body builders ─────────────────────────────────────
-
-# Kolomdefinities moties (volgorde uit iBabs DataTables-call)
 MOTIES_COLUMNS = [
     ("typeselectie",               False),
     ("title",                      False),
-    ("datummotie",                 True),   # True → search[value]="|"
+    ("datummotie",                 True),
     ("raadsledenselectie",         True),
     ("fractieselectie",            True),
     ("medeondertekenaarsselectie", True),
     ("registrationdate",           True),
 ]
 
-# Kolomdefinities stemmingen (uit cURL)
 STEMMINGEN_COLUMNS = [
     ("identity",         False),
     ("datum",            True),
@@ -68,16 +60,15 @@ STEMMINGEN_COLUMNS = [
 
 
 def _build_body(columns, order_col, order_name, start, draw):
-    """Generieke DataTables POST-body builder."""
     params = [("draw", str(draw))]
     for i, (name, has_pipe) in enumerate(columns):
         params += [
-            (f"columns[{i}][data]",            name),
-            (f"columns[{i}][name]",            name),
-            (f"columns[{i}][searchable]",      "true"),
-            (f"columns[{i}][orderable]",       "true"),
-            (f"columns[{i}][search][value]",   "|" if has_pipe else ""),
-            (f"columns[{i}][search][regex]",   "false"),
+            (f"columns[{i}][data]",          name),
+            (f"columns[{i}][name]",          name),
+            (f"columns[{i}][searchable]",    "true"),
+            (f"columns[{i}][orderable]",     "true"),
+            (f"columns[{i}][search][value]", "|" if has_pipe else ""),
+            (f"columns[{i}][search][regex]", "false"),
         ]
     params += [
         ("order[0][column]", str(order_col)),
@@ -94,15 +85,11 @@ def _build_body(columns, order_col, order_name, start, draw):
 def build_moties_body(start, draw):
     return _build_body(MOTIES_COLUMNS, 6, "registrationdate", start, draw)
 
-
 def build_stemmingen_body(start, draw):
     return _build_body(STEMMINGEN_COLUMNS, 0, "identity", start, draw)
 
 
-# ── Helpers ────────────────────────────────────────────────
-
 def parse_datum(s):
-    """DD-MM-YYYY → YYYY-MM-DD, anders None."""
     if not s:
         return None
     try:
@@ -112,35 +99,20 @@ def parse_datum(s):
         return None
 
 
-def normalize(s: str) -> str:
-    """Titel normaliseren voor fuzzy matching op status."""
+def normalize(s):
     return re.sub(r"\s+", " ", (s or "").lower().strip())
 
 
-# ── Stemmingen ophalen ─────────────────────────────────────
-
-def fetch_stemmingen(opener) -> dict:
-    """
-    Haalt alle stemmingen op uit het stemmingen-endpoint.
-    Geeft een dict terug: {normalized_title: status_string}
-
-    Stemstatus-waarden zijn zoals iBabs ze levert, bijv.:
-        "Aangenomen", "Verworpen", "Ingetrokken", "Aangehouden"
-    We slaan ze op in lowercase voor consistentie met de rest van de JSON.
-    """
+def fetch_stemmingen(opener):
     headers = {**HEADERS, "Referer": STEMMINGEN_PAGE_URL}
-
-    # Sessie voor dit endpoint ophalen
     try:
-        req = urllib.request.Request(
+        opener.open(urllib.request.Request(
             STEMMINGEN_PAGE_URL,
             headers={"User-Agent": HEADERS["User-Agent"]}
-        )
-        opener.open(req, timeout=15)
+        ), timeout=15)
     except Exception:
-        pass  # Geen sessie nodig als cookies al bestaan
+        pass
 
-    # Eerste pagina
     req = urllib.request.Request(
         STEMMINGEN_DATA_URL,
         data=build_stemmingen_body(0, 1),
@@ -162,77 +134,73 @@ def fetch_stemmingen(opener) -> dict:
         with opener.open(req, timeout=30) as resp:
             page = json.loads(resp.read().decode("utf-8"))
         all_rows.extend(page.get("data", []))
-        draw  += 1
-        start += PAGE_SIZE
+        draw += 1; start += PAGE_SIZE
         time.sleep(0.3)
 
-    # Dict: genormaliseerde titel → lowercase status
     result = {}
     for row in all_rows:
-        titel      = normalize(row.get("title", ""))
-        status_raw = (row.get("status") or "").strip().lower()
-        if titel and status_raw:
-            result[titel] = status_raw
-
+        titel  = normalize(row.get("title", ""))
+        status = (row.get("status") or "").strip().lower()
+        if titel and status:
+            result[titel] = status
     return result
 
 
-# ── Moties parsen ──────────────────────────────────────────
-
-def parse_motie(row: dict) -> dict:
-    titel = row.get("title", "").strip()
-
+def parse_motie(row):
+    titel    = row.get("title", "").strip()
     type_raw = row.get("typeselectie", "").strip()
     if not type_raw:
-        type_raw = "Amendement" if (titel.startswith("26A") or "Amendement" in titel) else "Motie"
+        type_raw = "Amendement" if ("26A" in titel or "Amendement" in titel) else "Motie"
 
     fracties_raw = row.get("fractieselectie", "") or ""
     fracties     = [f.strip() for f in fracties_raw.split("\r\n") if f.strip()]
-    partij       = fracties[0] if fracties else None
-
-    indiener  = (row.get("raadsledenselectie") or "").strip() or None
-    mede_raw  = row.get("medeondertekenaarsselectie", "") or ""
-    medeondertekenaars = [m.strip() for m in mede_raw.split("\r\n") if m.strip()]
+    mede_raw     = row.get("medeondertekenaarsselectie", "") or ""
 
     return {
-        "id":                  row.get("DT_RowId"),
-        "titel":               titel,
-        "type":                type_raw,
-        "partij":              partij,
-        "fracties":            fracties,
-        "indiener":            indiener,
-        "medeondertekenaars":  medeondertekenaars,
-        "datum":               parse_datum(row.get("datummotie")),
-        "agendapunt":          (row.get("registrationdate") or "").strip(),
-        "status":              None,   # wordt hieronder gevuld vanuit stemmingen
+        "id":                 row.get("DT_RowId"),
+        "titel":              titel,
+        "type":               type_raw,
+        "partij":             fracties[0] if fracties else None,
+        "fracties":           fracties,
+        "indiener":           (row.get("raadsledenselectie") or "").strip() or None,
+        "medeondertekenaars": [m.strip() for m in mede_raw.split("\r\n") if m.strip()],
+        "datum":              parse_datum(row.get("datummotie")),
+        "agendapunt":         (row.get("registrationdate") or "").strip(),
+        "status":             None,
     }
 
 
-# ── Main ───────────────────────────────────────────────────
+def load_existing():
+    if not os.path.exists(OUTPUT):
+        return {}
+    with open(OUTPUT, encoding="utf-8") as f:
+        data = json.load(f)
+    return {m["id"]: m for m in data}
+
 
 def main():
-    # Sessie ophalen
-    print("Sessie ophalen...", end=" ", flush=True)
+    vandaag      = datetime.now()
+    week_geleden = vandaag - timedelta(days=7)
+    grens_datum  = week_geleden.strftime("%Y-%m-%d")
+
+    print(f"Alleen moties vanaf: {grens_datum}")
+
+    # Sessie
     jar    = http.cookiejar.CookieJar()
     opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar))
     try:
-        req = urllib.request.Request(
-            MOTIES_PAGE_URL,
-            headers={"User-Agent": HEADERS["User-Agent"]}
-        )
-        opener.open(req, timeout=15)
-        print("OK")
-    except Exception as e:
-        print(f"MISLUKT ({e}) — doorgaan zonder sessiecookie")
+        opener.open(urllib.request.Request(
+            MOTIES_PAGE_URL, headers={"User-Agent": HEADERS["User-Agent"]}
+        ), timeout=15)
+    except Exception:
+        pass
 
-    # Eerste pagina moties ophalen
-    print("Eerste pagina moties ophalen...", end=" ", flush=True)
+    # Moties ophalen (altijd alle pagina's — we filteren daarna op datum)
+    moties_headers = {**HEADERS, "Referer": MOTIES_PAGE_URL}
+    print("Moties ophalen...", end=" ", flush=True)
     try:
-        moties_headers = {**HEADERS, "Referer": MOTIES_PAGE_URL}
         req = urllib.request.Request(
-            MOTIES_DATA_URL,
-            data=build_moties_body(0, 1),
-            headers=moties_headers,
+            MOTIES_DATA_URL, data=build_moties_body(0, 1), headers=moties_headers
         )
         with opener.open(req, timeout=30) as resp:
             first = json.loads(resp.read().decode("utf-8"))
@@ -242,67 +210,61 @@ def main():
 
     total    = first.get("recordsTotal", 0)
     all_rows = list(first.get("data", []))
-    print(f"OK — {total} moties gevonden")
+    print(f"OK — {total} totaal")
 
-    # Resterende pagina's moties
     draw, start = 2, PAGE_SIZE
     while start < total:
-        print(f"  Ophalen {start}–{min(start + PAGE_SIZE, total)} van {total}...", end=" ", flush=True)
-        try:
-            req = urllib.request.Request(
-                MOTIES_DATA_URL,
-                data=build_moties_body(start, draw),
-                headers=moties_headers,
-            )
-            with opener.open(req, timeout=30) as resp:
-                page = json.loads(resp.read().decode("utf-8"))
-            rows = page.get("data", [])
-            all_rows.extend(rows)
-            print(f"{len(rows)} rijen")
-        except Exception as e:
-            print(f"FOUT: {e} — even wachten en opnieuw...")
-            time.sleep(3)
-            continue
-        draw  += 1
-        start += PAGE_SIZE
+        req = urllib.request.Request(
+            MOTIES_DATA_URL, data=build_moties_body(start, draw), headers=moties_headers
+        )
+        with opener.open(req, timeout=30) as resp:
+            page = json.loads(resp.read().decode("utf-8"))
+        rows = page.get("data", [])
+        all_rows.extend(rows)
+        draw += 1; start += PAGE_SIZE
         time.sleep(0.3)
 
-    # Stemmingen ophalen voor statuskoppeling
-    print(f"\nStemmingen ophalen voor statuskoppeling...", end=" ", flush=True)
+    # Filteren op afgelopen week
+    recente_rows = [
+        r for r in all_rows
+        if (parse_datum(r.get("datummotie")) or "") >= grens_datum
+    ]
+    print(f"{len(recente_rows)} moties van afgelopen week")
+
+    # Stemmingen ophalen
+    print("Stemmingen ophalen...", end=" ", flush=True)
     try:
         stemmingen = fetch_stemmingen(opener)
         print(f"OK — {len(stemmingen)} stemmingen")
     except Exception as e:
-        print(f"MISLUKT ({e}) — status blijft None voor alle moties")
+        print(f"MISLUKT ({e})")
         stemmingen = {}
 
-    # Parsen + status koppelen
-    print(f"\n{len(all_rows)} rijen parsen...")
-    moties = []
-    for row in all_rows:
-        m = parse_motie(row)
-        # Status koppelen op genormaliseerde titel
-        key = normalize(m["titel"])
-        m["status"] = stemmingen.get(key)
-        moties.append(m)
+    # Bestaande data inladen
+    bestaand = load_existing()
+    print(f"Bestaande JSON: {len(bestaand)} moties")
 
-    # Wegschrijven
+    # Nieuwe moties toevoegen / bestaande updaten
+    for row in recente_rows:
+        m = parse_motie(row)
+        m["status"] = stemmingen.get(normalize(m["titel"]))
+        bestaand[m["id"]] = m
+
+    # Opslaan: nieuwste eerst
+    resultaat = sorted(
+        bestaand.values(),
+        key=lambda x: x.get("datum") or "",
+        reverse=True,
+    )
     os.makedirs("data", exist_ok=True)
     with open(OUTPUT, "w", encoding="utf-8") as f:
-        json.dump(moties, f, ensure_ascii=False, indent=2)
+        json.dump(resultaat, f, ensure_ascii=False, indent=2)
 
-    print(f"✓ Weggeschreven naar {OUTPUT}")
-    print(f"  {sum(1 for m in moties if m['type'] == 'Motie')} moties")
-    print(f"  {sum(1 for m in moties if m['type'] == 'Amendement')} amendementen")
-
-    met_status = sum(1 for m in moties if m["status"])
-    print(f"  {met_status}/{len(moties)} met status gekoppeld")
-
-    # Overzicht statussen
-    from collections import Counter
-    statussen = Counter(m["status"] for m in moties if m["status"])
-    for status, n in statussen.most_common():
-        print(f"    {status}: {n}")
+    print(f"\n✓ Weggeschreven naar {OUTPUT}")
+    print(f"  {len(recente_rows)} moties toegevoegd/bijgewerkt")
+    print(f"  {len(resultaat)} totaal in JSON")
+    met_status = sum(1 for m in resultaat if m["status"])
+    print(f"  {met_status}/{len(resultaat)} met status")
 
 
 if __name__ == "__main__":
