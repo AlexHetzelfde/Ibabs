@@ -48,11 +48,7 @@
       top: 0;
       z-index: 50;
     }
-    .header-brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+    .header-brand { display: flex; align-items: center; gap: 12px; }
     .header-icon {
       width: 28px; height: 28px;
       background: var(--teal);
@@ -61,23 +57,13 @@
     }
     .header-title {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 20px;
-      font-weight: 700;
-      letter-spacing: 0.3px;
+      font-size: 20px; font-weight: 700; letter-spacing: 0.3px;
     }
     .header-sub {
-      font-size: 11px;
-      opacity: 0.45;
-      font-weight: 400;
-      margin-left: 8px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
+      font-size: 11px; opacity: 0.45; font-weight: 400;
+      margin-left: 8px; letter-spacing: 0.5px; text-transform: uppercase;
     }
-    .header-meta {
-      font-size: 11px;
-      opacity: 0.4;
-      font-family: 'JetBrains Mono', monospace;
-    }
+    .header-meta { font-size: 11px; opacity: 0.4; font-family: 'JetBrains Mono', monospace; }
 
     /* ── TABS ── */
     nav {
@@ -89,11 +75,9 @@
       overflow-x: auto;
     }
     nav::-webkit-scrollbar { display: none; }
-
     .tab {
       padding: 14px 18px;
-      font-size: 13px;
-      font-weight: 500;
+      font-size: 13px; font-weight: 500;
       color: var(--muted);
       cursor: pointer;
       border-bottom: 2px solid transparent;
@@ -105,12 +89,7 @@
     .tab.active { color: var(--teal); border-bottom-color: var(--teal); }
 
     /* ── LAYOUT ── */
-    main {
-      max-width: 1160px;
-      margin: 0 auto;
-      padding: 24px;
-    }
-
+    main { max-width: 1160px; margin: 0 auto; padding: 24px; }
     .tab-content { display: none; }
     .tab-content.active { display: block; }
 
@@ -123,449 +102,251 @@
       border: 1px solid var(--rule);
       margin-bottom: 24px;
     }
-    .stat {
-      background: var(--white);
-      padding: 20px 24px;
-    }
+    .stat { background: var(--white); padding: 20px 24px; }
     .stat-label {
-      font-size: 10px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: var(--muted);
-      margin-bottom: 6px;
+      font-size: 10px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      color: var(--muted); margin-bottom: 6px;
     }
     .stat-value {
       font-family: 'Barlow Condensed', sans-serif;
-      font-size: 52px;
-      font-weight: 800;
-      line-height: 1;
-      color: var(--navy);
-      margin-bottom: 4px;
+      font-size: 52px; font-weight: 800;
+      line-height: 1; color: var(--navy); margin-bottom: 4px;
     }
-    .stat-sub {
-      font-size: 11px;
-      color: var(--muted);
-    }
+    .stat-sub { font-size: 11px; color: var(--muted); }
 
     /* ── CARD ── */
-    .card {
-      background: var(--white);
-      border: 1px solid var(--rule);
-    }
+    .card { background: var(--white); border: 1px solid var(--rule); }
     .card-header {
       padding: 14px 20px;
       border-bottom: 1px solid var(--rule);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between;
     }
     .card-title {
-      font-size: 12px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.7px;
-      color: var(--muted);
+      font-size: 12px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.7px; color: var(--muted);
     }
     .card-link {
-      font-size: 12px;
-      color: var(--teal);
-      cursor: pointer;
-      background: none;
-      border: none;
-      font-family: inherit;
-      font-weight: 500;
-      padding: 0;
+      font-size: 12px; color: var(--teal); cursor: pointer;
+      background: none; border: none; font-family: inherit;
+      font-weight: 500; padding: 0;
     }
     .card-link:hover { text-decoration: underline; }
     .card-body { padding: 0; }
 
     /* ── OVERVIEW GRID ── */
-    .overview-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
+    .overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
-    /* ── MINI LIST (overzicht) ── */
+    /* ── MINI LIST ── */
     .mini-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 12px 20px;
+      display: flex; align-items: flex-start;
+      gap: 12px; padding: 12px 20px;
       border-bottom: 1px solid var(--rule);
     }
     .mini-item:last-child { border-bottom: none; }
     .mini-date {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      color: var(--muted);
-      white-space: nowrap;
-      min-width: 60px;
-      margin-top: 2px;
+      font-size: 11px; color: var(--muted);
+      white-space: nowrap; min-width: 60px; margin-top: 2px;
     }
-    .mini-title {
-      font-size: 13px;
-      font-weight: 500;
-    }
-    .mini-type {
-      font-size: 11px;
-      color: var(--muted);
-      margin-top: 1px;
-    }
+    .mini-title { font-size: 13px; font-weight: 500; }
+    .mini-type { font-size: 11px; color: var(--muted); margin-top: 1px; }
 
     /* ── MEETING LIST ── */
-    .meeting {
-      border-bottom: 1px solid var(--rule);
-      background: var(--white);
-    }
+    .meeting { border-bottom: 1px solid var(--rule); background: var(--white); }
     .meeting:last-child { border-bottom: none; }
     .meeting-row {
-      display: flex;
-      align-items: center;
-      padding: 14px 20px;
-      cursor: pointer;
-      gap: 16px;
+      display: flex; align-items: center;
+      padding: 14px 20px; cursor: pointer; gap: 16px;
     }
     .meeting-row:hover { background: var(--paper); }
     .meeting-date-tag {
       font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--white);
-      background: var(--navy);
-      padding: 3px 8px;
-      white-space: nowrap;
+      font-size: 11px; font-weight: 600;
+      color: var(--white); background: var(--navy);
+      padding: 3px 8px; white-space: nowrap;
     }
     .meeting-info { flex: 1; min-width: 0; }
-    .meeting-title-text {
-      font-size: 14px;
-      font-weight: 600;
-    }
-    .meeting-type-text {
-      font-size: 11px;
-      color: var(--muted);
-      margin-top: 1px;
-    }
-    .meeting-badges {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
+    .meeting-title-text { font-size: 14px; font-weight: 600; }
+    .meeting-type-text { font-size: 11px; color: var(--muted); margin-top: 1px; }
+    .meeting-badges { display: flex; gap: 8px; align-items: center; }
     .meeting-chevron {
-      color: var(--muted);
-      font-size: 18px;
-      transition: transform 0.2s;
-      font-weight: 300;
+      color: var(--muted); font-size: 18px;
+      transition: transform 0.2s; font-weight: 300;
     }
     .meeting-chevron.open { transform: rotate(90deg); }
 
     /* ── AGENDA DETAILS ── */
-    .meeting-details {
-      display: none;
-      background: var(--paper);
-      border-top: 1px solid var(--rule);
-    }
+    .meeting-details { display: none; background: var(--paper); border-top: 1px solid var(--rule); }
     .meeting-details.open { display: block; }
-
     .video-section {
-      padding: 12px 20px;
-      border-bottom: 1px solid var(--rule);
-      background: var(--teal-bg);
+      padding: 12px 20px; border-bottom: 1px solid var(--rule); background: var(--teal-bg);
     }
     .video-label {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--teal);
-      margin-bottom: 8px;
+      font-size: 10px; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; color: var(--teal); margin-bottom: 8px;
     }
     .video-box {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--white);
-      border: 1px solid var(--teal);
-      padding: 8px 12px;
+      display: flex; align-items: center; gap: 8px;
+      background: var(--white); border: 1px solid var(--teal); padding: 8px 12px;
     }
-    .video-url {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      flex: 1;
-      word-break: break-all;
-      color: var(--ink2);
-    }
-    .video-cmd {
-      margin-top: 8px;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      color: var(--muted);
-    }
-    .video-cmd code {
-      background: var(--white);
-      border: 1px solid var(--rule);
-      padding: 2px 6px;
-      color: var(--text);
-    }
-
-    .agenda-item {
-      padding: 10px 20px;
-      border-bottom: 1px solid var(--rule);
-    }
+    .video-url { font-family: 'JetBrains Mono', monospace; font-size: 11px; flex: 1; word-break: break-all; color: var(--ink2); }
+    .video-cmd { margin-top: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); }
+    .video-cmd code { background: var(--white); border: 1px solid var(--rule); padding: 2px 6px; color: var(--text); }
+    .agenda-item { padding: 10px 20px; border-bottom: 1px solid var(--rule); }
     .agenda-item:last-child { border-bottom: none; }
-    .agenda-nr {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 10px;
-      font-weight: 600;
-      color: var(--muted);
-      margin-right: 6px;
-    }
-    .agenda-title-text {
-      font-size: 13px;
-      font-weight: 600;
-    }
-    .speakers {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 6px;
-    }
-    .speaker-tag {
-      font-size: 11px;
-      background: var(--white);
-      border: 1px solid var(--rule);
-      padding: 2px 8px;
-      color: var(--ink2);
-    }
-    .speaker-time {
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 600;
-      color: var(--teal);
-    }
+    .agenda-nr { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; color: var(--muted); margin-right: 6px; }
+    .agenda-title-text { font-size: 13px; font-weight: 600; }
+    .speakers { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+    .speaker-tag { font-size: 11px; background: var(--white); border: 1px solid var(--rule); padding: 2px 8px; color: var(--ink2); }
+    .speaker-time { font-family: 'JetBrains Mono', monospace; font-weight: 600; color: var(--teal); }
 
     /* ── BADGE ── */
-    .badge {
-      font-size: 10px;
-      font-weight: 700;
-      padding: 2px 7px;
-      letter-spacing: 0.3px;
-    }
-    .badge-teal  { background: var(--teal-bg);  color: var(--teal); }
-    .badge-go    { background: var(--go-bg);    color: var(--go); }
-    .badge-stop  { background: var(--stop-bg);  color: var(--stop); }
-    .badge-hold  { background: var(--hold-bg);  color: var(--hold); }
-    .badge-navy  { background: var(--navy);     color: var(--white); }
+    .badge { font-size: 10px; font-weight: 700; padding: 2px 7px; letter-spacing: 0.3px; }
+    .badge-teal  { background: var(--teal-bg); color: var(--teal); }
+    .badge-go    { background: var(--go-bg);   color: var(--go); }
+    .badge-stop  { background: var(--stop-bg); color: var(--stop); }
+    .badge-hold  { background: var(--hold-bg); color: var(--hold); }
+    .badge-navy  { background: var(--navy);    color: var(--white); }
 
     /* ── FILTERS ── */
-    .filter-bar {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 16px;
-      flex-wrap: wrap;
-    }
+    .filter-bar { display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; align-items: center; }
     .filter-select {
-      padding: 6px 10px;
-      border: 1px solid var(--rule);
-      background: var(--white);
-      font-size: 12px;
-      font-family: inherit;
-      color: var(--text);
-      cursor: pointer;
+      padding: 6px 10px; border: 1px solid var(--rule);
+      background: var(--white); font-size: 12px; font-family: inherit;
+      color: var(--text); cursor: pointer;
     }
     .filter-select:focus { outline: 2px solid var(--teal); }
+    .filter-label { font-size: 11px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; }
 
     /* ── TABLE ── */
     table { width: 100%; border-collapse: collapse; }
     thead { background: var(--paper); }
     th {
-      text-align: left;
-      padding: 10px 16px;
-      font-size: 10px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
-      color: var(--muted);
-      border-bottom: 2px solid var(--rule);
-      white-space: nowrap;
+      text-align: left; padding: 10px 16px;
+      font-size: 10px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      color: var(--muted); border-bottom: 2px solid var(--rule); white-space: nowrap;
     }
-    td {
-      padding: 12px 16px;
-      border-bottom: 1px solid var(--rule);
-      vertical-align: top;
-      font-size: 13px;
-    }
+    td { padding: 12px 16px; border-bottom: 1px solid var(--rule); vertical-align: top; font-size: 13px; }
     tr:last-child td { border-bottom: none; }
     tbody tr:hover td { background: var(--paper); }
     .motie-title { font-weight: 600; margin-bottom: 2px; }
     .motie-desc  { font-size: 11px; color: var(--muted); }
 
     /* ── BEKENDMAKINGEN ── */
-    .bk-item {
-      background: var(--white);
-      border-bottom: 1px solid var(--rule);
-      padding: 14px 20px;
-    }
+    .bk-item { background: var(--white); border-bottom: 1px solid var(--rule); padding: 14px 20px; }
     .bk-item:last-child { border-bottom: none; }
-    .bk-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 16px;
-    }
-    .bk-title-link {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--text);
-      text-decoration: none;
-    }
+    .bk-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+    .bk-title-link { font-size: 13px; font-weight: 600; color: var(--text); text-decoration: none; }
     .bk-title-link:hover { color: var(--teal); }
-    .bk-meta {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 5px;
-    }
-    .bk-date {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px;
-      color: var(--muted);
-      white-space: nowrap;
-    }
-    .bk-desc {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 5px;
-      line-height: 1.5;
-    }
+    .bk-meta { display: flex; align-items: center; gap: 8px; margin-top: 5px; }
+    .bk-date { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); white-space: nowrap; }
+    .bk-desc { font-size: 12px; color: var(--muted); margin-top: 5px; line-height: 1.5; }
     .alert-info {
-      background: var(--teal-bg);
-      border-left: 3px solid var(--teal);
-      padding: 10px 16px;
-      font-size: 12px;
-      color: var(--teal);
-      margin-bottom: 16px;
+      background: var(--teal-bg); border-left: 3px solid var(--teal);
+      padding: 10px 16px; font-size: 12px; color: var(--teal); margin-bottom: 16px;
     }
 
-    /* ── FACTCHECK ── */
-    .factcheck-grid {
+    /* ── RAADSVRAGEN ── */
+    .rv-item { background: var(--white); border-bottom: 1px solid var(--rule); padding: 14px 20px; }
+    .rv-item:last-child { border-bottom: none; }
+    .rv-title { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+    .rv-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .rv-date { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); }
+    .rv-vraagsteller { font-size: 11px; color: var(--teal); font-weight: 600; }
+
+    /* ── VISUALISATIES ── */
+    .viz-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 16px;
+      margin-bottom: 16px;
     }
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-      margin-bottom: 14px;
+    .viz-bar-list { padding: 8px 20px 12px; }
+    .viz-bar-row {
+      display: flex; align-items: center; gap: 10px;
+      padding: 6px 0; border-bottom: 1px solid var(--rule);
     }
-    .form-label {
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-      color: var(--muted);
+    .viz-bar-row:last-child { border-bottom: none; }
+    .viz-bar-label {
+      font-size: 12px; width: 110px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      color: var(--text); flex-shrink: 0;
     }
+    .viz-bar-track {
+      flex: 1; height: 7px;
+      background: var(--paper); border-radius: 1px; overflow: hidden;
+    }
+    .viz-bar-fill { height: 100%; border-radius: 1px; transition: width 0.5s ease; }
+    .viz-bar-pct {
+      font-family: 'JetBrains Mono', monospace; font-size: 10px;
+      color: var(--muted); width: 36px; text-align: right; flex-shrink: 0;
+    }
+    .viz-stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px; background: var(--rule);
+      border: 1px solid var(--rule); margin-bottom: 16px;
+    }
+    .viz-stat { background: var(--white); padding: 16px 20px; }
+    .viz-stat-label {
+      font-size: 10px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      color: var(--muted); margin-bottom: 4px;
+    }
+    .viz-stat-value {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 36px; font-weight: 800; line-height: 1; color: var(--navy);
+    }
+    .viz-stat-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+    .viz-section-label {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1px; color: var(--muted); margin-bottom: 10px; padding-top: 4px;
+    }
+    .viz-trend-wrap { padding: 12px 20px 8px; }
+    .viz-empty { padding: 20px; text-align: center; color: var(--muted); font-size: 12px; }
+
+    /* ── FACTCHECK ── */
+    .factcheck-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
+    .form-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: var(--muted); }
     .form-input, .form-textarea {
-      padding: 9px 12px;
-      border: 1px solid var(--rule);
-      font-size: 13px;
-      font-family: inherit;
-      background: var(--white);
-      color: var(--text);
-      resize: vertical;
+      padding: 9px 12px; border: 1px solid var(--rule);
+      font-size: 13px; font-family: inherit;
+      background: var(--white); color: var(--text); resize: vertical;
     }
-    .form-input:focus, .form-textarea:focus {
-      outline: 2px solid var(--teal);
-      outline-offset: -1px;
-    }
-    .form-hint {
-      font-size: 11px;
-      color: var(--muted);
-    }
+    .form-input:focus, .form-textarea:focus { outline: 2px solid var(--teal); outline-offset: -1px; }
+    .form-hint { font-size: 11px; color: var(--muted); }
     .btn-primary {
-      background: var(--teal);
-      color: var(--white);
-      border: none;
-      padding: 10px 20px;
-      font-size: 13px;
-      font-weight: 600;
-      font-family: inherit;
-      cursor: pointer;
-      width: 100%;
-      transition: background 0.1s;
+      background: var(--teal); color: var(--white); border: none;
+      padding: 10px 20px; font-size: 13px; font-weight: 600;
+      font-family: inherit; cursor: pointer; width: 100%; transition: background 0.1s;
     }
     .btn-primary:hover:not(:disabled) { background: #005668; }
     .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
     .btn-copy {
-      background: var(--teal);
-      color: var(--white);
-      border: none;
-      padding: 4px 10px;
-      font-size: 11px;
-      font-family: 'JetBrains Mono', monospace;
-      cursor: pointer;
-      white-space: nowrap;
+      background: var(--teal); color: var(--white); border: none;
+      padding: 4px 10px; font-size: 11px;
+      font-family: 'JetBrains Mono', monospace; cursor: pointer; white-space: nowrap;
     }
-    .btn-copy-lg {
-  padding: 10px 18px;
-  font-size: 13px;
-  font-weight: 700;
-}
-
-    .claim-item {
-      padding: 14px 20px;
-      border-bottom: 1px solid var(--rule);
-    }
+    .btn-copy-lg { padding: 10px 18px; font-size: 13px; font-weight: 700; }
+    .claim-item { padding: 14px 20px; border-bottom: 1px solid var(--rule); }
     .claim-item:last-child { border-bottom: none; }
-    .claim-num {
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-    }
+    .claim-num { font-size: 10px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 4px; }
     .claim-num.hoog { color: var(--stop); }
     .claim-num.middel { color: var(--hold); }
     .claim-num.laag { color: var(--muted); }
-    .claim-text {
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 4px;
-    }
-    .claim-speaker {
-      font-size: 11px;
-      color: var(--teal);
-      font-family: 'JetBrains Mono', monospace;
-      margin-bottom: 6px;
-    }
-    .claim-check {
-      font-size: 12px;
-      color: var(--muted);
-      line-height: 1.5;
-    }
-    .factcheck-empty {
-      padding: 32px 20px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.8;
-    }
+    .claim-text { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+    .claim-speaker { font-size: 11px; color: var(--teal); font-family: 'JetBrains Mono', monospace; margin-bottom: 6px; }
+    .claim-check { font-size: 12px; color: var(--muted); line-height: 1.5; }
+    .factcheck-empty { padding: 32px 20px; text-align: center; color: var(--muted); font-size: 13px; line-height: 1.8; }
 
-    /* ── EMPTY / LOADING ── */
-    .empty {
-      padding: 32px;
-      text-align: center;
-      color: var(--muted);
-      font-size: 13px;
-    }
+    /* ── EMPTY / ERROR ── */
+    .empty { padding: 32px; text-align: center; color: var(--muted); font-size: 13px; }
     .error-msg {
-      padding: 12px 16px;
-      background: var(--stop-bg);
-      border-left: 3px solid var(--stop);
-      font-size: 12px;
-      color: var(--stop);
-      margin: 12px 0;
+      padding: 12px 16px; background: var(--stop-bg);
+      border-left: 3px solid var(--stop); font-size: 12px; color: var(--stop); margin: 12px 0;
     }
 
     /* ── RESPONSIVE ── */
@@ -573,6 +354,8 @@
       .stats { grid-template-columns: 1fr 1fr; }
       .overview-grid { grid-template-columns: 1fr; }
       .factcheck-grid { grid-template-columns: 1fr; }
+      .viz-row { grid-template-columns: 1fr; }
+      .viz-stat-row { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 600px) {
       main { padding: 12px; }
@@ -584,7 +367,7 @@
 </head>
 <body>
 
-<!-- ════════════════════════════════ HEADER ════════════════════════════════ -->
+<!-- HEADER -->
 <header>
   <div class="header-brand">
     <div class="header-icon">🏛</div>
@@ -594,21 +377,21 @@
   <div class="header-meta" id="headerMeta">—</div>
 </header>
 
-<!-- ════════════════════════════════ TABS ════════════════════════════════ -->
+<!-- TABS -->
 <nav>
   <div class="tab active" data-tab="overzicht"      onclick="switchTab(this)">Overzicht</div>
   <div class="tab"        data-tab="vergaderingen"   onclick="switchTab(this)">Vergaderingen</div>
   <div class="tab"        data-tab="moties"          onclick="switchTab(this)">Moties &amp; Stemmingen</div>
   <div class="tab"        data-tab="bekendmakingen"  onclick="switchTab(this)">Bekendmakingen</div>
+  <div class="tab"        data-tab="raadsvragen"     onclick="switchTab(this)">Raadsvragen</div>
   <div class="tab"        data-tab="factcheck"       onclick="switchTab(this)">✦ Factcheck</div>
 </nav>
 
-<!-- ════════════════════════════════ MAIN ════════════════════════════════ -->
+<!-- MAIN -->
 <main>
 
   <!-- ── OVERZICHT ── -->
   <div class="tab-content active" id="tab-overzicht">
-
     <div class="stats" id="statsGrid">
       <div class="stat">
         <div class="stat-label">Vergaderingen bijgehouden</div>
@@ -631,34 +414,37 @@
         <div class="stat-sub" id="statLsub">laden...</div>
       </div>
     </div>
-
     <div class="overview-grid">
       <div class="card">
         <div class="card-header">
           <span class="card-title">Recente vergaderingen</span>
           <button class="card-link" onclick="switchTab(document.querySelector('[data-tab=vergaderingen]'))">Alle →</button>
         </div>
-        <div class="card-body" id="ovVerg">
-          <div class="empty">Laden...</div>
-        </div>
+        <div class="card-body" id="ovVerg"><div class="empty">Laden...</div></div>
       </div>
       <div class="card">
         <div class="card-header">
           <span class="card-title">Recente bekendmakingen</span>
           <button class="card-link" onclick="switchTab(document.querySelector('[data-tab=bekendmakingen]'))">Alle →</button>
         </div>
-        <div class="card-body" id="ovBk">
-          <div class="empty">Laden...</div>
-        </div>
+        <div class="card-body" id="ovBk"><div class="empty">Laden...</div></div>
       </div>
     </div>
   </div>
 
   <!-- ── VERGADERINGEN ── -->
   <div class="tab-content" id="tab-vergaderingen">
+    <div class="filter-bar">
+      <select class="filter-select" id="filterVergType" onchange="renderVerg()">
+        <option value="">Alle typen</option>
+        <option value="Raadsvergadering">Raadsvergadering</option>
+        <option value="Commissievergadering">Commissievergadering</option>
+        <option value="Presidium">Presidium</option>
+      </select>
+    </div>
     <div class="card">
       <div class="card-header">
-        <span class="card-title">Raadsvergaderingen</span>
+        <span class="card-title">Vergaderingen</span>
         <span class="card-link" id="vergCount" style="cursor:default;">—</span>
       </div>
       <div id="vergList"><div class="empty">Laden...</div></div>
@@ -667,6 +453,11 @@
 
   <!-- ── MOTIES ── -->
   <div class="tab-content" id="tab-moties">
+
+    <!-- Visualisaties -->
+    <div id="motiesViz"></div>
+
+    <!-- Filter + tabel -->
     <div class="filter-bar">
       <select class="filter-select" id="filterPartij" onchange="renderMoties()">
         <option value="">Alle partijen</option>
@@ -678,20 +469,25 @@
         <option value="aangehouden">Aangehouden</option>
         <option value="ingetrokken">Ingetrokken</option>
       </select>
+      <select class="filter-select" id="filterType" onchange="renderMoties()">
+        <option value="">Motie &amp; Amendement</option>
+        <option value="Motie">Alleen moties</option>
+        <option value="Amendement">Alleen amendementen</option>
+      </select>
     </div>
     <div class="card">
       <table>
         <thead>
           <tr>
-  <th>Motie / Amendement</th>
-  <th>Partij</th>
-  <th>Datum</th>
-  <th>Status</th>
-  <th>Stemming</th>
-</tr>
+            <th>Motie / Amendement</th>
+            <th>Partij</th>
+            <th>Datum</th>
+            <th>Status</th>
+            <th>Stemming</th>
+          </tr>
         </thead>
         <tbody id="motiesTable">
-          <tr><td colspan="4" class="empty">Laden...</td></tr>
+          <tr><td colspan="5" class="empty">Laden...</td></tr>
         </tbody>
       </table>
     </div>
@@ -702,12 +498,23 @@
     <div class="alert-info">
       Automatisch gefilterd uit officielebekendmakingen.nl — alleen relevante items zoals woningbouw, omgevingsplannen en verkeersbesluiten.
     </div>
+
+    <!-- Visualisaties -->
+    <div id="bkViz"></div>
+
+    <!-- Filter + lijst -->
     <div class="filter-bar">
       <select class="filter-select" id="filterBkCat" onchange="renderBekendmakingen()">
         <option value="">Alle categorieën</option>
         <option value="woningbouw">Woningbouw</option>
         <option value="omgevingsplan">Omgevingsplan</option>
         <option value="verkeer">Verkeersbesluit</option>
+        <option value="handhaving">Handhaving</option>
+        <option value="woningsluiting">Woningsluiting</option>
+        <option value="camera">Cameratoezicht</option>
+        <option value="subsidie">Subsidie</option>
+        <option value="sloop">Sloop</option>
+        <option value="evenement">Evenement</option>
         <option value="overig">Overig</option>
       </select>
     </div>
@@ -716,46 +523,53 @@
     </div>
   </div>
 
+  <!-- ── RAADSVRAGEN ── -->
+  <div class="tab-content" id="tab-raadsvragen">
+    <div class="filter-bar">
+      <select class="filter-select" id="filterRvPartij" onchange="renderRaadsvragen()">
+        <option value="">Alle fracties</option>
+      </select>
+      <select class="filter-select" id="filterRvStatus" onchange="renderRaadsvragen()">
+        <option value="">Alle statussen</option>
+        <option value="beantwoord">Beantwoord</option>
+        <option value="in behandeling">In behandeling</option>
+      </select>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Raadsvragen</span>
+        <span class="card-link" id="rvCount" style="cursor:default;">—</span>
+      </div>
+      <div id="rvList"><div class="empty">Laden...</div></div>
+    </div>
+  </div>
+
   <!-- ── FACTCHECK ── -->
   <div class="tab-content" id="tab-factcheck">
     <div class="factcheck-grid">
-
-      <!-- INPUT PANEL -->
       <div class="card">
-        <div class="card-header">
-          <span class="card-title">Transcriptie invoeren</span>
-        </div>
+        <div class="card-header"><span class="card-title">Transcriptie invoeren</span></div>
         <div class="card-body" style="padding:20px;">
           <div class="form-group">
             <label class="form-label">Gemini API key</label>
             <input type="password" class="form-input" id="geminiKey" placeholder="AIzaSy..."
               oninput="localStorage.setItem('zr_gemini_key', this.value)">
-            <span class="form-hint">Gratis via <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color:var(--teal)">aistudio.google.com</a> — alleen lokaal opgeslagen, nooit verstuurd.</span>
+            <span class="form-hint">Gratis via <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color:var(--teal)">aistudio.google.com</a> — alleen lokaal opgeslagen.</span>
           </div>
           <div class="form-group">
             <label class="form-label">Context (optioneel)</label>
-            <input type="text" class="form-input" id="fcContext"
-              placeholder="bijv. vergadering 11 juni 2026 – Voorjaarsnota">
+            <input type="text" class="form-input" id="fcContext" placeholder="bijv. vergadering 11 juni 2026 – Voorjaarsnota">
           </div>
           <div class="form-group">
             <label class="form-label">Transcriptie</label>
             <textarea class="form-textarea" id="fcText" rows="14"
-              placeholder="Plak hier de transcriptie van de raadsvergadering...
-
-Hoe transcriptie ophalen:
-1. Download de vergaderingsvideo via het tabblad Vergaderingen
-2. Ga naar aistudio.google.com
-3. Upload het bestand → kies Gemini 1.5 Pro
-4. Vraag: 'Maak een volledige Nederlandse transcriptie met tijdstempels per spreker'
-5. Plak het resultaat hier"></textarea>
+              placeholder="Plak hier de transcriptie van de raadsvergadering..."></textarea>
           </div>
           <button class="btn-primary" id="fcBtn" onclick="analyseerFactcheck()">
             Analyseer op verifieerbare claims →
           </button>
         </div>
       </div>
-
-      <!-- OUTPUT PANEL -->
       <div class="card">
         <div class="card-header">
           <span class="card-title">Factcheck-suggesties</span>
@@ -764,36 +578,32 @@ Hoe transcriptie ophalen:
         <div id="claimsList">
           <div class="factcheck-empty">
             Vul links een transcriptie in en klik op Analyseer.<br><br>
-            Gemini identificeert verifieerbare claims: cijfers, percentages, beloftes, historische feiten — alles wat een journalist kan controleren.<br><br>
+            Gemini identificeert verifieerbare claims: cijfers, percentages, beloftes, historische feiten.<br><br>
             <em>De tool stelt alleen vragen voor, factchecken doe jij zelf.</em>
           </div>
         </div>
       </div>
-
     </div>
   </div>
 
 </main>
 
-<!-- ════════════════════════════════ JS ════════════════════════════════ -->
 <script>
-// ── STATE ──────────────────────────────────────────────────
-let vergaderingen = [], moties = [], bekendmakingen = [];
+// ── STATE ────────────────────────────────────────────────────────────────────
+let vergaderingen = [], moties = [], bekendmakingen = [], raadsvragen = [];
 
-// ── INIT ───────────────────────────────────────────────────
+// ── INIT ─────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', async () => {
   const savedKey = localStorage.getItem('zr_gemini_key');
   if (savedKey) document.getElementById('geminiKey').value = savedKey;
 
-  await Promise.all([loadVerg(), loadMoties(), loadBk()]);
+  await Promise.all([loadVerg(), loadMoties(), loadBk(), loadRaadsvragen()]);
   updateStats();
   document.getElementById('headerMeta').textContent =
-    vergaderingen[0]?.bijgewerkt
-      ? 'bijgewerkt ' + vergaderingen[0].bijgewerkt
-      : '';
+    vergaderingen[0]?.bijgewerkt ? 'bijgewerkt ' + vergaderingen[0].bijgewerkt : '';
 });
 
-// ── TABS ───────────────────────────────────────────────────
+// ── TABS ─────────────────────────────────────────────────────────────────────
 function switchTab(el) {
   const name = el.dataset.tab;
   document.querySelectorAll('.tab').forEach(t =>
@@ -802,18 +612,18 @@ function switchTab(el) {
     c.classList.toggle('active', c.id === 'tab-' + name));
 }
 
-// ── LOAD DATA ──────────────────────────────────────────────
+// ── LOAD DATA ────────────────────────────────────────────────────────────────
 async function loadVerg() {
   try {
     const r = await fetch('./data/vergaderingen.json');
     if (!r.ok) throw new Error(r.status);
     vergaderingen = await r.json();
-    renderVerg();
-    renderOvVerg();
+    renderVerg(); renderOvVerg();
   } catch (e) {
-    document.getElementById('vergList').innerHTML = e.message === '404'
-  ? '<div class="empty">Nog geen vergaderingen — draai eerst de GitHub Actions workflow.</div>'
-  : '<div class="error-msg">Kon vergaderingen.json niet laden: ' + e.message + '</div>';
+    document.getElementById('vergList').innerHTML =
+      e.message === '404'
+        ? '<div class="empty">Nog geen vergaderingen — draai eerst de scraper.</div>'
+        : `<div class="error-msg">Kon vergaderingen.json niet laden: ${e.message}</div>`;
   }
 }
 
@@ -822,12 +632,12 @@ async function loadMoties() {
     const r = await fetch('./data/moties.json');
     if (!r.ok) throw new Error(r.status);
     moties = await r.json();
-    renderMoties();
-    populatePartijFilter();
+    renderMoties(); renderMotiesVisuals(); populatePartijFilter();
   } catch (e) {
-    document.getElementById('motiesTable').innerHTML = e.message === '404'
-  ? '<tr><td colspan="4" class="empty">Nog geen moties — draai eerst de GitHub Actions workflow.</td></tr>'
-  : '<tr><td colspan="4" class="error-msg">Kon moties.json niet laden: ' + e.message + '</td></tr>';
+    document.getElementById('motiesTable').innerHTML =
+      `<tr><td colspan="5" class="${e.message === '404' ? 'empty' : 'error-msg'}">
+        ${e.message === '404' ? 'Nog geen moties — draai eerst de scraper.' : 'Fout: ' + e.message}
+      </td></tr>`;
   }
 }
 
@@ -836,25 +646,40 @@ async function loadBk() {
     const r = await fetch('./data/bekendmakingen.json');
     if (!r.ok) throw new Error(r.status);
     bekendmakingen = await r.json();
-    renderBekendmakingen();
-    renderOvBk();
+    renderBekendmakingen(); renderBekendmakingenVisuals(); renderOvBk();
   } catch (e) {
-    ddocument.getElementById('bkList').innerHTML = e.message === '404'
-  ? '<div class="empty">Nog geen bekendmakingen — draai eerst de GitHub Actions workflow.</div>'
-  : '<div class="error-msg">Kon bekendmakingen.json niet laden: ' + e.message + '</div>';
+    document.getElementById('bkList').innerHTML =
+      e.message === '404'
+        ? '<div class="empty">Nog geen bekendmakingen — draai eerst de scraper.</div>'
+        : `<div class="error-msg">Fout: ${e.message}</div>`;
   }
 }
 
-// ── STATS ──────────────────────────────────────────────────
+async function loadRaadsvragen() {
+  try {
+    const r = await fetch('./data/raadsvragen.json');
+    if (!r.ok) throw new Error(r.status);
+    raadsvragen = await r.json();
+    renderRaadsvragen(); populateRvFilter();
+  } catch (e) {
+    document.getElementById('rvList').innerHTML =
+      e.message === '404'
+        ? '<div class="empty">Nog geen raadsvragen — draai eerst de scraper.</div>'
+        : `<div class="error-msg">Fout: ${e.message}</div>`;
+  }
+}
+
+// ── STATS ────────────────────────────────────────────────────────────────────
 function updateStats() {
   document.getElementById('statV').textContent = vergaderingen.length;
+  const raadCount = vergaderingen.filter(v => v.type === 'Raadsvergadering').length;
+  const commCount = vergaderingen.filter(v => v.type === 'Commissievergadering').length;
   document.getElementById('statVsub').textContent =
-    vergaderingen.filter(v => v.type?.includes('Raad')).length + ' raad · ' +
-    vergaderingen.filter(v => v.type?.includes('commissie') || v.type?.includes('Commissie')).length + ' commissie';
+    raadCount + ' raad · ' + commCount + ' commissie';
 
   document.getElementById('statM').textContent = moties.length;
   const aang = moties.filter(m => m.status === 'aangenomen').length;
-  const verw = moties.filter(m => m.status === 'verworpen').length;
+  const verw  = moties.filter(m => m.status === 'verworpen').length;
   document.getElementById('statMsub').textContent = aang + ' aangenomen · ' + verw + ' verworpen';
 
   document.getElementById('statB').textContent = bekendmakingen.length;
@@ -868,17 +693,19 @@ function updateStats() {
   }
 }
 
-// ── VERGADERINGEN ──────────────────────────────────────────
+// ── VERGADERINGEN ────────────────────────────────────────────────────────────
 function renderVerg() {
-  document.getElementById('vergCount').textContent = vergaderingen.length + ' vergaderingen';
-  if (!vergaderingen.length) {
-    document.getElementById('vergList').innerHTML =
-      '<div class="empty">Nog geen vergaderingen — draai de GitHub Actions workflow.</div>';
+  const typeFilter = document.getElementById('filterVergType')?.value || '';
+  const filtered   = typeFilter ? vergaderingen.filter(v => v.type === typeFilter) : vergaderingen;
+
+  document.getElementById('vergCount').textContent = filtered.length + ' vergaderingen';
+  if (!filtered.length) {
+    document.getElementById('vergList').innerHTML = '<div class="empty">Geen vergaderingen gevonden.</div>';
     return;
   }
-  document.getElementById('vergList').innerHTML = vergaderingen.map((v, i) => `
+  document.getElementById('vergList').innerHTML = filtered.map((v, i) => `
     <div class="meeting">
-      <div class="meeting-row" onclick="toggleMeeting(${i})">
+      <div class="meeting-row" onclick="toggleMeeting('${v.id}')">
         <div class="meeting-date-tag">${fmtDate(v.datum, 'short')}</div>
         <div class="meeting-info">
           <div class="meeting-title-text">${esc(v.titel)}</div>
@@ -887,23 +714,24 @@ function renderVerg() {
         <div class="meeting-badges">
           ${v.agendapunten?.length ? `<span class="badge badge-teal">${v.agendapunten.length} punten</span>` : ''}
           ${v.video_link ? '<span class="badge badge-go">Video</span>' : ''}
+          ${v.datum > new Date().toISOString().slice(0,10) ? '<span class="badge badge-hold">Gepland</span>' : ''}
         </div>
-        <div class="meeting-chevron" id="ch-${i}">›</div>
+        <div class="meeting-chevron" id="ch-${v.id}">›</div>
       </div>
-      <div class="meeting-details" id="det-${i}">
+      <div class="meeting-details" id="det-${v.id}">
         ${v.video_link ? `
-  <div class="video-section">
-    <div class="video-label">⬇ Video beschikbaar</div>
-    <div class="video-box">
-      <div class="video-url" id="vurl-${i}">${esc(v.video_link)}</div>
-      <button class="btn-copy btn-copy-lg" onclick="copyUrl(${i}, event)">Kopieer link</button>
-    </div>
-    <div class="video-cmd" style="display:flex;align-items:center;gap:8px;margin-top:8px;">
-      <code id="vcmd-${i}">yt-dlp "${esc(v.video_link)}" -o vergadering.ts</code>
-      <button class="btn-copy" onclick="copyCmd(${i}, event)">Kopieer commando</button>
-    </div>
-  </div>
-` : ''}
+          <div class="video-section">
+            <div class="video-label">⬇ Video beschikbaar</div>
+            <div class="video-box">
+              <div class="video-url" id="vurl-${v.id}">${esc(v.video_link)}</div>
+              <button class="btn-copy btn-copy-lg" onclick="copyUrl('${v.id}',event)">Kopieer link</button>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;margin-top:8px;">
+              <code id="vcmd-${v.id}" style="font-family:'JetBrains Mono',monospace;font-size:11px;background:var(--white);border:1px solid var(--rule);padding:2px 6px;">yt-dlp "${esc(v.video_link)}" -o vergadering.ts</code>
+              <button class="btn-copy" onclick="copyCmd('${v.id}',event)">Kopieer commando</button>
+            </div>
+          </div>
+        ` : ''}
         ${(v.agendapunten || []).map(ap => `
           <div class="agenda-item">
             <span class="agenda-nr">${esc(ap.nummer || '')}</span>
@@ -913,10 +741,8 @@ function renderVerg() {
                 ${ap.sprekers.map(s => `
                   <span class="speaker-tag">
                     ${s.tijd ? `<span class="speaker-time">${esc(s.tijd)}</span> ` : ''}${esc(s.naam)}
-                  </span>
-                `).join('')}
-              </div>
-            ` : ''}
+                  </span>`).join('')}
+              </div>` : ''}
           </div>
         `).join('') || '<div class="agenda-item" style="color:var(--muted);font-size:12px;">Geen agendapunten beschikbaar</div>'}
       </div>
@@ -924,27 +750,21 @@ function renderVerg() {
   `).join('');
 }
 
-function toggleMeeting(i) {
-  const det = document.getElementById('det-' + i);
-  const ch  = document.getElementById('ch-' + i);
+function toggleMeeting(id) {
+  const det = document.getElementById('det-' + id);
+  const ch  = document.getElementById('ch-'  + id);
+  if (!det) return;
   const open = det.classList.toggle('open');
   ch.classList.toggle('open', open);
 }
 
-function copyUrl(i, e) {
-  const url = document.getElementById('vurl-' + i).textContent;
-  navigator.clipboard.writeText(url).then(() => {
-    e.target.textContent = '✓ Gekopieerd';
-    setTimeout(() => e.target.textContent = 'Kopieer', 2000);
-  });
+function copyUrl(id, e) {
+  navigator.clipboard.writeText(document.getElementById('vurl-' + id).textContent)
+    .then(() => { e.target.textContent = '✓ Gekopieerd'; setTimeout(() => e.target.textContent = 'Kopieer link', 2000); });
 }
-
-function copyCmd(i, e) {
-  const cmd = document.getElementById('vcmd-' + i).textContent;
-  navigator.clipboard.writeText(cmd).then(() => {
-    e.target.textContent = '✓';
-    setTimeout(() => e.target.textContent = 'Kopieer commando', 2000);
-  });
+function copyCmd(id, e) {
+  navigator.clipboard.writeText(document.getElementById('vcmd-' + id).textContent)
+    .then(() => { e.target.textContent = '✓'; setTimeout(() => e.target.textContent = 'Kopieer commando', 2000); });
 }
 
 function renderOvVerg() {
@@ -956,93 +776,338 @@ function renderOvVerg() {
           <div class="mini-title">${esc(v.titel)}</div>
           <div class="mini-type">${esc(v.type || '')}</div>
         </div>
-      </div>
-    `).join('') || '<div class="empty">Geen data</div>';
+      </div>`).join('') || '<div class="empty">Geen data</div>';
 }
 
-// ── MOTIES ─────────────────────────────────────────────────
+// ── MOTIES ───────────────────────────────────────────────────────────────────
 function populatePartijFilter() {
   const sel = document.getElementById('filterPartij');
   const partijen = [...new Set(moties.map(m => m.partij).filter(Boolean))].sort();
   partijen.forEach(p => {
     const o = document.createElement('option');
-    o.value = p; o.textContent = p;
-    sel.appendChild(o);
+    o.value = p; o.textContent = p; sel.appendChild(o);
   });
 }
 
 function renderMoties() {
   const partij = document.getElementById('filterPartij').value;
   const status = document.getElementById('filterStatus').value;
-  let f = moties.filter(m => m.status);
+  const type   = document.getElementById('filterType').value;
+  let f = [...moties];
   if (partij) f = f.filter(m => m.partij === partij);
   if (status) f = f.filter(m => m.status === status);
+  if (type)   f = f.filter(m => m.type === type);
 
-  document.getElementById('motiesTable').innerHTML =
-    f.length === 0
-      ? '<tr><td colspan="4" class="empty">Geen moties gevonden.</td></tr>'
-      : f.map(m => `
-          <tr>
-            <td>
-              <div class="motie-title">${esc(m.titel)}</div>
-              ${m.omschrijving ? `<div class="motie-desc">${esc(m.omschrijving)}</div>` : ''}
-            </td>
-            <td><span class="badge badge-teal">${esc(m.partij || '—')}</span></td>
-            <td style="font-family:'JetBrains Mono',monospace;font-size:11px;white-space:nowrap;">${fmtDate(m.datum, 'full')}</td>
-            <td>${statusBadge(m.status)}</td>
-<td>${stemmingBar(m)}</td>
-</tr>
-        `).join('');
+  document.getElementById('motiesTable').innerHTML = f.length === 0
+    ? '<tr><td colspan="5" class="empty">Geen moties gevonden.</td></tr>'
+    : f.map(m => `
+        <tr>
+          <td>
+            <div class="motie-title">${esc(m.titel)}</div>
+            ${m.type ? `<div class="motie-desc">${esc(m.type)}</div>` : ''}
+          </td>
+          <td><span class="badge badge-teal">${esc(m.partij || '—')}</span></td>
+          <td style="font-family:'JetBrains Mono',monospace;font-size:11px;white-space:nowrap;">${fmtDate(m.datum,'full')}</td>
+          <td>${statusBadge(m.status)}</td>
+          <td>${stemmingBar(m)}</td>
+        </tr>`).join('');
 }
 
 function statusBadge(s) {
-  const map = {
-    aangenomen:  ['badge-go',   'Aangenomen ✓'],
-    verworpen:   ['badge-stop', 'Verworpen ✗'],
-    ingetrokken: ['badge-hold', 'Ingetrokken'],
-    aangehouden: ['badge-hold', 'Aangehouden'],
-  };
+  const map = { aangenomen:['badge-go','Aangenomen ✓'], verworpen:['badge-stop','Verworpen ✗'], ingetrokken:['badge-hold','Ingetrokken'], aangehouden:['badge-hold','Aangehouden'] };
   const [cls, label] = map[s] || ['badge-teal', s || '—'];
   return `<span class="badge ${cls}">${label}</span>`;
 }
 
 function stemmingBar(m) {
-  if (!m.voor_pct && !m.tegen_pct)
-    return '<span style="color:var(--muted);font-size:11px;">—</span>';
-  return `
-    <div style="min-width:80px;">
-      <div style="display:flex;height:6px;border-radius:2px;overflow:hidden;margin-bottom:3px;">
-        <div style="width:${m.voor_pct}%;background:var(--go);"></div>
-        <div style="width:${m.tegen_pct}%;background:var(--stop);"></div>
-      </div>
-      <div style="font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--muted);">
-        ${m.voor_pct}% voor · ${m.tegen_pct}% tegen
-      </div>
-    </div>`;
+  if (!m.voor_pct && !m.tegen_pct) return '<span style="color:var(--muted);font-size:11px;">—</span>';
+  return `<div style="min-width:80px;">
+    <div style="display:flex;height:6px;border-radius:2px;overflow:hidden;margin-bottom:3px;">
+      <div style="width:${m.voor_pct}%;background:var(--go);"></div>
+      <div style="width:${m.tegen_pct}%;background:var(--stop);"></div>
+    </div>
+    <div style="font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--muted);">
+      ${m.voor_pct}% voor · ${m.tegen_pct}% tegen
+    </div>
+  </div>`;
 }
 
-// ── BEKENDMAKINGEN ─────────────────────────────────────────
+// ── MOTIES VISUALISATIES ─────────────────────────────────────────────────────
+function renderMotiesVisuals() {
+  const el = document.getElementById('motiesViz');
+  if (!el || !moties.length) return;
+
+  // Per partij: statistieken
+  const partijStats = {};
+  moties.forEach(m => {
+    if (!m.partij) return;
+    if (!partijStats[m.partij]) partijStats[m.partij] = { totaal: 0, aangenomen: 0, verworpen: 0 };
+    partijStats[m.partij].totaal++;
+    if (m.status === 'aangenomen') partijStats[m.partij].aangenomen++;
+    if (m.status === 'verworpen')  partijStats[m.partij].verworpen++;
+  });
+
+  // Alleen partijen met minstens 2 moties met status, gesorteerd op slagingspercentage
+  const partijLijst = Object.entries(partijStats)
+    .filter(([, s]) => (s.aangenomen + s.verworpen) >= 1)
+    .map(([naam, s]) => {
+      const metStatus = s.aangenomen + s.verworpen;
+      const pct = metStatus ? Math.round(s.aangenomen / metStatus * 100) : null;
+      return { naam, ...s, pct };
+    })
+    .sort((a, b) => (b.pct ?? -1) - (a.pct ?? -1));
+
+  // Top indieners
+  const indienerStats = {};
+  moties.forEach(m => {
+    const naam = m.indiener;
+    if (!naam) return;
+    if (!indienerStats[naam]) indienerStats[naam] = { totaal: 0, partij: m.partij };
+    indienerStats[naam].totaal++;
+  });
+  const topIndieners = Object.entries(indienerStats)
+    .sort((a, b) => b[1].totaal - a[1].totaal)
+    .slice(0, 6);
+
+  // Overall statistieken
+  const totaal    = moties.length;
+  const aangenomen = moties.filter(m => m.status === 'aangenomen').length;
+  const metStatus  = moties.filter(m => m.status === 'aangenomen' || m.status === 'verworpen').length;
+  const pctGlobaal = metStatus ? Math.round(aangenomen / metStatus * 100) : 0;
+  const meestActief = partijLijst.length ? partijLijst.reduce((a, b) => b.totaal > a.totaal ? b : a, partijLijst[0]) : null;
+  const maxTotaal = Math.max(...partijLijst.map(p => p.totaal), 1);
+
+  el.innerHTML = `
+    <div class="viz-stat-row">
+      <div class="viz-stat">
+        <div class="viz-stat-label">Totaal ingediend</div>
+        <div class="viz-stat-value">${totaal}</div>
+        <div class="viz-stat-sub">moties &amp; amendementen</div>
+      </div>
+      <div class="viz-stat">
+        <div class="viz-stat-label">Slagingspercentage</div>
+        <div class="viz-stat-value" style="color:var(--go)">${pctGlobaal}%</div>
+        <div class="viz-stat-sub">van ${metStatus} met stemuitslag</div>
+      </div>
+      <div class="viz-stat">
+        <div class="viz-stat-label">Meest actief</div>
+        <div class="viz-stat-value" style="font-size:22px;padding-top:6px;">${meestActief ? esc(meestActief.naam) : '—'}</div>
+        <div class="viz-stat-sub">${meestActief ? meestActief.totaal + ' moties ingediend' : ''}</div>
+      </div>
+    </div>
+
+    <div class="viz-row">
+      <!-- Partij slagingspercentage -->
+      <div class="card">
+        <div class="card-header"><span class="card-title">Slagingspercentage per partij</span></div>
+        <div class="viz-bar-list">
+          ${partijLijst.length === 0 ? '<div class="viz-empty">Onvoldoende stemmingsdata</div>' :
+            partijLijst.map(p => `
+              <div class="viz-bar-row">
+                <div class="viz-bar-label" title="${esc(p.naam)}">${esc(p.naam)}</div>
+                <div class="viz-bar-track">
+                  <div class="viz-bar-fill" style="width:${p.pct ?? 0}%;background:${p.pct >= 50 ? 'var(--go)' : 'var(--stop)'}"></div>
+                </div>
+                <div class="viz-bar-pct">${p.pct !== null ? p.pct + '%' : '—'}</div>
+              </div>`).join('')}
+        </div>
+      </div>
+
+      <!-- Activiteit per partij + top indieners -->
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div class="card">
+          <div class="card-header"><span class="card-title">Aantal moties per partij</span></div>
+          <div class="viz-bar-list">
+            ${partijLijst.map(p => `
+              <div class="viz-bar-row">
+                <div class="viz-bar-label" title="${esc(p.naam)}">${esc(p.naam)}</div>
+                <div class="viz-bar-track">
+                  <div class="viz-bar-fill" style="width:${Math.round(p.totaal/maxTotaal*100)}%;background:var(--teal)"></div>
+                </div>
+                <div class="viz-bar-pct">${p.totaal}</div>
+              </div>`).join('')}
+          </div>
+        </div>
+        ${topIndieners.length ? `
+          <div class="card">
+            <div class="card-header"><span class="card-title">Meest actieve indieners</span></div>
+            <div class="viz-bar-list">
+              ${topIndieners.map(([naam, s]) => `
+                <div class="viz-bar-row">
+                  <div class="viz-bar-label" title="${esc(naam)}">${esc(naam)}</div>
+                  <div class="viz-bar-track">
+                    <div class="viz-bar-fill" style="width:${Math.round(s.totaal/topIndieners[0][1].totaal*100)}%;background:var(--navy)"></div>
+                  </div>
+                  <div class="viz-bar-pct">${s.totaal}</div>
+                </div>`).join('')}
+            </div>
+          </div>` : ''}
+      </div>
+    </div>
+  `;
+}
+
+// ── BEKENDMAKINGEN ───────────────────────────────────────────────────────────
 function renderBekendmakingen() {
   const cat = document.getElementById('filterBkCat').value;
-  const f = cat ? bekendmakingen.filter(b => b.categorie === cat) : bekendmakingen;
+  const f   = cat ? bekendmakingen.filter(b => b.categorie === cat) : bekendmakingen;
 
-  document.getElementById('bkList').innerHTML =
-    f.length === 0
-      ? '<div class="empty">Geen bekendmakingen gevonden.</div>'
-      : f.map(b => `
-          <div class="bk-item">
-            <div class="bk-top">
-              <div>
-                <a class="bk-title-link" href="${b.link || '#'}" target="_blank">${esc(b.titel)}</a>
-                <div class="bk-meta">
-                  ${b.categorie ? `<span class="badge badge-teal">${esc(b.categorie)}</span>` : ''}
-                  <span class="bk-date">${fmtDate(b.datum, 'full')}</span>
-                </div>
-                ${b.omschrijving ? `<div class="bk-desc">${esc(b.omschrijving)}</div>` : ''}
+  document.getElementById('bkList').innerHTML = f.length === 0
+    ? '<div class="empty">Geen bekendmakingen gevonden.</div>'
+    : f.map(b => `
+        <div class="bk-item">
+          <div class="bk-top">
+            <div>
+              <a class="bk-title-link" href="${b.link || '#'}" target="_blank">${esc(b.titel)}</a>
+              <div class="bk-meta">
+                ${b.categorie ? `<span class="badge badge-teal">${esc(catLabel(b.categorie))}</span>` : ''}
+                <span class="bk-date">${fmtDate(b.datum,'full')}</span>
               </div>
+              ${b.omschrijving ? `<div class="bk-desc">${esc(b.omschrijving)}</div>` : ''}
             </div>
           </div>
-        `).join('');
+        </div>`).join('');
+}
+
+// ── BEKENDMAKINGEN VISUALISATIES ─────────────────────────────────────────────
+function renderBekendmakingenVisuals() {
+  const el = document.getElementById('bkViz');
+  if (!el || !bekendmakingen.length) return;
+
+  // Count per categorie
+  const catCounts = {};
+  bekendmakingen.forEach(b => {
+    const c = b.categorie || 'overig';
+    catCounts[c] = (catCounts[c] || 0) + 1;
+  });
+  const sortedCats = Object.entries(catCounts).sort((a,b) => b[1]-a[1]);
+  const maxCat = sortedCats[0]?.[1] || 1;
+
+  // Maandelijkse trend (laatste 6 maanden)
+  const now = new Date();
+  const maanden = [];
+  for (let i = 5; i >= 0; i--) {
+    const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+    const key = d.toISOString().slice(0, 7);
+    maanden.push({ maand: key, count: 0 });
+  }
+  bekendmakingen.forEach(b => {
+    if (!b.datum) return;
+    const key = b.datum.slice(0,7);
+    const m = maanden.find(m => m.maand === key);
+    if (m) m.count++;
+  });
+
+  // Categorie-kleuren
+  const catKleuren = {
+    woningbouw: 'var(--go)',    omgevingsplan: 'var(--teal)',
+    verkeer:    'var(--hold)',  handhaving:    'var(--stop)',
+    woningsluiting: 'var(--stop)', camera:    'var(--navy)',
+    subsidie:   '#7B5EA7',     sloop:         'var(--hold)',
+    evenement:  'var(--teal)', overig:        'var(--muted)',
+  };
+
+  // Overall cijfers
+  const totaal    = bekendmakingen.length;
+  const handhaving = (catCounts['handhaving'] || 0) + (catCounts['woningsluiting'] || 0);
+  const woningbouw = catCounts['woningbouw'] || 0;
+  const ditMaand   = maanden[maanden.length-1]?.count || 0;
+
+  el.innerHTML = `
+    <div class="viz-stat-row">
+      <div class="viz-stat">
+        <div class="viz-stat-label">Totaal bijgehouden</div>
+        <div class="viz-stat-value">${totaal}</div>
+        <div class="viz-stat-sub">bekendmakingen (gefilterd)</div>
+      </div>
+      <div class="viz-stat">
+        <div class="viz-stat-label">Woningbouw</div>
+        <div class="viz-stat-value" style="color:var(--go)">${woningbouw}</div>
+        <div class="viz-stat-sub">bouwaanvragen &amp; plannen</div>
+      </div>
+      <div class="viz-stat">
+        <div class="viz-stat-label">Handhaving &amp; sluitingen</div>
+        <div class="viz-stat-value" style="color:var(--stop)">${handhaving}</div>
+        <div class="viz-stat-sub">dwangsommen, sluitingen</div>
+      </div>
+    </div>
+
+    <div class="viz-row">
+      <!-- Categorie verdeling -->
+      <div class="card">
+        <div class="card-header"><span class="card-title">Per categorie</span></div>
+        <div class="viz-bar-list">
+          ${sortedCats.map(([cat, count]) => `
+            <div class="viz-bar-row">
+              <div class="viz-bar-label">${esc(catLabel(cat))}</div>
+              <div class="viz-bar-track">
+                <div class="viz-bar-fill" style="width:${Math.round(count/maxCat*100)}%;background:${catKleuren[cat]||'var(--teal)'}"></div>
+              </div>
+              <div class="viz-bar-pct">${count}</div>
+            </div>`).join('')}
+        </div>
+      </div>
+
+      <!-- Trend per maand -->
+      <div class="card">
+        <div class="card-header">
+          <span class="card-title">Trend afgelopen 6 maanden</span>
+          <span style="font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace;">${ditMaand} deze maand</span>
+        </div>
+        <div class="viz-trend-wrap">
+          ${buildTrendSVG(maanden)}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// ── SVG TREND ────────────────────────────────────────────────────────────────
+function buildTrendSVG(data) {
+  // data: [{maand: 'YYYY-MM', count: N}]
+  const W = 460, H = 110;
+  const PAD = { t: 10, r: 16, b: 32, l: 28 };
+  const pW = W - PAD.l - PAD.r;
+  const pH = H - PAD.t - PAD.b;
+  const n  = data.length;
+  if (n < 2) return '<div class="viz-empty">Onvoldoende data voor trend</div>';
+
+  const maxC = Math.max(...data.map(d => d.count), 1);
+
+  const pts = data.map((d, i) => {
+    const x = PAD.l + (i / (n - 1)) * pW;
+    const y = PAD.t + (1 - d.count / maxC) * pH;
+    return [x, y];
+  });
+
+  const line = pts.map(([x,y]) => `${x},${y}`).join(' ');
+  const area = [`${PAD.l},${PAD.t + pH}`, ...pts.map(([x,y]) => `${x},${y}`), `${PAD.l + pW},${PAD.t + pH}`].join(' ');
+
+  const maandNamen = ['Jan','Feb','Mrt','Apr','Mei','Jun','Jul','Aug','Sep','Okt','Nov','Dec'];
+  const labels = data.map((d, i) => {
+    const [, m] = d.maand.split('-');
+    const x = PAD.l + (i / (n - 1)) * pW;
+    return `<text x="${x}" y="${H - 4}" text-anchor="middle" font-size="9" fill="#6B7280">${maandNamen[parseInt(m)-1]}</text>`;
+  }).join('');
+
+  const yLabels = [0, Math.ceil(maxC/2), maxC].map(v => {
+    const y = PAD.t + (1 - v / maxC) * pH;
+    return `<text x="${PAD.l - 4}" y="${y + 3}" text-anchor="end" font-size="9" fill="#6B7280">${v}</text>`;
+  }).join('');
+
+  const dots = pts.map(([x,y], i) => `
+    <circle cx="${x}" cy="${y}" r="3.5" fill="white" stroke="#006B7B" stroke-width="2"/>
+    <title>${data[i].count} in ${data[i].maand}</title>`).join('');
+
+  return `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;">
+    <line x1="${PAD.l}" y1="${PAD.t}" x2="${PAD.l}" y2="${PAD.t+pH}" stroke="#D8D5CE" stroke-width="1"/>
+    <line x1="${PAD.l}" y1="${PAD.t+pH}" x2="${PAD.l+pW}" y2="${PAD.t+pH}" stroke="#D8D5CE" stroke-width="1"/>
+    ${yLabels}
+    <polygon points="${area}" fill="#006B7B" fill-opacity="0.08"/>
+    <polyline points="${line}" fill="none" stroke="#006B7B" stroke-width="2" stroke-linejoin="round"/>
+    ${dots}
+    ${labels}
+  </svg>`;
 }
 
 function renderOvBk() {
@@ -1054,44 +1119,76 @@ function renderOvBk() {
           <div class="mini-title">
             <a href="${b.link || '#'}" target="_blank" style="color:inherit;text-decoration:none;">${esc(b.titel)}</a>
           </div>
-          <div class="mini-type">${esc(b.categorie || '')}</div>
+          <div class="mini-type">${esc(catLabel(b.categorie || ''))}</div>
         </div>
-      </div>
-    `).join('') || '<div class="empty">Geen data</div>';
+      </div>`).join('') || '<div class="empty">Geen data</div>';
 }
 
-// ── FACTCHECK ──────────────────────────────────────────────
+// ── RAADSVRAGEN ──────────────────────────────────────────────────────────────
+function populateRvFilter() {
+  const sel = document.getElementById('filterRvPartij');
+  const fracties = [...new Set(raadsvragen.map(r => r.fractie).filter(Boolean))].sort();
+  fracties.forEach(f => {
+    const o = document.createElement('option');
+    o.value = f; o.textContent = f; sel.appendChild(o);
+  });
+  document.getElementById('rvCount').textContent = raadsvragen.length + ' raadsvragen';
+}
+
+function renderRaadsvragen() {
+  const partijF = document.getElementById('filterRvPartij').value;
+  const statusF = document.getElementById('filterRvStatus').value;
+  let f = [...raadsvragen];
+  if (partijF) f = f.filter(r => r.fractie === partijF);
+  if (statusF) f = f.filter(r => r.status === statusF);
+
+  document.getElementById('rvList').innerHTML = f.length === 0
+    ? '<div class="empty">Geen raadsvragen gevonden.</div>'
+    : f.map(r => `
+        <div class="rv-item">
+          <div class="rv-title">${esc(r.titel)}</div>
+          <div class="rv-meta">
+            ${r.fractie ? `<span class="badge badge-teal">${esc(r.fractie)}</span>` : ''}
+            ${r.vraagsteller ? `<span class="rv-vraagsteller">${esc(r.vraagsteller)}</span>` : ''}
+            <span class="rv-date">${fmtDate(r.datum_ingediend, 'full')}</span>
+            ${statusBadge(r.status)}
+            ${r.datum_antwoord ? `<span class="rv-date">Antwoord: ${fmtDate(r.datum_antwoord,'full')}</span>` : ''}
+          </div>
+          ${r.omschrijving ? `<div class="bk-desc" style="margin-top:6px;">${esc(r.omschrijving)}</div>` : ''}
+        </div>`).join('');
+}
+
+// ── FACTCHECK ────────────────────────────────────────────────────────────────
 async function analyseerFactcheck() {
-  const apiKey     = document.getElementById('geminiKey').value.trim();
-  const context    = document.getElementById('fcContext').value.trim();
-  const tekst      = document.getElementById('fcText').value.trim();
-  const btn        = document.getElementById('fcBtn');
-  const status     = document.getElementById('fcStatus');
-  const lijst      = document.getElementById('claimsList');
+  const apiKey  = document.getElementById('geminiKey').value.trim();
+  const context = document.getElementById('fcContext').value.trim();
+  const tekst   = document.getElementById('fcText').value.trim();
+  const btn     = document.getElementById('fcBtn');
+  const status  = document.getElementById('fcStatus');
+  const lijst   = document.getElementById('claimsList');
 
   if (!apiKey) { alert('Voer eerst een Gemini API key in.'); return; }
   if (tekst.length < 100) { alert('Voer minimaal 100 tekens transcriptie in.'); return; }
 
-  btn.disabled = true;
-  btn.textContent = 'Analyseren...';
+  btn.disabled = true; btn.textContent = 'Analyseren...';
   status.textContent = 'Gemini is aan het werk…';
   lijst.innerHTML = '<div class="factcheck-empty">Claims worden geïdentificeerd...</div>';
 
   const prompt = `Je bent een factcheck-assistent voor een journalist die gemeenteraadsvergaderingen van Zaanstad analyseert.
 ${context ? 'Context: ' + context : ''}
 
-Analyseer onderstaande transcriptie en identificeer alle feitelijke claims die verifieerbaar zijn door een journalist.
+Analyseer onderstaande transcriptie en identificeer alle feitelijke claims die verifieerbaar zijn.
 Denk aan: getallen, percentages, datums, tijdlijnen, beloftes van het college, historische vergelijkingen, budgetten, aantallen woningen, criminaliteitscijfers.
 
 Geef voor elke claim:
 - De exacte claim (kort geciteerd of geparafraseerd)
 - Wie het zei (als duidelijk in de tekst)
 - Hoe een journalist dit kan controleren (welke bron, welk document)
-- Prioriteit: HOOG (groot publiek belang) / MIDDEL / LAAG
+- Prioriteit: HOOG / MIDDEL / LAAG
 
-Geef maximaal 10 claims, HOOG eerst.
+Maximaal 10 claims, HOOG eerst.
 
-Antwoord ALLEEN met een JSON-array, geen markdown:
+Antwoord ALLEEN met een JSON-array, geen markdown, geen uitleg:
 [{"claim":"...","spreker":"...","verificatie":"...","prioriteit":"HOOG"}]
 
 Transcriptie:
@@ -1100,63 +1197,54 @@ ${tekst.slice(0, 9000)}`;
   try {
     const res = await fetch(
       'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=' + apiKey,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: { temperature: 0.2, maxOutputTokens: 2048 }
-        })
-      }
+      { method:'POST', headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ contents:[{parts:[{text:prompt}]}], generationConfig:{temperature:0.2,maxOutputTokens:2048} }) }
     );
-
     const data = await res.json();
     if (data.error) throw new Error(data.error.message);
-
     const raw   = data.candidates[0].content.parts[0].text;
     const match = raw.match(/\[[\s\S]*\]/);
     if (!match) throw new Error('Onverwacht antwoordformaat van Gemini.');
-
     const claims = JSON.parse(match[0]);
     status.textContent = claims.length + ' claims gevonden';
-
     lijst.innerHTML = claims.map((c, i) => `
       <div class="claim-item">
-        <div class="claim-num ${(c.prioriteit || 'MIDDEL').toLowerCase()}">${i + 1} — ${c.prioriteit || 'MIDDEL'}</div>
+        <div class="claim-num ${(c.prioriteit||'MIDDEL').toLowerCase()}">${i+1} — ${c.prioriteit||'MIDDEL'}</div>
         <div class="claim-text">"${esc(c.claim)}"</div>
         ${c.spreker ? `<div class="claim-speaker">— ${esc(c.spreker)}</div>` : ''}
         <div class="claim-check">${esc(c.verificatie)}</div>
-      </div>
-    `).join('');
-
+      </div>`).join('');
   } catch (e) {
     status.textContent = 'Fout';
-    lijst.innerHTML = `
-      <div class="error-msg">
-        Fout: ${esc(e.message)}<br>
-        Controleer je API key op <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color:var(--stop)">aistudio.google.com</a>.
-      </div>`;
+    lijst.innerHTML = `<div class="error-msg">Fout: ${esc(e.message)}<br>
+      Controleer je API key op <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color:var(--stop)">aistudio.google.com</a>.</div>`;
   } finally {
-    btn.disabled = false;
-    btn.textContent = 'Analyseer op verifieerbare claims →';
+    btn.disabled = false; btn.textContent = 'Analyseer op verifieerbare claims →';
   }
 }
 
-// ── HELPERS ────────────────────────────────────────────────
+// ── HELPERS ──────────────────────────────────────────────────────────────────
 function fmtDate(s, mode) {
   if (!s) return '—';
   try {
     const d = new Date(s + 'T00:00:00');
-    if (mode === 'short')
-      return d.toLocaleDateString('nl-NL', { day: 'numeric', month: 'short' });
-    return d.toLocaleDateString('nl-NL', { day: 'numeric', month: 'short', year: 'numeric' });
+    return mode === 'short'
+      ? d.toLocaleDateString('nl-NL', { day:'numeric', month:'short' })
+      : d.toLocaleDateString('nl-NL', { day:'numeric', month:'short', year:'numeric' });
   } catch { return s; }
 }
 
 function esc(s) {
-  return String(s || '')
-    .replace(/&/g,'&amp;').replace(/</g,'&lt;')
-    .replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function catLabel(cat) {
+  const labels = {
+    woningbouw:'Woningbouw', omgevingsplan:'Omgevingsplan', verkeer:'Verkeersbesluit',
+    handhaving:'Handhaving', woningsluiting:'Woningsluiting', camera:'Cameratoezicht',
+    subsidie:'Subsidie', sloop:'Sloop', evenement:'Evenement', overig:'Overig'
+  };
+  return labels[cat] || cat;
 }
 </script>
 </body>
