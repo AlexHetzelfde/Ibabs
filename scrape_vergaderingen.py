@@ -87,10 +87,12 @@ def load_existing():
 
 
 def main():
-    # Datumbereik: afgelopen 7 dagen + komende 30 dagen
-    vandaag     = datetime.now()
-    week_geleden = vandaag - timedelta(days=7)
+    # Datumbereik: via env var SCRAPE_VANAF of standaard afgelopen 7 dagen
+    import os
+    vandaag       = datetime.now()
     over_30_dagen = vandaag + timedelta(days=30)
+    vanaf_env     = os.environ.get("SCRAPE_VANAF", "").strip()
+    week_geleden  = datetime.strptime(vanaf_env, "%Y-%m-%d") if vanaf_env else vandaag - timedelta(days=7)
 
     print(f"Bereik: {week_geleden.strftime('%Y-%m-%d')} t/m {over_30_dagen.strftime('%Y-%m-%d')}")
 
