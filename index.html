@@ -191,8 +191,6 @@
       background: var(--white); border: 1px solid var(--teal); padding: 8px 12px;
     }
     .video-url { font-family: 'JetBrains Mono', monospace; font-size: 11px; flex: 1; word-break: break-all; color: var(--ink2); }
-    .video-cmd { margin-top: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); }
-    .video-cmd code { background: var(--white); border: 1px solid var(--rule); padding: 2px 6px; color: var(--text); }
     .agenda-item { padding: 10px 20px; border-bottom: 1px solid var(--rule); }
     .agenda-item:last-child { border-bottom: none; }
     .agenda-nr { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; color: var(--muted); margin-right: 6px; }
@@ -217,7 +215,6 @@
       color: var(--text); cursor: pointer;
     }
     .filter-select:focus { outline: 2px solid var(--teal); }
-    .filter-label { font-size: 11px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.6px; }
 
     /* ── TABLE ── */
     table { width: 100%; border-collapse: collapse; }
@@ -300,49 +297,26 @@
       font-size: 36px; font-weight: 800; line-height: 1; color: var(--navy);
     }
     .viz-stat-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
-    .viz-section-label {
-      font-size: 10px; font-weight: 700; text-transform: uppercase;
-      letter-spacing: 1px; color: var(--muted); margin-bottom: 10px; padding-top: 4px;
-    }
-    .viz-trend-wrap { padding: 12px 20px 8px; }
     .viz-empty { padding: 20px; text-align: center; color: var(--muted); font-size: 12px; }
 
-    /* ── FACTCHECK ── */
-    .factcheck-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .form-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
-    .form-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: var(--muted); }
-    .form-input, .form-textarea {
-      padding: 9px 12px; border: 1px solid var(--rule);
-      font-size: 13px; font-family: inherit;
-      background: var(--white); color: var(--text); resize: vertical;
+    /* ── STACKED BAR ── */
+    .stacked-bar-track {
+      flex: 1; height: 12px;
+      border-radius: 1px; overflow: hidden;
+      display: flex;
     }
-    .form-input:focus, .form-textarea:focus { outline: 2px solid var(--teal); outline-offset: -1px; }
-    .form-hint { font-size: 11px; color: var(--muted); }
-    .btn-primary {
-      background: var(--teal); color: var(--white); border: none;
-      padding: 10px 20px; font-size: 13px; font-weight: 600;
-      font-family: inherit; cursor: pointer; width: 100%; transition: background 0.1s;
+    .viz-legend {
+      display: flex; gap: 16px; padding: 8px 0 2px;
     }
-    .btn-primary:hover:not(:disabled) { background: #005668; }
-    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
-    .btn-copy {
-      background: var(--teal); color: var(--white); border: none;
-      padding: 4px 10px; font-size: 11px;
-      font-family: 'JetBrains Mono', monospace; cursor: pointer; white-space: nowrap;
+    .viz-legend-item {
+      display: flex; align-items: center; gap: 5px;
+      font-size: 10px; color: var(--muted);
     }
-    .btn-copy-lg { padding: 10px 18px; font-size: 13px; font-weight: 700; }
-    .claim-item { padding: 14px 20px; border-bottom: 1px solid var(--rule); }
-    .claim-item:last-child { border-bottom: none; }
-    .claim-num { font-size: 10px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 4px; }
-    .claim-num.hoog { color: var(--stop); }
-    .claim-num.middel { color: var(--hold); }
-    .claim-num.laag { color: var(--muted); }
-    .claim-text { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
-    .claim-speaker { font-size: 11px; color: var(--teal); font-family: 'JetBrains Mono', monospace; margin-bottom: 6px; }
-    .claim-check { font-size: 12px; color: var(--muted); line-height: 1.5; }
-    .factcheck-empty { padding: 32px 20px; text-align: center; color: var(--muted); font-size: 13px; line-height: 1.8; }
+    .viz-legend-dot {
+      width: 10px; height: 10px; flex-shrink: 0;
+    }
 
-            /* ── BEKENDMAKINGEN DASHBOARD ── */
+    /* ── BEKENDMAKINGEN DASHBOARD ── */
     .bk-stats-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -410,6 +384,42 @@
       text-transform: uppercase; letter-spacing: 0.5px;
     }
     .btn-text:hover { text-decoration: underline; }
+
+    /* ── FACTCHECK ── */
+    .factcheck-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
+    .form-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: var(--muted); }
+    .form-input, .form-textarea {
+      padding: 9px 12px; border: 1px solid var(--rule);
+      font-size: 13px; font-family: inherit;
+      background: var(--white); color: var(--text); resize: vertical;
+    }
+    .form-input:focus, .form-textarea:focus { outline: 2px solid var(--teal); outline-offset: -1px; }
+    .form-hint { font-size: 11px; color: var(--muted); }
+    .btn-primary {
+      background: var(--teal); color: var(--white); border: none;
+      padding: 10px 20px; font-size: 13px; font-weight: 600;
+      font-family: inherit; cursor: pointer; width: 100%; transition: background 0.1s;
+    }
+    .btn-primary:hover:not(:disabled) { background: #005668; }
+    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+    .btn-copy {
+      background: var(--teal); color: var(--white); border: none;
+      padding: 4px 10px; font-size: 11px;
+      font-family: 'JetBrains Mono', monospace; cursor: pointer; white-space: nowrap;
+    }
+    .btn-copy-lg { padding: 10px 18px; font-size: 13px; font-weight: 700; }
+    .claim-item { padding: 14px 20px; border-bottom: 1px solid var(--rule); }
+    .claim-item:last-child { border-bottom: none; }
+    .claim-num { font-size: 10px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 4px; }
+    .claim-num.hoog { color: var(--stop); }
+    .claim-num.middel { color: var(--hold); }
+    .claim-num.laag { color: var(--muted); }
+    .claim-text { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+    .claim-speaker { font-size: 11px; color: var(--teal); font-family: 'JetBrains Mono', monospace; margin-bottom: 6px; }
+    .claim-check { font-size: 12px; color: var(--muted); line-height: 1.5; }
+    .factcheck-empty { padding: 32px 20px; text-align: center; color: var(--muted); font-size: 13px; line-height: 1.8; }
+
     /* ── EMPTY / ERROR ── */
     .empty { padding: 32px; text-align: center; color: var(--muted); font-size: 13px; }
     .error-msg {
@@ -474,7 +484,7 @@
       <div class="stat">
         <div class="stat-label">Bekendmakingen relevant</div>
         <div class="stat-value" id="statB">—</div>
-        <div class="stat-sub">na filter</div>
+        <div class="stat-sub" id="statBsub">na filter</div>
       </div>
       <div class="stat">
         <div class="stat-label">Laatste vergadering</div>
@@ -561,13 +571,11 @@
     </div>
   </div>
 
-    <!-- ── BEKENDMAKINGEN ── -->
+  <!-- ── BEKENDMAKINGEN ── -->
   <div class="tab-content" id="tab-bekendmakingen">
     <div class="alert-info">
       Automatisch gefilterd op cameratoezicht, woningsluitingen &amp; dwangsommen.
     </div>
-
-    <!-- Totaal tegels -->
     <div class="bk-stats-row" id="bkStatsRow">
       <div class="bk-stat-card">
         <div class="bk-stat-label">Camera's totaal</div>
@@ -582,8 +590,6 @@
         <div class="bk-stat-value" id="bkDwangsom">—</div>
       </div>
     </div>
-
-    <!-- Grafieken: trend per maand -->
     <div class="bk-charts-row">
       <div class="card">
         <div class="card-header"><span class="card-title">Camera's per maand</span></div>
@@ -598,8 +604,6 @@
         <div class="bk-chart-container" id="bkDwangsomChart"></div>
       </div>
     </div>
-
-    <!-- Grafieken: per wijk -->
     <div class="bk-charts-row">
       <div class="card">
         <div class="card-header"><span class="card-title">Camera's per wijk</span></div>
@@ -610,12 +614,9 @@
         <div id="bkWoningWijkChart" class="bk-bar-chart"></div>
       </div>
     </div>
-
-    <!-- Knop voor de ruwe lijst -->
     <button class="btn-text" onclick="document.getElementById('bkLijstContainer').classList.toggle('hidden')">
       Toon / verberg onderliggende berichten
     </button>
-
     <div id="bkLijstContainer" class="hidden">
       <div class="card" style="margin-top:16px;">
         <div class="card-header">
@@ -626,6 +627,7 @@
       </div>
     </div>
   </div>
+
   <!-- ── RAADSVRAGEN ── -->
   <div class="tab-content" id="tab-raadsvragen">
     <div class="filter-bar">
@@ -692,21 +694,20 @@
 </main>
 
 <script>
-// ── STATE ────────────────────────────────────────────────────────────────────
+// ── STATE ─────────────────────────────────────────────────────────────────────
 let vergaderingen = [], moties = [], bekendmakingen = [], raadsvragen = [];
 
-// ── INIT ─────────────────────────────────────────────────────────────────────
+// ── INIT ──────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', async () => {
   const savedKey = localStorage.getItem('zr_gemini_key');
   if (savedKey) document.getElementById('geminiKey').value = savedKey;
-
   await Promise.all([loadVerg(), loadMoties(), loadBk(), loadRaadsvragen()]);
   updateStats();
   document.getElementById('headerMeta').textContent =
     vergaderingen[0]?.bijgewerkt ? 'bijgewerkt ' + vergaderingen[0].bijgewerkt : '';
 });
 
-// ── TABS ─────────────────────────────────────────────────────────────────────
+// ── TABS ──────────────────────────────────────────────────────────────────────
 function switchTab(el) {
   const name = el.dataset.tab;
   document.querySelectorAll('.tab').forEach(t =>
@@ -715,7 +716,7 @@ function switchTab(el) {
     c.classList.toggle('active', c.id === 'tab-' + name));
 }
 
-// ── LOAD DATA ────────────────────────────────────────────────────────────────
+// ── LOAD DATA ─────────────────────────────────────────────────────────────────
 async function loadVerg() {
   try {
     const r = await fetch('./data/vergaderingen.json');
@@ -757,8 +758,6 @@ async function loadBk() {
       e.message === '404'
         ? '<div class="empty">Nog geen bekendmakingen — draai eerst de scraper.</div>'
         : `<div class="error-msg">Fout: ${e.message}</div>`;
-    document.getElementById('bkDashboard').innerHTML =
-      '<div class="error-msg">Data niet beschikbaar</div>';
   }
 }
 
@@ -776,7 +775,7 @@ async function loadRaadsvragen() {
   }
 }
 
-// ── STATS ────────────────────────────────────────────────────────────────────
+// ── STATS ─────────────────────────────────────────────────────────────────────
 function updateStats() {
   document.getElementById('statV').textContent = vergaderingen.length;
   const raadCount = vergaderingen.filter(v => v.type === 'Raadsvergadering').length;
@@ -789,11 +788,11 @@ function updateStats() {
   const verw  = moties.filter(m => m.status === 'verworpen').length;
   document.getElementById('statMsub').textContent = aang + ' aangenomen · ' + verw + ' verworpen';
 
-    const cam = bekendmakingen.filter(b => b.categorie === 'cameratoezicht').length;
+  const cam   = bekendmakingen.filter(b => b.categorie === 'cameratoezicht').length;
   const sluit = bekendmakingen.filter(b => b.categorie === 'woningsluiting').length;
   const dwang = bekendmakingen.filter(b => b.categorie === 'dwangsom').length;
   document.getElementById('statB').textContent = bekendmakingen.length;
-  document.getElementById('statB').nextElementSibling.textContent =
+  document.getElementById('statBsub').textContent =
     cam + ' camera · ' + sluit + ' sluiting · ' + dwang + ' dwangsom';
 
   if (vergaderingen.length > 0) {
@@ -805,17 +804,16 @@ function updateStats() {
   }
 }
 
-// ── VERGADERINGEN ────────────────────────────────────────────────────────────
+// ── VERGADERINGEN ─────────────────────────────────────────────────────────────
 function renderVerg() {
   const typeFilter = document.getElementById('filterVergType')?.value || '';
   const filtered   = typeFilter ? vergaderingen.filter(v => v.type === typeFilter) : vergaderingen;
-
   document.getElementById('vergCount').textContent = filtered.length + ' vergaderingen';
   if (!filtered.length) {
     document.getElementById('vergList').innerHTML = '<div class="empty">Geen vergaderingen gevonden.</div>';
     return;
   }
-  document.getElementById('vergList').innerHTML = filtered.map((v, i) => `
+  document.getElementById('vergList').innerHTML = filtered.map(v => `
     <div class="meeting">
       <div class="meeting-row" onclick="toggleMeeting('${v.id}')">
         <div class="meeting-date-tag">${fmtDate(v.datum, 'short')}</div>
@@ -891,7 +889,7 @@ function renderOvVerg() {
       </div>`).join('') || '<div class="empty">Geen data</div>';
 }
 
-// ── MOTIES ───────────────────────────────────────────────────────────────────
+// ── MOTIES ────────────────────────────────────────────────────────────────────
 function populatePartijFilter() {
   const sel = document.getElementById('filterPartij');
   const partijen = [...new Set(moties.map(m => m.partij).filter(Boolean))].sort();
@@ -905,7 +903,7 @@ function renderMoties() {
   const partij = document.getElementById('filterPartij').value;
   const status = document.getElementById('filterStatus').value;
   const type   = document.getElementById('filterType').value;
-  let f = moties.filter(m => m.status);   // ← alleen mét stemming
+  let f = moties.filter(m => m.status);
   if (partij) f = f.filter(m => m.partij === partij);
   if (status) f = f.filter(m => m.status === status);
   if (type)   f = f.filter(m => m.type === type);
@@ -926,13 +924,19 @@ function renderMoties() {
 }
 
 function statusBadge(s) {
-  const map = { aangenomen:['badge-go','Aangenomen ✓'], verworpen:['badge-stop','Verworpen ✗'], ingetrokken:['badge-hold','Ingetrokken'], aangehouden:['badge-hold','Aangehouden'] };
+  const map = {
+    aangenomen:  ['badge-go',   'Aangenomen ✓'],
+    verworpen:   ['badge-stop', 'Verworpen ✗'],
+    ingetrokken: ['badge-hold', 'Ingetrokken'],
+    aangehouden: ['badge-hold', 'Aangehouden'],
+  };
   const [cls, label] = map[s] || ['badge-teal', s || '—'];
   return `<span class="badge ${cls}">${label}</span>`;
 }
 
 function stemmingBar(m) {
-  if (!m.voor_pct && !m.tegen_pct) return '<span style="color:var(--muted);font-size:11px;">—</span>';
+  if (m.voor_pct == null && m.tegen_pct == null)
+    return '<span style="color:var(--muted);font-size:11px;">—</span>';
   return `<div style="min-width:80px;">
     <div style="display:flex;height:6px;border-radius:2px;overflow:hidden;margin-bottom:3px;">
       <div style="width:${m.voor_pct}%;background:var(--go);"></div>
@@ -944,24 +948,33 @@ function stemmingBar(m) {
   </div>`;
 }
 
-// ── MOTIES VISUALISATIES ─────────────────────────────────────────────────────
+// ── MOTIES VISUALISATIES ──────────────────────────────────────────────────────
 function renderMotiesVisuals() {
   const el = document.getElementById('motiesViz');
   if (!el || !moties.length) return;
 
-  // Per partij: statistieken
+  const maandNamen = ['Jan','Feb','Mrt','Apr','Mei','Jun','Jul','Aug','Sep','Okt','Nov','Dec'];
+
+  // ── Per partij statistieken ───────────────────────────────────────────────
   const partijStats = {};
   moties.forEach(m => {
     if (!m.partij) return;
-    if (!partijStats[m.partij]) partijStats[m.partij] = { totaal: 0, aangenomen: 0, verworpen: 0 };
-    partijStats[m.partij].totaal++;
-    if (m.status === 'aangenomen') partijStats[m.partij].aangenomen++;
-    if (m.status === 'verworpen')  partijStats[m.partij].verworpen++;
+    if (!partijStats[m.partij]) partijStats[m.partij] = {
+      totaal: 0, aangenomen: 0, verworpen: 0, ingetrokken: 0, aangehouden: 0,
+      moties_count: 0, amendementen_count: 0
+    };
+    const s = partijStats[m.partij];
+    s.totaal++;
+    if (m.status === 'aangenomen')  s.aangenomen++;
+    if (m.status === 'verworpen')   s.verworpen++;
+    if (m.status === 'ingetrokken') s.ingetrokken++;
+    if (m.status === 'aangehouden') s.aangehouden++;
+    if ((m.type || '').toLowerCase().includes('motie'))      s.moties_count++;
+    if ((m.type || '').toLowerCase().includes('amendement')) s.amendementen_count++;
   });
 
-  // Alleen partijen met minstens 2 moties met status, gesorteerd op slagingspercentage
   const partijLijst = Object.entries(partijStats)
-    .filter(([, s]) => (s.aangenomen + s.verworpen) >= 1)
+    .filter(([, s]) => s.totaal >= 1)
     .map(([naam, s]) => {
       const metStatus = s.aangenomen + s.verworpen;
       const pct = metStatus ? Math.round(s.aangenomen / metStatus * 100) : null;
@@ -969,27 +982,114 @@ function renderMotiesVisuals() {
     })
     .sort((a, b) => (b.pct ?? -1) - (a.pct ?? -1));
 
-  // Top indieners
+  // ── Top indieners ─────────────────────────────────────────────────────────
   const indienerStats = {};
   moties.forEach(m => {
-    const naam = m.indiener;
-    if (!naam) return;
-    if (!indienerStats[naam]) indienerStats[naam] = { totaal: 0, partij: m.partij };
-    indienerStats[naam].totaal++;
+    if (!m.indiener) return;
+    if (!indienerStats[m.indiener]) indienerStats[m.indiener] = { totaal: 0, partij: m.partij };
+    indienerStats[m.indiener].totaal++;
   });
   const topIndieners = Object.entries(indienerStats)
-    .sort((a, b) => b[1].totaal - a[1].totaal)
-    .slice(0, 6);
+    .sort((a, b) => b[1].totaal - a[1].totaal).slice(0, 6);
 
-  // Overall statistieken
-  const totaal    = moties.length;
+  // ── 1. Nauwste stemmingen ─────────────────────────────────────────────────
+  const controversieel = moties
+    .filter(m => m.voor_pct != null && m.tegen_pct != null)
+    .map(m => ({ ...m, marge: Math.abs(m.voor_pct - m.tegen_pct) }))
+    .sort((a, b) => a.marge - b.marge)
+    .slice(0, 8);
+
+  // ── 2. Trend over tijd ────────────────────────────────────────────────────
+  const maandTrend = {};
+  moties.forEach(m => {
+    if (!m.datum) return;
+    const maand = m.datum.slice(0, 7);
+    if (!maandTrend[maand]) maandTrend[maand] = { totaal: 0, aangenomen: 0, verworpen: 0 };
+    maandTrend[maand].totaal++;
+    if (m.status === 'aangenomen') maandTrend[maand].aangenomen++;
+    if (m.status === 'verworpen')  maandTrend[maand].verworpen++;
+  });
+  const maandLijst = Object.entries(maandTrend).sort((a, b) => a[0].localeCompare(b[0]));
+
+  // ── 3. Ingetrokken vs verworpen ───────────────────────────────────────────
+  const partijVerlies = [...partijLijst]
+    .filter(p => (p.verworpen + p.ingetrokken) > 0)
+    .sort((a, b) => b.totaal - a.totaal)
+    .slice(0, 8);
+
+  // ── 4. Motie vs Amendement ────────────────────────────────────────────────
+  const partijType = [...partijLijst]
+    .filter(p => p.moties_count + p.amendementen_count > 0)
+    .sort((a, b) => b.totaal - a.totaal)
+    .slice(0, 8);
+
+  // ── 5. Medeondertekenaars netwerk ─────────────────────────────────────────
+  const coSign = {};
+  moties.forEach(m => {
+    const fracties = (m.fracties || []).filter(Boolean);
+    if (fracties.length < 2) return;
+    for (let i = 0; i < fracties.length; i++) {
+      for (let j = i + 1; j < fracties.length; j++) {
+        const key = [fracties[i], fracties[j]].sort().join(' + ');
+        coSign[key] = (coSign[key] || 0) + 1;
+      }
+    }
+  });
+  const topCoSign = Object.entries(coSign).sort((a, b) => b[1] - a[1]).slice(0, 8);
+
+  // ── Overall stats ─────────────────────────────────────────────────────────
+  const totaal     = moties.length;
   const aangenomen = moties.filter(m => m.status === 'aangenomen').length;
   const metStatus  = moties.filter(m => m.status === 'aangenomen' || m.status === 'verworpen').length;
   const pctGlobaal = metStatus ? Math.round(aangenomen / metStatus * 100) : 0;
-  const meestActief = partijLijst.length ? partijLijst.reduce((a, b) => b.totaal > a.totaal ? b : a, partijLijst[0]) : null;
+  const meestActief = partijLijst.length
+    ? partijLijst.reduce((a, b) => b.totaal > a.totaal ? b : a, partijLijst[0])
+    : null;
   const maxTotaal = Math.max(...partijLijst.map(p => p.totaal), 1);
 
+  // ── Trend SVG ─────────────────────────────────────────────────────────────
+  function trendSVG() {
+    if (maandLijst.length < 2) return '<div class="viz-empty">Onvoldoende data</div>';
+    const W = 700, H = 150, PAD = { t: 10, r: 16, b: 28, l: 36 };
+    const pW = W - PAD.l - PAD.r, pH = H - PAD.t - PAD.b;
+    const maxC = Math.max(...maandLijst.map(([, d]) => d.totaal), 1);
+    const slot  = pW / maandLijst.length;
+    const barW  = Math.max(6, Math.floor(slot * 0.6));
+
+    const bars = maandLijst.map(([maand, d], i) => {
+      const x    = PAD.l + i * slot + (slot - barW) / 2;
+      const hTot = (d.totaal    / maxC) * pH;
+      const hAng = (d.aangenomen / maxC) * pH;
+      const hVer = (d.verworpen  / maxC) * pH;
+      const mn   = parseInt(maand.split('-')[1]);
+      const yr   = maand.split('-')[0].slice(2);
+      return `
+        <rect x="${x}" y="${PAD.t + pH - hTot}" width="${barW}" height="${hTot}" fill="#E6F3F5" rx="1"/>
+        <rect x="${x}" y="${PAD.t + pH - hAng}" width="${barW * 0.5}" height="${hAng}" fill="var(--go)" rx="1"/>
+        <rect x="${x + barW * 0.5}" y="${PAD.t + pH - hVer}" width="${barW * 0.5}" height="${hVer}" fill="var(--stop)" rx="1" opacity="0.75"/>
+        <text x="${x + barW / 2}" y="${H - 4}" text-anchor="middle" font-size="9" fill="#6B7280">${maandNamen[mn-1]}'${yr}</text>
+      `;
+    }).join('');
+
+    const yTicks = [0, Math.ceil(maxC / 2), maxC];
+    const yLines = yTicks.map(v => {
+      const y = PAD.t + pH - (v / maxC) * pH;
+      return `<line x1="${PAD.l}" y1="${y}" x2="${PAD.l + pW}" y2="${y}" stroke="#D8D5CE" stroke-width="0.5"/>
+              <text x="${PAD.l - 4}" y="${y + 3}" text-anchor="end" font-size="9" fill="#6B7280">${v}</text>`;
+    }).join('');
+
+    return `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:${H}px;">
+      ${yLines}
+      <line x1="${PAD.l}" y1="${PAD.t}" x2="${PAD.l}" y2="${PAD.t+pH}" stroke="#D8D5CE" stroke-width="1"/>
+      <line x1="${PAD.l}" y1="${PAD.t+pH}" x2="${PAD.l+pW}" y2="${PAD.t+pH}" stroke="#D8D5CE" stroke-width="1"/>
+      ${bars}
+    </svg>`;
+  }
+
+  // ── RENDER ────────────────────────────────────────────────────────────────
   el.innerHTML = `
+
+    <!-- Overall stats -->
     <div class="viz-stat-row">
       <div class="viz-stat">
         <div class="viz-stat-label">Totaal ingediend</div>
@@ -1004,12 +1104,31 @@ function renderMotiesVisuals() {
       <div class="viz-stat">
         <div class="viz-stat-label">Meest actief</div>
         <div class="viz-stat-value" style="font-size:22px;padding-top:6px;">${meestActief ? esc(meestActief.naam) : '—'}</div>
-        <div class="viz-stat-sub">${meestActief ? meestActief.totaal + ' moties ingediend' : ''}</div>
+        <div class="viz-stat-sub">${meestActief ? meestActief.totaal + ' ingediend' : ''}</div>
       </div>
     </div>
 
+    <!-- VIZ 2: Trend over tijd -->
+    <div class="card" style="margin-bottom:16px;">
+      <div class="card-header">
+        <span class="card-title">Moties &amp; amendementen per maand</span>
+        <span style="display:flex;gap:14px;align-items:center;">
+          <span style="display:flex;align-items:center;gap:4px;font-size:10px;color:var(--muted);">
+            <span style="width:10px;height:10px;background:var(--go);display:inline-block;"></span> Aangenomen
+          </span>
+          <span style="display:flex;align-items:center;gap:4px;font-size:10px;color:var(--muted);">
+            <span style="width:10px;height:10px;background:var(--stop);opacity:0.75;display:inline-block;"></span> Verworpen
+          </span>
+          <span style="display:flex;align-items:center;gap:4px;font-size:10px;color:var(--muted);">
+            <span style="width:10px;height:10px;background:var(--teal-bg);display:inline-block;"></span> Totaal
+          </span>
+        </span>
+      </div>
+      <div style="padding:12px 20px 8px;">${trendSVG()}</div>
+    </div>
+
+    <!-- VIZ bestaand: Slagingspercentage + Activiteit + Top indieners -->
     <div class="viz-row">
-      <!-- Partij slagingspercentage -->
       <div class="card">
         <div class="card-header"><span class="card-title">Slagingspercentage per partij</span></div>
         <div class="viz-bar-list">
@@ -1018,17 +1137,15 @@ function renderMotiesVisuals() {
               <div class="viz-bar-row">
                 <div class="viz-bar-label" title="${esc(p.naam)}">${esc(p.naam)}</div>
                 <div class="viz-bar-track">
-                  <div class="viz-bar-fill" style="width:${p.pct ?? 0}%;background:${p.pct >= 50 ? 'var(--go)' : 'var(--stop)'}"></div>
+                  <div class="viz-bar-fill" style="width:${p.pct ?? 0}%;background:${(p.pct ?? 0) >= 50 ? 'var(--go)' : 'var(--stop)'}"></div>
                 </div>
                 <div class="viz-bar-pct">${p.pct !== null ? p.pct + '%' : '—'}</div>
               </div>`).join('')}
         </div>
       </div>
-
-      <!-- Activiteit per partij + top indieners -->
       <div style="display:flex;flex-direction:column;gap:16px;">
         <div class="card">
-          <div class="card-header"><span class="card-title">Aantal moties per partij</span></div>
+          <div class="card-header"><span class="card-title">Aantal ingediend per partij</span></div>
           <div class="viz-bar-list">
             ${partijLijst.map(p => `
               <div class="viz-bar-row">
@@ -1056,26 +1173,136 @@ function renderMotiesVisuals() {
           </div>` : ''}
       </div>
     </div>
+
+    <!-- VIZ 1: Nauwste stemmingen -->
+    <div class="card" style="margin-bottom:16px;">
+      <div class="card-header">
+        <span class="card-title">Nauwste stemmingen</span>
+        <span style="font-size:11px;color:var(--muted);">kleinste marge tussen voor en tegen</span>
+      </div>
+      ${controversieel.length === 0
+        ? '<div class="viz-empty">Geen stemmingsdata beschikbaar</div>'
+        : `<table style="width:100%;border-collapse:collapse;">
+            <thead>
+              <tr>
+                <th>Motie / amendement</th>
+                <th>Partij</th>
+                <th>Stemverhouding</th>
+                <th>Uitslag</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${controversieel.map(m => `
+                <tr>
+                  <td>
+                    <div class="motie-title">${esc(m.titel)}</div>
+                    <div class="motie-desc">${fmtDate(m.datum, 'full')}</div>
+                  </td>
+                  <td><span class="badge badge-teal">${esc(m.partij || '—')}</span></td>
+                  <td style="min-width:140px;">
+                    ${stemmingBar(m)}
+                    <div style="font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--stop);margin-top:2px;">marge: ${m.marge}%</div>
+                  </td>
+                  <td>${statusBadge(m.status)}</td>
+                </tr>`).join('')}
+            </tbody>
+          </table>`
+      }
+    </div>
+
+    <!-- VIZ 3 + 4: Ingetrokken ratio + Motie/Amendement ratio -->
+    <div class="viz-row" style="margin-bottom:16px;">
+
+      <div class="card">
+        <div class="card-header"><span class="card-title">Ingetrokken vs. verworpen per partij</span></div>
+        <div class="viz-bar-list">
+          ${partijVerlies.length === 0 ? '<div class="viz-empty">Geen data</div>' :
+            partijVerlies.map(p => {
+              const totNeg  = p.verworpen + p.ingetrokken;
+              const verwPct = totNeg ? Math.round(p.verworpen  / totNeg * 100) : 0;
+              const ingtPct = 100 - verwPct;
+              return `
+                <div class="viz-bar-row">
+                  <div class="viz-bar-label" title="${esc(p.naam)}">${esc(p.naam)}</div>
+                  <div class="stacked-bar-track">
+                    <div style="width:${verwPct}%;background:var(--stop);opacity:0.8;" title="${p.verworpen} verworpen"></div>
+                    <div style="width:${ingtPct}%;background:var(--hold);opacity:0.8;" title="${p.ingetrokken} ingetrokken"></div>
+                  </div>
+                  <div class="viz-bar-pct" style="width:52px;">${p.verworpen}v / ${p.ingetrokken}i</div>
+                </div>`;
+            }).join('')}
+          <div class="viz-legend">
+            <span class="viz-legend-item"><span class="viz-legend-dot" style="background:var(--stop);opacity:0.8;"></span> Verworpen</span>
+            <span class="viz-legend-item"><span class="viz-legend-dot" style="background:var(--hold);opacity:0.8;"></span> Ingetrokken</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header"><span class="card-title">Motie vs. amendement per partij</span></div>
+        <div class="viz-bar-list">
+          ${partijType.length === 0 ? '<div class="viz-empty">Geen data</div>' :
+            partijType.map(p => {
+              const totMA  = p.moties_count + p.amendementen_count;
+              const motPct = totMA ? Math.round(p.moties_count / totMA * 100) : 0;
+              const amePct = 100 - motPct;
+              return `
+                <div class="viz-bar-row">
+                  <div class="viz-bar-label" title="${esc(p.naam)}">${esc(p.naam)}</div>
+                  <div class="stacked-bar-track">
+                    <div style="width:${motPct}%;background:var(--navy);" title="${p.moties_count} moties"></div>
+                    <div style="width:${amePct}%;background:var(--teal);" title="${p.amendementen_count} amendementen"></div>
+                  </div>
+                  <div class="viz-bar-pct" style="width:52px;">${p.moties_count}m / ${p.amendementen_count}a</div>
+                </div>`;
+            }).join('')}
+          <div class="viz-legend">
+            <span class="viz-legend-item"><span class="viz-legend-dot" style="background:var(--navy);"></span> Motie</span>
+            <span class="viz-legend-item"><span class="viz-legend-dot" style="background:var(--teal);"></span> Amendement</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIZ 5: Politieke samenwerking -->
+    <div class="card" style="margin-bottom:16px;">
+      <div class="card-header">
+        <span class="card-title">Politieke samenwerking</span>
+        <span style="font-size:11px;color:var(--muted);">meest voorkomende partijcombinaties op basis van gezamenlijk ingediende moties</span>
+      </div>
+      ${topCoSign.length === 0
+        ? '<div class="viz-empty">Geen medeondertekenaarsdata beschikbaar — controleer of het <code>fracties</code>-veld gevuld is in moties.json</div>'
+        : `<div class="viz-bar-list">
+            ${(() => {
+              const maxCS = topCoSign[0][1];
+              return topCoSign.map(([combo, count]) => {
+                const parts = combo.split(' + ');
+                const p1 = parts[0], p2 = parts[1] || '';
+                return `
+                  <div class="viz-bar-row" style="gap:8px;">
+                    <div style="width:200px;flex-shrink:0;display:flex;align-items:center;gap:4px;overflow:hidden;">
+                      <span class="badge badge-teal" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:80px;" title="${esc(p1)}">${esc(p1)}</span>
+                      <span style="color:var(--muted);font-size:10px;">+</span>
+                      <span class="badge badge-navy" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:80px;" title="${esc(p2)}">${esc(p2)}</span>
+                    </div>
+                    <div class="viz-bar-track">
+                      <div class="viz-bar-fill" style="width:${Math.round(count/maxCS*100)}%;background:var(--navy);"></div>
+                    </div>
+                    <div class="viz-bar-pct">${count}x</div>
+                  </div>`;
+              }).join('');
+            })()}
+          </div>`
+      }
+    </div>
   `;
 }
 
-function renderOvBk() {
-  document.getElementById('ovBk').innerHTML =
-    bekendmakingen.slice(0, 5).map(b => `
-      <div class="mini-item">
-        <div class="mini-date">${fmtDate(b.datum, 'short')}</div>
-        <div>
-          <div class="mini-title">
-            <a href="${b.link || '#'}" target="_blank" style="color:inherit;text-decoration:none;">${esc(b.titel)}</a>
-          </div>
-          <div class="mini-type">${esc(catLabel(b.categorie || ''))}</div>
-        </div>
-      </div>`).join('') || '<div class="empty">Geen data</div>';
-}
-
-// ── BEKENDMAKINGEN DASHBOARD ─────────────────────────────────────────────────
+// ── BEKENDMAKINGEN ────────────────────────────────────────────────────────────
 const WIJK_MAP = {
-  // Vul later in met straat -> wijk koppelingen, bijv. "Zuiddijk": "Oud Zaandijk"
+  // Vul hier straatnaam → wijk in, bijv:
+  // "Westzijde": "Zaandam-West",
+  // "Oostzijde": "Zaandam-Oost",
 };
 
 function getWijkUitAdres(adres) {
@@ -1099,15 +1326,14 @@ function telPerWijk(items) {
 }
 
 function renderBekendmakingenDashboard() {
-  const cam = bekendmakingen.filter(b => b.categorie === 'cameratoezicht');
+  const cam   = bekendmakingen.filter(b => b.categorie === 'cameratoezicht');
   const woning = bekendmakingen.filter(b => b.categorie === 'woningsluiting');
-  const dwang = bekendmakingen.filter(b => b.categorie === 'dwangsom');
+  const dwang  = bekendmakingen.filter(b => b.categorie === 'dwangsom');
 
-  document.getElementById('bkCamTotaal').textContent = cam.length;
+  document.getElementById('bkCamTotaal').textContent  = cam.length;
   document.getElementById('bkWoningTotaal').textContent = woning.length;
-  document.getElementById('bkDwangsom').textContent = dwang.length;
+  document.getElementById('bkDwangsom').textContent    = dwang.length;
 
-  // Maanddata voor de laatste 6 maanden
   const nu = new Date();
   const maanden = [];
   for (let i = 5; i >= 0; i--) {
@@ -1119,19 +1345,15 @@ function renderBekendmakingenDashboard() {
     const m = {};
     maanden.forEach(x => m[x.maand] = 0);
     items.forEach(b => {
-      if (b.datum) {
-        const k = b.datum.slice(0,7);
-        if (k in m) m[k]++;
-      }
+      if (b.datum) { const k = b.datum.slice(0, 7); if (k in m) m[k]++; }
     });
     return maanden.map(x => ({ maand: x.maand, count: m[x.maand] }));
   };
 
-  tekenLijnGrafiek('bkCamChart', tel(cam), 'Camera\'s');
-  tekenLijnGrafiek('bkWoningChart', tel(woning), 'Woningsluitingen');
-  tekenLijnGrafiek('bkDwangsomChart', tel(dwang), 'Dwangsommen');
-
-  tekenHorizontaleBalken('bkCamWijkChart', telPerWijk(cam));
+  tekenLijnGrafiek('bkCamChart',      tel(cam),   "Camera's");
+  tekenLijnGrafiek('bkWoningChart',   tel(woning), 'Woningsluitingen');
+  tekenLijnGrafiek('bkDwangsomChart', tel(dwang),  'Dwangsommen');
+  tekenHorizontaleBalken('bkCamWijkChart',    telPerWijk(cam));
   tekenHorizontaleBalken('bkWoningWijkChart', telPerWijk(woning));
 }
 
@@ -1139,39 +1361,31 @@ function tekenLijnGrafiek(containerId, data, label) {
   const container = document.getElementById(containerId);
   if (!container) return;
   if (!data || data.length < 2) {
-    container.innerHTML = '<div class="viz-empty">Onvoldoende data</div>';
-    return;
+    container.innerHTML = '<div class="viz-empty">Onvoldoende data</div>'; return;
   }
   const W = 500, H = 200, PAD = { t: 10, r: 16, b: 30, l: 40 };
   const pW = W - PAD.l - PAD.r, pH = H - PAD.t - PAD.b;
   const maxC = Math.max(...data.map(d => d.count), 1);
-
-  const pts = data.map((d, i) => {
-    const x = PAD.l + (i / (data.length - 1)) * pW;
-    const y = PAD.t + (1 - d.count / maxC) * pH;
-    return [x, y];
-  });
-
+  const pts = data.map((d, i) => [
+    PAD.l + (i / (data.length - 1)) * pW,
+    PAD.t + (1 - d.count / maxC) * pH
+  ]);
   const line = pts.map(([x,y]) => `${x},${y}`).join(' ');
-  const area = [`${PAD.l},${PAD.t + pH}`, ...pts.map(([x,y]) => `${x},${y}`), `${PAD.l + pW},${PAD.t + pH}`].join(' ');
-
+  const area = [`${PAD.l},${PAD.t+pH}`, ...pts.map(([x,y]) => `${x},${y}`), `${PAD.l+pW},${PAD.t+pH}`].join(' ');
   const maandNamen = ['Jan','Feb','Mrt','Apr','Mei','Jun','Jul','Aug','Sep','Okt','Nov','Dec'];
   const labels = data.map((d, i) => {
     const x = PAD.l + (i / (data.length - 1)) * pW;
     const m = parseInt(d.maand.split('-')[1]);
     return `<text x="${x}" y="${H - 8}" text-anchor="middle" font-size="10" fill="#6B7280">${maandNamen[m-1]}</text>`;
   }).join('');
-
   const yTicks = [0, Math.ceil(maxC/2), maxC];
   const yLabels = yTicks.map(v => {
     const y = PAD.t + (1 - v / maxC) * pH;
     return `<text x="${PAD.l - 6}" y="${y + 4}" text-anchor="end" font-size="10" fill="#6B7280">${v}</text>`;
   }).join('');
-
   const dots = pts.map(([x,y], i) =>
     `<circle cx="${x}" cy="${y}" r="3" fill="white" stroke="#006B7B" stroke-width="2"><title>${data[i].count} in ${data[i].maand}</title></circle>`
   ).join('');
-
   container.innerHTML = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
     <line x1="${PAD.l}" y1="${PAD.t}" x2="${PAD.l}" y2="${PAD.t+pH}" stroke="#D8D5CE" stroke-width="1"/>
     <line x1="${PAD.l}" y1="${PAD.t+pH}" x2="${PAD.l+pW}" y2="${PAD.t+pH}" stroke="#D8D5CE" stroke-width="1"/>
@@ -1187,10 +1401,7 @@ function tekenHorizontaleBalken(containerId, data) {
   const container = document.getElementById(containerId);
   if (!container) return;
   const entries = Object.entries(data).sort((a,b) => b[1] - a[1]);
-  if (entries.length === 0) {
-    container.innerHTML = '<div class="viz-empty">geen data</div>';
-    return;
-  }
+  if (entries.length === 0) { container.innerHTML = '<div class="viz-empty">geen data</div>'; return; }
   const maxVal = entries[0][1];
   container.innerHTML = entries.map(([wijk, count]) => `
     <div class="bk-bar-row">
@@ -1203,12 +1414,25 @@ function tekenHorizontaleBalken(containerId, data) {
   `).join('');
 }
 
+function renderOvBk() {
+  document.getElementById('ovBk').innerHTML =
+    bekendmakingen.slice(0, 5).map(b => `
+      <div class="mini-item">
+        <div class="mini-date">${fmtDate(b.datum, 'short')}</div>
+        <div>
+          <div class="mini-title">
+            <a href="${b.link || '#'}" target="_blank" style="color:inherit;text-decoration:none;">${esc(b.titel)}</a>
+          </div>
+          <div class="mini-type">${esc(catLabel(b.categorie || ''))}</div>
+        </div>
+      </div>`).join('') || '<div class="empty">Geen data</div>';
+}
+
 function renderBekendmakingenLijst() {
   document.getElementById('bkCount').textContent = bekendmakingen.length + ' bekendmakingen';
   const lijst = document.getElementById('bkList');
   if (!bekendmakingen.length) {
-    lijst.innerHTML = '<div class="empty">Geen relevante bekendmakingen gevonden.</div>';
-    return;
+    lijst.innerHTML = '<div class="empty">Geen relevante bekendmakingen gevonden.</div>'; return;
   }
   lijst.innerHTML = bekendmakingen.map(b => `
     <div class="bk-item">
@@ -1227,7 +1451,7 @@ function renderBekendmakingenLijst() {
   `).join('');
 }
 
-// ── RAADSVRAGEN ──────────────────────────────────────────────────────────────
+// ── RAADSVRAGEN ───────────────────────────────────────────────────────────────
 function populateRvFilter() {
   const sel = document.getElementById('filterRvPartij');
   const fracties = [...new Set(raadsvragen.map(r => r.fractie).filter(Boolean))].sort();
@@ -1244,14 +1468,13 @@ function renderRaadsvragen() {
   let f = [...raadsvragen];
   if (partijF) f = f.filter(r => r.fractie === partijF);
   if (statusF) f = f.filter(r => r.status === statusF);
-
   document.getElementById('rvList').innerHTML = f.length === 0
     ? '<div class="empty">Geen raadsvragen gevonden.</div>'
     : f.map(r => `
         <div class="rv-item">
           <div class="rv-title">${esc(r.titel)}</div>
           <div class="rv-meta">
-            ${r.fractie ? `<span class="badge badge-teal">${esc(r.fractie)}</span>` : ''}
+            ${r.fractie      ? `<span class="badge badge-teal">${esc(r.fractie)}</span>` : ''}
             ${r.vraagsteller ? `<span class="rv-vraagsteller">${esc(r.vraagsteller)}</span>` : ''}
             <span class="rv-date">${fmtDate(r.datum_ingediend, 'full')}</span>
             ${statusBadge(r.status)}
@@ -1261,7 +1484,7 @@ function renderRaadsvragen() {
         </div>`).join('');
 }
 
-// ── FACTCHECK ────────────────────────────────────────────────────────────────
+// ── FACTCHECK ─────────────────────────────────────────────────────────────────
 async function analyseerFactcheck() {
   const apiKey  = document.getElementById('geminiKey').value.trim();
   const context = document.getElementById('fcContext').value.trim();
@@ -1326,7 +1549,7 @@ ${tekst.slice(0, 9000)}`;
   }
 }
 
-// ── HELPERS ──────────────────────────────────────────────────────────────────
+// ── HELPERS ───────────────────────────────────────────────────────────────────
 function fmtDate(s, mode) {
   if (!s) return '—';
   try {
@@ -1342,11 +1565,7 @@ function esc(s) {
 }
 
 function catLabel(cat) {
-  const labels = {
-    cameratoezicht: 'Camera',
-    woningsluiting: 'Woningsluiting',
-    dwangsom:       'Dwangsom',
-  };
+  const labels = { cameratoezicht:'Camera', woningsluiting:'Woningsluiting', dwangsom:'Dwangsom' };
   return labels[cat] || cat;
 }
 </script>
