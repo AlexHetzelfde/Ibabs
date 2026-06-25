@@ -20,28 +20,19 @@ import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta
 
 # RSS-feed: Zaanstad Gemeenteblad — meerdere URL-varianten als fallback
-RSS_URLS = [
-    # Variant 1: met CQL-query (meest nauwkeurig)
+    RSS_URLS = [
     (
         "https://zoek.officielebekendmakingen.nl/rss"
-        "?q=dt.creator%3D%3D%22Zaanstad%22+and+w.publicatienaam%3D%3D%22Gemeenteblad%22"
-        "&col=officielepublicaties&rows=200&ob=dt.modified&so=desc"
-    ),
-    # Variant 2: met haakjes
-    (
-        "https://zoek.officielebekendmakingen.nl/rss"
-        "?q=%28dt.creator%3D%3D%22Zaanstad%22%29"
-        "and%28w.publicatienaam%3D%3D%22Gemeenteblad%22%29"
-        "&col=officielepublicaties&rows=200"
-    ),
-    # Variant 3: simpele keyword-zoekopdracht
-    (
-        "https://zoek.officielebekendmakingen.nl/rss"
-        "?q=zaanstad&publicatienaam=Gemeenteblad"
-        "&col=officielepublicaties&rows=200&ob=dt.modified&so=desc"
+        "?q=(c.product-area==%22officielepublicaties%22)"
+        "and((((w.organisatietype==%22gemeente%22)"
+        "and((dt.creator==%22Zaanstad%22)"
+        "or(dt.creator==%22gemeente%20Zaanstad%22)))))"
+        "and(((w.publicatienaam==%22Gemeenteblad%22))"
+        "or((w.publicatienaam==%22Staatscourant%22))"
+        "or((w.publicatienaam==%22Provinciaal%20blad%22)))"
+        "&rows=200"
     ),
 ]
-
 OUTPUT = "data/bekendmakingen.json"
 
 # Alleen deze categorieën worden bewaard.
