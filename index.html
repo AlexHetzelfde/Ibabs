@@ -25,7 +25,6 @@
       --ink2:   #374151;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
       font-family: 'Inter', system-ui, sans-serif;
       background: var(--paper);
@@ -37,53 +36,26 @@
 
     /* ── HEADER ── */
     header {
-      background: var(--navy);
-      color: var(--white);
-      height: 56px;
-      display: flex;
-      align-items: center;
-      padding: 0 24px;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 50;
+      background: var(--navy); color: var(--white); height: 56px;
+      display: flex; align-items: center; padding: 0 24px;
+      justify-content: space-between; position: sticky; top: 0; z-index: 50;
     }
     .header-brand { display: flex; align-items: center; gap: 12px; }
-    .header-icon {
-      width: 28px; height: 28px;
-      background: var(--teal);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 14px;
-    }
-    .header-title {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 20px; font-weight: 700; letter-spacing: 0.3px;
-    }
-    .header-sub {
-      font-size: 11px; opacity: 0.45; font-weight: 400;
-      margin-left: 8px; letter-spacing: 0.5px; text-transform: uppercase;
-    }
+    .header-icon { width: 28px; height: 28px; background: var(--teal); display: flex; align-items: center; justify-content: center; font-size: 14px; }
+    .header-title { font-family: 'Barlow Condensed', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: 0.3px; }
+    .header-sub { font-size: 11px; opacity: 0.45; font-weight: 400; margin-left: 8px; letter-spacing: 0.5px; text-transform: uppercase; }
     .header-meta { font-size: 11px; opacity: 0.4; font-family: 'JetBrains Mono', monospace; }
 
     /* ── TABS ── */
     nav {
-      background: var(--white);
-      border-bottom: 1px solid var(--rule);
-      padding: 0 24px;
-      display: flex;
-      gap: 0;
-      overflow-x: auto;
+      background: var(--white); border-bottom: 1px solid var(--rule);
+      padding: 0 24px; display: flex; gap: 0; overflow-x: auto;
     }
     nav::-webkit-scrollbar { display: none; }
     .tab {
-      padding: 14px 18px;
-      font-size: 13px; font-weight: 500;
-      color: var(--muted);
-      cursor: pointer;
-      border-bottom: 2px solid transparent;
-      white-space: nowrap;
-      user-select: none;
-      transition: color 0.1s;
+      padding: 14px 18px; font-size: 13px; font-weight: 500; color: var(--muted);
+      cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap;
+      user-select: none; transition: color 0.1s;
     }
     .tab:hover { color: var(--teal); }
     .tab.active { color: var(--teal); border-bottom-color: var(--teal); }
@@ -95,102 +67,63 @@
 
     /* ── STATS GRID ── */
     .stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: var(--rule);
-      border: 1px solid var(--rule);
-      margin-bottom: 24px;
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-bottom: 24px;
     }
     .stat { background: var(--white); padding: 20px 24px; }
-    .stat-label {
-      font-size: 10px; font-weight: 600;
-      text-transform: uppercase; letter-spacing: 0.8px;
-      color: var(--muted); margin-bottom: 6px;
-    }
-    .stat-value {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 52px; font-weight: 800;
-      line-height: 1; color: var(--navy); margin-bottom: 4px;
-    }
+    .stat-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); margin-bottom: 6px; }
+    .stat-value { font-family: 'Barlow Condensed', sans-serif; font-size: 52px; font-weight: 800; line-height: 1; color: var(--navy); margin-bottom: 4px; }
     .stat-sub { font-size: 11px; color: var(--muted); }
 
     /* ── CARD ── */
     .card { background: var(--white); border: 1px solid var(--rule); }
-    .card-header {
-      padding: 14px 20px;
-      border-bottom: 1px solid var(--rule);
-      display: flex; align-items: center; justify-content: space-between;
-    }
-    .card-title {
-      font-size: 12px; font-weight: 600;
-      text-transform: uppercase; letter-spacing: 0.7px; color: var(--muted);
-    }
-    .card-link {
-      font-size: 12px; color: var(--teal); cursor: pointer;
-      background: none; border: none; font-family: inherit;
-      font-weight: 500; padding: 0;
-    }
+    .card-header { padding: 14px 20px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; justify-content: space-between; }
+    .card-title { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.7px; color: var(--muted); }
+    .card-link { font-size: 12px; color: var(--teal); cursor: pointer; background: none; border: none; font-family: inherit; font-weight: 500; padding: 0; }
     .card-link:hover { text-decoration: underline; }
     .card-body { padding: 0; }
 
     /* ── OVERVIEW GRID ── */
-    .overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
 
     /* ── MINI LIST ── */
-    .mini-item {
-      display: flex; align-items: flex-start;
-      gap: 12px; padding: 12px 20px;
-      border-bottom: 1px solid var(--rule);
-    }
+    .mini-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 20px; border-bottom: 1px solid var(--rule); }
     .mini-item:last-child { border-bottom: none; }
-    .mini-date {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px; color: var(--muted);
-      white-space: nowrap; min-width: 60px; margin-top: 2px;
-    }
+    .mini-date { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); white-space: nowrap; min-width: 60px; margin-top: 2px; }
     .mini-title { font-size: 13px; font-weight: 500; }
     .mini-type { font-size: 11px; color: var(--muted); margin-top: 1px; }
 
     /* ── MEETING LIST ── */
     .meeting { border-bottom: 1px solid var(--rule); background: var(--white); }
     .meeting:last-child { border-bottom: none; }
-    .meeting-row {
-      display: flex; align-items: center;
-      padding: 14px 20px; cursor: pointer; gap: 16px;
-    }
+    .meeting-row { display: flex; align-items: center; padding: 14px 20px; cursor: pointer; gap: 16px; }
     .meeting-row:hover { background: var(--paper); }
-    .meeting-date-tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px; font-weight: 600;
-      color: var(--white); background: var(--navy);
-      padding: 3px 8px; white-space: nowrap;
-    }
+    .meeting-date-tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; color: var(--white); background: var(--navy); padding: 3px 8px; white-space: nowrap; }
     .meeting-info { flex: 1; min-width: 0; }
     .meeting-title-text { font-size: 14px; font-weight: 600; }
     .meeting-type-text { font-size: 11px; color: var(--muted); margin-top: 1px; }
     .meeting-badges { display: flex; gap: 8px; align-items: center; }
-    .meeting-chevron {
-      color: var(--muted); font-size: 18px;
-      transition: transform 0.2s; font-weight: 300;
-    }
+    .meeting-chevron { color: var(--muted); font-size: 18px; transition: transform 0.2s; font-weight: 300; }
     .meeting-chevron.open { transform: rotate(90deg); }
-
-    /* ── AGENDA DETAILS ── */
     .meeting-details { display: none; background: var(--paper); border-top: 1px solid var(--rule); }
     .meeting-details.open { display: block; }
-    .video-section {
-      padding: 12px 20px; border-bottom: 1px solid var(--rule); background: var(--teal-bg);
-    }
-    .video-label {
-      font-size: 10px; font-weight: 700; letter-spacing: 1px;
-      text-transform: uppercase; color: var(--teal); margin-bottom: 8px;
-    }
-    .video-box {
-      display: flex; align-items: center; gap: 8px;
-      background: var(--white); border: 1px solid var(--teal); padding: 8px 12px;
-    }
-    .video-url { font-family: 'JetBrains Mono', monospace; font-size: 11px; flex: 1; word-break: break-all; color: var(--ink2); }
+
+    /* ── VIDEO INSTRUCTIE ── */
+    .video-section { padding: 12px 20px; border-bottom: 1px solid var(--rule); background: var(--teal-bg); }
+    .video-label { font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--teal); margin-bottom: 8px; }
+    .vinstr { background: var(--white); border: 1px solid var(--rule); margin-top: 12px; }
+    .vinstr-step { display: flex; gap: 12px; padding: 10px 16px; border-bottom: 1px solid var(--rule); align-items: flex-start; }
+    .vinstr-step:last-child { border-bottom: none; }
+    .vinstr-nr { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; color: var(--teal); min-width: 20px; padding-top: 2px; }
+    .vinstr-tekst { font-size: 12px; line-height: 1.5; }
+    .vinstr-tekst strong { color: var(--navy); }
+    .vinstr-cmd { margin-top: 6px; background: var(--paper); border: 1px solid var(--rule); padding: 8px 10px; font-family: 'JetBrains Mono', monospace; font-size: 11px; word-break: break-all; }
+    .vinstr-url-wrap { margin-top: 8px; display: flex; gap: 8px; }
+    .vinstr-url-input { flex: 1; padding: 7px 10px; border: 1px solid var(--rule); font-family: 'JetBrains Mono', monospace; font-size: 11px; background: var(--white); }
+    .vinstr-url-input:focus { outline: 2px solid var(--teal); outline-offset: -1px; }
+    .vinstr-tip { font-size: 11px; color: var(--hold); margin-top: 4px; }
+
+    /* ── AGENDA DETAILS ── */
     .agenda-item { padding: 10px 20px; border-bottom: 1px solid var(--rule); }
     .agenda-item:last-child { border-bottom: none; }
     .agenda-nr { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; color: var(--muted); margin-right: 6px; }
@@ -209,22 +142,13 @@
 
     /* ── FILTERS ── */
     .filter-bar { display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap; align-items: center; }
-    .filter-select {
-      padding: 6px 10px; border: 1px solid var(--rule);
-      background: var(--white); font-size: 12px; font-family: inherit;
-      color: var(--text); cursor: pointer;
-    }
+    .filter-select { padding: 6px 10px; border: 1px solid var(--rule); background: var(--white); font-size: 12px; font-family: inherit; color: var(--text); cursor: pointer; }
     .filter-select:focus { outline: 2px solid var(--teal); }
 
     /* ── TABLE ── */
     table { width: 100%; border-collapse: collapse; }
     thead { background: var(--paper); }
-    th {
-      text-align: left; padding: 10px 16px;
-      font-size: 10px; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.8px;
-      color: var(--muted); border-bottom: 2px solid var(--rule); white-space: nowrap;
-    }
+    th { text-align: left; padding: 10px 16px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); border-bottom: 2px solid var(--rule); white-space: nowrap; }
     td { padding: 12px 16px; border-bottom: 1px solid var(--rule); vertical-align: top; font-size: 13px; }
     tr:last-child td { border-bottom: none; }
     tbody tr:hover td { background: var(--paper); }
@@ -240,10 +164,7 @@
     .bk-meta { display: flex; align-items: center; gap: 8px; margin-top: 5px; }
     .bk-date { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); white-space: nowrap; }
     .bk-desc { font-size: 12px; color: var(--muted); margin-top: 5px; line-height: 1.5; }
-    .alert-info {
-      background: var(--teal-bg); border-left: 3px solid var(--teal);
-      padding: 10px 16px; font-size: 12px; color: var(--teal); margin-bottom: 16px;
-    }
+    .alert-info { background: var(--teal-bg); border-left: 3px solid var(--teal); padding: 10px 16px; font-size: 12px; color: var(--teal); margin-bottom: 16px; }
 
     /* ── RAADSVRAGEN ── */
     .rv-item { background: var(--white); border-bottom: 1px solid var(--rule); padding: 14px 20px; }
@@ -251,164 +172,85 @@
     .rv-title { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
     .rv-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
     .rv-date { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); }
-    .rv-vraagsteller { font-size: 11px; color: var(--teal); font-weight: 600; }
 
     /* ── VISUALISATIES ── */
-    .viz-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 16px;
-    }
+    .viz-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
     .viz-bar-list { padding: 8px 20px 12px; }
-    .viz-bar-row {
-      display: flex; align-items: center; gap: 10px;
-      padding: 6px 0; border-bottom: 1px solid var(--rule);
-    }
+    .viz-bar-row { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid var(--rule); }
     .viz-bar-row:last-child { border-bottom: none; }
-    .viz-bar-label {
-      font-size: 12px; width: 110px;
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-      color: var(--text); flex-shrink: 0;
-    }
-    .viz-bar-track {
-      flex: 1; height: 7px;
-      background: var(--paper); border-radius: 1px; overflow: hidden;
-    }
+    .viz-bar-label { font-size: 12px; width: 110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--text); flex-shrink: 0; }
+    .viz-bar-track { flex: 1; height: 7px; background: var(--paper); border-radius: 1px; overflow: hidden; }
     .viz-bar-fill { height: 100%; border-radius: 1px; transition: width 0.5s ease; }
-    .viz-bar-pct {
-      font-family: 'JetBrains Mono', monospace; font-size: 10px;
-      color: var(--muted); width: 36px; text-align: right; flex-shrink: 0;
-    }
-    .viz-stat-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px; background: var(--rule);
-      border: 1px solid var(--rule); margin-bottom: 16px;
-    }
+    .viz-bar-pct { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); width: 36px; text-align: right; flex-shrink: 0; }
+    .viz-stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-bottom: 16px; }
     .viz-stat { background: var(--white); padding: 16px 20px; }
-    .viz-stat-label {
-      font-size: 10px; font-weight: 600;
-      text-transform: uppercase; letter-spacing: 0.8px;
-      color: var(--muted); margin-bottom: 4px;
-    }
-    .viz-stat-value {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 36px; font-weight: 800; line-height: 1; color: var(--navy);
-    }
+    .viz-stat-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; color: var(--muted); margin-bottom: 4px; }
+    .viz-stat-value { font-family: 'Barlow Condensed', sans-serif; font-size: 36px; font-weight: 800; line-height: 1; color: var(--navy); }
     .viz-stat-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
     .viz-empty { padding: 20px; text-align: center; color: var(--muted); font-size: 12px; }
-
-    /* ── STACKED BAR ── */
-    .stacked-bar-track {
-      flex: 1; height: 12px;
-      border-radius: 1px; overflow: hidden;
-      display: flex;
-    }
-    .viz-legend {
-      display: flex; gap: 16px; padding: 8px 0 2px;
-    }
-    .viz-legend-item {
-      display: flex; align-items: center; gap: 5px;
-      font-size: 10px; color: var(--muted);
-    }
-    .viz-legend-dot {
-      width: 10px; height: 10px; flex-shrink: 0;
-    }
+    .stacked-bar-track { flex: 1; height: 12px; border-radius: 1px; overflow: hidden; display: flex; }
+    .viz-legend { display: flex; gap: 16px; padding: 8px 0 2px; }
+    .viz-legend-item { display: flex; align-items: center; gap: 5px; font-size: 10px; color: var(--muted); }
+    .viz-legend-dot { width: 10px; height: 10px; flex-shrink: 0; }
 
     /* ── BEKENDMAKINGEN DASHBOARD ── */
-    .bk-stats-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-    .bk-stat-card {
-      background: var(--white);
-      border: 1px solid var(--rule);
-      padding: 20px 24px;
-      text-align: center;
-    }
-    .bk-stat-label {
-      font-size: 12px; font-weight: 600;
-      text-transform: uppercase; letter-spacing: 0.7px;
-      color: var(--muted); margin-bottom: 8px;
-    }
-    .bk-stat-value {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 52px; font-weight: 800;
-      color: var(--navy); line-height: 1;
-    }
-    .bk-charts-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 16px;
-      margin-bottom: 24px;
-    }
-    .bk-chart-container {
-      width: 100%;
-      height: 200px;
-      padding: 8px;
-    }
-    .bk-bar-chart {
-      padding: 12px 20px;
-      min-height: 150px;
-    }
-    .bk-bar-row {
-      display: flex; align-items: center;
-      gap: 10px; margin-bottom: 8px;
-    }
-    .bk-bar-label {
-      width: 110px; font-size: 12px;
-      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-      color: var(--text);
-    }
-    .bk-bar-track {
-      flex: 1; height: 16px;
-      background: var(--paper); border-radius: 2px; overflow: hidden;
-    }
-    .bk-bar-fill {
-      height: 100%; background: var(--teal);
-      border-radius: 2px; transition: width 0.3s;
-    }
-    .bk-bar-count {
-      width: 30px; text-align: right;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 11px; color: var(--muted);
-    }
-    .hidden { display: none !important; }
-    .btn-text {
-      background: none; border: none;
-      color: var(--teal); font-size: 12px; font-weight: 600;
-      cursor: pointer; padding: 8px 0;
-      text-transform: uppercase; letter-spacing: 0.5px;
-    }
-    .btn-text:hover { text-decoration: underline; }
+    .bk-stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+    .bk-stat-card { background: var(--white); border: 1px solid var(--rule); padding: 20px 24px; text-align: center; }
+    .bk-stat-label { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.7px; color: var(--muted); margin-bottom: 8px; }
+    .bk-stat-value { font-family: 'Barlow Condensed', sans-serif; font-size: 52px; font-weight: 800; color: var(--navy); line-height: 1; }
+    .bk-charts-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; margin-bottom: 24px; }
+    .bk-chart-container { width: 100%; height: 200px; padding: 8px; }
+    .bk-bar-chart { padding: 12px 20px; min-height: 150px; }
+    .bk-bar-row { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+    .bk-bar-label { width: 110px; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--text); }
+    .bk-bar-track { flex: 1; height: 16px; background: var(--paper); border-radius: 2px; overflow: hidden; }
+    .bk-bar-fill { height: 100%; background: var(--teal); border-radius: 2px; transition: width 0.3s; }
+    .bk-bar-count { width: 30px; text-align: right; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: var(--muted); }
+
+    /* ── COLLEGEBRIEVEN ── */
+    .cb-item { border-bottom: 1px solid var(--rule); background: var(--white); }
+    .cb-item:last-child { border-bottom: none; }
+    .cb-row { display: flex; align-items: center; padding: 14px 20px; cursor: pointer; gap: 16px; }
+    .cb-row:hover { background: var(--paper); }
+    .cb-date-tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 600; color: var(--white); background: var(--teal); padding: 3px 8px; white-space: nowrap; }
+    .cb-info { flex: 1; min-width: 0; }
+    .cb-title { font-size: 14px; font-weight: 600; }
+    .cb-meta { font-size: 11px; color: var(--muted); margin-top: 2px; }
+    .cb-chevron { color: var(--muted); font-size: 18px; transition: transform 0.2s; font-weight: 300; }
+    .cb-chevron.open { transform: rotate(90deg); }
+    .cb-details { display: none; background: var(--paper); border-top: 1px solid var(--rule); }
+    .cb-details.open { display: block; }
+    .cb-links { padding: 10px 20px; border-bottom: 1px solid var(--rule); display: flex; gap: 12px; }
+    .cb-claim-item { padding: 12px 20px; border-bottom: 1px solid var(--rule); }
+    .cb-claim-item:last-child { border-bottom: none; }
+    .cb-claim-header { display: flex; align-items: center; gap: 8px; margin-bottom: 4px; }
+    .cb-claim-score { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); }
+    .cb-claim-text { font-size: 13px; font-weight: 600; margin-bottom: 3px; }
+    .cb-claim-verificatie { font-size: 12px; color: var(--muted); line-height: 1.5; }
+    .cb-claim-kruischeck { font-size: 11px; color: var(--go); margin-top: 3px; background: var(--go-bg); padding: 3px 8px; display: inline-block; }
+    .cb-geen-claims { padding: 16px 20px; font-size: 12px; color: var(--muted); font-style: italic; }
+    .cb-stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
 
     /* ── FACTCHECK ── */
     .factcheck-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .form-group { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
     .form-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px; color: var(--muted); }
-    .form-input, .form-textarea {
-      padding: 9px 12px; border: 1px solid var(--rule);
-      font-size: 13px; font-family: inherit;
-      background: var(--white); color: var(--text); resize: vertical;
-    }
+    .form-input, .form-textarea { padding: 9px 12px; border: 1px solid var(--rule); font-size: 13px; font-family: inherit; background: var(--white); color: var(--text); resize: vertical; }
     .form-input:focus, .form-textarea:focus { outline: 2px solid var(--teal); outline-offset: -1px; }
     .form-hint { font-size: 11px; color: var(--muted); }
-    .btn-primary {
-      background: var(--teal); color: var(--white); border: none;
-      padding: 10px 20px; font-size: 13px; font-weight: 600;
-      font-family: inherit; cursor: pointer; width: 100%; transition: background 0.1s;
-    }
+    .btn-primary { background: var(--teal); color: var(--white); border: none; padding: 10px 20px; font-size: 13px; font-weight: 600; font-family: inherit; cursor: pointer; width: 100%; transition: background 0.1s; }
     .btn-primary:hover:not(:disabled) { background: #005668; }
     .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
-    .btn-copy {
-      background: var(--teal); color: var(--white); border: none;
-      padding: 4px 10px; font-size: 11px;
-      font-family: 'JetBrains Mono', monospace; cursor: pointer; white-space: nowrap;
-    }
-    .btn-copy-lg { padding: 10px 18px; font-size: 13px; font-weight: 700; }
+    .btn-secondary { background: var(--paper); color: var(--navy); border: 1px solid var(--rule); padding: 10px 20px; font-size: 13px; font-weight: 600; font-family: inherit; cursor: pointer; width: 100%; transition: background 0.1s; margin-top: 8px; }
+    .btn-secondary:hover:not(:disabled) { background: var(--rule); }
+    .btn-secondary:disabled { opacity: 0.4; cursor: not-allowed; }
+    .btn-copy { background: var(--teal); color: var(--white); border: none; padding: 4px 10px; font-size: 11px; font-family: 'JetBrains Mono', monospace; cursor: pointer; white-space: nowrap; }
+    .audio-section { border: 2px dashed var(--rule); padding: 16px; text-align: center; cursor: pointer; margin-bottom: 14px; transition: border-color 0.2s; background: var(--white); }
+    .audio-section:hover { border-color: var(--teal); }
+    .audio-section.has-file { border-color: var(--teal); background: var(--teal-bg); }
+    .audio-label-main { font-size: 13px; font-weight: 500; color: var(--muted); }
+    .audio-label-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+    .audio-status { font-size: 12px; color: var(--teal); margin-top: 6px; font-weight: 500; }
     .claim-item { padding: 14px 20px; border-bottom: 1px solid var(--rule); }
     .claim-item:last-child { border-bottom: none; }
     .claim-num { font-size: 10px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 4px; }
@@ -416,24 +258,34 @@
     .claim-num.middel { color: var(--hold); }
     .claim-num.laag { color: var(--muted); }
     .claim-text { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
-    .claim-speaker { font-size: 11px; color: var(--teal); font-family: 'JetBrains Mono', monospace; margin-bottom: 6px; }
+    .claim-speaker { font-size: 11px; color: var(--teal); font-family: 'JetBrains Mono', monospace; margin-bottom: 4px; }
     .claim-check { font-size: 12px; color: var(--muted); line-height: 1.5; }
+    .claim-kruischeck { font-size: 11px; margin-top: 5px; padding: 4px 8px; display: inline-block; }
+    .claim-kruischeck.bevestigd { background: var(--go-bg); color: var(--go); }
+    .claim-kruischeck.weersproken { background: var(--stop-bg); color: var(--stop); }
+    .claim-kruischeck.onbekend { background: var(--paper); color: var(--muted); }
     .factcheck-empty { padding: 32px 20px; text-align: center; color: var(--muted); font-size: 13px; line-height: 1.8; }
+    .saved-claims-section { margin-top: 16px; }
+    .saved-claim-item { padding: 10px 20px; border-bottom: 1px solid var(--rule); }
+    .saved-claim-item:last-child { border-bottom: none; }
+    .saved-claim-text { font-size: 12px; font-weight: 600; margin-bottom: 2px; }
+    .saved-claim-meta { font-size: 11px; color: var(--muted); }
 
-    /* ── EMPTY / ERROR ── */
+    /* ── MISC ── */
+    .hidden { display: none !important; }
+    .btn-text { background: none; border: none; color: var(--teal); font-size: 12px; font-weight: 600; cursor: pointer; padding: 8px 0; text-transform: uppercase; letter-spacing: 0.5px; }
+    .btn-text:hover { text-decoration: underline; }
     .empty { padding: 32px; text-align: center; color: var(--muted); font-size: 13px; }
-    .error-msg {
-      padding: 12px 16px; background: var(--stop-bg);
-      border-left: 3px solid var(--stop); font-size: 12px; color: var(--stop); margin: 12px 0;
-    }
+    .error-msg { padding: 12px 16px; background: var(--stop-bg); border-left: 3px solid var(--stop); font-size: 12px; color: var(--stop); margin: 12px 0; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      .stats { grid-template-columns: 1fr 1fr; }
+      .stats { grid-template-columns: 1fr 1fr 1fr; }
       .overview-grid { grid-template-columns: 1fr; }
       .factcheck-grid { grid-template-columns: 1fr; }
       .viz-row { grid-template-columns: 1fr; }
       .viz-stat-row { grid-template-columns: 1fr 1fr; }
+      .cb-stats-row { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 600px) {
       main { padding: 12px; }
@@ -462,6 +314,7 @@
   <div class="tab"        data-tab="moties"          onclick="switchTab(this)">Moties &amp; Stemmingen</div>
   <div class="tab"        data-tab="bekendmakingen"  onclick="switchTab(this)">Bekendmakingen</div>
   <div class="tab"        data-tab="raadsvragen"     onclick="switchTab(this)">Raadsvragen</div>
+  <div class="tab"        data-tab="collegebrieven"  onclick="switchTab(this)">Collegebrieven</div>
   <div class="tab"        data-tab="factcheck"       onclick="switchTab(this)">✦ Factcheck</div>
 </nav>
 
@@ -487,6 +340,11 @@
         <div class="stat-sub" id="statBsub">na filter</div>
       </div>
       <div class="stat">
+        <div class="stat-label">Collegebrieven</div>
+        <div class="stat-value" id="statC">—</div>
+        <div class="stat-sub" id="statCsub">laden...</div>
+      </div>
+      <div class="stat">
         <div class="stat-label">Laatste vergadering</div>
         <div class="stat-value" style="font-size:28px;padding-top:8px;" id="statL">—</div>
         <div class="stat-sub" id="statLsub">laden...</div>
@@ -507,6 +365,13 @@
         </div>
         <div class="card-body" id="ovBk"><div class="empty">Laden...</div></div>
       </div>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Recente collegebrieven met claims</span>
+        <button class="card-link" onclick="switchTab(document.querySelector('[data-tab=collegebrieven]'))">Alle →</button>
+      </div>
+      <div class="card-body" id="ovCb"><div class="empty">Laden...</div></div>
     </div>
   </div>
 
@@ -531,11 +396,7 @@
 
   <!-- ── MOTIES ── -->
   <div class="tab-content" id="tab-moties">
-
-    <!-- Visualisaties -->
     <div id="motiesViz"></div>
-
-    <!-- Filter + tabel -->
     <div class="filter-bar">
       <select class="filter-select" id="filterPartij" onchange="renderMoties()">
         <option value="">Alle partijen</option>
@@ -557,11 +418,7 @@
       <table>
         <thead>
           <tr>
-            <th>Motie / Amendement</th>
-            <th>Partij</th>
-            <th>Datum</th>
-            <th>Status</th>
-            <th>Stemming</th>
+            <th>Motie / Amendement</th><th>Partij</th><th>Datum</th><th>Status</th><th>Stemming</th>
           </tr>
         </thead>
         <tbody id="motiesTable">
@@ -573,56 +430,25 @@
 
   <!-- ── BEKENDMAKINGEN ── -->
   <div class="tab-content" id="tab-bekendmakingen">
-    <div class="alert-info">
-      Automatisch gefilterd op cameratoezicht, woningsluitingen &amp; dwangsommen.
-    </div>
+    <div class="alert-info">Automatisch gefilterd op cameratoezicht, woningsluitingen &amp; dwangsommen.</div>
     <div class="bk-stats-row" id="bkStatsRow">
-      <div class="bk-stat-card">
-        <div class="bk-stat-label">Camera's totaal</div>
-        <div class="bk-stat-value" id="bkCamTotaal">—</div>
-      </div>
-      <div class="bk-stat-card">
-        <div class="bk-stat-label">Gesloten woningen totaal</div>
-        <div class="bk-stat-value" id="bkWoningTotaal">—</div>
-      </div>
-      <div class="bk-stat-card">
-        <div class="bk-stat-label">Dwangsommen</div>
-        <div class="bk-stat-value" id="bkDwangsom">—</div>
-      </div>
+      <div class="bk-stat-card"><div class="bk-stat-label">Camera's totaal</div><div class="bk-stat-value" id="bkCamTotaal">—</div></div>
+      <div class="bk-stat-card"><div class="bk-stat-label">Gesloten woningen totaal</div><div class="bk-stat-value" id="bkWoningTotaal">—</div></div>
+      <div class="bk-stat-card"><div class="bk-stat-label">Dwangsommen</div><div class="bk-stat-value" id="bkDwangsom">—</div></div>
     </div>
     <div class="bk-charts-row">
-      <div class="card">
-        <div class="card-header"><span class="card-title">Camera's per maand</span></div>
-        <div class="bk-chart-container" id="bkCamChart"></div>
-      </div>
-      <div class="card">
-        <div class="card-header"><span class="card-title">Gesloten woningen per maand</span></div>
-        <div class="bk-chart-container" id="bkWoningChart"></div>
-      </div>
-      <div class="card">
-        <div class="card-header"><span class="card-title">Dwangsommen per maand</span></div>
-        <div class="bk-chart-container" id="bkDwangsomChart"></div>
-      </div>
+      <div class="card"><div class="card-header"><span class="card-title">Camera's per maand</span></div><div class="bk-chart-container" id="bkCamChart"></div></div>
+      <div class="card"><div class="card-header"><span class="card-title">Gesloten woningen per maand</span></div><div class="bk-chart-container" id="bkWoningChart"></div></div>
+      <div class="card"><div class="card-header"><span class="card-title">Dwangsommen per maand</span></div><div class="bk-chart-container" id="bkDwangsomChart"></div></div>
     </div>
     <div class="bk-charts-row">
-      <div class="card">
-        <div class="card-header"><span class="card-title">Camera's per wijk</span></div>
-        <div id="bkCamWijkChart" class="bk-bar-chart"></div>
-      </div>
-      <div class="card">
-        <div class="card-header"><span class="card-title">Gesloten woningen per wijk</span></div>
-        <div id="bkWoningWijkChart" class="bk-bar-chart"></div>
-      </div>
+      <div class="card"><div class="card-header"><span class="card-title">Camera's per wijk</span></div><div id="bkCamWijkChart" class="bk-bar-chart"></div></div>
+      <div class="card"><div class="card-header"><span class="card-title">Gesloten woningen per wijk</span></div><div id="bkWoningWijkChart" class="bk-bar-chart"></div></div>
     </div>
-    <button class="btn-text" onclick="document.getElementById('bkLijstContainer').classList.toggle('hidden')">
-      Toon / verberg onderliggende berichten
-    </button>
+    <button class="btn-text" onclick="document.getElementById('bkLijstContainer').classList.toggle('hidden')">Toon / verberg onderliggende berichten</button>
     <div id="bkLijstContainer" class="hidden">
       <div class="card" style="margin-top:16px;">
-        <div class="card-header">
-          <span class="card-title">Bekendmakingen</span>
-          <span class="card-link" id="bkCount" style="cursor:default;">—</span>
-        </div>
+        <div class="card-header"><span class="card-title">Bekendmakingen</span><span class="card-link" id="bkCount" style="cursor:default;">—</span></div>
         <div id="bkList"><div class="empty">Laden...</div></div>
       </div>
     </div>
@@ -641,11 +467,48 @@
       </select>
     </div>
     <div class="card">
-      <div class="card-header">
-        <span class="card-title">Raadsvragen</span>
-        <span class="card-link" id="rvCount" style="cursor:default;">—</span>
-      </div>
+      <div class="card-header"><span class="card-title">Raadsvragen</span><span class="card-link" id="rvCount" style="cursor:default;">—</span></div>
       <div id="rvList"><div class="empty">Laden...</div></div>
+    </div>
+  </div>
+
+  <!-- ── COLLEGEBRIEVEN ── -->
+  <div class="tab-content" id="tab-collegebrieven">
+    <div class="cb-stats-row">
+      <div class="bk-stat-card">
+        <div class="bk-stat-label">Brieven totaal</div>
+        <div class="bk-stat-value" id="cbTotaal">—</div>
+      </div>
+      <div class="bk-stat-card">
+        <div class="bk-stat-label">Claims gevonden</div>
+        <div class="bk-stat-value" id="cbClaims">—</div>
+      </div>
+      <div class="bk-stat-card">
+        <div class="bk-stat-label">Hoog prioriteit</div>
+        <div class="bk-stat-value" style="color:var(--stop);" id="cbHoog">—</div>
+      </div>
+    </div>
+    <div class="filter-bar">
+      <select class="filter-select" id="filterCbType" onchange="renderCollegebrieven()">
+        <option value="">Alle typen</option>
+        <option value="Raadsinformatiebrief">Raadsinformatiebrief</option>
+        <option value="Kennisgeving">Kennisgeving</option>
+      </select>
+      <select class="filter-select" id="filterCbPh" onchange="renderCollegebrieven()">
+        <option value="">Alle portefeuillehouders</option>
+      </select>
+      <select class="filter-select" id="filterCbClaims" onchange="renderCollegebrieven()">
+        <option value="">Alle brieven</option>
+        <option value="claims">Alleen met claims</option>
+        <option value="hoog">Alleen HOOG-prioriteit claims</option>
+      </select>
+    </div>
+    <div class="card">
+      <div class="card-header">
+        <span class="card-title">Collegebrieven</span>
+        <span class="card-link" id="cbCount" style="cursor:default;">—</span>
+      </div>
+      <div id="cbList"><div class="empty">Laden...</div></div>
     </div>
   </div>
 
@@ -655,37 +518,67 @@
       <div class="card">
         <div class="card-header"><span class="card-title">Transcriptie invoeren</span></div>
         <div class="card-body" style="padding:20px;">
+
           <div class="form-group">
             <label class="form-label">Gemini API key</label>
             <input type="password" class="form-input" id="geminiKey" placeholder="AIzaSy..."
               oninput="localStorage.setItem('zr_gemini_key', this.value)">
             <span class="form-hint">Gratis via <a href="https://aistudio.google.com/app/apikey" target="_blank" style="color:var(--teal)">aistudio.google.com</a> — alleen lokaal opgeslagen.</span>
           </div>
+
+          <!-- Audio upload -->
+          <div class="form-group">
+            <label class="form-label">Audio uploaden (optioneel, max 15 MB)</label>
+            <div class="audio-section" id="audioSection" onclick="document.getElementById('audioFile').click()">
+              <div class="audio-label-main">🎙 Klik om audiobestand te kiezen</div>
+              <div class="audio-label-sub">mp3 · m4a · wav · ogg — Gemini transcribeert automatisch</div>
+              <div class="audio-status" id="audioStatusMsg" style="display:none;"></div>
+            </div>
+            <input type="file" id="audioFile" accept="audio/*" style="display:none;" onchange="audioBestandGekozen()">
+            <button class="btn-secondary" id="transcribeBtn" style="display:none;" onclick="transcribeerAudio()">
+              Transcribeer audio →
+            </button>
+          </div>
+
           <div class="form-group">
             <label class="form-label">Context (optioneel)</label>
             <input type="text" class="form-input" id="fcContext" placeholder="bijv. vergadering 11 juni 2026 – Voorjaarsnota">
           </div>
           <div class="form-group">
             <label class="form-label">Transcriptie</label>
-            <textarea class="form-textarea" id="fcText" rows="14"
+            <textarea class="form-textarea" id="fcText" rows="12"
               placeholder="Plak hier de transcriptie van de raadsvergadering..."></textarea>
           </div>
           <button class="btn-primary" id="fcBtn" onclick="analyseerFactcheck()">
             Analyseer op verifieerbare claims →
           </button>
+          <button class="btn-secondary" id="fcSaveBtn" style="display:none;" onclick="slaClaimsOp()">
+            ↓ Sla claims op voor kruisverificatie
+          </button>
         </div>
       </div>
-      <div class="card">
-        <div class="card-header">
-          <span class="card-title">Factcheck-suggesties</span>
-          <span class="card-link" style="cursor:default;" id="fcStatus">—</span>
-        </div>
-        <div id="claimsList">
-          <div class="factcheck-empty">
-            Vul links een transcriptie in en klik op Analyseer.<br><br>
-            Gemini identificeert verifieerbare claims: cijfers, percentages, beloftes, historische feiten.<br><br>
-            <em>De tool stelt alleen vragen voor, factchecken doe jij zelf.</em>
+
+      <div style="display:flex;flex-direction:column;gap:16px;">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Factcheck-suggesties</span>
+            <span class="card-link" style="cursor:default;" id="fcStatus">—</span>
           </div>
+          <div id="claimsList">
+            <div class="factcheck-empty">
+              Vul links een transcriptie in en klik op Analyseer.<br><br>
+              Gemini identificeert verifieerbare claims en vergelijkt ze met je eigen data: moties, bekendmakingen, raadsvragen en eerdere opgeslagen claims.<br><br>
+              <em>De tool stelt alleen vragen voor, factchecken doe jij zelf.</em>
+            </div>
+          </div>
+        </div>
+
+        <div class="card saved-claims-section">
+          <div class="card-header">
+            <span class="card-title">Opgeslagen claims</span>
+            <button class="card-link" onclick="clearOpgeslagenClaims()">Wis alles</button>
+          </div>
+          <div id="savedClaimsList"><div class="empty" style="padding:16px;font-size:12px;">Nog geen claims opgeslagen.</div></div>
         </div>
       </div>
     </div>
@@ -695,14 +588,16 @@
 
 <script>
 // ── STATE ─────────────────────────────────────────────────────────────────────
-let vergaderingen = [], moties = [], bekendmakingen = [], raadsvragen = [];
+let vergaderingen = [], moties = [], bekendmakingen = [], raadsvragen = [], collegebrieven = [];
+let huidigeClaims = []; // actieve claims in factcheck
 
 // ── INIT ──────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', async () => {
   const savedKey = localStorage.getItem('zr_gemini_key');
   if (savedKey) document.getElementById('geminiKey').value = savedKey;
-  await Promise.all([loadVerg(), loadMoties(), loadBk(), loadRaadsvragen()]);
+  await Promise.all([loadVerg(), loadMoties(), loadBk(), loadRaadsvragen(), loadCollegebrieven()]);
   updateStats();
+  renderOpgeslagenClaims();
   document.getElementById('headerMeta').textContent =
     vergaderingen[0]?.bijgewerkt ? 'bijgewerkt ' + vergaderingen[0].bijgewerkt : '';
 });
@@ -710,10 +605,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 // ── TABS ──────────────────────────────────────────────────────────────────────
 function switchTab(el) {
   const name = el.dataset.tab;
-  document.querySelectorAll('.tab').forEach(t =>
-    t.classList.toggle('active', t.dataset.tab === name));
-  document.querySelectorAll('.tab-content').forEach(c =>
-    c.classList.toggle('active', c.id === 'tab-' + name));
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === name));
+  document.querySelectorAll('.tab-content').forEach(c => c.classList.toggle('active', c.id === 'tab-' + name));
 }
 
 // ── LOAD DATA ─────────────────────────────────────────────────────────────────
@@ -750,9 +643,7 @@ async function loadBk() {
     const r = await fetch('./data/bekendmakingen.json');
     if (!r.ok) throw new Error(r.status);
     bekendmakingen = await r.json();
-    renderBekendmakingenDashboard();
-    renderOvBk();
-    renderBekendmakingenLijst();
+    renderBekendmakingenDashboard(); renderOvBk(); renderBekendmakingenLijst();
   } catch (e) {
     document.getElementById('bkList').innerHTML =
       e.message === '404'
@@ -775,13 +666,27 @@ async function loadRaadsvragen() {
   }
 }
 
+async function loadCollegebrieven() {
+  try {
+    const r = await fetch('./data/collegeberichten.json');
+    if (!r.ok) throw new Error(r.status);
+    collegebrieven = await r.json();
+    renderCollegebrieven(); populateCbFilters(); renderOvCb(); renderCbStats();
+  } catch (e) {
+    document.getElementById('cbList').innerHTML =
+      e.message === '404'
+        ? '<div class="empty">Nog geen collegebrieven — draai eerst de scraper.</div>'
+        : `<div class="error-msg">Fout: ${e.message}</div>`;
+    document.getElementById('ovCb').innerHTML = '<div class="empty">Geen data</div>';
+  }
+}
+
 // ── STATS ─────────────────────────────────────────────────────────────────────
 function updateStats() {
   document.getElementById('statV').textContent = vergaderingen.length;
   const raadCount = vergaderingen.filter(v => v.type === 'Raadsvergadering').length;
   const commCount = vergaderingen.filter(v => v.type === 'Commissievergadering').length;
-  document.getElementById('statVsub').textContent =
-    raadCount + ' raad · ' + commCount + ' commissie';
+  document.getElementById('statVsub').textContent = raadCount + ' raad · ' + commCount + ' commissie';
 
   document.getElementById('statM').textContent = moties.length;
   const aang = moties.filter(m => m.status === 'aangenomen').length;
@@ -792,14 +697,16 @@ function updateStats() {
   const sluit = bekendmakingen.filter(b => b.categorie === 'woningsluiting').length;
   const dwang = bekendmakingen.filter(b => b.categorie === 'dwangsom').length;
   document.getElementById('statB').textContent = bekendmakingen.length;
-  document.getElementById('statBsub').textContent =
-    cam + ' camera · ' + sluit + ' sluiting · ' + dwang + ' dwangsom';
+  document.getElementById('statBsub').textContent = cam + ' camera · ' + sluit + ' sluiting · ' + dwang + ' dwangsom';
+
+  document.getElementById('statC').textContent = collegebrieven.length;
+  const totalClaims = collegebrieven.reduce((s, b) => s + (b.claims?.length || 0), 0);
+  document.getElementById('statCsub').textContent = totalClaims + ' claims geïdentificeerd';
 
   if (vergaderingen.length > 0) {
     const v = vergaderingen[0];
     const d = new Date(v.datum);
-    document.getElementById('statL').textContent =
-      d.toLocaleDateString('nl-NL', { day: 'numeric', month: 'short' });
+    document.getElementById('statL').textContent = d.toLocaleDateString('nl-NL', { day: 'numeric', month: 'short' });
     document.getElementById('statLsub').textContent = v.type || '';
   }
 }
@@ -823,7 +730,7 @@ function renderVerg() {
         </div>
         <div class="meeting-badges">
           ${v.agendapunten?.length ? `<span class="badge badge-teal">${v.agendapunten.length} punten</span>` : ''}
-          ${v.video_link ? '<span class="badge badge-go">Video</span>' : ''}
+          ${v.video_id ? '<span class="badge badge-go">Video</span>' : ''}
           ${v.datum > new Date().toISOString().slice(0,10) ? '<span class="badge badge-hold">Gepland</span>' : ''}
         </div>
         <div class="meeting-chevron" id="ch-${v.id}">›</div>
@@ -832,22 +739,42 @@ function renderVerg() {
         ${v.video_id ? `
           <div class="video-section">
             <div class="video-label">⬇ Video beschikbaar</div>
-            <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
               <button class="btn-primary" style="width:auto;padding:8px 16px;"
-                onclick="haalVideoLink('${v.id}','${esc(v.video_id)}',this)">
-                Genereer download-commando
+                onclick="toggleVideoInstructie('${v.id}', event)">
+                Toon download-instructie
               </button>
               <a href="${esc(v.url)}" target="_blank"
                 style="font-size:12px;color:var(--teal);text-decoration:none;font-weight:500;">
                 Open in iBabs →
               </a>
             </div>
-            <div id="vcmd-wrap-${v.id}" style="display:none;">
-              <div class="video-box" style="margin-bottom:6px;">
-                <code id="vcmd-${v.id}" style="font-family:'JetBrains Mono',monospace;font-size:11px;flex:1;word-break:break-all;"></code>
-                <button class="btn-copy" onclick="copyCmd('${v.id}',event)">Kopieer</button>
+            <div id="vinstr-${v.id}" style="display:none;">
+              <div class="vinstr">
+                <div class="vinstr-step"><div class="vinstr-nr">1</div><div class="vinstr-tekst">Open de vergaderpagina via de knop hierboven. Start de video zodat hij begint te spelen.</div></div>
+                <div class="vinstr-step"><div class="vinstr-nr">2</div><div class="vinstr-tekst">Open <strong>DevTools</strong> met <strong>F12</strong> of <strong>⌥⌘J</strong>. Ga naar het tabblad <strong>Netwerk</strong>.</div></div>
+                <div class="vinstr-step"><div class="vinstr-nr">3</div><div class="vinstr-tekst">Typ in het filterveld: <strong>m3u8</strong><br>Je ziet nu één of twee verzoeken. Negeer de kleine (~3 kB). Klik op de grote (<strong>~100–120 kB</strong>).</div></div>
+                <div class="vinstr-step"><div class="vinstr-nr">4</div><div class="vinstr-tekst">Ga naar <strong>Headers</strong> → scroll naar <strong>Request URL</strong> → rechtsklik → <strong>Copy link address</strong>.</div></div>
+                <div class="vinstr-step">
+                  <div class="vinstr-nr">5</div>
+                  <div class="vinstr-tekst">
+                    Plak de gekopieerde URL hieronder — het yt-dlp commando verschijnt automatisch:
+                    <div class="vinstr-url-wrap">
+                      <input type="text" class="vinstr-url-input" id="vhls-${v.id}"
+                        placeholder="https://...sdk-ssl.m3u8?Signature=..."
+                        oninput="updateYtdlpCmd('${v.id}')">
+                    </div>
+                    <div id="vcmd-wrap-${v.id}" style="display:none;margin-top:6px;">
+                      <div style="display:flex;align-items:center;gap:8px;">
+                        <div class="vinstr-cmd" id="vcmd-${v.id}" style="flex:1;"></div>
+                        <button class="btn-copy" onclick="copyCmd('${v.id}',event)">Kopieer</button>
+                      </div>
+                      <div class="vinstr-tip">⚠ Deze link verloopt na ~2 uur. Herhaal stap 3–4 als je een 403-fout krijgt.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="vinstr-step"><div class="vinstr-nr">6</div><div class="vinstr-tekst">Voer het commando uit in Terminal. Je krijgt een <strong>.ts bestand</strong> van honderden MB.<br>Sleep het audiogedeelte daarna naar de <strong>✦ Factcheck-tab</strong> om te transcriberen.</div></div>
               </div>
-              <div id="vcmd-hint-${v.id}" style="font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace;"></div>
             </div>
           </div>
         ` : ''}
@@ -876,67 +803,32 @@ function toggleMeeting(id) {
   const open = det.classList.toggle('open');
   ch.classList.toggle('open', open);
 }
-async function haalVideoLink(vergId, videoId, btnEl) {
-  btnEl.disabled = true;
-  btnEl.textContent = 'Bezig...';
 
-  const wrap = document.getElementById('vcmd-wrap-' + vergId);
-  const cmd  = document.getElementById('vcmd-' + vergId);
-  const hint = document.getElementById('vcmd-hint-' + vergId);
+function toggleVideoInstructie(id, e) {
+  e.stopPropagation();
+  const el  = document.getElementById('vinstr-' + id);
+  const btn = e.target;
+  const open = el.style.display === 'none';
+  el.style.display = open ? 'block' : 'none';
+  btn.textContent  = open ? 'Verberg instructie' : 'Toon download-instructie';
+}
 
-  // Video-ID: "zaanstad/20260611_1" → player gebruikt underscore-variant
-  const playerId = videoId.replace('/', '_');
-  const apiBase  = 'https://sdk.companywebcast.com';
-
-  try {
-    // Stap 1: haal token op
-    const tokenRes = await fetch(
-      `${apiBase}/api/token?id=${encodeURIComponent(playerId)}`,
-      { headers: { 'Accept': 'application/json' } }
-    );
-    if (!tokenRes.ok) throw new Error('token-endpoint niet bereikbaar');
-    const tokenData = await tokenRes.json();
-    const token = tokenData.token || tokenData.Token;
-    if (!token) throw new Error('geen token in response');
-
-    // Stap 2: haal HLS-URL op
-    const hlsRes = await fetch(
-      `${apiBase}/api/hls?id=${encodeURIComponent(playerId)}&token=${encodeURIComponent(token)}`,
-      { headers: { 'Accept': 'application/json' } }
-    );
-    if (!hlsRes.ok) throw new Error('hls-endpoint niet bereikbaar');
-    const hlsData = await hlsRes.json();
-    const hlsUrl  = hlsData.url || hlsData.Url || hlsData.hls || hlsData.m3u8;
-    if (!hlsUrl) throw new Error('geen HLS-URL in response');
-
-    cmd.textContent = `/Users/anders/yt-dlp "${hlsUrl}" -o vergadering_${playerId}.ts`;
-    hint.textContent = '⚠ Deze link verloopt na ~2 uur. Genereer opnieuw als hij niet meer werkt.';
+function updateYtdlpCmd(id) {
+  const url  = document.getElementById('vhls-' + id).value.trim();
+  const wrap = document.getElementById('vcmd-wrap-' + id);
+  const cmd  = document.getElementById('vcmd-' + id);
+  if (url) {
+    cmd.textContent = `/Users/anders/yt-dlp "${url}" -o vergadering_${id}.ts`;
     wrap.style.display = 'block';
-    btnEl.textContent = '↻ Vernieuwen';
-
-  } catch (err) {
-    // CORS of andere fout — toon handmatige instructie
-    cmd.textContent = `# Kan link niet automatisch ophalen (${err.message})`;
-    hint.innerHTML  =
-      `Handmatig: open <a href="https://zaanstad.bestuurlijkeinformatie.nl/Agenda/Index/${vergId}" ` +
-      `target="_blank" style="color:var(--teal)">de vergaderingspagina</a>, ` +
-      `DevTools → Network → zoek <strong>hls?Signature=</strong> → ` +
-      `rechtsklik → Copy link address → plak in terminal als:<br>` +
-      `<code style="font-family:'JetBrains Mono',monospace;">/Users/anders/yt-dlp "PLAK-URL" -o vergadering.ts</code>`;
-    wrap.style.display = 'block';
-    btnEl.textContent = '↻ Probeer opnieuw';
+  } else {
+    wrap.style.display = 'none';
   }
+}
 
-  btnEl.disabled = false;
-}
-  
-function copyUrl(id, e) {
-  navigator.clipboard.writeText(document.getElementById('vurl-' + id).textContent)
-    .then(() => { e.target.textContent = '✓ Gekopieerd'; setTimeout(() => e.target.textContent = 'Kopieer link', 2000); });
-}
 function copyCmd(id, e) {
-  navigator.clipboard.writeText(document.getElementById('vcmd-' + id).textContent)
-    .then(() => { e.target.textContent = '✓'; setTimeout(() => e.target.textContent = 'Kopieer commando', 2000); });
+  const tekst = document.getElementById('vcmd-' + id).textContent;
+  navigator.clipboard.writeText(tekst)
+    .then(() => { e.target.textContent = '✓'; setTimeout(() => e.target.textContent = 'Kopieer', 2000); });
 }
 
 function renderOvVerg() {
@@ -955,10 +847,7 @@ function renderOvVerg() {
 function populatePartijFilter() {
   const sel = document.getElementById('filterPartij');
   const partijen = [...new Set(moties.map(m => m.partij).filter(Boolean))].sort();
-  partijen.forEach(p => {
-    const o = document.createElement('option');
-    o.value = p; o.textContent = p; sel.appendChild(o);
-  });
+  partijen.forEach(p => { const o = document.createElement('option'); o.value = p; o.textContent = p; sel.appendChild(o); });
 }
 
 function renderMoties() {
@@ -969,15 +858,11 @@ function renderMoties() {
   if (partij) f = f.filter(m => m.partij === partij);
   if (status) f = f.filter(m => m.status === status);
   if (type)   f = f.filter(m => m.type === type);
-
   document.getElementById('motiesTable').innerHTML = f.length === 0
     ? '<tr><td colspan="5" class="empty">Geen moties gevonden.</td></tr>'
     : f.map(m => `
         <tr>
-          <td>
-            <div class="motie-title">${esc(m.titel)}</div>
-            ${m.type ? `<div class="motie-desc">${esc(m.type)}</div>` : ''}
-          </td>
+          <td><div class="motie-title">${esc(m.titel)}</div>${m.type ? `<div class="motie-desc">${esc(m.type)}</div>` : ''}</td>
           <td><span class="badge badge-teal">${esc(m.partij || '—')}</span></td>
           <td style="font-family:'JetBrains Mono',monospace;font-size:11px;white-space:nowrap;">${fmtDate(m.datum,'full')}</td>
           <td>${statusBadge(m.status)}</td>
@@ -986,82 +871,53 @@ function renderMoties() {
 }
 
 function statusBadge(s) {
-  const map = {
-    aangenomen:  ['badge-go',   'Aangenomen ✓'],
-    verworpen:   ['badge-stop', 'Verworpen ✗'],
-    ingetrokken: ['badge-hold', 'Ingetrokken'],
-    aangehouden: ['badge-hold', 'Aangehouden'],
-  };
+  const map = { aangenomen:['badge-go','Aangenomen ✓'], verworpen:['badge-stop','Verworpen ✗'], ingetrokken:['badge-hold','Ingetrokken'], aangehouden:['badge-hold','Aangehouden'] };
   const [cls, label] = map[s] || ['badge-teal', s || '—'];
   return `<span class="badge ${cls}">${label}</span>`;
 }
 
 function stemmingBar(m) {
-  if (m.voor_pct == null && m.tegen_pct == null)
-    return '<span style="color:var(--muted);font-size:11px;">—</span>';
+  if (m.voor_pct == null && m.tegen_pct == null) return '<span style="color:var(--muted);font-size:11px;">—</span>';
   return `<div style="min-width:80px;">
     <div style="display:flex;height:6px;border-radius:2px;overflow:hidden;margin-bottom:3px;">
       <div style="width:${m.voor_pct}%;background:var(--go);"></div>
       <div style="width:${m.tegen_pct}%;background:var(--stop);"></div>
     </div>
-    <div style="font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--muted);">
-      ${m.voor_pct}% voor · ${m.tegen_pct}% tegen
-    </div>
+    <div style="font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--muted);">${m.voor_pct}% voor · ${m.tegen_pct}% tegen</div>
   </div>`;
 }
 
-// ── MOTIES VISUALISATIES ──────────────────────────────────────────────────────
+// ── MOTIES VISUALISATIES (ongewijzigd) ────────────────────────────────────────
 function renderMotiesVisuals() {
   const el = document.getElementById('motiesViz');
   if (!el || !moties.length) return;
-
   const maandNamen = ['Jan','Feb','Mrt','Apr','Mei','Jun','Jul','Aug','Sep','Okt','Nov','Dec'];
-
-  // ── Per partij statistieken ───────────────────────────────────────────────
   const partijStats = {};
   moties.forEach(m => {
     if (!m.partij) return;
-    if (!partijStats[m.partij]) partijStats[m.partij] = {
-      totaal: 0, aangenomen: 0, verworpen: 0, ingetrokken: 0, aangehouden: 0,
-      moties_count: 0, amendementen_count: 0
-    };
+    if (!partijStats[m.partij]) partijStats[m.partij] = { totaal:0, aangenomen:0, verworpen:0, ingetrokken:0, aangehouden:0, moties_count:0, amendementen_count:0 };
     const s = partijStats[m.partij];
     s.totaal++;
     if (m.status === 'aangenomen')  s.aangenomen++;
     if (m.status === 'verworpen')   s.verworpen++;
     if (m.status === 'ingetrokken') s.ingetrokken++;
     if (m.status === 'aangehouden') s.aangehouden++;
-    if ((m.type || '').toLowerCase().includes('motie'))      s.moties_count++;
-    if ((m.type || '').toLowerCase().includes('amendement')) s.amendementen_count++;
+    if ((m.type||'').toLowerCase().includes('motie'))      s.moties_count++;
+    if ((m.type||'').toLowerCase().includes('amendement')) s.amendementen_count++;
   });
-
-  const partijLijst = Object.entries(partijStats)
-    .filter(([, s]) => s.totaal >= 1)
-    .map(([naam, s]) => {
-      const metStatus = s.aangenomen + s.verworpen;
-      const pct = metStatus ? Math.round(s.aangenomen / metStatus * 100) : null;
-      return { naam, ...s, pct };
-    })
-    .sort((a, b) => (b.pct ?? -1) - (a.pct ?? -1));
-
-  // ── Top indieners ─────────────────────────────────────────────────────────
+  const partijLijst = Object.entries(partijStats).filter(([,s]) => s.totaal >= 1).map(([naam, s]) => {
+    const metStatus = s.aangenomen + s.verworpen;
+    const pct = metStatus ? Math.round(s.aangenomen / metStatus * 100) : null;
+    return { naam, ...s, pct };
+  }).sort((a, b) => (b.pct ?? -1) - (a.pct ?? -1));
   const indienerStats = {};
   moties.forEach(m => {
     if (!m.indiener) return;
     if (!indienerStats[m.indiener]) indienerStats[m.indiener] = { totaal: 0, partij: m.partij };
     indienerStats[m.indiener].totaal++;
   });
-  const topIndieners = Object.entries(indienerStats)
-    .sort((a, b) => b[1].totaal - a[1].totaal).slice(0, 6);
-
-  // ── 1. Nauwste stemmingen ─────────────────────────────────────────────────
-  const controversieel = moties
-    .filter(m => m.voor_pct != null && m.tegen_pct != null)
-    .map(m => ({ ...m, marge: Math.abs(m.voor_pct - m.tegen_pct) }))
-    .sort((a, b) => a.marge - b.marge)
-    .slice(0, 8);
-
-  // ── 2. Trend over tijd ────────────────────────────────────────────────────
+  const topIndieners = Object.entries(indienerStats).sort((a, b) => b[1].totaal - a[1].totaal).slice(0, 6);
+  const controversieel = moties.filter(m => m.voor_pct != null && m.tegen_pct != null).map(m => ({ ...m, marge: Math.abs(m.voor_pct - m.tegen_pct) })).sort((a, b) => a.marge - b.marge).slice(0, 8);
   const maandTrend = {};
   moties.forEach(m => {
     if (!m.datum) return;
@@ -1072,44 +928,25 @@ function renderMotiesVisuals() {
     if (m.status === 'verworpen')  maandTrend[maand].verworpen++;
   });
   const maandLijst = Object.entries(maandTrend).sort((a, b) => a[0].localeCompare(b[0]));
-
-  // ── 3. Ingetrokken vs verworpen ───────────────────────────────────────────
-  const partijVerlies = [...partijLijst]
-    .filter(p => (p.verworpen + p.ingetrokken) > 0)
-    .sort((a, b) => b.totaal - a.totaal)
-    .slice(0, 8);
-
-  // ── 4. Motie vs Amendement ────────────────────────────────────────────────
-  const partijType = [...partijLijst]
-    .filter(p => p.moties_count + p.amendementen_count > 0)
-    .sort((a, b) => b.totaal - a.totaal)
-    .slice(0, 8);
-
-  // ── 5. Medeondertekenaars netwerk ─────────────────────────────────────────
+  const partijVerlies = [...partijLijst].filter(p => (p.verworpen + p.ingetrokken) > 0).sort((a, b) => b.totaal - a.totaal).slice(0, 8);
+  const partijType = [...partijLijst].filter(p => p.moties_count + p.amendementen_count > 0).sort((a, b) => b.totaal - a.totaal).slice(0, 8);
   const coSign = {};
   moties.forEach(m => {
     const fracties = (m.fracties || []).filter(Boolean);
     if (fracties.length < 2) return;
-    for (let i = 0; i < fracties.length; i++) {
-      for (let j = i + 1; j < fracties.length; j++) {
-        const key = [fracties[i], fracties[j]].sort().join(' + ');
-        coSign[key] = (coSign[key] || 0) + 1;
-      }
+    for (let i = 0; i < fracties.length; i++) for (let j = i+1; j < fracties.length; j++) {
+      const key = [fracties[i], fracties[j]].sort().join(' + ');
+      coSign[key] = (coSign[key] || 0) + 1;
     }
   });
   const topCoSign = Object.entries(coSign).sort((a, b) => b[1] - a[1]).slice(0, 8);
-
-  // ── Overall stats ─────────────────────────────────────────────────────────
-  const totaal     = moties.length;
+  const totaal = moties.length;
   const aangenomen = moties.filter(m => m.status === 'aangenomen').length;
-  const metStatus  = moties.filter(m => m.status === 'aangenomen' || m.status === 'verworpen').length;
+  const metStatus = moties.filter(m => m.status === 'aangenomen' || m.status === 'verworpen').length;
   const pctGlobaal = metStatus ? Math.round(aangenomen / metStatus * 100) : 0;
-  const meestActief = partijLijst.length
-    ? partijLijst.reduce((a, b) => b.totaal > a.totaal ? b : a, partijLijst[0])
-    : null;
+  const meestActief = partijLijst.length ? partijLijst.reduce((a, b) => b.totaal > a.totaal ? b : a, partijLijst[0]) : null;
   const maxTotaal = Math.max(...partijLijst.map(p => p.totaal), 1);
 
-  // ── Trend SVG ─────────────────────────────────────────────────────────────
   function trendSVG() {
     if (maandLijst.length < 2) return '<div class="viz-empty">Onvoldoende data</div>';
     const W = 700, H = 150, PAD = { t: 10, r: 16, b: 28, l: 36 };
@@ -1117,413 +954,159 @@ function renderMotiesVisuals() {
     const maxC = Math.max(...maandLijst.map(([, d]) => d.totaal), 1);
     const slot  = pW / maandLijst.length;
     const barW  = Math.max(6, Math.floor(slot * 0.6));
-
     const bars = maandLijst.map(([maand, d], i) => {
-      const x    = PAD.l + i * slot + (slot - barW) / 2;
-      const hTot = (d.totaal    / maxC) * pH;
-      const hAng = (d.aangenomen / maxC) * pH;
-      const hVer = (d.verworpen  / maxC) * pH;
-      const mn   = parseInt(maand.split('-')[1]);
-      const yr   = maand.split('-')[0].slice(2);
-      return `
-        <rect x="${x}" y="${PAD.t + pH - hTot}" width="${barW}" height="${hTot}" fill="#E6F3F5" rx="1"/>
-        <rect x="${x}" y="${PAD.t + pH - hAng}" width="${barW * 0.5}" height="${hAng}" fill="var(--go)" rx="1"/>
-        <rect x="${x + barW * 0.5}" y="${PAD.t + pH - hVer}" width="${barW * 0.5}" height="${hVer}" fill="var(--stop)" rx="1" opacity="0.75"/>
-        <text x="${x + barW / 2}" y="${H - 4}" text-anchor="middle" font-size="9" fill="#6B7280">${maandNamen[mn-1]}'${yr}</text>
-      `;
+      const x = PAD.l + i * slot + (slot - barW) / 2;
+      const hTot = (d.totaal / maxC) * pH, hAng = (d.aangenomen / maxC) * pH, hVer = (d.verworpen / maxC) * pH;
+      const mn = parseInt(maand.split('-')[1]), yr = maand.split('-')[0].slice(2);
+      return `<rect x="${x}" y="${PAD.t + pH - hTot}" width="${barW}" height="${hTot}" fill="#E6F3F5" rx="1"/>
+              <rect x="${x}" y="${PAD.t + pH - hAng}" width="${barW * 0.5}" height="${hAng}" fill="var(--go)" rx="1"/>
+              <rect x="${x + barW * 0.5}" y="${PAD.t + pH - hVer}" width="${barW * 0.5}" height="${hVer}" fill="var(--stop)" rx="1" opacity="0.75"/>
+              <text x="${x + barW / 2}" y="${H - 4}" text-anchor="middle" font-size="9" fill="#6B7280">${maandNamen[mn-1]}'${yr}</text>`;
     }).join('');
-
     const yTicks = [0, Math.ceil(maxC / 2), maxC];
-    const yLines = yTicks.map(v => {
-      const y = PAD.t + pH - (v / maxC) * pH;
-      return `<line x1="${PAD.l}" y1="${y}" x2="${PAD.l + pW}" y2="${y}" stroke="#D8D5CE" stroke-width="0.5"/>
-              <text x="${PAD.l - 4}" y="${y + 3}" text-anchor="end" font-size="9" fill="#6B7280">${v}</text>`;
-    }).join('');
-
-    return `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:${H}px;">
-      ${yLines}
-      <line x1="${PAD.l}" y1="${PAD.t}" x2="${PAD.l}" y2="${PAD.t+pH}" stroke="#D8D5CE" stroke-width="1"/>
-      <line x1="${PAD.l}" y1="${PAD.t+pH}" x2="${PAD.l+pW}" y2="${PAD.t+pH}" stroke="#D8D5CE" stroke-width="1"/>
-      ${bars}
-    </svg>`;
+    const yLines = yTicks.map(v => { const y = PAD.t + pH - (v / maxC) * pH; return `<line x1="${PAD.l}" y1="${y}" x2="${PAD.l + pW}" y2="${y}" stroke="#D8D5CE" stroke-width="0.5"/><text x="${PAD.l - 4}" y="${y + 3}" text-anchor="end" font-size="9" fill="#6B7280">${v}</text>`; }).join('');
+    return `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:${H}px;">${yLines}<line x1="${PAD.l}" y1="${PAD.t}" x2="${PAD.l}" y2="${PAD.t+pH}" stroke="#D8D5CE" stroke-width="1"/><line x1="${PAD.l}" y1="${PAD.t+pH}" x2="${PAD.l+pW}" y2="${PAD.t+pH}" stroke="#D8D5CE" stroke-width="1"/>${bars}</svg>`;
   }
 
-  // ── RENDER ────────────────────────────────────────────────────────────────
   el.innerHTML = `
-
-    <!-- Overall stats -->
     <div class="viz-stat-row">
-      <div class="viz-stat">
-        <div class="viz-stat-label">Totaal ingediend</div>
-        <div class="viz-stat-value">${totaal}</div>
-        <div class="viz-stat-sub">moties &amp; amendementen</div>
-      </div>
-      <div class="viz-stat">
-        <div class="viz-stat-label">Slagingspercentage</div>
-        <div class="viz-stat-value" style="color:var(--go)">${pctGlobaal}%</div>
-        <div class="viz-stat-sub">van ${metStatus} met stemuitslag</div>
-      </div>
-      <div class="viz-stat">
-        <div class="viz-stat-label">Meest actief</div>
-        <div class="viz-stat-value" style="font-size:22px;padding-top:6px;">${meestActief ? esc(meestActief.naam) : '—'}</div>
-        <div class="viz-stat-sub">${meestActief ? meestActief.totaal + ' ingediend' : ''}</div>
-      </div>
+      <div class="viz-stat"><div class="viz-stat-label">Totaal ingediend</div><div class="viz-stat-value">${totaal}</div><div class="viz-stat-sub">moties &amp; amendementen</div></div>
+      <div class="viz-stat"><div class="viz-stat-label">Slagingspercentage</div><div class="viz-stat-value" style="color:var(--go)">${pctGlobaal}%</div><div class="viz-stat-sub">van ${metStatus} met stemuitslag</div></div>
+      <div class="viz-stat"><div class="viz-stat-label">Meest actief</div><div class="viz-stat-value" style="font-size:22px;padding-top:6px;">${meestActief ? esc(meestActief.naam) : '—'}</div><div class="viz-stat-sub">${meestActief ? meestActief.totaal + ' ingediend' : ''}</div></div>
     </div>
-
-    <!-- VIZ 2: Trend over tijd -->
     <div class="card" style="margin-bottom:16px;">
-      <div class="card-header">
-        <span class="card-title">Moties &amp; amendementen per maand</span>
-        <span style="display:flex;gap:14px;align-items:center;">
-          <span style="display:flex;align-items:center;gap:4px;font-size:10px;color:var(--muted);">
-            <span style="width:10px;height:10px;background:var(--go);display:inline-block;"></span> Aangenomen
-          </span>
-          <span style="display:flex;align-items:center;gap:4px;font-size:10px;color:var(--muted);">
-            <span style="width:10px;height:10px;background:var(--stop);opacity:0.75;display:inline-block;"></span> Verworpen
-          </span>
-          <span style="display:flex;align-items:center;gap:4px;font-size:10px;color:var(--muted);">
-            <span style="width:10px;height:10px;background:var(--teal-bg);display:inline-block;"></span> Totaal
-          </span>
-        </span>
-      </div>
+      <div class="card-header"><span class="card-title">Moties &amp; amendementen per maand</span></div>
       <div style="padding:12px 20px 8px;">${trendSVG()}</div>
     </div>
-
-    <!-- VIZ bestaand: Slagingspercentage + Activiteit + Top indieners -->
     <div class="viz-row">
       <div class="card">
         <div class="card-header"><span class="card-title">Slagingspercentage per partij</span></div>
         <div class="viz-bar-list">
-          ${partijLijst.length === 0 ? '<div class="viz-empty">Onvoldoende stemmingsdata</div>' :
-            partijLijst.map(p => `
-              <div class="viz-bar-row">
-                <div class="viz-bar-label" title="${esc(p.naam)}">${esc(p.naam)}</div>
-                <div class="viz-bar-track">
-                  <div class="viz-bar-fill" style="width:${p.pct ?? 0}%;background:${(p.pct ?? 0) >= 50 ? 'var(--go)' : 'var(--stop)'}"></div>
-                </div>
-                <div class="viz-bar-pct">${p.pct !== null ? p.pct + '%' : '—'}</div>
-              </div>`).join('')}
+          ${partijLijst.length === 0 ? '<div class="viz-empty">Onvoldoende stemmingsdata</div>' : partijLijst.map(p => `<div class="viz-bar-row"><div class="viz-bar-label" title="${esc(p.naam)}">${esc(p.naam)}</div><div class="viz-bar-track"><div class="viz-bar-fill" style="width:${p.pct ?? 0}%;background:${(p.pct ?? 0) >= 50 ? 'var(--go)' : 'var(--stop)'}"></div></div><div class="viz-bar-pct">${p.pct !== null ? p.pct + '%' : '—'}</div></div>`).join('')}
         </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:16px;">
         <div class="card">
           <div class="card-header"><span class="card-title">Aantal ingediend per partij</span></div>
           <div class="viz-bar-list">
-            ${partijLijst.map(p => `
-              <div class="viz-bar-row">
-                <div class="viz-bar-label" title="${esc(p.naam)}">${esc(p.naam)}</div>
-                <div class="viz-bar-track">
-                  <div class="viz-bar-fill" style="width:${Math.round(p.totaal/maxTotaal*100)}%;background:var(--teal)"></div>
-                </div>
-                <div class="viz-bar-pct">${p.totaal}</div>
-              </div>`).join('')}
+            ${partijLijst.map(p => `<div class="viz-bar-row"><div class="viz-bar-label" title="${esc(p.naam)}">${esc(p.naam)}</div><div class="viz-bar-track"><div class="viz-bar-fill" style="width:${Math.round(p.totaal/maxTotaal*100)}%;background:var(--teal)"></div></div><div class="viz-bar-pct">${p.totaal}</div></div>`).join('')}
           </div>
         </div>
-        ${topIndieners.length ? `
-          <div class="card">
-            <div class="card-header"><span class="card-title">Meest actieve indieners</span></div>
-            <div class="viz-bar-list">
-              ${topIndieners.map(([naam, s]) => `
-                <div class="viz-bar-row">
-                  <div class="viz-bar-label" title="${esc(naam)}">${esc(naam)}</div>
-                  <div class="viz-bar-track">
-                    <div class="viz-bar-fill" style="width:${Math.round(s.totaal/topIndieners[0][1].totaal*100)}%;background:var(--navy)"></div>
-                  </div>
-                  <div class="viz-bar-pct">${s.totaal}</div>
-                </div>`).join('')}
-            </div>
-          </div>` : ''}
+        ${topIndieners.length ? `<div class="card"><div class="card-header"><span class="card-title">Meest actieve indieners</span></div><div class="viz-bar-list">${topIndieners.map(([naam, s]) => `<div class="viz-bar-row"><div class="viz-bar-label" title="${esc(naam)}">${esc(naam)}</div><div class="viz-bar-track"><div class="viz-bar-fill" style="width:${Math.round(s.totaal/topIndieners[0][1].totaal*100)}%;background:var(--navy)"></div></div><div class="viz-bar-pct">${s.totaal}</div></div>`).join('')}</div></div>` : ''}
       </div>
     </div>
-
-    <!-- VIZ 1: Nauwste stemmingen -->
     <div class="card" style="margin-bottom:16px;">
-      <div class="card-header">
-        <span class="card-title">Nauwste stemmingen</span>
-        <span style="font-size:11px;color:var(--muted);">kleinste marge tussen voor en tegen</span>
-      </div>
-      ${controversieel.length === 0
-        ? '<div class="viz-empty">Geen stemmingsdata beschikbaar</div>'
-        : `<table style="width:100%;border-collapse:collapse;">
-            <thead>
-              <tr>
-                <th>Motie / amendement</th>
-                <th>Partij</th>
-                <th>Stemverhouding</th>
-                <th>Uitslag</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${controversieel.map(m => `
-                <tr>
-                  <td>
-                    <div class="motie-title">${esc(m.titel)}</div>
-                    <div class="motie-desc">${fmtDate(m.datum, 'full')}</div>
-                  </td>
-                  <td><span class="badge badge-teal">${esc(m.partij || '—')}</span></td>
-                  <td style="min-width:140px;">
-                    ${stemmingBar(m)}
-                    <div style="font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--stop);margin-top:2px;">marge: ${m.marge}%</div>
-                  </td>
-                  <td>${statusBadge(m.status)}</td>
-                </tr>`).join('')}
-            </tbody>
-          </table>`
-      }
+      <div class="card-header"><span class="card-title">Nauwste stemmingen</span><span style="font-size:11px;color:var(--muted);">kleinste marge tussen voor en tegen</span></div>
+      ${controversieel.length === 0 ? '<div class="viz-empty">Geen stemmingsdata beschikbaar</div>' : `<table style="width:100%;border-collapse:collapse;"><thead><tr><th>Motie / amendement</th><th>Partij</th><th>Stemverhouding</th><th>Uitslag</th></tr></thead><tbody>${controversieel.map(m => `<tr><td><div class="motie-title">${esc(m.titel)}</div><div class="motie-desc">${fmtDate(m.datum, 'full')}</div></td><td><span class="badge badge-teal">${esc(m.partij || '—')}</span></td><td style="min-width:140px;">${stemmingBar(m)}<div style="font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--stop);margin-top:2px;">marge: ${m.marge}%</div></td><td>${statusBadge(m.status)}</td></tr>`).join('')}</tbody></table>`}
     </div>
-
-    <!-- VIZ 3 + 4: Ingetrokken ratio + Motie/Amendement ratio -->
     <div class="viz-row" style="margin-bottom:16px;">
-
       <div class="card">
         <div class="card-header"><span class="card-title">Ingetrokken vs. verworpen per partij</span></div>
         <div class="viz-bar-list">
-          ${partijVerlies.length === 0 ? '<div class="viz-empty">Geen data</div>' :
-            partijVerlies.map(p => {
-              const totNeg  = p.verworpen + p.ingetrokken;
-              const verwPct = totNeg ? Math.round(p.verworpen  / totNeg * 100) : 0;
-              const ingtPct = 100 - verwPct;
-              return `
-                <div class="viz-bar-row">
-                  <div class="viz-bar-label" title="${esc(p.naam)}">${esc(p.naam)}</div>
-                  <div class="stacked-bar-track">
-                    <div style="width:${verwPct}%;background:var(--stop);opacity:0.8;" title="${p.verworpen} verworpen"></div>
-                    <div style="width:${ingtPct}%;background:var(--hold);opacity:0.8;" title="${p.ingetrokken} ingetrokken"></div>
-                  </div>
-                  <div class="viz-bar-pct" style="width:52px;">${p.verworpen}v / ${p.ingetrokken}i</div>
-                </div>`;
-            }).join('')}
-          <div class="viz-legend">
-            <span class="viz-legend-item"><span class="viz-legend-dot" style="background:var(--stop);opacity:0.8;"></span> Verworpen</span>
-            <span class="viz-legend-item"><span class="viz-legend-dot" style="background:var(--hold);opacity:0.8;"></span> Ingetrokken</span>
-          </div>
+          ${partijVerlies.length === 0 ? '<div class="viz-empty">Geen data</div>' : partijVerlies.map(p => { const totNeg = p.verworpen + p.ingetrokken; const verwPct = totNeg ? Math.round(p.verworpen / totNeg * 100) : 0; const ingtPct = 100 - verwPct; return `<div class="viz-bar-row"><div class="viz-bar-label" title="${esc(p.naam)}">${esc(p.naam)}</div><div class="stacked-bar-track"><div style="width:${verwPct}%;background:var(--stop);opacity:0.8;"></div><div style="width:${ingtPct}%;background:var(--hold);opacity:0.8;"></div></div><div class="viz-bar-pct" style="width:52px;">${p.verworpen}v / ${p.ingetrokken}i</div></div>`; }).join('')}
+          <div class="viz-legend"><span class="viz-legend-item"><span class="viz-legend-dot" style="background:var(--stop);opacity:0.8;"></span> Verworpen</span><span class="viz-legend-item"><span class="viz-legend-dot" style="background:var(--hold);opacity:0.8;"></span> Ingetrokken</span></div>
         </div>
       </div>
-
       <div class="card">
         <div class="card-header"><span class="card-title">Motie vs. amendement per partij</span></div>
         <div class="viz-bar-list">
-          ${partijType.length === 0 ? '<div class="viz-empty">Geen data</div>' :
-            partijType.map(p => {
-              const totMA  = p.moties_count + p.amendementen_count;
-              const motPct = totMA ? Math.round(p.moties_count / totMA * 100) : 0;
-              const amePct = 100 - motPct;
-              return `
-                <div class="viz-bar-row">
-                  <div class="viz-bar-label" title="${esc(p.naam)}">${esc(p.naam)}</div>
-                  <div class="stacked-bar-track">
-                    <div style="width:${motPct}%;background:var(--navy);" title="${p.moties_count} moties"></div>
-                    <div style="width:${amePct}%;background:var(--teal);" title="${p.amendementen_count} amendementen"></div>
-                  </div>
-                  <div class="viz-bar-pct" style="width:52px;">${p.moties_count}m / ${p.amendementen_count}a</div>
-                </div>`;
-            }).join('')}
-          <div class="viz-legend">
-            <span class="viz-legend-item"><span class="viz-legend-dot" style="background:var(--navy);"></span> Motie</span>
-            <span class="viz-legend-item"><span class="viz-legend-dot" style="background:var(--teal);"></span> Amendement</span>
-          </div>
+          ${partijType.length === 0 ? '<div class="viz-empty">Geen data</div>' : partijType.map(p => { const totMA = p.moties_count + p.amendementen_count; const motPct = totMA ? Math.round(p.moties_count / totMA * 100) : 0; const amePct = 100 - motPct; return `<div class="viz-bar-row"><div class="viz-bar-label" title="${esc(p.naam)}">${esc(p.naam)}</div><div class="stacked-bar-track"><div style="width:${motPct}%;background:var(--navy);"></div><div style="width:${amePct}%;background:var(--teal);"></div></div><div class="viz-bar-pct" style="width:52px;">${p.moties_count}m / ${p.amendementen_count}a</div></div>`; }).join('')}
+          <div class="viz-legend"><span class="viz-legend-item"><span class="viz-legend-dot" style="background:var(--navy);"></span> Motie</span><span class="viz-legend-item"><span class="viz-legend-dot" style="background:var(--teal);"></span> Amendement</span></div>
         </div>
       </div>
     </div>
-
-    <!-- VIZ 5: Politieke samenwerking -->
     <div class="card" style="margin-bottom:16px;">
-      <div class="card-header">
-        <span class="card-title">Politieke samenwerking</span>
-        <span style="font-size:11px;color:var(--muted);">meest voorkomende partijcombinaties op basis van gezamenlijk ingediende moties</span>
-      </div>
-      ${topCoSign.length === 0
-        ? '<div class="viz-empty">Geen medeondertekenaarsdata beschikbaar — controleer of het <code>fracties</code>-veld gevuld is in moties.json</div>'
-        : `<div class="viz-bar-list">
-            ${(() => {
-              const maxCS = topCoSign[0][1];
-              return topCoSign.map(([combo, count]) => {
-                const parts = combo.split(' + ');
-                const p1 = parts[0], p2 = parts[1] || '';
-                return `
-                  <div class="viz-bar-row" style="gap:8px;">
-                    <div style="width:200px;flex-shrink:0;display:flex;align-items:center;gap:4px;overflow:hidden;">
-                      <span class="badge badge-teal" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:80px;" title="${esc(p1)}">${esc(p1)}</span>
-                      <span style="color:var(--muted);font-size:10px;">+</span>
-                      <span class="badge badge-navy" style="white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:80px;" title="${esc(p2)}">${esc(p2)}</span>
-                    </div>
-                    <div class="viz-bar-track">
-                      <div class="viz-bar-fill" style="width:${Math.round(count/maxCS*100)}%;background:var(--navy);"></div>
-                    </div>
-                    <div class="viz-bar-pct">${count}x</div>
-                  </div>`;
-              }).join('');
-            })()}
-          </div>`
-      }
+      <div class="card-header"><span class="card-title">Politieke samenwerking</span><span style="font-size:11px;color:var(--muted);">meest voorkomende partijcombinaties</span></div>
+      ${topCoSign.length === 0 ? '<div class="viz-empty">Geen medeondertekenaarsdata — controleer het <code>fracties</code>-veld in moties.json</div>' : `<div class="viz-bar-list">${(() => { const maxCS = topCoSign[0][1]; return topCoSign.map(([combo, count]) => { const parts = combo.split(' + '); return `<div class="viz-bar-row" style="gap:8px;"><div style="width:200px;flex-shrink:0;display:flex;align-items:center;gap:4px;overflow:hidden;"><span class="badge badge-teal" style="max-width:80px;overflow:hidden;text-overflow:ellipsis;" title="${esc(parts[0])}">${esc(parts[0])}</span><span style="color:var(--muted);font-size:10px;">+</span><span class="badge badge-navy" style="max-width:80px;overflow:hidden;text-overflow:ellipsis;" title="${esc(parts[1]||'')}">${esc(parts[1]||'')}</span></div><div class="viz-bar-track"><div class="viz-bar-fill" style="width:${Math.round(count/maxCS*100)}%;background:var(--navy);"></div></div><div class="viz-bar-pct">${count}x</div></div>`; }).join(''); })()}</div>`}
     </div>
   `;
 }
 
 // ── BEKENDMAKINGEN ────────────────────────────────────────────────────────────
-const WIJK_MAP = {
-  // Vul hier straatnaam → wijk in, bijv:
-  // "Westzijde": "Zaandam-West",
-  // "Oostzijde": "Zaandam-Oost",
-};
-
+const WIJK_MAP = {};
 function getWijkUitAdres(adres) {
   if (!adres) return null;
-  for (const [straat, wijk] of Object.entries(WIJK_MAP)) {
-    if (adres.toLowerCase().includes(straat.toLowerCase())) return wijk;
-  }
-  const parts = adres.split(' ');
-  return parts.length >= 1 ? parts[0] : adres;
+  for (const [straat, wijk] of Object.entries(WIJK_MAP)) { if (adres.toLowerCase().includes(straat.toLowerCase())) return wijk; }
+  return adres.split(' ')[0] || adres;
 }
-
 function telPerWijk(items) {
   const map = {};
-  items.forEach(b => {
-    if (!b.adres) return;
-    const wijk = getWijkUitAdres(b.adres);
-    if (!wijk) return;
-    map[wijk] = (map[wijk] || 0) + 1;
-  });
+  items.forEach(b => { if (!b.adres) return; const wijk = getWijkUitAdres(b.adres); if (!wijk) return; map[wijk] = (map[wijk] || 0) + 1; });
   return map;
 }
-
 function renderBekendmakingenDashboard() {
-  const cam   = bekendmakingen.filter(b => b.categorie === 'cameratoezicht');
+  const cam = bekendmakingen.filter(b => b.categorie === 'cameratoezicht');
   const woning = bekendmakingen.filter(b => b.categorie === 'woningsluiting');
-  const dwang  = bekendmakingen.filter(b => b.categorie === 'dwangsom');
-
+  const dwang = bekendmakingen.filter(b => b.categorie === 'dwangsom');
   document.getElementById('bkCamTotaal').textContent  = cam.length;
   document.getElementById('bkWoningTotaal').textContent = woning.length;
   document.getElementById('bkDwangsom').textContent    = dwang.length;
-
   const nu = new Date();
   const maanden = [];
-  for (let i = 5; i >= 0; i--) {
-    const d = new Date(nu.getFullYear(), nu.getMonth() - i, 1);
-    maanden.push({ maand: d.toISOString().slice(0, 7), count: 0 });
-  }
-
-  const tel = (items) => {
-    const m = {};
-    maanden.forEach(x => m[x.maand] = 0);
-    items.forEach(b => {
-      if (b.datum) { const k = b.datum.slice(0, 7); if (k in m) m[k]++; }
-    });
-    return maanden.map(x => ({ maand: x.maand, count: m[x.maand] }));
-  };
-
-  tekenLijnGrafiek('bkCamChart',      tel(cam),   "Camera's");
-  tekenLijnGrafiek('bkWoningChart',   tel(woning), 'Woningsluitingen');
-  tekenLijnGrafiek('bkDwangsomChart', tel(dwang),  'Dwangsommen');
-  tekenHorizontaleBalken('bkCamWijkChart',    telPerWijk(cam));
+  for (let i = 5; i >= 0; i--) { const d = new Date(nu.getFullYear(), nu.getMonth() - i, 1); maanden.push({ maand: d.toISOString().slice(0, 7), count: 0 }); }
+  const tel = (items) => { const m = {}; maanden.forEach(x => m[x.maand] = 0); items.forEach(b => { if (b.datum) { const k = b.datum.slice(0, 7); if (k in m) m[k]++; } }); return maanden.map(x => ({ maand: x.maand, count: m[x.maand] })); };
+  tekenLijnGrafiek('bkCamChart', tel(cam), "Camera's");
+  tekenLijnGrafiek('bkWoningChart', tel(woning), 'Woningsluitingen');
+  tekenLijnGrafiek('bkDwangsomChart', tel(dwang), 'Dwangsommen');
+  tekenHorizontaleBalken('bkCamWijkChart', telPerWijk(cam));
   tekenHorizontaleBalken('bkWoningWijkChart', telPerWijk(woning));
 }
-
 function tekenLijnGrafiek(containerId, data, label) {
   const container = document.getElementById(containerId);
   if (!container) return;
-  if (!data || data.length < 2) {
-    container.innerHTML = '<div class="viz-empty">Onvoldoende data</div>'; return;
-  }
+  if (!data || data.length < 2) { container.innerHTML = '<div class="viz-empty">Onvoldoende data</div>'; return; }
   const W = 500, H = 200, PAD = { t: 10, r: 16, b: 30, l: 40 };
   const pW = W - PAD.l - PAD.r, pH = H - PAD.t - PAD.b;
   const maxC = Math.max(...data.map(d => d.count), 1);
-  const pts = data.map((d, i) => [
-    PAD.l + (i / (data.length - 1)) * pW,
-    PAD.t + (1 - d.count / maxC) * pH
-  ]);
+  const pts = data.map((d, i) => [PAD.l + (i / (data.length - 1)) * pW, PAD.t + (1 - d.count / maxC) * pH]);
   const line = pts.map(([x,y]) => `${x},${y}`).join(' ');
   const area = [`${PAD.l},${PAD.t+pH}`, ...pts.map(([x,y]) => `${x},${y}`), `${PAD.l+pW},${PAD.t+pH}`].join(' ');
   const maandNamen = ['Jan','Feb','Mrt','Apr','Mei','Jun','Jul','Aug','Sep','Okt','Nov','Dec'];
-  const labels = data.map((d, i) => {
-    const x = PAD.l + (i / (data.length - 1)) * pW;
-    const m = parseInt(d.maand.split('-')[1]);
-    return `<text x="${x}" y="${H - 8}" text-anchor="middle" font-size="10" fill="#6B7280">${maandNamen[m-1]}</text>`;
-  }).join('');
+  const labels = data.map((d, i) => { const x = PAD.l + (i / (data.length - 1)) * pW; const m = parseInt(d.maand.split('-')[1]); return `<text x="${x}" y="${H - 8}" text-anchor="middle" font-size="10" fill="#6B7280">${maandNamen[m-1]}</text>`; }).join('');
   const yTicks = [0, Math.ceil(maxC/2), maxC];
-  const yLabels = yTicks.map(v => {
-    const y = PAD.t + (1 - v / maxC) * pH;
-    return `<text x="${PAD.l - 6}" y="${y + 4}" text-anchor="end" font-size="10" fill="#6B7280">${v}</text>`;
-  }).join('');
-  const dots = pts.map(([x,y], i) =>
-    `<circle cx="${x}" cy="${y}" r="3" fill="white" stroke="#006B7B" stroke-width="2"><title>${data[i].count} in ${data[i].maand}</title></circle>`
-  ).join('');
-  container.innerHTML = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
-    <line x1="${PAD.l}" y1="${PAD.t}" x2="${PAD.l}" y2="${PAD.t+pH}" stroke="#D8D5CE" stroke-width="1"/>
-    <line x1="${PAD.l}" y1="${PAD.t+pH}" x2="${PAD.l+pW}" y2="${PAD.t+pH}" stroke="#D8D5CE" stroke-width="1"/>
-    ${yLabels}
-    <polygon points="${area}" fill="#006B7B" fill-opacity="0.06"/>
-    <polyline points="${line}" fill="none" stroke="#006B7B" stroke-width="2.5" stroke-linejoin="round"/>
-    ${dots}
-    ${labels}
-  </svg>`;
+  const yLabels = yTicks.map(v => { const y = PAD.t + (1 - v / maxC) * pH; return `<text x="${PAD.l - 6}" y="${y + 4}" text-anchor="end" font-size="10" fill="#6B7280">${v}</text>`; }).join('');
+  const dots = pts.map(([x,y], i) => `<circle cx="${x}" cy="${y}" r="3" fill="white" stroke="#006B7B" stroke-width="2"><title>${data[i].count} in ${data[i].maand}</title></circle>`).join('');
+  container.innerHTML = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;"><line x1="${PAD.l}" y1="${PAD.t}" x2="${PAD.l}" y2="${PAD.t+pH}" stroke="#D8D5CE" stroke-width="1"/><line x1="${PAD.l}" y1="${PAD.t+pH}" x2="${PAD.l+pW}" y2="${PAD.t+pH}" stroke="#D8D5CE" stroke-width="1"/>${yLabels}<polygon points="${area}" fill="#006B7B" fill-opacity="0.06"/><polyline points="${line}" fill="none" stroke="#006B7B" stroke-width="2.5" stroke-linejoin="round"/>${dots}${labels}</svg>`;
 }
-
 function tekenHorizontaleBalken(containerId, data) {
   const container = document.getElementById(containerId);
   if (!container) return;
   const entries = Object.entries(data).sort((a,b) => b[1] - a[1]);
   if (entries.length === 0) { container.innerHTML = '<div class="viz-empty">geen data</div>'; return; }
   const maxVal = entries[0][1];
-  container.innerHTML = entries.map(([wijk, count]) => `
-    <div class="bk-bar-row">
-      <div class="bk-bar-label">${esc(wijk)}</div>
-      <div class="bk-bar-track">
-        <div class="bk-bar-fill" style="width:${Math.round(count/maxVal*100)}%"></div>
-      </div>
-      <div class="bk-bar-count">${count}</div>
-    </div>
-  `).join('');
+  container.innerHTML = entries.map(([wijk, count]) => `<div class="bk-bar-row"><div class="bk-bar-label">${esc(wijk)}</div><div class="bk-bar-track"><div class="bk-bar-fill" style="width:${Math.round(count/maxVal*100)}%"></div></div><div class="bk-bar-count">${count}</div></div>`).join('');
 }
-
 function renderOvBk() {
-  document.getElementById('ovBk').innerHTML =
-    bekendmakingen.slice(0, 5).map(b => `
-      <div class="mini-item">
-        <div class="mini-date">${fmtDate(b.datum, 'short')}</div>
-        <div>
-          <div class="mini-title">
-            <a href="${b.link || '#'}" target="_blank" style="color:inherit;text-decoration:none;">${esc(b.titel)}</a>
-          </div>
-          <div class="mini-type">${esc(catLabel(b.categorie || ''))}</div>
-        </div>
-      </div>`).join('') || '<div class="empty">Geen data</div>';
+  document.getElementById('ovBk').innerHTML = bekendmakingen.slice(0, 5).map(b => `
+    <div class="mini-item">
+      <div class="mini-date">${fmtDate(b.datum, 'short')}</div>
+      <div>
+        <div class="mini-title"><a href="${b.link || '#'}" target="_blank" style="color:inherit;text-decoration:none;">${esc(b.titel)}</a></div>
+        <div class="mini-type">${esc(catLabel(b.categorie || ''))}</div>
+      </div>
+    </div>`).join('') || '<div class="empty">Geen data</div>';
 }
-
 function renderBekendmakingenLijst() {
   document.getElementById('bkCount').textContent = bekendmakingen.length + ' bekendmakingen';
   const lijst = document.getElementById('bkList');
-  if (!bekendmakingen.length) {
-    lijst.innerHTML = '<div class="empty">Geen relevante bekendmakingen gevonden.</div>'; return;
-  }
+  if (!bekendmakingen.length) { lijst.innerHTML = '<div class="empty">Geen relevante bekendmakingen gevonden.</div>'; return; }
   lijst.innerHTML = bekendmakingen.map(b => `
     <div class="bk-item">
-      <div class="bk-top">
-        <div>
-          <a class="bk-title-link" href="${b.link || '#'}" target="_blank">${esc(b.titel)}</a>
-          <div class="bk-meta">
-            <span class="badge badge-teal">${esc(catLabel(b.categorie))}</span>
-            <span class="bk-date">${fmtDate(b.datum,'full')}</span>
-            ${b.adres ? `<span class="bk-date">📍 ${esc(b.adres)}</span>` : ''}
-          </div>
-          ${b.omschrijving ? `<div class="bk-desc">${esc(b.omschrijving)}</div>` : ''}
-        </div>
-      </div>
-    </div>
-  `).join('');
+      <div class="bk-top"><div>
+        <a class="bk-title-link" href="${b.link || '#'}" target="_blank">${esc(b.titel)}</a>
+        <div class="bk-meta"><span class="badge badge-teal">${esc(catLabel(b.categorie))}</span><span class="bk-date">${fmtDate(b.datum,'full')}</span>${b.adres ? `<span class="bk-date">📍 ${esc(b.adres)}</span>` : ''}</div>
+        ${b.omschrijving ? `<div class="bk-desc">${esc(b.omschrijving)}</div>` : ''}
+      </div></div>
+    </div>`).join('');
 }
 
 // ── RAADSVRAGEN ───────────────────────────────────────────────────────────────
 function populateRvFilter() {
   const sel = document.getElementById('filterRvPartij');
   const fracties = [...new Set(raadsvragen.map(r => r.fractie).filter(Boolean))].sort();
-  fracties.forEach(f => {
-    const o = document.createElement('option');
-    o.value = f; o.textContent = f; sel.appendChild(o);
-  });
+  fracties.forEach(f => { const o = document.createElement('option'); o.value = f; o.textContent = f; sel.appendChild(o); });
   document.getElementById('rvCount').textContent = raadsvragen.length + ' raadsvragen';
 }
-
 function renderRaadsvragen() {
   const partijF = document.getElementById('filterRvPartij').value;
   const statusF = document.getElementById('filterRvStatus').value;
@@ -1536,17 +1119,221 @@ function renderRaadsvragen() {
         <div class="rv-item">
           <div class="rv-title">${esc(r.titel)}</div>
           <div class="rv-meta">
-            ${r.fractie      ? `<span class="badge badge-teal">${esc(r.fractie)}</span>` : ''}
-            ${r.vraagsteller ? `<span class="rv-vraagsteller">${esc(r.vraagsteller)}</span>` : ''}
+            ${r.fractie ? `<span class="badge badge-teal">${esc(r.fractie)}</span>` : ''}
+            ${r.vraagsteller ? `<span style="font-size:11px;color:var(--teal);font-weight:600;">${esc(r.vraagsteller)}</span>` : ''}
             <span class="rv-date">${fmtDate(r.datum_ingediend, 'full')}</span>
             ${statusBadge(r.status)}
-            ${r.datum_antwoord ? `<span class="rv-date">Antwoord: ${fmtDate(r.datum_antwoord,'full')}</span>` : ''}
           </div>
           ${r.omschrijving ? `<div class="bk-desc" style="margin-top:6px;">${esc(r.omschrijving)}</div>` : ''}
         </div>`).join('');
 }
 
+// ── COLLEGEBRIEVEN ────────────────────────────────────────────────────────────
+function renderCbStats() {
+  const totaalClaims = collegebrieven.reduce((s, b) => s + (b.claims?.length || 0), 0);
+  const hoogClaims   = collegebrieven.reduce((s, b) => s + (b.claims || []).filter(c => c.prioriteit === 'HOOG').length, 0);
+  document.getElementById('cbTotaal').textContent = collegebrieven.length;
+  document.getElementById('cbClaims').textContent = totaalClaims;
+  document.getElementById('cbHoog').textContent   = hoogClaims;
+}
+
+function populateCbFilters() {
+  const selPh = document.getElementById('filterCbPh');
+  const phLijst = [...new Set(collegebrieven.map(b => b.portefeuillehouder).filter(Boolean).flatMap(p => p.split(', ')))].sort();
+  phLijst.forEach(p => { const o = document.createElement('option'); o.value = p; o.textContent = p; selPh.appendChild(o); });
+  document.getElementById('cbCount').textContent = collegebrieven.length + ' brieven';
+}
+
+function renderCollegebrieven() {
+  const typeF   = document.getElementById('filterCbType').value;
+  const phF     = document.getElementById('filterCbPh').value;
+  const claimsF = document.getElementById('filterCbClaims').value;
+
+  let f = [...collegebrieven];
+  if (typeF)   f = f.filter(b => b.type === typeF);
+  if (phF)     f = f.filter(b => (b.portefeuillehouder || '').includes(phF));
+  if (claimsF === 'claims') f = f.filter(b => (b.claims?.length || 0) > 0);
+  if (claimsF === 'hoog')   f = f.filter(b => (b.claims || []).some(c => c.prioriteit === 'HOOG'));
+
+  document.getElementById('cbCount').textContent = f.length + ' brieven';
+
+  if (!f.length) {
+    document.getElementById('cbList').innerHTML = '<div class="empty">Geen collegebrieven gevonden.</div>';
+    return;
+  }
+
+  document.getElementById('cbList').innerHTML = f.map(b => {
+    const claims   = b.claims || [];
+    const hoogAantal = claims.filter(c => c.prioriteit === 'HOOG').length;
+    return `
+      <div class="cb-item">
+        <div class="cb-row" onclick="toggleCb('${b.id}')">
+          <div class="cb-date-tag">${fmtDate(b.datum, 'short')}</div>
+          <div class="cb-info">
+            <div class="cb-title">${esc(b.titel)}</div>
+            <div class="cb-meta">${esc(b.type || '')}${b.portefeuillehouder ? ' · ' + esc(b.portefeuillehouder) : ''}</div>
+          </div>
+          <div style="display:flex;gap:6px;align-items:center;">
+            ${claims.length ? `<span class="badge badge-teal">${claims.length} claims</span>` : ''}
+            ${hoogAantal    ? `<span class="badge badge-stop">${hoogAantal} HOOG</span>` : ''}
+          </div>
+          <div class="cb-chevron" id="cbch-${b.id}">›</div>
+        </div>
+        <div class="cb-details" id="cbdet-${b.id}">
+          <div class="cb-links">
+            <a href="${esc(b.url || '#')}" target="_blank" style="font-size:12px;color:var(--teal);text-decoration:none;font-weight:500;">Open in iBabs →</a>
+            ${b.pdf_url ? `<a href="${esc(b.pdf_url)}" target="_blank" style="font-size:12px;color:var(--teal);text-decoration:none;font-weight:500;">PDF downloaden →</a>` : ''}
+          </div>
+          ${claims.length === 0
+            ? `<div class="cb-geen-claims">Nog geen claims geïdentificeerd voor deze brief.</div>`
+            : claims.map((c, i) => {
+                const prioClass = (c.prioriteit || 'LAAG').toLowerCase();
+                const kruisHtml = c.kruischeck
+                  ? `<div class="cb-claim-kruischeck">${esc(c.kruischeck)}</div>`
+                  : '';
+                return `
+                  <div class="cb-claim-item">
+                    <div class="cb-claim-header">
+                      <span class="badge badge-${prioClass === 'hoog' ? 'stop' : prioClass === 'middel' ? 'hold' : 'teal'}">${c.prioriteit || 'LAAG'}</span>
+                      ${c.score != null ? `<span class="cb-claim-score">${c.score}/100</span>` : ''}
+                    </div>
+                    <div class="cb-claim-text">"${esc(c.claim)}"</div>
+                    <div class="cb-claim-verificatie">${esc(c.verificatie || '')}</div>
+                    ${kruisHtml}
+                  </div>`;
+              }).join('')
+          }
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function toggleCb(id) {
+  const det = document.getElementById('cbdet-' + id);
+  const ch  = document.getElementById('cbch-'  + id);
+  if (!det) return;
+  const open = det.classList.toggle('open');
+  ch.classList.toggle('open', open);
+}
+
+function renderOvCb() {
+  const metClaims = collegebrieven.filter(b => (b.claims?.length || 0) > 0).slice(0, 5);
+  if (!metClaims.length) {
+    document.getElementById('ovCb').innerHTML = '<div class="empty">Geen brieven met claims beschikbaar.</div>';
+    return;
+  }
+  document.getElementById('ovCb').innerHTML = metClaims.map(b => {
+    const topClaim = (b.claims || []).sort((a, b) => (b.score || 0) - (a.score || 0))[0];
+    return `
+      <div class="mini-item">
+        <div class="mini-date">${fmtDate(b.datum, 'short')}</div>
+        <div>
+          <div class="mini-title">${esc(b.titel)}</div>
+          ${topClaim ? `<div class="mini-type">"${esc(topClaim.claim.slice(0, 80))}${topClaim.claim.length > 80 ? '…' : ''}"</div>` : ''}
+        </div>
+      </div>`;
+  }).join('');
+}
+
 // ── FACTCHECK ─────────────────────────────────────────────────────────────────
+function audioBestandGekozen() {
+  const file = document.getElementById('audioFile').files[0];
+  const section = document.getElementById('audioSection');
+  const btn = document.getElementById('transcribeBtn');
+  const status = document.getElementById('audioStatusMsg');
+  if (!file) return;
+  if (file.size > 15 * 1024 * 1024) {
+    status.textContent = '⚠ Bestand te groot (max 15 MB). Gebruik Google AI Studio voor grote bestanden.';
+    status.style.display = 'block';
+    section.classList.remove('has-file');
+    btn.style.display = 'none';
+    return;
+  }
+  section.classList.add('has-file');
+  status.textContent = `✓ ${file.name} (${(file.size / 1024 / 1024).toFixed(1)} MB)`;
+  status.style.display = 'block';
+  btn.style.display = 'block';
+}
+
+async function transcribeerAudio() {
+  const file   = document.getElementById('audioFile').files[0];
+  const apiKey = document.getElementById('geminiKey').value.trim();
+  const btn    = document.getElementById('transcribeBtn');
+  const status = document.getElementById('audioStatusMsg');
+  if (!apiKey) { alert('Voer eerst een Gemini API key in.'); return; }
+  if (!file)   return;
+
+  btn.disabled = true; btn.textContent = 'Transcriberen...';
+  status.textContent = 'Audio wordt verwerkt door Gemini…';
+
+  try {
+    const base64 = await new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload  = () => resolve(reader.result.split(',')[1]);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+
+    const res = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
+      { method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          contents: [{ parts: [
+            { inline_data: { mime_type: file.type, data: base64 } },
+            { text: 'Transcribeer deze audio volledig en nauwkeurig naar het Nederlands. Geef alleen de transcriptie terug, geen uitleg of samenvatting.' }
+          ]}],
+          generationConfig: { temperature: 0, maxOutputTokens: 8192 }
+        })
+      }
+    );
+    const data = await res.json();
+    if (data.error) throw new Error(data.error.message);
+    const tekst = data.candidates[0].content.parts[0].text;
+    document.getElementById('fcText').value = tekst;
+    status.textContent = '✓ Transcriptie klaar — controleer de tekst en klik op Analyseer';
+    btn.textContent = '↻ Opnieuw transcriberen';
+  } catch(e) {
+    status.textContent = `Fout bij transcriberen: ${e.message}`;
+    btn.textContent = 'Transcribeer audio →';
+  }
+  btn.disabled = false;
+}
+
+function bouwEigenDataContext() {
+  const delen = [];
+  if (moties.length) {
+    const recent = moties.slice(0, 20).map(m =>
+      `- ${m.datum || '?'}: "${m.titel}" (${m.partij || '?'}, ${m.status || 'onbekend'})`
+    ).join('\n');
+    delen.push(`RECENTE MOTIES & STEMMINGEN:\n${recent}`);
+  }
+  if (bekendmakingen.length) {
+    const recent = bekendmakingen.slice(0, 15).map(b =>
+      `- ${b.datum || '?'}: [${b.categorie}] ${b.titel}`
+    ).join('\n');
+    delen.push(`RECENTE BEKENDMAKINGEN (camera/sluiting/dwangsom):\n${recent}`);
+  }
+  if (raadsvragen.length) {
+    const recent = raadsvragen.slice(0, 10).map(r =>
+      `- ${r.datum_ingediend || '?'}: "${r.titel}" (${r.fractie || '?'})`
+    ).join('\n');
+    delen.push(`RECENTE RAADSVRAGEN:\n${recent}`);
+  }
+  const cbClaims = collegebrieven.flatMap(b =>
+    (b.claims || []).map(c => `- ${b.datum}: "${c.claim}" (${b.titel})`)
+  ).slice(0, 15).join('\n');
+  if (cbClaims) delen.push(`CLAIMS UIT COLLEGEBRIEVEN:\n${cbClaims}`);
+
+  const storedClaims = JSON.parse(localStorage.getItem('zr_claims') || '[]');
+  if (storedClaims.length) {
+    const recent = storedClaims.slice(0, 10).map(c =>
+      `- ${c.datum}: "${c.claim}" (bron: ${c.bron_titel || '?'})`
+    ).join('\n');
+    delen.push(`EERDER GEÏDENTIFICEERDE CLAIMS:\n${recent}`);
+  }
+  return delen.join('\n\n');
+}
+
 async function analyseerFactcheck() {
   const apiKey  = document.getElementById('geminiKey').value.trim();
   const context = document.getElementById('fcContext').value.trim();
@@ -1554,37 +1341,45 @@ async function analyseerFactcheck() {
   const btn     = document.getElementById('fcBtn');
   const status  = document.getElementById('fcStatus');
   const lijst   = document.getElementById('claimsList');
+  const saveBtn = document.getElementById('fcSaveBtn');
 
   if (!apiKey) { alert('Voer eerst een Gemini API key in.'); return; }
   if (tekst.length < 100) { alert('Voer minimaal 100 tekens transcriptie in.'); return; }
 
   btn.disabled = true; btn.textContent = 'Analyseren...';
+  saveBtn.style.display = 'none';
   status.textContent = 'Gemini is aan het werk…';
-  lijst.innerHTML = '<div class="factcheck-empty">Claims worden geïdentificeerd...</div>';
+  lijst.innerHTML = '<div class="factcheck-empty">Claims worden geïdentificeerd en gecheckt tegen eigen data...</div>';
+
+  const eigenData = bouwEigenDataContext();
 
   const prompt = `Je bent een factcheck-assistent voor een journalist die gemeenteraadsvergaderingen van Zaanstad analyseert.
 ${context ? 'Context: ' + context : ''}
 
-Analyseer onderstaande transcriptie en identificeer alle feitelijke claims die verifieerbaar zijn.
-Denk aan: getallen, percentages, datums, tijdlijnen, beloftes van het college, historische vergelijkingen, budgetten, aantallen woningen, criminaliteitscijfers.
+Analyseer de transcriptie en identificeer alle feitelijke claims die verifieerbaar zijn.
+Denk aan: getallen, percentages, datums, tijdlijnen, beloftes van het college, budgetten, aantallen woningen, criminaliteitscijfers.
+
+${eigenData ? `Vergelijk elke claim met de onderstaande eigen data. Voeg per claim een "kruischeck" toe als je een directe relatie vindt (bevestiging, tegenspraak, of herhaling van eerdere claim). Als er geen relatie is, laat kruischeck leeg.\n\n${eigenData}` : ''}
 
 Geef voor elke claim:
-- De exacte claim (kort geciteerd of geparafraseerd)
-- Wie het zei (als duidelijk in de tekst)
-- Hoe een journalist dit kan controleren (welke bron, welk document)
+- De exacte claim
+- Wie het zei (als duidelijk)
+- Hoe een journalist dit kan controleren
 - Prioriteit: HOOG / MIDDEL / LAAG
+- Score: 0-100 (checkwaardigheid)
+- Kruischeck: korte opmerking als er een relatie is met eigen data (anders leeg laten)
 
 Maximaal 10 claims, HOOG eerst.
 
-Antwoord ALLEEN met een JSON-array, geen markdown, geen uitleg:
-[{"claim":"...","spreker":"...","verificatie":"...","prioriteit":"HOOG"}]
+Antwoord ALLEEN met een JSON-array, geen markdown:
+[{"claim":"...","spreker":"...","verificatie":"...","prioriteit":"HOOG","score":85,"kruischeck":"..."}]
 
 Transcriptie:
 ${tekst.slice(0, 9000)}`;
 
   try {
     const res = await fetch(
-      'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=' + apiKey,
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
       { method:'POST', headers:{'Content-Type':'application/json'},
         body: JSON.stringify({ contents:[{parts:[{text:prompt}]}], generationConfig:{temperature:0.2,maxOutputTokens:2048} }) }
     );
@@ -1593,15 +1388,23 @@ ${tekst.slice(0, 9000)}`;
     const raw   = data.candidates[0].content.parts[0].text;
     const match = raw.match(/\[[\s\S]*\]/);
     if (!match) throw new Error('Onverwacht antwoordformaat van Gemini.');
-    const claims = JSON.parse(match[0]);
-    status.textContent = claims.length + ' claims gevonden';
-    lijst.innerHTML = claims.map((c, i) => `
-      <div class="claim-item">
-        <div class="claim-num ${(c.prioriteit||'MIDDEL').toLowerCase()}">${i+1} — ${c.prioriteit||'MIDDEL'}</div>
-        <div class="claim-text">"${esc(c.claim)}"</div>
-        ${c.spreker ? `<div class="claim-speaker">— ${esc(c.spreker)}</div>` : ''}
-        <div class="claim-check">${esc(c.verificatie)}</div>
-      </div>`).join('');
+    huidigeClaims = JSON.parse(match[0]);
+    status.textContent = huidigeClaims.length + ' claims gevonden';
+    lijst.innerHTML = huidigeClaims.map((c, i) => {
+      const prioClass = (c.prioriteit || 'MIDDEL').toLowerCase();
+      const kruisClass = c.kruischeck
+        ? (c.kruischeck.toLowerCase().includes('tegenspr') ? 'weersproken' : 'bevestigd')
+        : '';
+      return `
+        <div class="claim-item">
+          <div class="claim-num ${prioClass}">${i+1} — ${c.prioriteit || 'MIDDEL'}${c.score != null ? ` · ${c.score}/100` : ''}</div>
+          <div class="claim-text">"${esc(c.claim)}"</div>
+          ${c.spreker ? `<div class="claim-speaker">— ${esc(c.spreker)}</div>` : ''}
+          <div class="claim-check">${esc(c.verificatie)}</div>
+          ${c.kruischeck ? `<div class="claim-kruischeck ${kruisClass}">⟳ ${esc(c.kruischeck)}</div>` : ''}
+        </div>`;
+    }).join('');
+    saveBtn.style.display = 'block';
   } catch (e) {
     status.textContent = 'Fout';
     lijst.innerHTML = `<div class="error-msg">Fout: ${esc(e.message)}<br>
@@ -1609,6 +1412,45 @@ ${tekst.slice(0, 9000)}`;
   } finally {
     btn.disabled = false; btn.textContent = 'Analyseer op verifieerbare claims →';
   }
+}
+
+function slaClaimsOp() {
+  if (!huidigeClaims.length) return;
+  const context  = document.getElementById('fcContext').value.trim() || 'onbekend';
+  const bestaand = JSON.parse(localStorage.getItem('zr_claims') || '[]');
+  const nieuw    = huidigeClaims.map(c => ({
+    ...c,
+    bron:       'vergadering',
+    bron_titel: context,
+    datum:      new Date().toISOString().slice(0, 10),
+    opgeslagen: new Date().toISOString()
+  }));
+  const gecombineerd = [...nieuw, ...bestaand].slice(0, 200);
+  localStorage.setItem('zr_claims', JSON.stringify(gecombineerd));
+  document.getElementById('fcSaveBtn').textContent = `✓ ${nieuw.length} claims opgeslagen`;
+  setTimeout(() => document.getElementById('fcSaveBtn').textContent = '↓ Sla claims op voor kruisverificatie', 2500);
+  renderOpgeslagenClaims();
+}
+
+function renderOpgeslagenClaims() {
+  const claims = JSON.parse(localStorage.getItem('zr_claims') || '[]');
+  const el = document.getElementById('savedClaimsList');
+  if (!claims.length) {
+    el.innerHTML = '<div class="empty" style="padding:16px;font-size:12px;">Nog geen claims opgeslagen.</div>';
+    return;
+  }
+  el.innerHTML = claims.slice(0, 15).map(c => `
+    <div class="saved-claim-item">
+      <div class="saved-claim-text">"${esc(c.claim.slice(0, 90))}${c.claim.length > 90 ? '…' : ''}"</div>
+      <div class="saved-claim-meta">${esc(c.bron_titel)} · ${c.datum} · <span class="badge badge-${(c.prioriteit||'LAAG').toLowerCase() === 'hoog' ? 'stop' : 'teal'}" style="font-size:9px;">${c.prioriteit||'?'}</span></div>
+    </div>`).join('') +
+    (claims.length > 15 ? `<div style="padding:10px 20px;font-size:11px;color:var(--muted);">+ ${claims.length - 15} meer opgeslagen</div>` : '');
+}
+
+function clearOpgeslagenClaims() {
+  if (!confirm('Weet je zeker dat je alle opgeslagen claims wilt verwijderen?')) return;
+  localStorage.removeItem('zr_claims');
+  renderOpgeslagenClaims();
 }
 
 // ── HELPERS ───────────────────────────────────────────────────────────────────
