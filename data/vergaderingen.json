@@ -8,6 +8,7 @@
     "eind": "2026-07-02T22:30:00",
     "locatie": "Raadzaal",
     "url": "https://zaanstad.bestuurlijkeinformatie.nl/Agenda/Index/bac6335b-6098-4fd5-88f7-bd7e8096585c",
+    "video_id": null,
     "video_link": null,
     "agendapunten": [],
     "bijgewerkt": "25-06-2026"
@@ -23,6 +24,81 @@
     "url": "https://zaanstad.bestuurlijkeinformatie.nl/Agenda/Index/40625325-f393-43aa-87a3-374af00b0673",
     "video_link": null,
     "agendapunten": [],
+    "bijgewerkt": "25-06-2026"
+  },
+  {
+    "id": "b9fbd323-9891-4e20-b9b7-f13b67acaaa8",
+    "titel": "Raadsvergadering",
+    "type": "Raadsvergadering",
+    "datum": "2026-07-01",
+    "start": "2026-07-01T19:00:00",
+    "eind": "2026-07-01T23:00:00",
+    "locatie": "Raadzaal",
+    "url": "https://zaanstad.bestuurlijkeinformatie.nl/Agenda/Index/b9fbd323-9891-4e20-b9b7-f13b67acaaa8",
+    "video_id": null,
+    "video_link": null,
+    "agendapunten": [
+      {
+        "nummer": "1",
+        "titel": "Opening en mededelingen"
+      },
+      {
+        "nummer": "2",
+        "titel": "Vaststellen van de agenda"
+      },
+      {
+        "nummer": "2.1",
+        "titel": "Voorstel spreektijd"
+      },
+      {
+        "nummer": "3",
+        "titel": "Stemmingen"
+      },
+      {
+        "nummer": "3.1",
+        "titel": "Raadsvoorstel zienswijze Verordening financieel beheer recreatieschap Twiske-Waterland 2026"
+      },
+      {
+        "nummer": "3.2",
+        "titel": "Raadsvoorstel zienswijze Verordening financieel beheer recreatieschap Alkmaarder- en Uitgeestermeer 2026"
+      },
+      {
+        "nummer": "3.3",
+        "titel": "Zienswijze financiële jaarstukken 2025 - 2027 CNB Noordzeekanaalgebied"
+      },
+      {
+        "nummer": "3.4",
+        "titel": "Archiefverordening gemeente Zaanstad 2026"
+      },
+      {
+        "nummer": "3.5",
+        "titel": "Rapportage 2026 Stand van Zaken Geheimhouding bestuurlijke behandelvoorstellen"
+      },
+      {
+        "nummer": "3.6",
+        "titel": "Ontwerpbegroting 2027 Rekenkamer Amsterdam Zaanstad"
+      },
+      {
+        "nummer": "3.7",
+        "titel": "Zienswijze gewijzigde begroting 2026 en primaire begroting 2027 Werkom"
+      },
+      {
+        "nummer": "3.8",
+        "titel": "Zienswijzen GGD Zaanstreek Waterland"
+      },
+      {
+        "nummer": "3.9",
+        "titel": "Buiten werking stellen poller Czaar Peterstraat Zaandam"
+      },
+      {
+        "nummer": "3.10",
+        "titel": "Initiatiefvoorstel naamswijziging fractie GroenLinks-Partij van de Arbeid naar PRO"
+      },
+      {
+        "nummer": "4",
+        "titel": "Debat"
+      }
+    ],
     "bijgewerkt": "25-06-2026"
   },
   {
