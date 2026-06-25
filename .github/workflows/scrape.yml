@@ -1,5 +1,4 @@
 name: Scrape raadsdata
-
 on:
   schedule:
     - cron: '0 6 * * 1'  # Elke maandag om 6:00 UTC
@@ -9,13 +8,11 @@ on:
         description: 'Ophalen vanaf datum (YYYY-MM-DD) — leeg = afgelopen 7 dagen'
         required: false
         default: ''
-
 jobs:
   scrape:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -24,6 +21,9 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+
+      - name: Dependencies installeren
+        run: pip install pypdf --break-system-packages
 
       - name: Data-map aanmaken
         run: mkdir -p data
@@ -44,6 +44,13 @@ jobs:
         run: python scrape_vergaderingen.py
         env:
           SCRAPE_VANAF: ${{ github.event.inputs.vanaf }}
+        continue-on-error: true
+
+      - name: Collegeberichten scrapen
+        run: python scrape_collegeberichten.py
+        env:
+          SCRAPE_VANAF: ${{ github.event.inputs.vanaf }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         continue-on-error: true
 
       - name: Wijzigingen committen en pushen
