@@ -829,16 +829,25 @@ function renderVerg() {
         <div class="meeting-chevron" id="ch-${v.id}">›</div>
       </div>
       <div class="meeting-details" id="det-${v.id}">
-        ${v.video_link ? `
+        ${v.video_id ? `
           <div class="video-section">
             <div class="video-label">⬇ Video beschikbaar</div>
-            <div class="video-box">
-              <div class="video-url" id="vurl-${v.id}">${esc(v.video_link)}</div>
-              <button class="btn-copy btn-copy-lg" onclick="copyUrl('${v.id}',event)">Kopieer link</button>
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+              <button class="btn-primary" style="width:auto;padding:8px 16px;"
+                onclick="haalVideoLink('${v.id}','${esc(v.video_id)}',this)">
+                Genereer download-commando
+              </button>
+              <a href="${esc(v.url)}" target="_blank"
+                style="font-size:12px;color:var(--teal);text-decoration:none;font-weight:500;">
+                Open in iBabs →
+              </a>
             </div>
-            <div style="display:flex;align-items:center;gap:8px;margin-top:8px;">
-              <code id="vcmd-${v.id}" style="font-family:'JetBrains Mono',monospace;font-size:11px;background:var(--white);border:1px solid var(--rule);padding:2px 6px;">yt-dlp "${esc(v.video_link)}" -o vergadering.ts</code>
-              <button class="btn-copy" onclick="copyCmd('${v.id}',event)">Kopieer commando</button>
+            <div id="vcmd-wrap-${v.id}" style="display:none;">
+              <div class="video-box" style="margin-bottom:6px;">
+                <code id="vcmd-${v.id}" style="font-family:'JetBrains Mono',monospace;font-size:11px;flex:1;word-break:break-all;"></code>
+                <button class="btn-copy" onclick="copyCmd('${v.id}',event)">Kopieer</button>
+              </div>
+              <div id="vcmd-hint-${v.id}" style="font-size:11px;color:var(--muted);font-family:'JetBrains Mono',monospace;"></div>
             </div>
           </div>
         ` : ''}
@@ -867,7 +876,60 @@ function toggleMeeting(id) {
   const open = det.classList.toggle('open');
   ch.classList.toggle('open', open);
 }
+async function haalVideoLink(vergId, videoId, btnEl) {
+  btnEl.disabled = true;
+  btnEl.textContent = 'Bezig...';
 
+  const wrap = document.getElementById('vcmd-wrap-' + vergId);
+  const cmd  = document.getElementById('vcmd-' + vergId);
+  const hint = document.getElementById('vcmd-hint-' + vergId);
+
+  // Video-ID: "zaanstad/20260611_1" → player gebruikt underscore-variant
+  const playerId = videoId.replace('/', '_');
+  const apiBase  = 'https://sdk.companywebcast.com';
+
+  try {
+    // Stap 1: haal token op
+    const tokenRes = await fetch(
+      `${apiBase}/api/token?id=${encodeURIComponent(playerId)}`,
+      { headers: { 'Accept': 'application/json' } }
+    );
+    if (!tokenRes.ok) throw new Error('token-endpoint niet bereikbaar');
+    const tokenData = await tokenRes.json();
+    const token = tokenData.token || tokenData.Token;
+    if (!token) throw new Error('geen token in response');
+
+    // Stap 2: haal HLS-URL op
+    const hlsRes = await fetch(
+      `${apiBase}/api/hls?id=${encodeURIComponent(playerId)}&token=${encodeURIComponent(token)}`,
+      { headers: { 'Accept': 'application/json' } }
+    );
+    if (!hlsRes.ok) throw new Error('hls-endpoint niet bereikbaar');
+    const hlsData = await hlsRes.json();
+    const hlsUrl  = hlsData.url || hlsData.Url || hlsData.hls || hlsData.m3u8;
+    if (!hlsUrl) throw new Error('geen HLS-URL in response');
+
+    cmd.textContent = `/Users/anders/yt-dlp "${hlsUrl}" -o vergadering_${playerId}.ts`;
+    hint.textContent = '⚠ Deze link verloopt na ~2 uur. Genereer opnieuw als hij niet meer werkt.';
+    wrap.style.display = 'block';
+    btnEl.textContent = '↻ Vernieuwen';
+
+  } catch (err) {
+    // CORS of andere fout — toon handmatige instructie
+    cmd.textContent = `# Kan link niet automatisch ophalen (${err.message})`;
+    hint.innerHTML  =
+      `Handmatig: open <a href="https://zaanstad.bestuurlijkeinformatie.nl/Agenda/Index/${vergId}" ` +
+      `target="_blank" style="color:var(--teal)">de vergaderingspagina</a>, ` +
+      `DevTools → Network → zoek <strong>hls?Signature=</strong> → ` +
+      `rechtsklik → Copy link address → plak in terminal als:<br>` +
+      `<code style="font-family:'JetBrains Mono',monospace;">/Users/anders/yt-dlp "PLAK-URL" -o vergadering.ts</code>`;
+    wrap.style.display = 'block';
+    btnEl.textContent = '↻ Probeer opnieuw';
+  }
+
+  btnEl.disabled = false;
+}
+  
 function copyUrl(id, e) {
   navigator.clipboard.writeText(document.getElementById('vurl-' + id).textContent)
     .then(() => { e.target.textContent = '✓ Gekopieerd'; setTimeout(() => e.target.textContent = 'Kopieer link', 2000); });
