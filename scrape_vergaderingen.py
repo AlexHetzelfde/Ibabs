@@ -65,16 +65,17 @@ def fetch_vergadering_details(opener, agenda_id):
 
     # Video
     video_link = None
+    video_id   = None
     m = re.search(r'data-video-id="([^"]+)"', html)
     if m:
-        player_id = m.group(1).strip().replace("/", "_")
+        video_id   = m.group(1).strip()          # bijv. "zaanstad/20260611_1"
+        player_id  = video_id.replace("/", "_")
         video_link = (
-            f"https://player.companywebcast.com/player/"
+            f"https://sdk.companywebcast.com/player/"
             f"?id={player_id}&display=126&customBtnColor=006a81"
         )
 
-    return punten, video_link
-
+    return punten, video_link, video_id
 
 def load_existing():
     """Laad bestaande vergaderingen.json als die bestaat."""
@@ -130,7 +131,7 @@ def main():
 
         print(f"  [{i+1}/{len(raad)}] {datum} {titel}", end=" ", flush=True)
 
-        agendapunten, video_link = fetch_vergadering_details(opener, agenda_id)
+        agendapunten, video_link, video_id = fetch_vergadering_details(opener, agenda_id)
         print(f"— {len(agendapunten)} punten{' · video ✓' if video_link else ''}")
 
         bestaand[agenda_id] = {
@@ -142,6 +143,7 @@ def main():
             "eind":         item.get("end", ""),
             "locatie":      item.get("location"),
             "url":          f"{BASE_URL}{item.get('url', '')}",
+            "video_id":     video_id,
             "video_link":   video_link,
             "agendapunten": agendapunten,
             "bijgewerkt":   vandaag.strftime("%d-%m-%Y"),
