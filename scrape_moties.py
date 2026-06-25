@@ -89,6 +89,46 @@ def build_stemmingen_body(start, draw):
     return _build_body(STEMMINGEN_COLUMNS, 0, "identity", start, draw)
 
 
+def fetch_stemming_detail(opener, item_id):
+    """
+    Haalt voor/tegen percentages en fractielijsten op van de detailpagina
+    van één stemming: /Reports/Item/{item_id}
+    """
+    url = f"{BASE_URL}/Reports/Item/{item_id}"
+    req = urllib.request.Request(url, headers={**HEADERS, "Accept": "text/html"})
+    try:
+        with opener.open(req, timeout=20) as resp:
+            html = resp.read().decode("utf-8")
+    except Exception:
+        return {}
+
+    result = {}
+
+    # Voor-percentage uit de balk: class="vote-summary-bar-in-favour w-XX"
+    m = re.search(r'vote-summary-bar-in-favour\s+w-(\d+)', html)
+    if m:
+        result["voor_pct"]  = int(m.group(1))
+        result["tegen_pct"] = 100 - int(m.group(1))
+
+    # Fracties voor
+    m = re.search(
+        r'vote-summary-legend-in-favour.*?<div class="text">\s*([^<]+)\s*</div>',
+        html, re.DOTALL
+    )
+    if m:
+        result["fracties_voor"] = m.group(1).strip()
+
+    # Fracties tegen
+    m = re.search(
+        r'vote-summary-legend-against.*?<div class="text">\s*([^<]+)\s*</div>',
+        html, re.DOTALL
+    )
+    if m:
+        result["fracties_tegen"] = m.group(1).strip()
+
+    return result
+
+
 def parse_datum(s):
     if not s:
         return None
@@ -104,6 +144,10 @@ def normalize(s):
 
 
 def fetch_stemmingen(opener):
+    """
+    Haalt alle stemmingen op en geeft een dict terug:
+    {normalized_title: {"status": ..., "identity": ...}}
+    """
     headers = {**HEADERS, "Referer": STEMMINGEN_PAGE_URL}
     try:
         opener.open(urllib.request.Request(
@@ -139,10 +183,11 @@ def fetch_stemmingen(opener):
 
     result = {}
     for row in all_rows:
-        titel  = normalize(row.get("title", ""))
-        status = (row.get("status") or "").strip().lower()
+        titel    = normalize(row.get("title", ""))
+        status   = (row.get("status") or "").strip().lower()
+        identity = (row.get("identity") or "").strip()
         if titel and status:
-            result[titel] = status
+            result[titel] = {"status": status, "identity": identity}
     return result
 
 
@@ -167,6 +212,10 @@ def parse_motie(row):
         "datum":              parse_datum(row.get("datummotie")),
         "agendapunt":         (row.get("registrationdate") or "").strip(),
         "status":             None,
+        "voor_pct":           None,
+        "tegen_pct":          None,
+        "fracties_voor":      None,
+        "fracties_tegen":     None,
     }
 
 
@@ -179,10 +228,10 @@ def load_existing():
 
 
 def main():
-    import os
-    vandaag      = datetime.now()
-    vanaf_env    = os.environ.get("SCRAPE_VANAF", "").strip()
-    grens_datum  = vanaf_env if vanaf_env else (vandaag - timedelta(days=7)).strftime("%Y-%m-%d")
+    # Datumbereik: via env var SCRAPE_VANAF of standaard afgelopen 7 dagen
+    vandaag     = datetime.now()
+    vanaf_env   = os.environ.get("SCRAPE_VANAF", "").strip()
+    grens_datum = vanaf_env if vanaf_env else (vandaag - timedelta(days=7)).strftime("%Y-%m-%d")
 
     print(f"Alleen moties vanaf: {grens_datum}")
 
@@ -196,7 +245,7 @@ def main():
     except Exception:
         pass
 
-    # Moties ophalen (altijd alle pagina's — we filteren daarna op datum)
+    # Moties ophalen
     moties_headers = {**HEADERS, "Referer": MOTIES_PAGE_URL}
     print("Moties ophalen...", end=" ", flush=True)
     try:
@@ -220,17 +269,16 @@ def main():
         )
         with opener.open(req, timeout=30) as resp:
             page = json.loads(resp.read().decode("utf-8"))
-        rows = page.get("data", [])
-        all_rows.extend(rows)
+        all_rows.extend(page.get("data", []))
         draw += 1; start += PAGE_SIZE
         time.sleep(0.3)
 
-    # Filteren op afgelopen week
+    # Filteren op datum
     recente_rows = [
         r for r in all_rows
         if (parse_datum(r.get("datummotie")) or "") >= grens_datum
     ]
-    print(f"{len(recente_rows)} moties van afgelopen week")
+    print(f"{len(recente_rows)} moties vanaf {grens_datum}")
 
     # Stemmingen ophalen
     print("Stemmingen ophalen...", end=" ", flush=True)
@@ -248,7 +296,13 @@ def main():
     # Nieuwe moties toevoegen / bestaande updaten
     for row in recente_rows:
         m = parse_motie(row)
-        m["status"] = stemmingen.get(normalize(m["titel"]))
+        stemming = stemmingen.get(normalize(m["titel"]))
+        if stemming:
+            m["status"] = stemming["status"]
+            # Detailpagina ophalen voor voor/tegen % en fractielijsten
+            detail = fetch_stemming_detail(opener, stemming["identity"])
+            m.update(detail)
+            time.sleep(0.3)
         bestaand[m["id"]] = m
 
     # Opslaan: nieuwste eerst
