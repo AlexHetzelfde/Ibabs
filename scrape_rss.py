@@ -1,12 +1,7 @@
 #!/usr/bin/env python3
 """
-Haalt alleen relevante bekendmakingen op van officielebekendmakingen.nl:
-  - Cameratoezicht
-  - Woningsluiting
-  - Handhaving / dwangsommen
-
-Elk item krijgt een 'adres'-veld (straat + huisnummer) zodat later
-per wijk kan worden gegroepeerd.
+Haalt bekendmakingen op van afgelopen 7 dagen uit officielebekendmakingen.nl
+en voegt ze toe aan data/bekendmakingen.json
 
 Gebruik:
     python3 scrape_rss.py
@@ -36,38 +31,44 @@ RSS_URL = (
 
 OUTPUT = "data/bekendmakingen.json"
 
-# Alleen deze categorieën worden bewaard.
-CATEGORIE_TREFWOORDEN = {
-    "cameratoezicht": [
-        "cameratoezicht", "bewakingscamera", "camerasysteem", "cameragebied",
+CATEGORIE_REGELS = {
+    "woningbouw": [
+        "woningbouw", "woningen", "appartementen", "woongebouw",
+        "wooncomplex", "sociale huur", "huurwoningen", "nieuwbouw",
+        "transformatie", "woonbestemming",
     ],
-    "woningsluiting": [
-        "woningsluiting", "pand gesloten", "sluiting woning",
-        "drugspand", "artikel 13b", "bestuurlijke sluiting",
+    "omgevingsplan": [
+        "omgevingsplan", "bestemmingsplan", "omgevingsvergunning",
+        "ruimtelijk", "bouwplan", "bouwvergunning", "wijziging bestemmings",
     ],
-    "dwangsom": [
-        "dwangsom", "last onder dwangsom", "bestuursdwang", "sanctiebesluit",
-        "handhaving",
+    "verkeer": [
+        "verkeersbesluit", "verkeersmaatregelen", "snelheidsbegrenzing",
+        "parkeerverbod", "parkeervergunning", "wegafsluiting",
+        "omleidingsroute", "rijbaan",
+    ],
+    "sloop": [
+        "sloopvergunning", "sloopmelding", "sloop",
     ],
 }
 
-# Regex om straat + huisnummer (+ evt. postcode) uit een titel te vissen.
-# Zoekt naar een typisch Nederlands adrespatroon:
-#   straatnaam (begint met hoofdletter, bevat letters, kan 'straat', 'weg', etc. zijn)
-#   gevolgd door één of meer cijfers en eventueel een letter (huisnummer)
-#   optioneel gevolgd door postcode en plaats
-ADRES_REGEX = re.compile(
-    r"([A-Z][a-z]+(?:straat|weg|laan|singel|kade|gracht|plein|dijk|pad|baan|steeg|hof|plantsoen|werf|kade|oord|meen|donk|akker|brink|erf|hofje|park|zoom)\s+\d+[a-zA-Z]?)"
-)
+FILTER_WEG = [
+    "dakkapel", "erfafscheiding", "schutting", "zonnepanelen",
+    "airconditioning", "kozijn", "gevelwijziging", "tuinmuur",
+    "berging", "fietsenstalling",
+]
+
 
 def categoriseer(titel):
-    """Geeft categorie terug als titel een trefwoord bevat, anders None (weggooien)."""
     t = titel.lower()
-    for cat, woorden in CATEGORIE_TREFWOORDEN.items():
-        for w in woorden:
-            if w in t:
+    for woord in FILTER_WEG:
+        if woord in t:
+            return None
+    for cat, trefwoorden in CATEGORIE_REGELS.items():
+        for tw in trefwoorden:
+            if tw in t:
                 return cat
-    return None
+    return "overig"
+
 
 def parse_datum(s):
     if not s:
@@ -85,18 +86,6 @@ def parse_datum(s):
             continue
     return None
 
-def extract_adres(titel, omschrijving=""):
-    """Haalt straat + huisnummer uit titel of omschrijving."""
-    # Probeer eerst in de titel
-    m = ADRES_REGEX.search(titel)
-    if m:
-        return m.group(1)
-    # Anders in omschrijving (indien aanwezig)
-    if omschrijving:
-        m = ADRES_REGEX.search(omschrijving)
-        if m:
-            return m.group(1)
-    return None
 
 def fetch_feed():
     print("Feed ophalen...", end=" ", flush=True)
@@ -109,6 +98,7 @@ def fetch_feed():
         data = resp.read()
     print(f"OK ({len(data)} bytes)")
     return data
+
 
 def parse_feed(data):
     root  = ET.fromstring(data)
@@ -123,7 +113,7 @@ def parse_feed(data):
         for entry in root.iter("{http://www.w3.org/2005/Atom}entry"):
             titel = (entry.findtext("{http://www.w3.org/2005/Atom}title") or "").strip()
             link_el = entry.find("{http://www.w3.org/2005/Atom}link")
-            link = link_el.get("href", "") if link_el is not None else ""
+            link  = link_el.get("href", "") if link_el is not None else ""
             datum = parse_datum(
                 entry.findtext("{http://www.w3.org/2005/Atom}published") or
                 entry.findtext("{http://www.w3.org/2005/Atom}updated") or ""
@@ -132,17 +122,22 @@ def parse_feed(data):
             items.append((titel, link, datum, desc))
     return items
 
+
 def load_existing():
+    """Laad bestaande bekendmakingen.json als die bestaat."""
     if not os.path.exists(OUTPUT):
         return {}
     with open(OUTPUT, encoding="utf-8") as f:
         data = json.load(f)
+    # Dedup op link-URL
     return {b["link"]: b for b in data}
 
+
 def main():
-    vandaag      = datetime.now()
-    week_geleden = vandaag - timedelta(days=7)
-    grens_datum  = week_geleden.strftime("%Y-%m-%d")
+    import os
+    vandaag   = datetime.now()
+    vanaf_env = os.environ.get("SCRAPE_VANAF", "").strip()
+    grens_datum = vanaf_env if vanaf_env else (vandaag - timedelta(days=7)).strftime("%Y-%m-%d")
 
     print(f"Alleen bekendmakingen vanaf: {grens_datum}")
 
@@ -150,6 +145,7 @@ def main():
     raw_items = parse_feed(data)
     print(f"{len(raw_items)} items in feed")
 
+    # Bestaande data inladen
     bestaand = load_existing()
     print(f"Bestaande JSON: {len(bestaand)} bekendmakingen")
 
@@ -157,6 +153,7 @@ def main():
     overgeslagen = 0
 
     for titel, link, datum, desc in raw_items:
+        # Alleen afgelopen week
         if (datum or "") < grens_datum:
             continue
 
@@ -169,18 +166,16 @@ def main():
         if len(omschrijving) > 300:
             omschrijving = omschrijving[:300] + "…"
 
-        adres = extract_adres(titel, omschrijving)
-
         bestaand[link] = {
             "titel":        titel,
             "link":         link,
             "datum":        datum,
             "categorie":    cat,
             "omschrijving": omschrijving or None,
-            "adres":        adres,
         }
         nieuw += 1
 
+    # Opslaan: nieuwste eerst
     resultaat = sorted(bestaand.values(), key=lambda x: x.get("datum") or "", reverse=True)
     os.makedirs("data", exist_ok=True)
     with open(OUTPUT, "w", encoding="utf-8") as f:
@@ -188,8 +183,9 @@ def main():
 
     print(f"\n✓ Weggeschreven naar {OUTPUT}")
     print(f"  {nieuw} nieuwe bekendmakingen toegevoegd")
-    print(f"  {overgeslagen} weggefilterd (niet relevant)")
+    print(f"  {overgeslagen} weggefilterd (dakkapellen e.d.)")
     print(f"  {len(resultaat)} totaal in JSON")
+
 
 if __name__ == "__main__":
     main()
