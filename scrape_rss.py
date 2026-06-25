@@ -19,14 +19,28 @@ import urllib.request
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta
 
-# Simpele URL: zoek op gemeente Zaanstad in het Gemeenteblad
-RSS_URL = (
-    "https://zoek.officielebekendmakingen.nl/rss"
-    "?q=%28dt.creator%3D%3D%22Zaanstad%22%29"
-    "and%28w.publicatienaam%3D%3D%22Gemeenteblad%22%29"
-    "&col=officielepublicaties"
-    "&rows=100"
-)
+# RSS-feed: Zaanstad Gemeenteblad — meerdere URL-varianten als fallback
+RSS_URLS = [
+    # Variant 1: met CQL-query (meest nauwkeurig)
+    (
+        "https://zoek.officielebekendmakingen.nl/rss"
+        "?q=dt.creator%3D%3D%22Zaanstad%22+and+w.publicatienaam%3D%3D%22Gemeenteblad%22"
+        "&col=officielepublicaties&rows=200&ob=dt.modified&so=desc"
+    ),
+    # Variant 2: met haakjes
+    (
+        "https://zoek.officielebekendmakingen.nl/rss"
+        "?q=%28dt.creator%3D%3D%22Zaanstad%22%29"
+        "and%28w.publicatienaam%3D%3D%22Gemeenteblad%22%29"
+        "&col=officielepublicaties&rows=200"
+    ),
+    # Variant 3: simpele keyword-zoekopdracht
+    (
+        "https://zoek.officielebekendmakingen.nl/rss"
+        "?q=zaanstad&publicatienaam=Gemeenteblad"
+        "&col=officielepublicaties&rows=200&ob=dt.modified&so=desc"
+    ),
+]
 
 OUTPUT = "data/bekendmakingen.json"
 
@@ -91,24 +105,36 @@ def extract_adres(titel, omschrijving=""):
 
 
 def fetch_feed():
-    print("Feed ophalen...", end=" ", flush=True)
+    """
+    Probeert meerdere RSS-URL-varianten. Bij elke variant 2 pogingen.
+    Geeft de data terug van de eerste URL die werkt én items bevat.
+    """
+    import xml.etree.ElementTree as ET2
     headers = {
-        "User-Agent": "Mozilla/5.0 (compatible; Zaanstad-Raad-Monitor/1.0)",
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
         "Accept":     "application/rss+xml, application/xml, text/xml, */*",
     }
-    # 3 pogingen bij server-fout
-    for poging in range(1, 4):
-        try:
-            req = urllib.request.Request(RSS_URL, headers=headers)
-            with urllib.request.urlopen(req, timeout=30) as resp:
-                data = resp.read()
-            print(f"OK ({len(data)} bytes)")
-            return data
-        except Exception as e:
-            print(f"poging {poging} mislukt ({e})", end=" ", flush=True)
-            if poging < 3:
-                import time; time.sleep(5)
-    raise RuntimeError("Feed ophalen mislukt na 3 pogingen")
+    for vi, url in enumerate(RSS_URLS, 1):
+        for poging in range(1, 3):
+            print(f"URL-variant {vi}, poging {poging}...", end=" ", flush=True)
+            try:
+                req = urllib.request.Request(url, headers=headers)
+                with urllib.request.urlopen(req, timeout=30) as resp:
+                    data = resp.read()
+                # Check of er items in zitten
+                root = ET2.fromstring(data)
+                items = list(root.iter("item"))
+                print(f"OK — {len(items)} items ({len(data)} bytes)")
+                if items:
+                    return data
+                else:
+                    print(f"  (lege feed, volgende variant proberen)")
+                    break
+            except Exception as e:
+                print(f"FOUT: {e}")
+                if poging < 2:
+                    import time; time.sleep(4)
+    raise RuntimeError("Alle RSS-URL-varianten mislukt of geven lege feed")
 
 
 def parse_feed(data):
