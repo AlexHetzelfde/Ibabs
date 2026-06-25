@@ -19,19 +19,13 @@ import urllib.request
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta
 
+# Simpele URL: zoek op gemeente Zaanstad in het Gemeenteblad
 RSS_URL = (
     "https://zoek.officielebekendmakingen.nl/rss"
-    "?q=(c.product-area%3D%3D%22officielepublicaties%22)"
-    "and((((w.organisatietype%3D%3D%22gemeente%22)"
-    "and((dt.creator%3D%3D%22Zaanstad%22)"
-    "or(dt.creator%3D%3D%22gemeente%20Zaanstad%22)))))"
-    "and(((w.publicatienaam%3D%3D%22Tractatenblad%22))"
-    "or((w.publicatienaam%3D%3D%22Staatsblad%22))"
-    "or((w.publicatienaam%3D%3D%22Staatscourant%22))"
-    "or((w.publicatienaam%3D%3D%22Gemeenteblad%22))"
-    "or((w.publicatienaam%3D%3D%22Provinciaal%20blad%22))"
-    "or((w.publicatienaam%3D%3D%22Waterschapsblad%22))"
-    "or((w.publicatienaam%3D%3D%22Blad%20gemeenschappelijke%20regeling%22)))"
+    "?q=%28dt.creator%3D%3D%22Zaanstad%22%29"
+    "and%28w.publicatienaam%3D%3D%22Gemeenteblad%22%29"
+    "&col=officielepublicaties"
+    "&rows=100"
 )
 
 OUTPUT = "data/bekendmakingen.json"
@@ -99,14 +93,22 @@ def extract_adres(titel, omschrijving=""):
 def fetch_feed():
     print("Feed ophalen...", end=" ", flush=True)
     headers = {
-        "User-Agent": "Zaanstad-Raad-Monitor/1.0",
-        "Accept":     "application/rss+xml, application/xml, text/xml",
+        "User-Agent": "Mozilla/5.0 (compatible; Zaanstad-Raad-Monitor/1.0)",
+        "Accept":     "application/rss+xml, application/xml, text/xml, */*",
     }
-    req = urllib.request.Request(RSS_URL, headers=headers)
-    with urllib.request.urlopen(req, timeout=20) as resp:
-        data = resp.read()
-    print(f"OK ({len(data)} bytes)")
-    return data
+    # 3 pogingen bij server-fout
+    for poging in range(1, 4):
+        try:
+            req = urllib.request.Request(RSS_URL, headers=headers)
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                data = resp.read()
+            print(f"OK ({len(data)} bytes)")
+            return data
+        except Exception as e:
+            print(f"poging {poging} mislukt ({e})", end=" ", flush=True)
+            if poging < 3:
+                import time; time.sleep(5)
+    raise RuntimeError("Feed ophalen mislukt na 3 pogingen")
 
 
 def parse_feed(data):
