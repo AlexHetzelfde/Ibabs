@@ -349,15 +349,23 @@ def download_pdf(opener, item_id, document_id):
     req = urllib.request.Request(
         url,
         headers={
-            **HEADERS,
-            "Accept":   "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-            "Referer":  f"{BASE_URL}/Reports/Item//{item_id}",
+            "User-Agent":              "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 Safari/537.36",
+            "Accept":                  "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+            "Accept-Language":         "nl-NL,nl;q=0.9,en-US;q=0.8,en;q=0.7",
+            "Referer":                 f"{BASE_URL}/Reports/Item//{item_id}",
+            "sec-ch-ua":               '"Chromium";v="148", "Google Chrome";v="148", "Not/A)Brand";v="99"',
+            "sec-ch-ua-mobile":        "?0",
+            "sec-ch-ua-platform":      '"macOS"',
+            "sec-fetch-dest":          "document",
+            "sec-fetch-mode":          "navigate",
+            "sec-fetch-site":          "same-origin",
+            "sec-fetch-user":          "?1",
+            "upgrade-insecure-requests": "1",
         }
     )
     try:
         with opener.open(req, timeout=30) as resp:
             data = resp.read()
-            # Controleer of we echt een PDF hebben en geen HTML-foutpagina
             if data[:4] != b'%PDF':
                 print(f"(geen PDF ontvangen, eerste bytes: {data[:20]})")
                 return None
