@@ -20,7 +20,7 @@ import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta
 
 # RSS-feed: Zaanstad Gemeenteblad — meerdere URL-varianten als fallback
-    RSS_URLS = [
+RSS_URLS = [
     (
         "https://zoek.officielebekendmakingen.nl/rss"
         "?q=(c.product-area==%22officielepublicaties%22)"
