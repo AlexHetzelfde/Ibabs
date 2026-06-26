@@ -1,7 +1,7 @@
 name: Scrape raadsdata
 on:
   schedule:
-    - cron: '0 6 * * 1'  # Elke maandag om 6:00 UTC
+    - cron: '0 6,18 * * 1-5'  # Doordeweeks om 6:00 en 18:00 UTC
   workflow_dispatch:
     inputs:
       vanaf:
