@@ -19,21 +19,20 @@ import urllib.request
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta
 
-RSS_URL = (
-    "https://zoek.officielebekendmakingen.nl/rss"
-    "?q=(c.product-area%3D%3D%22officielepublicaties%22)"
-    "and((((w.organisatietype%3D%3D%22gemeente%22)"
-    "and((dt.creator%3D%3D%22Zaanstad%22)"
-    "or(dt.creator%3D%3D%22gemeente%20Zaanstad%22)))))"
-    "and(((w.publicatienaam%3D%3D%22Tractatenblad%22))"
-    "or((w.publicatienaam%3D%3D%22Staatsblad%22))"
-    "or((w.publicatienaam%3D%3D%22Staatscourant%22))"
-    "or((w.publicatienaam%3D%3D%22Gemeenteblad%22))"
-    "or((w.publicatienaam%3D%3D%22Provinciaal%20blad%22))"
-    "or((w.publicatienaam%3D%3D%22Waterschapsblad%22))"
-    "or((w.publicatienaam%3D%3D%22Blad%20gemeenschappelijke%20regeling%22)))"
-)
-
+# RSS-feed: Zaanstad Gemeenteblad — meerdere URL-varianten als fallback
+RSS_URLS = [
+    (
+        "https://zoek.officielebekendmakingen.nl/rss"
+        "?q=(c.product-area==%22officielepublicaties%22)"
+        "and((((w.organisatietype==%22gemeente%22)"
+        "and((dt.creator==%22Zaanstad%22)"
+        "or(dt.creator==%22gemeente%20Zaanstad%22)))))"
+        "and(((w.publicatienaam==%22Gemeenteblad%22))"
+        "or((w.publicatienaam==%22Staatscourant%22))"
+        "or((w.publicatienaam==%22Provinciaal%20blad%22)))"
+        "&rows=200"
+    ),
+]
 OUTPUT = "data/bekendmakingen.json"
 
 # Alleen deze categorieën worden bewaard.
@@ -51,23 +50,21 @@ CATEGORIE_TREFWOORDEN = {
     ],
 }
 
-# Regex om straat + huisnummer (+ evt. postcode) uit een titel te vissen.
-# Zoekt naar een typisch Nederlands adrespatroon:
-#   straatnaam (begint met hoofdletter, bevat letters, kan 'straat', 'weg', etc. zijn)
-#   gevolgd door één of meer cijfers en eventueel een letter (huisnummer)
-#   optioneel gevolgd door postcode en plaats
+# Regex om straat + huisnummer uit een titel of omschrijving te vissen.
 ADRES_REGEX = re.compile(
-    r"([A-Z][a-z]+(?:straat|weg|laan|singel|kade|gracht|plein|dijk|pad|baan|steeg|hof|plantsoen|werf|kade|oord|meen|donk|akker|brink|erf|hofje|park|zoom)\s+\d+[a-zA-Z]?)"
+    r"([A-Z][a-z]+(?:straat|weg|laan|singel|kade|gracht|plein|dijk|pad|baan|steeg|hof|plantsoen|werf|oord|meen|donk|akker|brink|erf|hofje|park|zoom)\s+\d+[a-zA-Z]?)"
 )
 
+
 def categoriseer(titel):
-    """Geeft categorie terug als titel een trefwoord bevat, anders None (weggooien)."""
+    """Geeft categorie terug als titel een trefwoord bevat, anders None."""
     t = titel.lower()
     for cat, woorden in CATEGORIE_TREFWOORDEN.items():
         for w in woorden:
             if w in t:
                 return cat
     return None
+
 
 def parse_datum(s):
     if not s:
@@ -85,30 +82,51 @@ def parse_datum(s):
             continue
     return None
 
+
 def extract_adres(titel, omschrijving=""):
     """Haalt straat + huisnummer uit titel of omschrijving."""
-    # Probeer eerst in de titel
     m = ADRES_REGEX.search(titel)
     if m:
         return m.group(1)
-    # Anders in omschrijving (indien aanwezig)
     if omschrijving:
         m = ADRES_REGEX.search(omschrijving)
         if m:
             return m.group(1)
     return None
 
+
 def fetch_feed():
-    print("Feed ophalen...", end=" ", flush=True)
+    """
+    Probeert meerdere RSS-URL-varianten. Bij elke variant 2 pogingen.
+    Geeft de data terug van de eerste URL die werkt én items bevat.
+    """
+    import xml.etree.ElementTree as ET2
     headers = {
-        "User-Agent": "Zaanstad-Raad-Monitor/1.0",
-        "Accept":     "application/rss+xml, application/xml, text/xml",
+        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+        "Accept":     "application/rss+xml, application/xml, text/xml, */*",
     }
-    req = urllib.request.Request(RSS_URL, headers=headers)
-    with urllib.request.urlopen(req, timeout=20) as resp:
-        data = resp.read()
-    print(f"OK ({len(data)} bytes)")
-    return data
+    for vi, url in enumerate(RSS_URLS, 1):
+        for poging in range(1, 3):
+            print(f"URL-variant {vi}, poging {poging}...", end=" ", flush=True)
+            try:
+                req = urllib.request.Request(url, headers=headers)
+                with urllib.request.urlopen(req, timeout=30) as resp:
+                    data = resp.read()
+                # Check of er items in zitten
+                root = ET2.fromstring(data)
+                items = list(root.iter("item"))
+                print(f"OK — {len(items)} items ({len(data)} bytes)")
+                if items:
+                    return data
+                else:
+                    print(f"  (lege feed, volgende variant proberen)")
+                    break
+            except Exception as e:
+                print(f"FOUT: {e}")
+                if poging < 2:
+                    import time; time.sleep(4)
+    raise RuntimeError("Alle RSS-URL-varianten mislukt of geven lege feed")
+
 
 def parse_feed(data):
     root  = ET.fromstring(data)
@@ -132,6 +150,7 @@ def parse_feed(data):
             items.append((titel, link, datum, desc))
     return items
 
+
 def load_existing():
     if not os.path.exists(OUTPUT):
         return {}
@@ -139,10 +158,12 @@ def load_existing():
         data = json.load(f)
     return {b["link"]: b for b in data}
 
+
 def main():
-    vandaag      = datetime.now()
-    week_geleden = vandaag - timedelta(days=7)
-    grens_datum  = week_geleden.strftime("%Y-%m-%d")
+    # Datumbereik: via env var SCRAPE_VANAF of standaard afgelopen 7 dagen
+    vandaag     = datetime.now()
+    vanaf_env   = os.environ.get("SCRAPE_VANAF", "").strip()
+    grens_datum = vanaf_env if vanaf_env else (vandaag - timedelta(days=7)).strftime("%Y-%m-%d")
 
     print(f"Alleen bekendmakingen vanaf: {grens_datum}")
 
@@ -190,6 +211,7 @@ def main():
     print(f"  {nieuw} nieuwe bekendmakingen toegevoegd")
     print(f"  {overgeslagen} weggefilterd (niet relevant)")
     print(f"  {len(resultaat)} totaal in JSON")
+
 
 if __name__ == "__main__":
     main()
