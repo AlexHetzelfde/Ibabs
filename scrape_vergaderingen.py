@@ -64,15 +64,8 @@ def fetch_vergadering_details(opener, agenda_id):
             punten.append({"nummer": nummer.strip(), "titel": titel.strip()})
 
     # Video
-    video_link = None
     video_id   = None
-    m = re.search(r'data-video-id="([^"]+)"', html)
-    if m:
-        video_id   = m.group(1).strip()          # bijv. "zaanstad/20260611_1"
-        player_id  = video_id.replace("/", "_")
-        video_link = (
-            f"https://sdk.companywebcast.com/player/"
-            f"?id={player_id}&display=126&customBtnColor=006a81"
+    video_link = None
         )
 
     return punten, video_link, video_id
@@ -145,6 +138,7 @@ def main():
             "url":          f"{BASE_URL}{item.get('url', '')}",
             "video_id":     video_id,
             "video_link":   video_link,
+            "heeft_video":  true,
             "agendapunten": agendapunten,
             "bijgewerkt":   vandaag.strftime("%d-%m-%Y"),
         }
