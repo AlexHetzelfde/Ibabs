@@ -347,11 +347,21 @@ def haal_document_id(opener, item_id):
 def download_pdf(opener, item_id, document_id):
     url = f"{BASE_URL}/Reports/Document/{item_id}?documentId={document_id}"
     req = urllib.request.Request(
-        url, headers={**HEADERS, "Accept": "application/pdf,*/*"}
+        url,
+        headers={
+            **HEADERS,
+            "Accept":   "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "Referer":  f"{BASE_URL}/Reports/Item//{item_id}",
+        }
     )
     try:
         with opener.open(req, timeout=30) as resp:
-            return resp.read()
+            data = resp.read()
+            # Controleer of we echt een PDF hebben en geen HTML-foutpagina
+            if data[:4] != b'%PDF':
+                print(f"(geen PDF ontvangen, eerste bytes: {data[:20]})")
+                return None
+            return data
     except Exception as e:
         print(f"(PDF download mislukt: {e})")
         return None
