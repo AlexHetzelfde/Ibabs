@@ -1,19 +1,24 @@
 #!/usr/bin/env python3
 """
 Haalt raadsinformatiebrieven en kennisgevingen op uit iBabs Zaanstad,
-downloadt de bijbehorende PDFs, extraheert de tekst, en laat Gemini
-checkwaardige claims identificeren.
+downloadt de bijbehorende PDFs, extraheert de tekst, en detecteert
+checkwaardige claims via twee lagen:
 
+  1. CODE — altijd actief, regex-patronen op geldbedragen, percentages,
+             beloftetaal, datumdeadlines, vage beweringen
+  2. AI   — optioneel, Gemini 1.5 Flash voor diepere claimanalyse
+
+Claims krijgen een "bron"-veld: "code" of "ai".
 Resultaat wordt opgeslagen in data/collegeberichten.json
 
 Gebruik:
     python3 scrape_collegeberichten.py
 
 Vereiste omgevingsvariabelen:
-    GEMINI_API_KEY  — Gemini API key voor claimanalyse
+    GEMINI_API_KEY  — Gemini API key (optioneel, alleen voor AI-laag)
 
 Optionele omgevingsvariabelen:
-    SCRAPE_VANAF    — datum in YYYY-MM-DD formaat (standaard: afgelopen 7 dagen)
+    SCRAPE_VANAF    — datum YYYY-MM-DD (standaard: afgelopen 7 dagen)
 """
 
 import json
@@ -39,7 +44,6 @@ GEMINI_URL = (
     "gemini-1.5-flash:generateContent"
 )
 
-# Alleen deze typen zijn journalistiek relevant
 RELEVANTE_TYPEN = {"Raadsinformatiebrief", "Kennisgeving"}
 
 HEADERS = {
@@ -54,15 +58,235 @@ HEADERS = {
     "Origin":           BASE_URL,
 }
 
-# Kolomdefinities op basis van de response-structuur
 COLUMNS = [
-    ("title",                    False),
-    ("datumbericht",             True),
+    ("title",                      False),
+    ("datumbericht",               True),
     ("portefeuillehouderselectie", True),
-    ("typeselectie",             True),
-    ("afhandelingselectie",      True),
-    ("registrationdate",         True),
+    ("typeselectie",               True),
+    ("afhandelingselectie",        True),
+    ("registrationdate",           True),
 ]
+
+# ── PRIORITEITSSCORES ─────────────────────────────────────────────────────────
+PRIO_SCORE = {"HOOG": 75, "MIDDEL": 45, "LAAG": 20}
+
+# ── CODE-GEBASEERDE CLAIMDETECTIE ─────────────────────────────────────────────
+#
+# Elk patroon is een tuple van:
+#   (regex, prioriteit, verificatietip)
+#
+# De detectie werkt per zin: als een zin matcht op een patroon
+# wordt die zin als claim opgeslagen. Eén match per zin volstaat.
+#
+CODE_PATRONEN = [
+    # Geldbedragen — altijd HOOG, altijd controleerbaar
+    (
+        r'€\s*[\d.,]+(?:\s*(?:miljoen|mln|duizend|k))?',
+        "HOOG",
+        "Controleer bedrag via gemeentebegroting, raadsstuk of jaarverslag"
+    ),
+    # Percentages
+    (
+        r'\b\d+[,.]\d+\s*%|\b\d+\s*%',
+        "HOOG",
+        "Controleer percentage via bron, onderzoeksrapport of CBS-data"
+    ),
+    # Concrete aantallen mensen/woningen
+    (
+        r'\b\d+\s*(?:woningen|appartementen|inwoners|huishoudens|bewoners|'
+        r'vluchtelingen|statushouders|leerlingen|medewerkers|fte|arbeidsplaatsen)',
+        "HOOG",
+        "Controleer aantal via CBS, gemeentelijke rapportage of aanbieder"
+    ),
+    # Concrete aantallen incidenten/meldingen
+    (
+        r'\b\d+\s*(?:meldingen|klachten|incidenten|overtredingen|'
+        r'aanvragen|bezwaren|vergunningen)',
+        "MIDDEL",
+        "Controleer via jaarrapportage handhaving of gemeentelijke registratie"
+    ),
+    # Datumdeadlines en tijdskaders
+    (
+        r'(?:voor|eind|in|per|uiterlijk)\s+'
+        r'(?:20\d\d|dit jaar|volgend jaar|begin \d{4}|medio \d{4}|Q[1-4]\s*20\d\d)',
+        "MIDDEL",
+        "Controleer deadline via eerder raadsstuk, motie of collegebrief"
+    ),
+    # Expliciete beloftes en toezeggingen
+    (
+        r'(?:zal worden|gaan we|wordt gerealiseerd|is toegezegd|'
+        r'hebben wij toegezegd|wordt opgeleverd|zullen wij|'
+        r'nemen wij|doen wij|streven wij|is onze inzet)',
+        "MIDDEL",
+        "Controleer toezegging via eerdere collegebrieven, moties of raadsvragen"
+    ),
+    # Vergelijkingen met eerdere periodes
+    (
+        r'(?:ten opzichte van|vergeleken met|meer dan vorig jaar|'
+        r'minder dan vorig jaar|stijging van|daling van|'
+        r'toegenomen met|afgenomen met|hoger dan|lager dan)',
+        "MIDDEL",
+        "Controleer vergelijking via jaarrapportage, CBS of vorige collegebrief"
+    ),
+    # Wetsartikelen en beleidsreferenties
+    (
+        r'(?:artikel\s+\d+[a-z]?|wet\s+[A-Z][a-z]+|'
+        r'besluit\s+[A-Z][a-z]+|verordening\s+[a-z])',
+        "LAAG",
+        "Controleer wetsartikel of beleidsdocument via overheid.nl of gemeentearchief"
+    ),
+    # Vage superlatieven zonder onderbouwing
+    (
+        r'\b(?:structureel|aanzienlijk|fors|significant|'
+        r'sterk gestegen|sterk gedaald|substantieel|'
+        r'groot aantal|veel meer|veel minder|hoog risico)\b',
+        "LAAG",
+        "Vage bewering zonder getal of bron — vraag om kwantificering"
+    ),
+]
+
+
+def detecteer_code_claims(tekst):
+    """
+    Detecteert checkwaardige claims via regex-patronen.
+    Werkt altijd, ook zonder Gemini API key.
+    Geeft maximaal 10 claims terug met bron='code'.
+    """
+    if not tekst:
+        return []
+
+    # Splits op zinsgrenzen
+    zinnen = re.split(r'(?<=[.!?])\s+|\n', tekst)
+
+    claims = []
+    gezien = set()  # voorkom duplicaten
+
+    for zin in zinnen:
+        zin = zin.strip()
+        # Te kort of te lang om zinvol te zijn
+        if len(zin) < 25 or len(zin) > 500:
+            continue
+
+        for patroon, prioriteit, verificatie in CODE_PATRONEN:
+            if re.search(patroon, zin, re.IGNORECASE):
+                # Dedupliceer op basis van eerste 50 tekens
+                sleutel = zin[:50].lower()
+                if sleutel in gezien:
+                    break
+                gezien.add(sleutel)
+
+                claims.append({
+                    "claim":      zin[:250],
+                    "verificatie": verificatie,
+                    "prioriteit": prioriteit,
+                    "score":      PRIO_SCORE[prioriteit],
+                    "bron":       "code",
+                    "kruischeck": None,
+                })
+                break  # één match per zin is genoeg
+
+        if len(claims) >= 10:
+            break
+
+    # Sorteer: HOOG eerst
+    volgorde = {"HOOG": 0, "MIDDEL": 1, "LAAG": 2}
+    claims.sort(key=lambda c: volgorde.get(c["prioriteit"], 9))
+
+    return claims
+
+
+# ── AI-GEBASEERDE CLAIMANALYSE ────────────────────────────────────────────────
+def analyseer_ai_claims(tekst, titel, portefeuillehouder, api_key):
+    """
+    Laat Gemini checkwaardige claims identificeren.
+    Geeft een lijst van claim-objecten terug met bron='ai'.
+    Valt stil terug op lege lijst als de API niet bereikbaar is.
+    """
+    if not api_key or not tekst:
+        return []
+
+    tekst_kort = tekst[:8000]
+
+    prompt = f"""Je bent een factcheck-assistent voor een journalist die collegebrieven van de gemeente Zaanstad analyseert.
+
+Document: "{titel}"
+Portefeuillehouder: {portefeuillehouder or "onbekend"}
+
+Analyseer de onderstaande tekst en identificeer alle feitelijke claims die verifieerbaar zijn.
+Denk aan: getallen, percentages, datums, tijdlijnen, beloftes van het college, budgetten, aantallen woningen of inwoners, vergelijkingen met eerdere jaren, statusupdates op moties of eerdere beloftes.
+
+Geef voor elke claim:
+- De exacte claim (kort en precies, max 200 tekens)
+- Hoe een journalist dit kan controleren (welke bron, welk document)
+- Prioriteit: HOOG / MIDDEL / LAAG
+- Score: 0-100 (hoe checkwaardig)
+
+Maximaal 8 claims, HOOG eerst.
+
+Antwoord ALLEEN met een JSON-array, geen markdown, geen uitleg:
+[{{"claim":"...","verificatie":"...","prioriteit":"HOOG","score":85}}]
+
+Tekst:
+{tekst_kort}"""
+
+    body = json.dumps({
+        "contents": [{"parts": [{"text": prompt}]}],
+        "generationConfig": {"temperature": 0.2, "maxOutputTokens": 2048}
+    }).encode("utf-8")
+
+    url = f"{GEMINI_URL}?key={api_key}"
+    req = urllib.request.Request(
+        url, data=body,
+        headers={"Content-Type": "application/json"},
+        method="POST"
+    )
+
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            data = json.loads(resp.read().decode("utf-8"))
+        raw   = data["candidates"][0]["content"]["parts"][0]["text"]
+        match = re.search(r"\[[\s\S]*\]", raw)
+        if not match:
+            return []
+        ai_claims = json.loads(match.group(0))
+        # Voeg bron-veld toe
+        for c in ai_claims:
+            c["bron"]       = "ai"
+            c["kruischeck"] = c.get("kruischeck") or None
+        return ai_claims
+    except Exception as e:
+        print(f"  (Gemini mislukt: {e})")
+        return []
+
+
+# ── CLAIMS SAMENVOEGEN ────────────────────────────────────────────────────────
+def combineer_claims(code_claims, ai_claims):
+    """
+    Voegt code- en AI-claims samen.
+    Verwijdert code-claims die al door AI zijn gevonden
+    (op basis van overlap in de eerste 40 tekens).
+    AI-claims gaan voor omdat ze rijker zijn.
+    """
+    if not ai_claims:
+        return code_claims
+
+    ai_teksten = {c["claim"][:40].lower() for c in ai_claims}
+
+    unieke_code = [
+        c for c in code_claims
+        if c["claim"][:40].lower() not in ai_teksten
+    ]
+
+    gecombineerd = ai_claims + unieke_code
+
+    # Sorteer: HOOG eerst, dan score
+    volgorde = {"HOOG": 0, "MIDDEL": 1, "LAAG": 2}
+    gecombineerd.sort(key=lambda c: (
+        volgorde.get(c.get("prioriteit", "LAAG"), 9),
+        -(c.get("score") or 0)
+    ))
+
+    return gecombineerd[:12]  # max 12 gecombineerde claims
 
 
 # ── HELPERS ───────────────────────────────────────────────────────────────────
@@ -101,14 +325,8 @@ def build_lijst_body(start, draw):
 
 # ── PDF OPHALEN & TEKST EXTRAHEREN ────────────────────────────────────────────
 def haal_document_id(opener, item_id):
-    """
-    Haalt de documentId op via de detailpagina van een bericht.
-    Patroon: /Reports/Document/{item_id}?documentId={doc_id}
-    """
     url = f"{BASE_URL}/Reports/Item/{item_id}"
-    req = urllib.request.Request(
-        url, headers={**HEADERS, "Accept": "text/html"}
-    )
+    req = urllib.request.Request(url, headers={**HEADERS, "Accept": "text/html"})
     try:
         with opener.open(req, timeout=20) as resp:
             html = resp.read().decode("utf-8", errors="replace")
@@ -116,22 +334,17 @@ def haal_document_id(opener, item_id):
         print(f"(detailpagina mislukt: {e})")
         return None
 
-    # Zoek naar documentId in links
     m = re.search(
         r"/Reports/Document/" + re.escape(item_id) +
-        r"\?documentId=([a-f0-9\-]{36})",
-        html
+        r"\?documentId=([a-f0-9\-]{36})", html
     )
     if m:
         return m.group(1)
-
-    # Fallback: zoek breder naar documentId=
     m = re.search(r"documentId=([a-f0-9\-]{36})", html)
     return m.group(1) if m else None
 
 
 def download_pdf(opener, item_id, document_id):
-    """Download de PDF en geef de raw bytes terug."""
     url = f"{BASE_URL}/Reports/Document/{item_id}?documentId={document_id}"
     req = urllib.request.Request(
         url, headers={**HEADERS, "Accept": "application/pdf,*/*"}
@@ -145,91 +358,25 @@ def download_pdf(opener, item_id, document_id):
 
 
 def extraheer_pdf_tekst(pdf_bytes):
-    """
-    Extraheert tekst uit PDF bytes via pypdf.
-    Installeer met: pip install pypdf --break-system-packages
-    """
     try:
         import pypdf
         import io
         reader = pypdf.PdfReader(io.BytesIO(pdf_bytes))
-        tekst_delen = []
+        delen = []
         for pagina in reader.pages:
             tekst = pagina.extract_text()
             if tekst:
-                tekst_delen.append(tekst)
-        return "\n".join(tekst_delen).strip()
+                delen.append(tekst)
+        return "\n".join(delen).strip()
     except ImportError:
-        print("  ⚠ pypdf niet geïnstalleerd. Installeer met: pip install pypdf --break-system-packages")
+        print("  ⚠ pypdf niet geïnstalleerd — pip install pypdf --break-system-packages")
         return None
     except Exception as e:
         print(f"  (PDF-tekst extractie mislukt: {e})")
         return None
 
 
-# ── GEMINI CLAIMANALYSE ───────────────────────────────────────────────────────
-def analyseer_claims(tekst, titel, portefeuillehouder, api_key):
-    """
-    Laat Gemini checkwaardige claims identificeren in de brieftekst.
-    Geeft een lijst van claim-objecten terug.
-    """
-    if not api_key or not tekst:
-        return []
-
-    # Tekst beperken tot 8000 tekens voor de API
-    tekst_kort = tekst[:8000]
-
-    prompt = f"""Je bent een factcheck-assistent voor een journalist die collegebrieven van de gemeente Zaanstad analyseert.
-
-Document: "{titel}"
-Portefeuillehouder: {portefeuillehouder or "onbekend"}
-
-Analyseer de onderstaande tekst en identificeer alle feitelijke claims die verifieerbaar zijn.
-Denk aan: getallen, percentages, datums, tijdlijnen, beloftes van het college, budgetten, aantallen woningen of inwoners, vergelijkingen met eerdere jaren, statusupdates op moties of eerdere beloftes.
-
-Geef voor elke claim:
-- De exacte claim (kort en precies)
-- Hoe een journalist dit kan controleren (welke bron, welk document)
-- Prioriteit: HOOG / MIDDEL / LAAG
-- Score: 0-100 (hoe checkwaardig)
-
-Maximaal 8 claims, HOOG eerst.
-
-Antwoord ALLEEN met een JSON-array, geen markdown, geen uitleg:
-[{{"claim":"...","verificatie":"...","prioriteit":"HOOG","score":85}}]
-
-Tekst:
-{tekst_kort}"""
-
-    body = json.dumps({
-        "contents": [{"parts": [{"text": prompt}]}],
-        "generationConfig": {"temperature": 0.2, "maxOutputTokens": 2048}
-    }).encode("utf-8")
-
-    url = f"{GEMINI_URL}?key={api_key}"
-    req = urllib.request.Request(
-        url,
-        data=body,
-        headers={"Content-Type": "application/json"},
-        method="POST"
-    )
-
-    try:
-        with urllib.request.urlopen(req, timeout=30) as resp:
-            data = json.loads(resp.read().decode("utf-8"))
-
-        raw   = data["candidates"][0]["content"]["parts"][0]["text"]
-        match = re.search(r"\[[\s\S]*\]", raw)
-        if not match:
-            return []
-        return json.loads(match.group(0))
-
-    except Exception as e:
-        print(f"  (Gemini mislukt: {e})")
-        return []
-
-
-# ── BESTAANDE DATA LADEN ──────────────────────────────────────────────────────
+# ── BESTAANDE DATA ────────────────────────────────────────────────────────────
 def load_existing():
     if not os.path.exists(OUTPUT):
         return {}
@@ -240,38 +387,35 @@ def load_existing():
 
 # ── HOOFDPROGRAMMA ────────────────────────────────────────────────────────────
 def main():
-    # Gemini API key
     api_key = os.environ.get("GEMINI_API_KEY", "").strip()
-    if not api_key:
-        print("⚠  GEMINI_API_KEY niet ingesteld — claims worden niet geanalyseerd")
+    if api_key:
+        print("✓ Gemini API key gevonden — AI-laag actief")
+    else:
+        print("⚠  Geen GEMINI_API_KEY — alleen code-gebaseerde claimdetectie")
 
-    # Datumbereik
     vandaag   = datetime.now()
     vanaf_env = os.environ.get("SCRAPE_VANAF", "").strip()
     grens     = vanaf_env if vanaf_env else (vandaag - timedelta(days=7)).strftime("%Y-%m-%d")
     print(f"Collegeberichten vanaf: {grens}")
 
-    # Sessie opbouwen
+    # Sessie
     jar    = http.cookiejar.CookieJar()
     opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(jar))
     print("Sessie ophalen...", end=" ", flush=True)
     try:
         opener.open(urllib.request.Request(
-            LIJST_PAGE_URL,
-            headers={"User-Agent": HEADERS["User-Agent"]}
+            LIJST_PAGE_URL, headers={"User-Agent": HEADERS["User-Agent"]}
         ), timeout=15)
         print("OK")
     except Exception as e:
         print(f"MISLUKT ({e}) — doorgaan zonder sessie")
 
-    # Eerste pagina ophalen
+    # Eerste pagina
     lijst_headers = {**HEADERS, "Referer": LIJST_PAGE_URL}
     print("Lijst ophalen...", end=" ", flush=True)
     try:
         req = urllib.request.Request(
-            LIJST_DATA_URL,
-            data=build_lijst_body(0, 1),
-            headers=lijst_headers
+            LIJST_DATA_URL, data=build_lijst_body(0, 1), headers=lijst_headers
         )
         with opener.open(req, timeout=30) as resp:
             first = json.loads(resp.read().decode("utf-8"))
@@ -287,18 +431,15 @@ def main():
     draw, start = 2, PAGE_SIZE
     while start < total:
         req = urllib.request.Request(
-            LIJST_DATA_URL,
-            data=build_lijst_body(start, draw),
-            headers=lijst_headers
+            LIJST_DATA_URL, data=build_lijst_body(start, draw), headers=lijst_headers
         )
         with opener.open(req, timeout=30) as resp:
             page = json.loads(resp.read().decode("utf-8"))
         all_rows.extend(page.get("data", []))
-        draw += 1
-        start += PAGE_SIZE
+        draw += 1; start += PAGE_SIZE
         time.sleep(0.3)
 
-    # Filteren: alleen relevante typen en recente datums
+    # Filteren
     relevante_rows = [
         r for r in all_rows
         if r.get("typeselectie", "") in RELEVANTE_TYPEN
@@ -306,13 +447,15 @@ def main():
     ]
     print(f"{len(relevante_rows)} relevante brieven vanaf {grens}")
 
-    # Bestaande data
     bestaand = load_existing()
     print(f"Bestaande JSON: {len(bestaand)} brieven")
 
-    # Per brief: PDF downloaden, tekst extraheren, claims analyseren
+    # Per brief verwerken
     print("Brieven verwerken...")
     verwerkt = 0
+    code_totaal = 0
+    ai_totaal   = 0
+
     for i, row in enumerate(relevante_rows):
         item_id = row.get("DT_RowId")
         titel   = row.get("title", "").strip()
@@ -323,7 +466,7 @@ def main():
 
         print(f"  [{i+1}/{len(relevante_rows)}] {datum} — {titel[:55]}", end=" ", flush=True)
 
-        # Sla over als al verwerkt én al claims heeft
+        # Overslaan als al verwerkt met claims
         if item_id in bestaand and bestaand[item_id].get("claims"):
             print("→ al verwerkt, overgeslagen")
             continue
@@ -333,15 +476,11 @@ def main():
         if not doc_id:
             print("→ geen documentId gevonden")
             bestaand[item_id] = {
-                "id":                item_id,
-                "titel":             titel,
-                "type":              type_,
-                "datum":             datum,
-                "portefeuillehouder": ph,
-                "url":               f"{BASE_URL}/Reports/Item/{item_id}",
-                "tekst":             None,
-                "claims":            [],
-                "bijgewerkt":        vandaag.strftime("%Y-%m-%d"),
+                "id": item_id, "titel": titel, "type": type_,
+                "datum": datum, "portefeuillehouder": ph,
+                "url": f"{BASE_URL}/Reports/Item/{item_id}",
+                "tekst": None, "claims": [],
+                "bijgewerkt": vandaag.strftime("%Y-%m-%d"),
             }
             time.sleep(0.4)
             continue
@@ -352,30 +491,41 @@ def main():
         if not pdf_bytes:
             print("→ PDF niet beschikbaar")
             bestaand[item_id] = {
-                "id":                item_id,
-                "titel":             titel,
-                "type":              type_,
-                "datum":             datum,
-                "portefeuillehouder": ph,
-                "url":               f"{BASE_URL}/Reports/Item/{item_id}",
-                "pdf_url":           f"{BASE_URL}/Reports/Document/{item_id}?documentId={doc_id}",
-                "tekst":             None,
-                "claims":            [],
-                "bijgewerkt":        vandaag.strftime("%Y-%m-%d"),
+                "id": item_id, "titel": titel, "type": type_,
+                "datum": datum, "portefeuillehouder": ph,
+                "url": f"{BASE_URL}/Reports/Item/{item_id}",
+                "pdf_url": f"{BASE_URL}/Reports/Document/{item_id}?documentId={doc_id}",
+                "tekst": None, "claims": [],
+                "bijgewerkt": vandaag.strftime("%Y-%m-%d"),
             }
             time.sleep(0.4)
             continue
 
         # Tekst extraheren
         tekst = extraheer_pdf_tekst(pdf_bytes)
-        tekst_preview = f"{len(tekst)} tekens" if tekst else "geen tekst"
 
-        # Claims analyseren
-        claims = []
+        # Laag 1: code-gebaseerde claims (altijd)
+        code_claims = detecteer_code_claims(tekst) if tekst else []
+
+        # Laag 2: AI-claims (optioneel)
+        ai_claims = []
         if tekst and api_key:
-            claims = analyseer_claims(tekst, titel, ph, api_key)
+            ai_claims = analyseer_ai_claims(tekst, titel, ph, api_key)
+            time.sleep(0.3)
 
-        print(f"→ {tekst_preview} · {len(claims)} claims")
+        # Combineren
+        alle_claims = combineer_claims(code_claims, ai_claims)
+
+        code_totaal += len(code_claims)
+        ai_totaal   += len(ai_claims)
+
+        tekst_info = f"{len(tekst)} tekens" if tekst else "geen tekst"
+        print(
+            f"→ {tekst_info} · "
+            f"{len(code_claims)} code-claims · "
+            f"{len(ai_claims)} AI-claims · "
+            f"{len(alle_claims)} totaal"
+        )
 
         bestaand[item_id] = {
             "id":                item_id,
@@ -385,14 +535,14 @@ def main():
             "portefeuillehouder": ph,
             "url":               f"{BASE_URL}/Reports/Item/{item_id}",
             "pdf_url":           f"{BASE_URL}/Reports/Document/{item_id}?documentId={doc_id}",
-            "tekst":             tekst[:5000] if tekst else None,  # bewaar eerste 5000 tekens
-            "claims":            claims,
+            "tekst":             tekst[:5000] if tekst else None,
+            "claims":            alle_claims,
             "bijgewerkt":        vandaag.strftime("%Y-%m-%d"),
         }
         verwerkt += 1
         time.sleep(0.5)
 
-    # Opslaan — nieuwste eerst
+    # Opslaan
     resultaat = sorted(
         bestaand.values(),
         key=lambda x: x.get("datum") or "",
@@ -402,12 +552,13 @@ def main():
     with open(OUTPUT, "w", encoding="utf-8") as f:
         json.dump(resultaat, f, ensure_ascii=False, indent=2)
 
-    # Samenvatting
     totaal_claims = sum(len(b.get("claims") or []) for b in resultaat)
     print(f"\n✓ Weggeschreven naar {OUTPUT}")
     print(f"  {verwerkt} brieven nieuw verwerkt")
     print(f"  {len(resultaat)} totaal in JSON")
-    print(f"  {totaal_claims} claims geïdentificeerd")
+    print(f"  {code_totaal} code-claims gedetecteerd")
+    print(f"  {ai_totaal} AI-claims gedetecteerd")
+    print(f"  {totaal_claims} claims totaal in JSON")
 
 
 if __name__ == "__main__":
