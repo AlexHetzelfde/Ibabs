@@ -730,13 +730,13 @@ function renderVerg() {
         </div>
         <div class="meeting-badges">
           ${v.agendapunten?.length ? `<span class="badge badge-teal">${v.agendapunten.length} punten</span>` : ''}
-          ${v.video_id ? '<span class="badge badge-go">Video</span>' : ''}
+          ${v.heeft_video ? '<span class="badge badge-go">Video</span>' : ''}
           ${v.datum > new Date().toISOString().slice(0,10) ? '<span class="badge badge-hold">Gepland</span>' : ''}
         </div>
         <div class="meeting-chevron" id="ch-${v.id}">›</div>
       </div>
       <div class="meeting-details" id="det-${v.id}">
-        ${v.video_id ? `
+        ${v.heeft_video ? `
           <div class="video-section">
             <div class="video-label">⬇ Video beschikbaar</div>
             <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
