@@ -66,7 +66,7 @@ def fetch_vergadering_details(opener, agenda_id):
     # Video
     video_id   = None
     video_link = None
-        )
+        
 
     return punten, video_link, video_id
 
@@ -138,7 +138,7 @@ def main():
             "url":          f"{BASE_URL}{item.get('url', '')}",
             "video_id":     video_id,
             "video_link":   video_link,
-            "heeft_video":  true,
+            "heeft_video":  True,
             "agendapunten": agendapunten,
             "bijgewerkt":   vandaag.strftime("%d-%m-%Y"),
         }
