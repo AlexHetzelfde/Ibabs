@@ -353,9 +353,11 @@ def main():
         print(f"  [{i+1}/{len(recente_rows)}] {datum} — {titel[:55]}", end=" ", flush=True)
 
         al_verwerkt = (
-            item_id in bestaand
-            and len(bestaand[item_id].get("raadsleden_voor") or []) > 0
-        )
+    item_id in bestaand
+    and len(bestaand[item_id].get("raadsleden_voor") or []) > 0
+    and bestaand[item_id].get("voor_pct") is not None  # ← toevoegen
+)
+        
         if al_verwerkt:
             print("→ al verwerkt, overgeslagen")
             continue
