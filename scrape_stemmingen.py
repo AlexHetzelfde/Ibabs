@@ -1,3 +1,4 @@
+cat > /home/claude/scrape_stemmingen.py << 'EOFSCRIPT'
 #!/usr/bin/env python3
 """
 Haalt stemmingen op uit iBabs Zaanstad,
@@ -80,21 +81,18 @@ def build_lijst_body(start, draw):
     return urllib.parse.urlencode(params).encode("utf-8")
 
 
-# ── DETAIL OPHALEN ────────────────────────────────────────────────────────────
+# ── NAAM/UL HELPERS ───────────────────────────────────────────────────────────
 def _vind_buitenste_ul(html, zoek_vanaf):
     """
-    Zoekt de eerste <ul> na positie zoek_vanaf en geeft de inhoud terug
-    van de complete buitenste ul (geneste uls inbegrepen) via depth-counting.
-    Retourneert de tekst TUSSEN <ul> en </ul>, of None als niet gevonden.
+    Zoekt de eerste <ul> na zoek_vanaf en retourneert (inhoud, positie_na_ul).
+    Gebruikt depth-counting zodat geneste <ul>-tags correct worden afgehandeld.
+    Retourneert (None, zoek_vanaf) als er geen ul gevonden wordt.
     """
     ul_start = html.find("<ul>", zoek_vanaf)
     if ul_start == -1:
-        return None
+        return None, zoek_vanaf
 
-    depth = 0
-    i = ul_start
-    ul_end = -1
-
+    depth, i, ul_end = 0, ul_start, -1
     while i < len(html):
         if html[i:i+4] == "<ul>":
             depth += 1
@@ -102,78 +100,128 @@ def _vind_buitenste_ul(html, zoek_vanaf):
         elif html[i:i+5] == "</ul>":
             depth -= 1
             if depth == 0:
-                ul_end = i
+                ul_end = i + 5
                 break
             i += 5
         else:
             i += 1
 
     if ul_end == -1:
-        return None
+        return None, zoek_vanaf
 
-    # Geef de inhoud terug TUSSEN <ul> en </ul> (dus niet de tags zelf)
-    return html[ul_start + 4 : ul_end]
+    # Inhoud tussen <ul> en </ul> (de tags zelf niet meegerekend)
+    return html[ul_start + 4 : ul_end - 5], ul_end
 
 
 def _splits_namen(namen_tekst):
     """
     Splitst een iBabs namenstring in losse raadsleden.
 
-    iBabs-formaat: 'Achternaam, Voornaam [tussenvoegsel] , Achternaam2, Voornaam2 , ...'
-    De scheiding tussen personen is ' , ' (spatie-komma-spatie).
-    Binnen een naam scheidt de komma achternaam van voornaam (geen spatie VOOR de komma).
+    iBabs-formaat (twee varianten):
+      A) Met tussenvoegsel of expliciete spatie voor komma:
+         "Haan, Jochem de , Kingma, Merel , Vos, Robbert"
+         Scheider = ' , ' (spatie-komma-spatie)
 
-    Fallback: als ' , ' niets oplevert, probeer dan splitsen op ', ' gevolgd door
-    een hoofdletter (voor namen zonder tussenvoegsel en zonder spatie voor de komma).
+      B) Zonder tussenvoegsel, geen spatie voor komma:
+         "Barends, Menno, Boomsma, Boy, Cornelisse, Natasja"
+         Scheider = ', ' maar namen wisselen als surname/firstname-paren
+
+    Strategie:
+      1. Split op ' , ' (spatie voor komma) voor variant A.
+      2. Als een chunk meer dan één komma bevat, zijn het meerdere
+         namen zonder tussenvoegsel (variant B): split op ', ' en
+         groepeer per twee (surname, firstname).
     """
-    # Normaliseer witruimte
-    tekst = re.sub(r"\s+", " ", namen_tekst).strip()
+    tekst = re.sub(r"\s+", " ", namen_tekst).strip().rstrip(",").strip()
 
-    # Primaire split: spatie-komma-spatie (= scheiding tussen personen)
-    delen = [d.strip() for d in tekst.split(" , ") if d.strip()]
+    # Stap 1: primaire split op ' , ' (expliciete persoonscheiding)
+    primaire_delen = [d.strip().rstrip(",").strip()
+                      for d in tekst.split(" , ") if d.strip()]
 
-    if len(delen) > 1:
-        return [d.rstrip(",").strip() for d in delen if d]
+    namen = []
+    for deel in primaire_delen:
+        komma_count = deel.count(",")
+        if komma_count <= 1:
+            # Enkelvoudige naam: "Achternaam, Voornaam [tussenvoegsel]"
+            if deel:
+                namen.append(deel)
+        else:
+            # Meerdere namen zonder spatie voor komma (variant B)
+            # Split op ', ' en groepeer per twee
+            stukken = [s.strip() for s in deel.split(", ") if s.strip()]
+            if len(stukken) % 2 == 0:
+                for j in range(0, len(stukken), 2):
+                    namen.append(f"{stukken[j]}, {stukken[j+1]}")
+            else:
+                # Oneven aantal (onverwacht) — sla de hele chunk op
+                namen.append(deel)
 
-    # Fallback: sommige namen hebben geen spatie voor de komma
-    # Splits op ', ' gevolgd door een hoofdletter (begin nieuw achternaam)
-    delen_fb = [d.strip() for d in re.split(r",\s+(?=[A-Z])", tekst) if d.strip()]
-
-    # Plak achternaam en voornaam weer samen: elk even element is voornaam
-    # bij het patroon Achternaam, Voornaam → na split krijg je [Acht, Vnm, Acht2, Vnm2]
-    # Hergroepeer per twee
-    if len(delen_fb) >= 2 and len(delen_fb) % 2 == 0:
-        namen = []
-        for j in range(0, len(delen_fb), 2):
-            naam = f"{delen_fb[j]}, {delen_fb[j+1]}"
-            namen.append(naam.strip())
-        return namen
-
-    # Laatste redmiddel: geef de hele tekst terug als één naam
-    return [tekst] if tekst else []
+    return [n for n in namen if n]
 
 
+def _parse_raadsleden_vanaf(html, vanaf_pos):
+    """
+    Zoekt de eerste vote-summary-legend-details div na vanaf_pos,
+    parseert alle fracties en raadsleden daarin, en retourneert
+    (lijst_van_dicts, positie_na_details_ul).
+
+    Elke dict heeft de vorm: {"naam": "...", "fractie": "..."}
+    """
+    details_pos = html.find("vote-summary-legend-details", vanaf_pos)
+    if details_pos == -1:
+        return [], vanaf_pos
+
+    details_html, ul_end = _vind_buitenste_ul(html, details_pos)
+    if not details_html:
+        return [], details_pos
+
+    # Elke <li> in de buitenste ul = één fractie met geneste <ul><li>namen</li></ul>
+    fractie_blokken = re.findall(
+        r"<li>\s*(.*?)\s*\(\d+\)\s*<ul>\s*<li>(.*?)</li>\s*</ul>\s*</li>",
+        details_html, re.DOTALL
+    )
+
+    raadsleden = []
+    for fractie_raw, namen_raw in fractie_blokken:
+        fractie     = re.sub(r"\s+", " ", fractie_raw).strip()
+        namen_tekst = re.sub(r"\s+", " ", namen_raw).strip()
+        for naam in _splits_namen(namen_tekst):
+            raadsleden.append({"naam": naam, "fractie": fractie})
+
+    return raadsleden, ul_end
+
+
+# ── DETAIL OPHALEN ────────────────────────────────────────────────────────────
 def fetch_stemming_detail(opener, item_id):
     """
-    Haalt de detailpagina op en parseert:
-    - voor_pct / tegen_pct / onthouding_pct  (via w-XX klasse)
-    - uitslag_tekst                           (via bar-text span)
-    - fracties_voor / fracties_tegen / fracties_onthouding (via .text div)
-    - raadsleden_voor / raadsleden_tegen / raadsleden_onthouding
-      (via vote-summary-legend-details)
+    Haalt de detailpagina op en parseert alle stemdata.
 
-    FIX t.o.v. vorige versie:
-    1. Nested-<ul> bug: gebruikt depth-counting i.p.v. non-greedy regex
-       zodat de volledige buitenste <ul> wordt geparsed, niet alleen de eerste
-       fractie.
-    2. Naamssplitsing: splitst op ' , ' (spatie voor de komma = persoonscheiding)
-       in plaats van op komma-hoofdletter (wat binnen een naam ook voorkomt).
+    iBabs-HTML structuur voor stemmingen met voor én tegen:
+
+        <div class="vote-summary-legend ...">
+            <div class="vote-summary-legend-in-favour ...">...</div>
+            <div class="vote-summary-legend-details ...">   ← VOOR namen
+                <ul>
+                    <li>Fractie A (n)<ul><li>Namen...</li></ul></li>
+                    <li>Fractie B (n)<ul><li>Namen...</li></ul></li>
+                </ul>
+            </div>
+            <div class="vote-summary-legend-against ...">...</div>
+            <div class="vote-summary-legend-details ...">   ← TEGEN namen
+                <ul>
+                    <li>Fractie C (n)<ul><li>Namen...</li></ul></li>
+                </ul>
+            </div>
+        </div>
+
+    FIX: elke details-div wordt op positie in de HTML gevonden
+    (voor → na in-favour div, tegen → na against div), NIET via
+    tekst-matching van fractienamen. Dit voorkomt dat raadsleden
+    die voor stemmen maar van een gesplitste fractie zijn (bijv.
+    FvD: 1 voor, 2 tegen) verkeerd gecategoriseerd worden.
     """
     url = f"{BASE_URL}/Reports/Item/{item_id}"
-    req = urllib.request.Request(
-        url,
-        headers={**HEADERS, "Accept": "text/html"}
-    )
+    req = urllib.request.Request(url, headers={**HEADERS, "Accept": "text/html"})
     try:
         with opener.open(req, timeout=20) as resp:
             html = resp.read().decode("utf-8", errors="replace")
@@ -214,79 +262,39 @@ def fetch_stemming_detail(opener, item_id):
     # ── Fractie-samenvattingen per categorie ──────────────────────────────
     for cat, css in [("voor", "in-favour"), ("tegen", "against"), ("onthouding", "abstain")]:
         m = re.search(
-            rf"vote-summary-legend-{css}[^>]*>.*?<div class=\"text\">\s*(.*?)\s*</div>",
+            rf'vote-summary-legend-{css}[^>]*>.*?<div class="text">\s*(.*?)\s*</div>',
             html, re.DOTALL
         )
         if m:
             result[f"fracties_{cat}"] = re.sub(r"\s+", " ", m.group(1)).strip()
 
-    # ── Individuele raadsleden uit details-div ────────────────────────────
+    # ── Raadsleden per categorie — positie-gebaseerd ──────────────────────
     #
-    # FIX: de details-div heeft geneste <ul>-tags:
-    #   <div class="vote-summary-legend-details ...">
-    #     <ul>                         ← buitenste ul
-    #       <li>Fractie (n)
-    #         <ul><li>Namen...</li></ul>  ← geneste ul
-    #       </li>
-    #       ...
-    #     </ul>
-    #   </div>
-    #
-    # De oude regex r'<ul>(.*?)</ul>' stopte bij de EERSTE </ul> (de geneste),
-    # waardoor alleen fractie 1 werd geparsed.
-    # Oplossing: zoek de positie van de details-div en gebruik depth-counting
-    # om de complete buitenste <ul> te vinden.
+    # Zoek elke categorie-div en pak daarna de EERSTE details-div.
+    # Omdat de HTML altijd de volgorde in-favour → against → abstain heeft,
+    # en elke details-div direct na zijn categorie-div staat, werkt zoeken
+    # vanaf de categorie-positie altijd correct.
 
-    details_pos = html.find("vote-summary-legend-details")
-    if details_pos != -1:
-        details_html = _vind_buitenste_ul(html, details_pos)
-    else:
-        details_html = None
+    voor_pos  = html.find("vote-summary-legend-in-favour")
+    tegen_pos = html.find("vote-summary-legend-against",
+                          voor_pos + 1 if voor_pos != -1 else 0)
+    onth_pos  = html.find("vote-summary-legend-abstain",
+                          tegen_pos + 1 if tegen_pos != -1 else
+                          (voor_pos + 1 if voor_pos != -1 else 0))
 
-    if details_html:
-        # Elke <li> in de buitenste ul is één fractie met een geneste <ul><li>namen</li></ul>
-        fractie_blokken = re.findall(
-            r"<li>\s*(.*?)\s*\(\d+\)\s*<ul>\s*<li>(.*?)</li>\s*</ul>\s*</li>",
-            details_html, re.DOTALL
-        )
+    raadsleden_voor,  _ = (_parse_raadsleden_vanaf(html, voor_pos)
+                           if voor_pos  != -1 else ([], 0))
+    raadsleden_tegen, _ = (_parse_raadsleden_vanaf(html, tegen_pos)
+                           if tegen_pos != -1 else ([], 0))
+    raadsleden_onth,  _ = (_parse_raadsleden_vanaf(html, onth_pos)
+                           if onth_pos  != -1 else ([], 0))
 
-        # Bouw mapping: fractienaam → lijst raadsleden
-        fractie_namen: dict = {}
-        for fractie_raw, namen_raw in fractie_blokken:
-            fractie = re.sub(r"\s+", " ", fractie_raw).strip()
-            namen_tekst = re.sub(r"\s+", " ", namen_raw).strip()
-
-            # FIX: gebruik _splits_namen() in plaats van de kapotte regex-split
-            namen = _splits_namen(namen_tekst)
-            fractie_namen[fractie] = namen
-
-        # Categoriseer fracties via de summary-teksten
-        voor_tekst  = result.get("fracties_voor",       "")
-        tegen_tekst = result.get("fracties_tegen",       "")
-        onth_tekst  = result.get("fracties_onthouding",  "")
-
-        raadsleden_voor  = []
-        raadsleden_tegen = []
-        raadsleden_onth  = []
-
-        for fractie, namen in fractie_namen.items():
-            if fractie in tegen_tekst:
-                doellijst = raadsleden_tegen
-            elif fractie in onth_tekst:
-                doellijst = raadsleden_onth
-            else:
-                # Default: voor (ook als er helemaal geen opsplitsing is)
-                doellijst = raadsleden_voor
-
-            for naam in namen:
-                doellijst.append({"naam": naam, "fractie": fractie})
-
-        if raadsleden_voor:
-            result["raadsleden_voor"]       = raadsleden_voor
-        if raadsleden_tegen:
-            result["raadsleden_tegen"]      = raadsleden_tegen
-        if raadsleden_onth:
-            result["raadsleden_onthouding"] = raadsleden_onth
+    if raadsleden_voor:
+        result["raadsleden_voor"]       = raadsleden_voor
+    if raadsleden_tegen:
+        result["raadsleden_tegen"]      = raadsleden_tegen
+    if raadsleden_onth:
+        result["raadsleden_onthouding"] = raadsleden_onth
 
     return result
 
@@ -368,15 +376,16 @@ def main():
     nieuw = 0
 
     for i, row in enumerate(recente_rows):
-        item_id  = row.get("DT_RowId")
-        titel    = row.get("title", "").strip()
-        datum    = parse_datum(row.get("datum"))
-        uitslag  = (row.get("uitslag") or "").strip()
+        item_id = row.get("DT_RowId")
+        titel   = row.get("title", "").strip()
+        datum   = parse_datum(row.get("datum"))
+        uitslag = (row.get("uitslag") or "").strip()
 
         print(f"  [{i+1}/{len(recente_rows)}] {datum} — {titel[:55]}", end=" ", flush=True)
 
         # FIX: alleen overslaan als er écht raadsledendata aanwezig is.
-        # [] is niet None, dus de oude check liet lege arrays altijd door als "al verwerkt".
+        # [] is niet None, dus de oude check (is not None) liet lege arrays
+        # altijd door als "al verwerkt" en probeerde ze nooit opnieuw.
         al_verwerkt = (
             item_id in bestaand
             and len(bestaand[item_id].get("raadsleden_voor") or []) > 0
@@ -440,3 +449,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+EOFSCRIPT
+echo "Done"
