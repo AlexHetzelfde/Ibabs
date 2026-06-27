@@ -179,7 +179,7 @@
     .viz-bar-row { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-bottom: 1px solid var(--rule); }
     .viz-bar-row:last-child { border-bottom: none; }
     .viz-bar-label { font-size: 12px; width: 110px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: var(--text); flex-shrink: 0; }
-    .viz-bar-track { flex: 1; height: 7px; background: var(--paper); border-radius: 1px; overflow: hidden; }
+    .viz-bar-track { flex: 1; height: 20px; background: var(--paper); border-radius: 2px; overflow: hidden; }
     .viz-bar-fill { height: 100%; border-radius: 1px; transition: width 0.5s ease; }
     .viz-bar-pct { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(--muted); width: 36px; text-align: right; flex-shrink: 0; }
     .viz-stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin-bottom: 16px; }
@@ -501,12 +501,12 @@
       <div class="viz-bar-list" id="stemLoyaliteit"></div>
     </div>
     <div class="card">
-      <div class="card-header">
-        <span class="card-title">Onverwachte allianties</span>
-        <span style="font-size:11px;color:var(--muted);">coalitie + oppositie die samen stemmen</span>
-      </div>
-      <div id="stemAllianties"></div>
-    </div>
+  <div class="card-header">
+    <span class="card-title">Stemgedrag matrix</span>
+    <span style="font-size:11px;color:var(--muted);">hoe vaak stemmen fracties samen — donkerder = vaker</span>
+  </div>
+  <div id="stemAllianties"></div>
+</div>
   </div>
 
   <div class="viz-row" style="margin-bottom:16px;">
@@ -1304,6 +1304,9 @@ function renderStemStats() {
 
   const pctBlokt = metData.length ? Math.round(coalitieBlokt / metData.length * 100) : 0;
   const pctWint  = metData.length ? Math.round(coalitieWint  / metData.length * 100) : 0;
+  const coalitieZetels = [...COALITIE_FRACTIES].reduce((s, f) => s + (ZETEL_MAP[f] || 0), 0);
+  const totaalZetels   = Object.values(ZETEL_MAP).reduce((s, v) => s + v, 0);
+  const meerderheid    = coalitieZetels > totaalZetels / 2 ? 'meerderheid' : 'minderheid';
 
   document.getElementById('stemCoalitieStats').innerHTML = `
     <div class="coalitie-stat">
@@ -1323,8 +1326,8 @@ function renderStemStats() {
     </div>
     <div class="coalitie-stat">
       <div class="coalitie-stat-label">Coalitie / Totaal</div>
-      <div class="coalitie-stat-value" style="color:var(--navy)">23/39</div>
-      <div class="coalitie-stat-sub">krappe meerderheid</div>
+      <div class="coalitie-stat-value" style="color:var(--navy)">${coalitieZetels}/${totaalZetels}</div>
+      <div class="coalitie-stat-sub">${meerderheid}</div>
     </div>
   `;
 }
@@ -1338,39 +1341,65 @@ function renderStemmingen() {
   // ── HEATMAP ──────────────────────────────────────────────────────────────
   const heatmapEl = document.getElementById('stemHeatmap');
   if (metData.length && allFracties.length) {
-    const colHeaders = metData.map(s => {
-      const kort = s.titel.replace(/^RV\s+|^OV\d+:\s*/i, '').slice(0, 18);
-      return `<th style="padding:1px 2px;"><div style="writing-mode:vertical-rl;transform:rotate(180deg);font-size:9px;color:var(--muted);max-height:90px;overflow:hidden;white-space:nowrap;" title="${esc(s.titel)}">${esc(kort)}</div></th>`;
-    }).join('');
+    const heatData = metData
+      .filter(s => (s.tegen_pct || 0) > 0 || (s.onthouding_pct || 0) > 0)
+      .slice(0, 25);
 
-    const rows = allFracties.map(f => {
-      const isC  = COALITIE_FRACTIES.has(f);
-      const cells = metData.map(s => {
-        const { voor, tegen, onth } = getStemSets(s);
-        const kleur = voor.has(f) ? 'var(--go)' : tegen.has(f) ? 'var(--stop)' : onth.has(f) ? 'var(--hold)' : 'var(--rule)';
-        const label = voor.has(f) ? 'voor'       : tegen.has(f) ? 'tegen'       : onth.has(f) ? 'onthouding'  : 'geen data';
-        return `<td style="width:18px;height:18px;background:${kleur};border:1px solid var(--paper);" title="${esc(f)}: ${label}"></td>`;
+    if (!heatData.length) {
+      heatmapEl.innerHTML = '<div class="viz-empty">Geen verdeelde stemmingen beschikbaar</div>';
+    } else {
+      const colHeaders = heatData.map((s, i) => {
+        const kort = s.titel.replace(/^RV\s+|^OV\d+:\s*/i, '').slice(0, 24);
+        return `<th style="padding:0;width:28px;min-width:28px;vertical-align:bottom;">
+          <div onclick="heatmapDetail(${i})" title="${esc(s.titel)}"
+            style="width:28px;height:110px;display:flex;align-items:flex-end;justify-content:center;padding-bottom:4px;cursor:pointer;">
+            <div style="writing-mode:vertical-rl;transform:rotate(180deg);font-size:10px;color:var(--muted);
+              white-space:nowrap;overflow:hidden;max-height:106px;text-overflow:ellipsis;">
+              ${esc(kort)}
+            </div>
+          </div>
+        </th>`;
       }).join('');
-      return `<tr>
-        <td style="text-align:right;padding:1px 8px 1px 0;white-space:nowrap;font-size:11px;${isC ? 'color:var(--teal);font-weight:600;' : 'color:var(--text);'}">
-          ${isC ? '◆ ' : ''}${esc(f)}
-        </td>
-        ${cells}
-      </tr>`;
-    }).join('');
 
-    heatmapEl.innerHTML = `
-      <div style="overflow-x:auto;padding:12px 20px 16px;">
-        <table style="border-collapse:collapse;">
-          <thead><tr><th></th>${colHeaders}</tr></thead>
-          <tbody>${rows}</tbody>
-        </table>
-        <div style="margin-top:8px;font-size:10px;color:var(--muted);">◆ coalitie · kolommen = stemmingen (hover voor volledige titel)</div>
-      </div>`;
+      const rows = allFracties.map(f => {
+        const isC  = COALITIE_FRACTIES.has(f);
+        const cells = heatData.map((s, i) => {
+          const { voor, tegen, onth } = getStemSets(s);
+          const kleur = voor.has(f) ? 'var(--go)' : tegen.has(f) ? 'var(--stop)' : onth.has(f) ? 'var(--hold)' : 'var(--rule)';
+          const label = voor.has(f) ? 'voor' : tegen.has(f) ? 'tegen' : onth.has(f) ? 'onthouding' : 'geen data';
+          return `<td onclick="heatmapDetail(${i})" title="${esc(f)}: ${label}"
+            style="width:28px;height:28px;min-width:28px;background:${kleur};border:2px solid white;cursor:pointer;">
+          </td>`;
+        }).join('');
+        return `<tr style="${isC ? 'background:var(--teal-bg);' : ''}">
+          <td style="text-align:right;padding:2px 10px 2px 0;white-space:nowrap;font-size:11px;
+            min-width:160px;${isC ? 'color:var(--teal);font-weight:700;' : 'color:var(--text);'}">
+            ${isC ? '◆ ' : ''}${esc(f)}
+          </td>
+          ${cells}
+        </tr>`;
+      }).join('');
+
+      heatmapEl.innerHTML = `
+        <div style="overflow-x:auto;padding:12px 20px 0;">
+          <table style="border-collapse:separate;border-spacing:0;">
+            <thead><tr><th style="min-width:160px;"></th>${colHeaders}</tr></thead>
+            <tbody>${rows}</tbody>
+          </table>
+          <div style="margin-top:8px;padding-bottom:10px;font-size:10px;color:var(--muted);">
+            ◆ coalitie · alleen verdeelde stemmingen · klik op een cel of kolomlabel voor detail
+          </div>
+        </div>
+        <div id="heatmapDetailPanel" style="display:none;border-top:1px solid var(--rule);padding:14px 20px;background:var(--paper);">
+          <div id="heatmapDetailContent"></div>
+        </div>
+      `;
+
+      window._heatData = heatData;
+    }
   } else {
     heatmapEl.innerHTML = '<div class="viz-empty">Geen stemmingsdata beschikbaar</div>';
   }
-
   // ── LOYALITEIT ────────────────────────────────────────────────────────────
   const loyMap = {};
   metData.forEach(s => {
@@ -1388,12 +1417,17 @@ function renderStemmingen() {
     .sort((a, b) => b.pct - a.pct);
 
   document.getElementById('stemLoyaliteit').innerHTML = loyLijst.map(l => {
-    const isC   = COALITIE_FRACTIES.has(l.naam);
-    const kleur = l.pct >= 75 ? 'var(--go)' : l.pct >= 50 ? 'var(--teal)' : 'var(--stop)';
+    const isC        = COALITIE_FRACTIES.has(l.naam);
+    const kleur      = l.pct >= 75 ? 'var(--go)' : l.pct >= 50 ? 'var(--teal)' : 'var(--stop)';
+    const inBalk     = l.pct > 25;
     return `<div class="viz-bar-row">
-      <div class="viz-bar-label" title="${esc(l.naam)}" style="${isC ? 'color:var(--teal);font-weight:600;' : ''}">${esc(l.naam)}</div>
-      <div class="viz-bar-track"><div class="viz-bar-fill" style="width:${l.pct}%;background:${kleur}"></div></div>
-      <div class="viz-bar-pct">${l.pct}%</div>
+      <div class="viz-bar-label" title="${esc(l.naam)}" style="${isC ? 'color:var(--teal);font-weight:700;' : ''}">${isC ? '◆ ' : ''}${esc(l.naam)}</div>
+      <div class="viz-bar-track">
+        <div class="viz-bar-fill" style="width:${l.pct}%;background:${kleur};height:100%;display:flex;align-items:center;padding-left:6px;">
+          ${inBalk ? `<span style="font-size:10px;font-family:'JetBrains Mono',monospace;color:white;font-weight:600;">${l.pct}%</span>` : ''}
+        </div>
+      </div>
+      ${!inBalk ? `<div class="viz-bar-pct">${l.pct}%</div>` : `<div class="viz-bar-pct"></div>`}
     </div>`;
   }).join('') || '<div class="viz-empty">Geen data</div>';
 
@@ -1412,56 +1446,93 @@ function renderStemmingen() {
       }
     }
   });
+  const n = allFracties.length;
+  if (!n || !Object.keys(coVote).length) {
+    document.getElementById('stemAllianties').innerHTML = '<div class="viz-empty">Onvoldoende data</div>';
+  } else {
+    const CELL = 22, LABEL_W = 130, LABEL_H = 95;
+    const SVG_W = LABEL_W + n * CELL;
+    const SVG_H = LABEL_H + n * CELL;
 
-  const unexpected = Object.entries(coVote)
-    .map(([key, samen]) => {
-      const [a, b] = key.split('||');
-      return { a, b, samen, total: coTotal[key] || 1, crossBlok: COALITIE_FRACTIES.has(a) !== COALITIE_FRACTIES.has(b) };
-    })
-    .filter(x => x.crossBlok && x.samen >= 2)
-    .sort((a, b) => b.samen - a.samen)
-    .slice(0, 6);
+    let colLabels = '';
+    allFracties.forEach((f, j) => {
+      const cx = LABEL_W + j * CELL + CELL / 2;
+      const cy = LABEL_H - 2;
+      const isC = COALITIE_FRACTIES.has(f);
+      colLabels += `<text x="0" y="0" transform="translate(${cx},${cy}) rotate(-42)"
+        font-size="9" fill="${isC ? '#006B7B' : '#374151'}"
+        font-weight="${isC ? '700' : '400'}" text-anchor="start">
+        ${esc(f.slice(0, 16))}
+      </text>`;
+    });
 
-  const sterksteAllianties = Object.entries(coVote)
-    .map(([key, samen]) => {
-      const [a, b] = key.split('||');
-      const pct = Math.round(samen / (coTotal[key] || 1) * 100);
-      return { a, b, samen, pct, zelfdeBlok: COALITIE_FRACTIES.has(a) === COALITIE_FRACTIES.has(b) };
-    })
-    .filter(x => x.zelfdeBlok && x.samen >= 3)
-    .sort((a, b) => b.pct - a.pct)
-    .slice(0, 5);
+    let matrixRows = '';
+    allFracties.forEach((fRij, i) => {
+      const isRijC = COALITIE_FRACTIES.has(fRij);
+      const rowY   = LABEL_H + i * CELL;
 
-  let allHtml = '';
-  if (unexpected.length) {
-    allHtml += `<div style="padding:8px 20px 2px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--hold);">Cross-blok (onverwacht)</div>`;
-    allHtml += unexpected.map(x => {
-      const aC = COALITIE_FRACTIES.has(x.a);
-      return `<div class="alliantie-item">
-        <div class="alliantie-pair">
-          <span class="badge ${aC ? 'badge-teal' : 'badge-navy'}" title="${esc(x.a)}" style="max-width:90px;overflow:hidden;text-overflow:ellipsis;">${esc(x.a)}</span>
-          <span style="color:var(--muted);font-size:10px;flex-shrink:0;">+</span>
-          <span class="badge ${!aC ? 'badge-teal' : 'badge-navy'}" title="${esc(x.b)}" style="max-width:90px;overflow:hidden;text-overflow:ellipsis;">${esc(x.b)}</span>
+      matrixRows += `<text x="${LABEL_W - 6}" y="${rowY + CELL / 2 + 3.5}"
+        text-anchor="end" font-size="9"
+        fill="${isRijC ? '#006B7B' : '#374151'}"
+        font-weight="${isRijC ? '700' : '400'}">
+        ${esc(fRij.slice(0, 18))}
+      </text>`;
+
+      allFracties.forEach((fKol, j) => {
+        const cx = LABEL_W + j * CELL;
+        const cy = rowY;
+        if (i === j) {
+          matrixRows += `<rect x="${cx}" y="${cy}" width="${CELL}" height="${CELL}" fill="#E5E7EB"/>`;
+          return;
+        }
+        const key   = [fRij, fKol].sort().join('||');
+        const samen = coVote[key]  || 0;
+        const tot   = coTotal[key] || 0;
+        if (!tot) {
+          matrixRows += `<rect x="${cx}" y="${cy}" width="${CELL}" height="${CELL}" fill="#F3F4F6"/>`;
+          return;
+        }
+        const pct     = samen / tot;
+        const alpha   = (0.15 + pct * 0.85).toFixed(2);
+        const isKruis = COALITIE_FRACTIES.has(fRij) !== COALITIE_FRACTIES.has(fKol);
+        const kleur   = isKruis
+          ? `rgba(184,106,0,${alpha})`
+          : isRijC
+            ? `rgba(0,107,123,${alpha})`
+            : `rgba(13,27,42,${alpha})`;
+
+        matrixRows += `<rect x="${cx}" y="${cy}" width="${CELL}" height="${CELL}"
+          fill="${kleur}" stroke="white" stroke-width="1.5">
+          <title>${esc(fRij)} + ${esc(fKol)}: ${samen} van ${tot}x samen (${Math.round(pct*100)}%)</title>
+        </rect>`;
+      });
+    });
+
+    document.getElementById('stemAllianties').innerHTML = `
+      <div style="overflow-x:auto;padding:12px 20px 16px;">
+        <svg viewBox="0 0 ${SVG_W} ${SVG_H}" xmlns="http://www.w3.org/2000/svg"
+          style="max-width:100%;min-width:${Math.min(SVG_W, 400)}px;">
+          ${colLabels}
+          ${matrixRows}
+        </svg>
+        <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;font-size:10px;color:var(--muted);">
+          <span style="display:flex;align-items:center;gap:4px;">
+            <span style="width:10px;height:10px;background:rgba(0,107,123,0.8);display:inline-block;"></span> Coalitie-intern
+          </span>
+          <span style="display:flex;align-items:center;gap:4px;">
+            <span style="width:10px;height:10px;background:rgba(13,27,42,0.8);display:inline-block;"></span> Oppositie-intern
+          </span>
+          <span style="display:flex;align-items:center;gap:4px;">
+            <span style="width:10px;height:10px;background:rgba(184,106,0,0.8);display:inline-block;"></span> Cross-blok
+          </span>
+          <span style="display:flex;align-items:center;gap:4px;">
+            <span style="width:10px;height:10px;background:#F3F4F6;border:1px solid #D8D5CE;display:inline-block;"></span> Geen data
+          </span>
+          <span style="margin-left:auto;">Hover over een cel voor details</span>
         </div>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--hold);flex-shrink:0;">${x.samen}/${x.total}x</span>
-      </div>`;
-    }).join('');
+      </div>
+    `;
   }
-  if (sterksteAllianties.length) {
-    allHtml += `<div style="padding:8px 20px 2px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);border-top:1px solid var(--rule);">Sterkste allianties</div>`;
-    allHtml += sterksteAllianties.map(x => {
-      const bothC = COALITIE_FRACTIES.has(x.a) && COALITIE_FRACTIES.has(x.b);
-      return `<div class="alliantie-item">
-        <div class="alliantie-pair">
-          <span class="badge ${bothC ? 'badge-teal' : 'badge-stop'}" title="${esc(x.a)}" style="max-width:90px;overflow:hidden;text-overflow:ellipsis;">${esc(x.a)}</span>
-          <span style="color:var(--muted);font-size:10px;flex-shrink:0;">+</span>
-          <span class="badge ${bothC ? 'badge-teal' : 'badge-stop'}" title="${esc(x.b)}" style="max-width:90px;overflow:hidden;text-overflow:ellipsis;">${esc(x.b)}</span>
-        </div>
-        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);flex-shrink:0;">${x.pct}% · ${x.samen}x</span>
-      </div>`;
-    }).join('');
-  }
-  document.getElementById('stemAllianties').innerHTML = allHtml || '<div class="viz-empty">Onvoldoende data</div>';
 
   // ── MEEST VERDEELD ────────────────────────────────────────────────────────
   const verdeeld = stemmingen
@@ -1472,19 +1543,32 @@ function renderStemmingen() {
 
   document.getElementById('stemVerdeeldLijst').innerHTML = verdeeld.length === 0
     ? '<div class="viz-empty">Geen verdeelde stemmingen</div>'
-    : verdeeld.map(s => `
-        <div class="mini-item">
-          <div class="mini-date">${fmtDate(s.datum, 'short')}</div>
-          <div style="flex:1;min-width:0;">
-            <div class="mini-title">${esc(s.titel)}</div>
-            <div style="display:flex;height:6px;border-radius:2px;overflow:hidden;margin-top:5px;margin-bottom:3px;">
-              <div style="width:${s.voor_pct||0}%;background:var(--go);"></div>
-              <div style="width:${s.tegen_pct||0}%;background:var(--stop);"></div>
-              <div style="width:${s.onthouding_pct||0}%;background:var(--hold);"></div>
+    : verdeeld.map(s => {
+        const vp = s.voor_pct || 0;
+        const tp = s.tegen_pct || 0;
+        const op = s.onthouding_pct || 0;
+        return `
+        <div style="padding:12px 20px;border-bottom:1px solid var(--rule);">
+          <div style="font-size:13px;font-weight:600;margin-bottom:8px;">${esc(s.titel)}</div>
+          <div style="display:flex;height:32px;border-radius:2px;overflow:hidden;margin-bottom:6px;">
+            <div style="width:${vp}%;background:var(--go);display:flex;align-items:center;justify-content:center;">
+              ${vp > 15 ? `<span style="font-size:11px;font-family:'JetBrains Mono',monospace;color:white;font-weight:600;">${vp}%</span>` : ''}
             </div>
-            <div style="font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--muted);">${s.voor_pct||0}% voor · ${s.tegen_pct||0}% tegen</div>
+            <div style="width:${tp}%;background:var(--stop);display:flex;align-items:center;justify-content:center;">
+              ${tp > 15 ? `<span style="font-size:11px;font-family:'JetBrains Mono',monospace;color:white;font-weight:600;">${tp}%</span>` : ''}
+            </div>
+            ${op > 0 ? `<div style="width:${op}%;background:var(--hold);display:flex;align-items:center;justify-content:center;">
+              ${op > 15 ? `<span style="font-size:11px;font-family:'JetBrains Mono',monospace;color:white;font-weight:600;">${op}%</span>` : ''}
+            </div>` : ''}
           </div>
-        </div>`).join('');
+          <div style="display:flex;gap:12px;font-size:10px;font-family:'JetBrains Mono',monospace;">
+            <span style="color:var(--go);">▉ ${vp}% voor</span>
+            <span style="color:var(--stop);">▉ ${tp}% tegen</span>
+            ${op > 0 ? `<span style="color:var(--hold);">▉ ${op}% onthouding</span>` : ''}
+            <span style="color:var(--muted);margin-left:auto;">${fmtDate(s.datum,'short')} · marge ${s.marge}%</span>
+          </div>
+        </div>`;
+      }).join('');
 
   // ── STEMMEN PER FRACTIE ───────────────────────────────────────────────────
   const fractieTeller = {};
@@ -1502,15 +1586,48 @@ function renderStemmingen() {
   }
   const fracties = Object.entries(fractieTeller).sort((a, b) => (b[1].voor + b[1].tegen) - (a[1].voor + a[1].tegen));
   const maxStemF = Math.max(...fracties.map(([, v]) => v.voor + v.tegen), 1);
-  document.getElementById('stemFractieLijst').innerHTML = fracties.map(([naam, v]) => {
-    const isC = COALITIE_FRACTIES.has(naam);
-    const tot = v.voor + v.tegen;
-    return `<div class="viz-bar-row">
-      <div class="viz-bar-label" title="${esc(naam)}" style="${isC ? 'color:var(--teal);font-weight:600;' : ''}">${esc(naam)}</div>
-      <div class="viz-bar-track"><div class="viz-bar-fill" style="width:${Math.round(tot/maxStemF*100)}%;background:${isC ? 'var(--teal)' : 'var(--navy)'}"></div></div>
+  const coalitieGroep  = fracties.filter(([naam]) =>  COALITIE_FRACTIES.has(naam));
+  const oppositieGroep = fracties.filter(([naam]) => !COALITIE_FRACTIES.has(naam));
+
+  function renderFractieRij([naam, v]) {
+    const isC       = COALITIE_FRACTIES.has(naam);
+    const tot       = v.voor + v.tegen;
+    const breedte   = Math.round(tot / maxStemF * 100);
+    const voorPct   = tot ? Math.round(v.voor  / tot * 100) : 0;
+    const tegenPct  = tot ? Math.round(v.tegen / tot * 100) : 0;
+    const zetels    = ZETEL_MAP[naam] ? `<span style="font-size:10px;color:var(--muted);margin-left:3px;">(${ZETEL_MAP[naam]})</span>` : '';
+    return `<div class="viz-bar-row" style="align-items:center;">
+      <div class="viz-bar-label" title="${esc(naam)}" style="${isC ? 'color:var(--teal);font-weight:700;' : ''}">
+        ${isC ? '◆ ' : ''}${esc(naam)}${zetels}
+      </div>
+      <div class="viz-bar-track" style="height:20px;">
+        <div style="width:${breedte}%;height:100%;display:flex;">
+          <div style="width:${voorPct}%;background:var(--go);display:flex;align-items:center;justify-content:center;">
+            ${voorPct > 20 ? `<span style="font-size:9px;color:white;font-family:'JetBrains Mono',monospace;">${v.voor}</span>` : ''}
+          </div>
+          <div style="width:${tegenPct}%;background:var(--stop);opacity:0.75;display:flex;align-items:center;justify-content:center;">
+            ${tegenPct > 20 ? `<span style="font-size:9px;color:white;font-family:'JetBrains Mono',monospace;">${v.tegen}</span>` : ''}
+          </div>
+        </div>
+      </div>
       <div class="viz-bar-pct">${tot}</div>
     </div>`;
-  }).join('');
+  }
+
+  document.getElementById('stemFractieLijst').innerHTML = `
+    ${coalitieGroep.length ? `
+      <div style="padding:4px 20px 2px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--teal);">Coalitie</div>
+      ${coalitieGroep.map(renderFractieRij).join('')}
+    ` : ''}
+    ${oppositieGroep.length ? `
+      <div style="padding:8px 20px 2px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--navy);border-top:1px solid var(--rule);">Oppositie</div>
+      ${oppositieGroep.map(renderFractieRij).join('')}
+    ` : ''}
+    <div class="viz-legend" style="padding:8px 20px;">
+      <span class="viz-legend-item"><span class="viz-legend-dot" style="background:var(--go);"></span> Voor</span>
+      <span class="viz-legend-item"><span class="viz-legend-dot" style="background:var(--stop);opacity:.75;"></span> Tegen</span>
+    </div>
+  `;
 
   // ── RAADSLID-NIVEAU (actief zodra parsing werkt) ──────────────────────────
   if (heeftRaadsleden) {
@@ -1634,6 +1751,34 @@ function toggleStem(id) {
   if (!det) return;
   const open = det.classList.toggle('open');
   ch.classList.toggle('open', open);
+}
+function heatmapDetail(i) {
+  const s = (window._heatData || [])[i];
+  if (!s) return;
+  const panel   = document.getElementById('heatmapDetailPanel');
+  const content = document.getElementById('heatmapDetailContent');
+  if (!panel || !content) return;
+  const { voor, tegen, onth } = getStemSets(s);
+  content.innerHTML = `
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+      <div style="flex:1;min-width:200px;">
+        <div style="font-size:13px;font-weight:700;margin-bottom:4px;">${esc(s.titel)}</div>
+        <div style="font-size:11px;color:var(--muted);margin-bottom:10px;">${fmtDate(s.datum, 'full')}</div>
+        ${s.voor_pct != null ? `
+          <div style="display:flex;height:24px;border-radius:2px;overflow:hidden;margin-bottom:8px;max-width:360px;">
+            <div style="width:${s.voor_pct||0}%;background:var(--go);"></div>
+            <div style="width:${s.tegen_pct||0}%;background:var(--stop);"></div>
+            <div style="width:${s.onthouding_pct||0}%;background:var(--hold);"></div>
+          </div>` : ''}
+        ${s.fracties_voor        ? `<div style="font-size:11px;color:var(--go);margin-bottom:3px;"><strong>Voor:</strong> ${esc(s.fracties_voor)}</div>` : ''}
+        ${s.fracties_tegen       ? `<div style="font-size:11px;color:var(--stop);margin-bottom:3px;"><strong>Tegen:</strong> ${esc(s.fracties_tegen)}</div>` : ''}
+        ${s.fracties_onthouding  ? `<div style="font-size:11px;color:var(--hold);"><strong>Onthouding:</strong> ${esc(s.fracties_onthouding)}</div>` : ''}
+      </div>
+      <button onclick="document.getElementById('heatmapDetailPanel').style.display='none'"
+        style="background:none;border:none;font-size:18px;color:var(--muted);cursor:pointer;flex-shrink:0;">✕</button>
+    </div>
+  `;
+  panel.style.display = 'block';
 }
 // ── COLLEGEBRIEVEN ────────────────────────────────────────────────────────────
 function renderCbStats() {
