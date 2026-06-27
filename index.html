@@ -313,6 +313,7 @@
   <div class="tab"        data-tab="vergaderingen"   onclick="switchTab(this)">Vergaderingen</div>
   <div class="tab"        data-tab="moties"          onclick="switchTab(this)">Moties &amp; Stemmingen</div>
   <div class="tab"        data-tab="bekendmakingen"  onclick="switchTab(this)">Bekendmakingen</div>
+  <div class="tab"        data-tab="stemmingen"       onclick="switchTab(this)">Stemmingen</div>
   <div class="tab"        data-tab="raadsvragen"     onclick="switchTab(this)">Raadsvragen</div>
   <div class="tab"        data-tab="collegebrieven"  onclick="switchTab(this)">Collegebrieven</div>
   <div class="tab"        data-tab="factcheck"       onclick="switchTab(this)">✦ Factcheck</div>
@@ -454,6 +455,29 @@
     </div>
   </div>
 
+  <!-- ── STEMMINGEN ── -->
+<div class="tab-content" id="tab-stemmingen">
+  <div class="stats" id="stemStats" style="grid-template-columns:repeat(3,1fr);margin-bottom:24px;">
+    <div class="stat"><div class="stat-label">Stemmingen totaal</div><div class="stat-value" id="stemTotaal">—</div></div>
+    <div class="stat"><div class="stat-label">Unaniem voor</div><div class="stat-value" id="stemUnaniem">—</div></div>
+    <div class="stat"><div class="stat-label">Verdeeld</div><div class="stat-value" id="stemVerdeeld">—</div></div>
+  </div>
+  <div class="viz-row" style="margin-bottom:16px;">
+    <div class="card">
+      <div class="card-header"><span class="card-title">Meest verdeelde stemmingen</span></div>
+      <div id="stemVerdeeldLijst"><div class="empty">Laden...</div></div>
+    </div>
+    <div class="card">
+      <div class="card-header"><span class="card-title">Stemmen per fractie</span></div>
+      <div class="viz-bar-list" id="stemFractieLijst"></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header"><span class="card-title">Alle stemmingen</span><span class="card-link" id="stemCount" style="cursor:default;">—</span></div>
+    <div id="stemList"><div class="empty">Laden...</div></div>
+  </div>
+</div>
+  
   <!-- ── RAADSVRAGEN ── -->
   <div class="tab-content" id="tab-raadsvragen">
     <div class="filter-bar">
@@ -588,14 +612,14 @@
 
 <script>
 // ── STATE ─────────────────────────────────────────────────────────────────────
-let vergaderingen = [], moties = [], bekendmakingen = [], raadsvragen = [], collegebrieven = [];
+let vergaderingen = [], moties = [], bekendmakingen = [], raadsvragen = [], collegebrieven = [], stemmingen = [];
 let huidigeClaims = []; // actieve claims in factcheck
 
 // ── INIT ──────────────────────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', async () => {
   const savedKey = localStorage.getItem('zr_gemini_key');
   if (savedKey) document.getElementById('geminiKey').value = savedKey;
-  await Promise.all([loadVerg(), loadMoties(), loadBk(), loadRaadsvragen(), loadCollegebrieven()]);
+  await Promise.all([loadVerg(), loadMoties(), loadBk(), loadRaadsvragen(), loadCollegebrieven(), loadStemmingen()]);
   updateStats();
   renderOpgeslagenClaims();
   document.getElementById('headerMeta').textContent =
@@ -666,6 +690,21 @@ async function loadRaadsvragen() {
   }
 }
 
+async function loadStemmingen() {
+  try {
+    const r = await fetch('./data/stemmingen.json');
+    if (!r.ok) throw new Error(r.status);
+    stemmingen = await r.json();
+    renderStemmingen();
+    renderStemStats();
+  } catch (e) {
+    document.getElementById('stemList').innerHTML =
+      e.message === '404'
+        ? '<div class="empty">Nog geen stemmingen — draai eerst de scraper.</div>'
+        : `<div class="error-msg">Fout: ${e.message}</div>`;
+  }
+}
+  
 async function loadCollegebrieven() {
   try {
     const r = await fetch('./data/collegeberichten.json');
@@ -1127,7 +1166,115 @@ function renderRaadsvragen() {
           ${r.omschrijving ? `<div class="bk-desc" style="margin-top:6px;">${esc(r.omschrijving)}</div>` : ''}
         </div>`).join('');
 }
+// ── STEMMINGEN ────────────────────────────────────────────────────────────────
+function renderStemStats() {
+  const totaal    = stemmingen.length;
+  const unaniem   = stemmingen.filter(s => s.voor_pct === 100).length;
+  const verdeeld  = stemmingen.filter(s => s.tegen_pct > 0 || s.onthouding_pct > 0).length;
+  document.getElementById('stemTotaal').textContent   = totaal;
+  document.getElementById('stemUnaniem').textContent  = unaniem;
+  document.getElementById('stemVerdeeld').textContent = verdeeld;
+}
 
+function renderStemmingen() {
+  document.getElementById('stemCount').textContent = stemmingen.length + ' stemmingen';
+
+  // Meest verdeelde stemmingen
+  const verdeeld = stemmingen
+    .filter(s => s.tegen_pct > 0 || s.onthouding_pct > 0)
+    .map(s => ({ ...s, marge: Math.abs((s.voor_pct||0) - (s.tegen_pct||0)) }))
+    .sort((a, b) => a.marge - b.marge)
+    .slice(0, 6);
+
+  document.getElementById('stemVerdeeldLijst').innerHTML = verdeeld.length === 0
+    ? '<div class="viz-empty">Geen verdeelde stemmingen</div>'
+    : verdeeld.map(s => `
+        <div class="mini-item">
+          <div class="mini-date">${fmtDate(s.datum, 'short')}</div>
+          <div style="flex:1;min-width:0;">
+            <div class="mini-title">${esc(s.titel)}</div>
+            <div style="display:flex;height:6px;border-radius:2px;overflow:hidden;margin-top:5px;margin-bottom:3px;">
+              <div style="width:${s.voor_pct||0}%;background:var(--go);"></div>
+              <div style="width:${s.tegen_pct||0}%;background:var(--stop);"></div>
+              <div style="width:${s.onthouding_pct||0}%;background:var(--hold);"></div>
+            </div>
+            <div style="font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--muted);">${s.voor_pct||0}% voor · ${s.tegen_pct||0}% tegen</div>
+          </div>
+        </div>`).join('');
+
+  // Fracties per stem
+  const fractieTeller = {};
+  stemmingen.forEach(s => {
+    (s.raadsleden_voor || []).forEach(r => {
+      if (!fractieTeller[r.fractie]) fractieTeller[r.fractie] = { voor: 0, tegen: 0 };
+      fractieTeller[r.fractie].voor++;
+    });
+    (s.raadsleden_tegen || []).forEach(r => {
+      if (!fractieTeller[r.fractie]) fractieTeller[r.fractie] = { voor: 0, tegen: 0 };
+      fractieTeller[r.fractie].tegen++;
+    });
+  });
+  const fracties = Object.entries(fractieTeller).sort((a, b) => (b[1].voor + b[1].tegen) - (a[1].voor + a[1].tegen));
+  const maxStem  = Math.max(...fracties.map(([, v]) => v.voor + v.tegen), 1);
+  document.getElementById('stemFractieLijst').innerHTML = fracties.map(([naam, v]) => {
+    const totaal = v.voor + v.tegen;
+    const pct    = Math.round(totaal / maxStem * 100);
+    return `<div class="viz-bar-row">
+      <div class="viz-bar-label" title="${esc(naam)}">${esc(naam)}</div>
+      <div class="viz-bar-track"><div class="viz-bar-fill" style="width:${pct}%;background:var(--teal)"></div></div>
+      <div class="viz-bar-pct">${totaal}</div>
+    </div>`;
+  }).join('');
+
+  // Volledige lijst
+  document.getElementById('stemList').innerHTML = stemmingen.map(s => `
+    <div class="meeting">
+      <div class="meeting-row" onclick="toggleStem('${s.id}')">
+        <div class="meeting-date-tag">${fmtDate(s.datum, 'short')}</div>
+        <div class="meeting-info">
+          <div class="meeting-title-text">${esc(s.titel)}</div>
+          <div class="meeting-type-text">${esc(s.uitslag_tekst || s.uitslag || '')}</div>
+        </div>
+        <div class="meeting-badges">
+          ${s.voor_pct === 100 ? '<span class="badge badge-go">Unaniem</span>' : ''}
+          ${(s.tegen_pct||0) > 0 ? `<span class="badge badge-stop">${s.tegen_pct}% tegen</span>` : ''}
+          ${(s.onthouding_pct||0) > 0 ? `<span class="badge badge-hold">${s.onthouding_pct}% onth.</span>` : ''}
+        </div>
+        <div class="meeting-chevron" id="stemch-${s.id}">›</div>
+      </div>
+      <div class="meeting-details" id="stemdet-${s.id}">
+        <div style="padding:12px 20px;">
+          <div style="display:flex;height:8px;border-radius:3px;overflow:hidden;margin-bottom:10px;">
+            <div style="width:${s.voor_pct||0}%;background:var(--go);"></div>
+            <div style="width:${s.tegen_pct||0}%;background:var(--stop);"></div>
+            <div style="width:${s.onthouding_pct||0}%;background:var(--hold);"></div>
+          </div>
+          ${s.fracties_voor ? `<div style="font-size:11px;color:var(--go);margin-bottom:4px;"><strong>Voor:</strong> ${esc(s.fracties_voor)}</div>` : ''}
+          ${s.fracties_tegen ? `<div style="font-size:11px;color:var(--stop);margin-bottom:4px;"><strong>Tegen:</strong> ${esc(s.fracties_tegen)}</div>` : ''}
+          ${s.fracties_onthouding ? `<div style="font-size:11px;color:var(--hold);margin-bottom:8px;"><strong>Onthouding:</strong> ${esc(s.fracties_onthouding)}</div>` : ''}
+          ${(s.raadsleden_tegen||[]).length > 0 ? `
+            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--stop);margin-bottom:6px;">Tegen gestemd</div>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px;">
+              ${(s.raadsleden_tegen||[]).map(r => `<span class="badge badge-stop">${esc(r.naam)} <span style="opacity:.7">${esc(r.fractie)}</span></span>`).join('')}
+            </div>` : ''}
+          ${(s.raadsleden_onthouding||[]).length > 0 ? `
+            <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--hold);margin-bottom:6px;">Onthouding</div>
+            <div style="display:flex;flex-wrap:wrap;gap:5px;">
+              ${(s.raadsleden_onthouding||[]).map(r => `<span class="badge badge-hold">${esc(r.naam)} <span style="opacity:.7">${esc(r.fractie)}</span></span>`).join('')}
+            </div>` : ''}
+          <a href="${esc(s.url)}" target="_blank" style="font-size:12px;color:var(--teal);text-decoration:none;font-weight:500;display:inline-block;margin-top:10px;">Open in iBabs →</a>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+function toggleStem(id) {
+  const det = document.getElementById('stemdet-' + id);
+  const ch  = document.getElementById('stemch-'  + id);
+  if (!det) return;
+  const open = det.classList.toggle('open');
+  ch.classList.toggle('open', open);
+}
 // ── COLLEGEBRIEVEN ────────────────────────────────────────────────────────────
 function renderCbStats() {
   const totaalClaims = collegebrieven.reduce((s, b) => s + (b.claims?.length || 0), 0);
