@@ -41,7 +41,7 @@ HEADERS = {
 
 COLUMNS = [
     ("title",              False),
-    ("datumstemming",      True),
+    ("datum",              True),
     ("uitslag",            True),
     ("registrationdate",   True),
 ]
@@ -270,7 +270,7 @@ def main():
     print("Voorbeeld rij:", json.dumps(all_rows[0], ensure_ascii=False)[:300])
     recente_rows = [
         r for r in all_rows
-        if (parse_datum(r.get("datumstemming")) or "") >= grens
+        if (parse_datum(r.get("datum")) or "") >= grens
     ]
     print(f"{len(recente_rows)} stemmingen vanaf {grens}")
 
@@ -284,7 +284,7 @@ def main():
     for i, row in enumerate(recente_rows):
         item_id  = row.get("DT_RowId")
         titel    = row.get("title", "").strip()
-        datum    = parse_datum(row.get("datumstemming"))
+        datum    = parse_datum(row.get("datum"))
         uitslag  = (row.get("uitslag") or "").strip()
 
         print(f"  [{i+1}/{len(recente_rows)}] {datum} — {titel[:55]}", end=" ", flush=True)
