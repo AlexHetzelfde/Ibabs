@@ -1,4 +1,3 @@
-cat > /home/claude/scrape_stemmingen.py << 'EOFSCRIPT'
 #!/usr/bin/env python3
 """
 Haalt stemmingen op uit iBabs Zaanstad,
@@ -195,30 +194,6 @@ def _parse_raadsleden_vanaf(html, vanaf_pos):
 def fetch_stemming_detail(opener, item_id):
     """
     Haalt de detailpagina op en parseert alle stemdata.
-
-    iBabs-HTML structuur voor stemmingen met voor én tegen:
-
-        <div class="vote-summary-legend ...">
-            <div class="vote-summary-legend-in-favour ...">...</div>
-            <div class="vote-summary-legend-details ...">   ← VOOR namen
-                <ul>
-                    <li>Fractie A (n)<ul><li>Namen...</li></ul></li>
-                    <li>Fractie B (n)<ul><li>Namen...</li></ul></li>
-                </ul>
-            </div>
-            <div class="vote-summary-legend-against ...">...</div>
-            <div class="vote-summary-legend-details ...">   ← TEGEN namen
-                <ul>
-                    <li>Fractie C (n)<ul><li>Namen...</li></ul></li>
-                </ul>
-            </div>
-        </div>
-
-    FIX: elke details-div wordt op positie in de HTML gevonden
-    (voor → na in-favour div, tegen → na against div), NIET via
-    tekst-matching van fractienamen. Dit voorkomt dat raadsleden
-    die voor stemmen maar van een gesplitste fractie zijn (bijv.
-    FvD: 1 voor, 2 tegen) verkeerd gecategoriseerd worden.
     """
     url = f"{BASE_URL}/Reports/Item/{item_id}"
     req = urllib.request.Request(url, headers={**HEADERS, "Accept": "text/html"})
@@ -269,12 +244,6 @@ def fetch_stemming_detail(opener, item_id):
             result[f"fracties_{cat}"] = re.sub(r"\s+", " ", m.group(1)).strip()
 
     # ── Raadsleden per categorie — positie-gebaseerd ──────────────────────
-    #
-    # Zoek elke categorie-div en pak daarna de EERSTE details-div.
-    # Omdat de HTML altijd de volgorde in-favour → against → abstain heeft,
-    # en elke details-div direct na zijn categorie-div staat, werkt zoeken
-    # vanaf de categorie-positie altijd correct.
-
     voor_pos  = html.find("vote-summary-legend-in-favour")
     tegen_pos = html.find("vote-summary-legend-against",
                           voor_pos + 1 if voor_pos != -1 else 0)
@@ -383,9 +352,6 @@ def main():
 
         print(f"  [{i+1}/{len(recente_rows)}] {datum} — {titel[:55]}", end=" ", flush=True)
 
-        # FIX: alleen overslaan als er écht raadsledendata aanwezig is.
-        # [] is niet None, dus de oude check (is not None) liet lege arrays
-        # altijd door als "al verwerkt" en probeerde ze nooit opnieuw.
         al_verwerkt = (
             item_id in bestaand
             and len(bestaand[item_id].get("raadsleden_voor") or []) > 0
@@ -449,5 +415,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-EOFSCRIPT
-echo "Done"
