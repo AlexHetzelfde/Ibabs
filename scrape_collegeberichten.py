@@ -197,13 +197,41 @@ def detecteer_code_claims(tekst):
 
 # ── AI-GEBASEERDE CLAIMANALYSE ────────────────────────────────────────────────
 def analyseer_ai_claims(tekst, titel, portefeuillehouder, api_key):
-    """
-    Laat Gemini checkwaardige claims identificeren.
-    Geeft een lijst van claim-objecten terug met bron='ai'.
-    Valt stil terug op lege lijst als de API niet bereikbaar is.
-    """
     if not api_key or not tekst:
         return []
+
+    tekst_kort = tekst[:8000]
+    prompt = f"""..."""  # ongewijzigd
+
+    body = json.dumps({...}).encode("utf-8")  # ongewijzigd
+
+    for model in GEMINI_MODELS:
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}"
+        req = urllib.request.Request(
+            url, data=body,
+            headers={"Content-Type": "application/json"},
+            method="POST"
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+            if data.get("error"):
+                print(f"  ({model} mislukt: {data['error'].get('message')})")
+                continue
+            raw = data["candidates"][0]["content"]["parts"][0]["text"]
+            match = re.search(r"\[[\s\S]*\]", raw)
+            if not match:
+                return []
+            ai_claims = json.loads(match.group(0))
+            for c in ai_claims:
+                c["bron"] = "ai"
+                c["kruischeck"] = c.get("kruischeck") or None
+            return ai_claims
+        except Exception as e:
+            print(f"  ({model} mislukt: {e})")
+            continue
+
+    return []
 
     tekst_kort = tekst[:8000]
 
