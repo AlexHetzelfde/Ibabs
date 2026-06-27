@@ -7,7 +7,7 @@ on:
       vanaf:
         description: 'Ophalen vanaf datum (YYYY-MM-DD) — leeg = afgelopen 7 dagen'
         required: false
-        default: ''
+        default: ""
 jobs:
   scrape:
     runs-on: ubuntu-latest
