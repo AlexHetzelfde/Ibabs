@@ -345,7 +345,7 @@ def haal_document_id(opener, item_id):
 
 
 def download_pdf(opener, item_id, document_id):
-    url = f"{BASE_URL}/Reports/Document/{item_id}?documentId={document_id}"
+    url = f"{BASE_URL}/Document/View/{document_id}"
     req = urllib.request.Request(
         url,
         headers={
