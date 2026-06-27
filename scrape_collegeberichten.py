@@ -202,8 +202,10 @@ def analyseer_ai_claims(tekst, titel, portefeuillehouder, api_key):
 
     tekst_kort = tekst[:8000]
     prompt = f"""..."""  # ongewijzigd
-
-    body = json.dumps({...}).encode("utf-8")  # ongewijzigd
+    body = json.dumps({
+    "contents": [{"parts": [{"text": prompt}]}],
+    "generationConfig": {"temperature": 0.2, "maxOutputTokens": 2048}
+}).encode("utf-8")
 
     for model in GEMINI_MODELS:
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}"
