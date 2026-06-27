@@ -46,6 +46,77 @@ jobs:
           SCRAPE_VANAF: ${{ github.event.inputs.vanaf }}
         continue-on-error: true
 
+      name: Scrape raadsdata
+on:
+  schedule:
+    - cron: '0 6,18 * * 1-5'  # Doordeweeks om 6:00 en 18:00 UTC
+  workflow_dispatch:
+    inputs:
+      vanaf:
+        description: 'Ophalen vanaf datum (YYYY-MM-DD) — leeg = afgelopen 7 dagen'
+        required: false
+        default: ''
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Python instellen
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Dependencies installeren
+        run: pip install pypdf --break-system-packages
+
+      - name: Data-map aanmaken
+        run: mkdir -p data
+
+      - name: Bekendmakingen scrapen
+        run: python scrape_rss.py
+        env:
+          SCRAPE_VANAF: ${{ github.event.inputs.vanaf }}
+        continue-on-error: true
+
+      - name: Moties scrapen
+        run: python scrape_moties.py
+        env:
+          SCRAPE_VANAF: ${{ github.event.inputs.vanaf }}
+        continue-on-error: true
+
+      - name: Vergaderingen scrapen
+        run: python scrape_vergaderingen.py
+        env:
+          SCRAPE_VANAF: ${{ github.event.inputs.vanaf }}
+        continue-on-error: true
+
+      - name: Stemmingen scrapen
+        run: python scrape_stemmingen.py
+        env:
+          SCRAPE_VANAF: ${{ github.event.inputs.vanaf }}
+        continue-on-error: true
+  
+      - name: Collegeberichten scrapen
+        run: python scrape_collegeberichten.py
+        env:
+          SCRAPE_VANAF: ${{ github.event.inputs.vanaf }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        continue-on-error: true
+
+      - name: Wijzigingen committen en pushen
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git diff --staged --quiet || git commit -m "data: update $(date +'%Y-%m-%d')${SCRAPE_VANAF:+ (backfill vanaf $SCRAPE_VANAF)}"
+          git push
+        env:
+          SCRAPE_VANAF: ${{ github.event.inputs.vanaf }}
+
       - name: Collegeberichten scrapen
         run: python scrape_collegeberichten.py
         env:
