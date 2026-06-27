@@ -84,10 +84,37 @@ def build_lijst_body(start, draw):
 def fetch_stemming_detail(opener, item_id):
     """
     Haalt de detailpagina op en parseert:
-    - voor_pct / tegen_pct / onthouding_pct
-    - fracties_voor / fracties_tegen / fracties_onthouding
+    - voor_pct / tegen_pct / onthouding_pct  (via w-XX klasse)
+    - uitslag_tekst                           (via bar-text span)
+    - fracties_voor / fracties_tegen / fracties_onthouding (via .text div)
     - raadsleden_voor / raadsleden_tegen / raadsleden_onthouding
-      (elk een lijst van dicts: {naam, fractie})
+      (via vote-summary-legend-details — sibling van de legend-divs,
+       gecategoriseerd via de fractie-summary teksten)
+
+    HTML-structuur iBabs (vastgesteld via page source 27-06-2026):
+
+        <div class="vote-summary-legend ...">
+            <div class="vote-summary-legend-in-favour ...">
+                <div class="text">CDA (1), D66 (3), ...</div>
+            </div>
+            [<div class="vote-summary-legend-against ...">
+                <div class="text">PVV (3), ...</div>
+            </div>]
+            <div class="vote-summary-legend-details hidden votes-{id}">
+                <ul>
+                    <li>CDA  (1)
+                        <ul><li>Veer, Julie  van 't</li></ul>
+                    </li>
+                    <li>D66 (3)
+                        <ul><li>Haan, Jochem  de , Kingma, Merel , Vos, Robbert</li></ul>
+                    </li>
+                    ...
+                </ul>
+            </div>
+        </div>
+
+    Belangrijk: vote-summary-legend-details is een SIBLING van
+    vote-summary-legend-in-favour, NIET een child.
     """
     url = f"{BASE_URL}/Reports/Item/{item_id}"
     req = urllib.request.Request(
@@ -103,23 +130,23 @@ def fetch_stemming_detail(opener, item_id):
 
     result = {}
 
-    # ── Percentages uit de balk ───────────────────────────────────────────
-    m = re.search(r'vote-summary-bar-in-favour\s+w-(\d+)', html)
+    # ── Percentages via w-XX klasse ───────────────────────────────────────
+    m = re.search(r'vote-summary-bar-in-favour[\w\s-]*\bw-(\d+)\b', html)
     if m:
         result["voor_pct"] = int(m.group(1))
 
-    m = re.search(r'vote-summary-bar-against\s+w-(\d+)', html)
+    m = re.search(r'vote-summary-bar-against[\w\s-]*\bw-(\d+)\b', html)
     if m:
         result["tegen_pct"] = int(m.group(1))
 
-    m = re.search(r'vote-summary-bar-abstain\s+w-(\d+)', html)
+    m = re.search(r'vote-summary-bar-abstain[\w\s-]*\bw-(\d+)\b', html)
     if m:
         result["onthouding_pct"] = int(m.group(1))
 
-    # Bereken ontbrekend percentage
-    voor   = result.get("voor_pct", 0)
-    tegen  = result.get("tegen_pct", 0)
-    onth   = result.get("onthouding_pct", 0)
+    # Vul ontbrekende percentages aan
+    voor  = result.get("voor_pct",  0)
+    tegen = result.get("tegen_pct", 0)
+    onth  = result.get("onthouding_pct", 0)
     if voor and not tegen and not onth:
         result["tegen_pct"]      = 0
         result["onthouding_pct"] = 0
@@ -127,79 +154,85 @@ def fetch_stemming_detail(opener, item_id):
         result["onthouding_pct"] = max(0, 100 - voor - tegen)
 
     # ── Uitslag tekst ─────────────────────────────────────────────────────
-    m = re.search(
-        r'vote-summary-bar-in-favour[^>]*>.*?<span[^>]*>([^<]+)</span>',
-        html, re.DOTALL
-    )
+    m = re.search(r'vote-summary-bar-in-favour-text[^>]*>\s*([^<]+)', html)
     if m:
         result["uitslag_tekst"] = m.group(1).strip()
 
-    # ── Fracties samenvatting per categorie ───────────────────────────────
+    # ── Fractie-samenvattingen per categorie ──────────────────────────────
     for cat, css in [("voor", "in-favour"), ("tegen", "against"), ("onthouding", "abstain")]:
         m = re.search(
             rf'vote-summary-legend-{css}[^>]*>.*?<div class="text">\s*(.*?)\s*</div>',
             html, re.DOTALL
         )
         if m:
-            result[f"fracties_{cat}"] = m.group(1).strip()
+            result[f"fracties_{cat}"] = re.sub(r'\s+', ' ', m.group(1)).strip()
 
-    # ── Individuele raadsleden per categorie ──────────────────────────────
-    # Structuur in HTML:
-    # <div class="vote-summary-legend-details hidden votes-{id}">
-    #   <ul>
-    #     <li>Fractienaam (n)
-    #       <ul><li>Naam1 , Naam2</li></ul>
-    #     </li>
-    #   </ul>
-    # </div>
-    #
-    # Elke categorie heeft zijn eigen legend-sectie.
-    # We parsen per categorie het bijbehorende details-blok.
+    # ── Individuele raadsleden uit details-div ────────────────────────────
+    # De details-div is een SIBLING van de legend-category-divs.
+    # Structuur: <div class="vote-summary-legend-details hidden votes-{id}">
+    #              <ul>
+    #                <li>Fractie (n)
+    #                  <ul><li>Achternaam, Voornaam , Achternaam2, Voornaam2</li></ul>
+    #                </li>
+    #              </ul>
+    #            </div>
+    details_match = re.search(
+        r'class="vote-summary-legend-details[^"]*"[^>]*>\s*<ul>(.*?)</ul>\s*</div>',
+        html, re.DOTALL
+    )
 
-    for cat, css in [("voor", "in-favour"), ("tegen", "against"), ("onthouding", "abstain")]:
-        # Vind het legend-blok voor deze categorie
-        blok_match = re.search(
-            rf'<div class="vote-summary-legend-{css}[^"]*"[^>]*>(.*?)</div>\s*</div>',
-            html, re.DOTALL
+    if details_match:
+        details_html = details_match.group(1)
+
+        # Elke <li> is één fractie met daarbinnen een <ul><li>namen</li></ul>
+        fractie_blokken = re.findall(
+            r'<li>\s*(.*?)\s*\(\d+\)\s*<ul>\s*<li>(.*?)</li>\s*</ul>\s*</li>',
+            details_html, re.DOTALL
         )
-        if not blok_match:
-            continue
 
-        blok = blok_match.group(1)
+        # Bouw mapping: fractie-naam → lijst raadsleden
+        fractie_namen: dict = {}
+        for fractie_raw, namen_raw in fractie_blokken:
+            fractie = re.sub(r'\s+', ' ', fractie_raw).strip()
+            namen_tekst = re.sub(r'\s+', ' ', namen_raw).strip()
 
-        # Vind de details-ul in dit blok
-        details_match = re.search(
-            r'vote-summary-legend-details[^"]*">(.*?)</div>',
-            blok, re.DOTALL
-        )
-        if not details_match:
-            # Probeer het direct na het blok te vinden via vote-id
-            details_match = re.search(
-                r'class="vote-summary-legend-details[^>]+>(.*?)</div>\s*</div>',
-                html, re.DOTALL
-            )
+            # iBabs scheidt namen met " , " (spatie-komma-spatie).
+            # Elke naam heeft het formaat "Achternaam [tussenvoegsel], Voornaam".
+            # Splits op " , " gevolgd door een hoofdletter om nieuwe namen te herkennen.
+            namen = [
+                n.strip().rstrip(',').strip()
+                for n in re.split(r'\s*,\s*(?=[A-Z])', namen_tekst)
+                if n.strip()
+            ]
+            fractie_namen[fractie] = namen
 
-        raadsleden = []
+        # Categoriseer fracties via de summary-teksten
+        voor_tekst  = result.get("fracties_voor",        "")
+        tegen_tekst = result.get("fracties_tegen",       "")
+        onth_tekst  = result.get("fracties_onthouding",  "")
 
-        # Parse <li>Fractie (n)<ul><li>Naam1 , Naam2</li></ul></li>
-        li_matches = re.findall(
-            r'<li>\s*([^<\n]+?)\s*\(\d+\)\s*<ul>(.*?)</ul>\s*</li>',
-            blok, re.DOTALL
-        )
-        for fractie_raw, namen_html in li_matches:
-            fractie = fractie_raw.strip()
-            namen_raw = re.sub(r'<[^>]+>', '', namen_html).strip()
-            # Namen staan gescheiden door komma's, achternaam eerst
-            for naam in re.split(r'\s*,\s*(?=[A-Z])', namen_raw):
-                naam = naam.strip().rstrip(',').strip()
-                if naam:
-                    raadsleden.append({
-                        "naam":    naam,
-                        "fractie": fractie
-                    })
+        raadsleden_voor  = []
+        raadsleden_tegen = []
+        raadsleden_onth  = []
 
-        if raadsleden:
-            result[f"raadsleden_{cat}"] = raadsleden
+        for fractie, namen in fractie_namen.items():
+            if fractie in tegen_tekst:
+                doellijst = raadsleden_tegen
+            elif fractie in onth_tekst:
+                doellijst = raadsleden_onth
+            else:
+                # Default: voor (ook als er helemaal geen split is)
+                doellijst = raadsleden_voor
+
+            for naam in namen:
+                doellijst.append({"naam": naam, "fractie": fractie})
+
+        if raadsleden_voor:
+            result["raadsleden_voor"]       = raadsleden_voor
+        if raadsleden_tegen:
+            result["raadsleden_tegen"]      = raadsleden_tegen
+        if raadsleden_onth:
+            result["raadsleden_onthouding"] = raadsleden_onth
 
     return result
 
@@ -267,7 +300,6 @@ def main():
         time.sleep(0.3)
 
     # Filteren op datum
-    print("Voorbeeld rij:", json.dumps(all_rows[0], ensure_ascii=False)[:300])
     recente_rows = [
         r for r in all_rows
         if (parse_datum(r.get("datum")) or "") >= grens
@@ -296,8 +328,8 @@ def main():
 
         detail = fetch_stemming_detail(opener, item_id)
 
-        raadsleden_voor  = detail.get("raadsleden_voor", [])
-        raadsleden_tegen = detail.get("raadsleden_tegen", [])
+        raadsleden_voor  = detail.get("raadsleden_voor",       [])
+        raadsleden_tegen = detail.get("raadsleden_tegen",      [])
         raadsleden_onth  = detail.get("raadsleden_onthouding", [])
 
         print(
