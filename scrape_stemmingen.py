@@ -267,6 +267,7 @@ def main():
         time.sleep(0.3)
 
     # Filteren op datum
+    print("Voorbeeld rij:", json.dumps(all_rows[0], ensure_ascii=False)[:300])
     recente_rows = [
         r for r in all_rows
         if (parse_datum(r.get("datumstemming")) or "") >= grens
