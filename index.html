@@ -520,31 +520,19 @@
     </div>
   </div>
 
-  <div class="viz-row" style="margin-bottom:16px;">
+    <div class="viz-row" style="margin-bottom:16px;">
     <div class="card">
-      <div class="card-header"><span class="card-title">Aanwezigheid per raadslid</span></div>
+      <div class="card-header"><span class="card-title">Aanwezigheid per stemdag</span></div>
       <div id="stemAanwezigheid" class="raadslid-placeholder">
-        <strong>Geen raadsledendata beschikbaar</strong>
-        Fix de raadsleden-parsing in scrape_stemmingen.py — verschijnt automatisch zodra de arrays gevuld zijn.
+        <strong>Presentiedata wordt geladen</strong>
       </div>
     </div>
     <div class="card">
       <div class="card-header">
-        <span class="card-title">Rebel score</span>
-        <span style="font-size:11px;color:var(--muted);">wie stemt vaakst tegen eigen fractie</span>
+        <span class="card-title">Fractieloyaliteit</span>
+        <span style="font-size:11px;color:var(--muted);">hoe vaak stemt een raadslid met de eigen fractie mee</span>
       </div>
-      <div id="stemRebels" class="raadslid-placeholder">
-        <strong>Geen raadsledendata beschikbaar</strong>
-        Fix de raadsleden-parsing in scrape_stemmingen.py — verschijnt automatisch zodra de arrays gevuld zijn.
-      </div>
-    </div>
-  </div>
-
-  <div class="card" style="margin-bottom:16px;">
-    <div class="card-header"><span class="card-title">Trouwste vs. meest eigenzinnige raadsleden per fractie</span></div>
-    <div id="stemTrouw" class="raadslid-placeholder">
-      <strong>Geen raadsledendata beschikbaar</strong>
-      Fix de raadsleden-parsing in scrape_stemmingen.py — verschijnt automatisch zodra de arrays gevuld zijn.
+      <div id="stemLoyaliteitNieuw"></div>
     </div>
   </div>
 
@@ -1401,105 +1389,115 @@ function renderStemmingen() {
   } else {
     heatmapEl.innerHTML = '<div class="viz-empty">Geen stemmingsdata beschikbaar</div>';
   }
-  // ── LOYALITEIT ────────────────────────────────────────────────────────────
-  const loyMap = {};
-  metData.forEach(s => {
-    const { voor, tegen, onth } = getStemSets(s);
-    const winnaar = (s.voor_pct || 0) >= 50 ? 'voor' : 'tegen';
-    [...voor, ...tegen, ...onth].forEach(f => {
-      if (!loyMap[f]) loyMap[f] = { wins: 0, total: 0 };
-      loyMap[f].total++;
-      if ((winnaar === 'voor' && voor.has(f)) || (winnaar === 'tegen' && tegen.has(f))) loyMap[f].wins++;
-    });
-  });
-  const loyLijst = Object.entries(loyMap)
-    .filter(([, v]) => v.total > 0)
-    .map(([naam, v]) => ({ naam, pct: Math.round(v.wins / v.total * 100), total: v.total }))
-    .sort((a, b) => b.pct - a.pct);
-
+    // ── LOYALITEIT (vervangen door duidelijke tabel) ────────────────────────
   (function() {
     const el = document.getElementById('stemLoyaliteit');
-    el.style.padding = '12px 16px';
-    if (!loyLijst.length) { el.innerHTML = '<div class="viz-empty">Geen data</div>'; return; }
-    el.innerHTML =
-      `<div style="display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-bottom:8px;padding-left:124px;padding-right:44px;"><span>0%</span><span>50%</span><span>100%</span></div>` +
-      loyLijst.map(l => {
-        const isC   = COALITIE_FRACTIES.has(l.naam);
-        const kleur = isC ? '#177A3C' : '#6B7280';
-        return `<div style="display:flex;align-items:center;gap:10px;margin-bottom:7px;">
-          <div style="width:116px;font-size:12px;color:${isC?'#177A3C':'var(--text)'};font-weight:${isC?'600':'400'};text-align:right;flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${esc(l.naam)}">${isC?'◆ ':''}${esc(l.naam)}</div>
-          <div style="flex:1;position:relative;height:18px;">
-            <div style="position:absolute;left:0;right:0;top:50%;height:1px;background:var(--rule);"></div>
-            <div style="position:absolute;left:50%;top:0;bottom:0;width:0;border-left:2px dashed var(--stop);opacity:.4;"></div>
-            <div style="position:absolute;top:50%;left:${l.pct}%;transform:translate(-50%,-50%);width:11px;height:11px;border-radius:50%;background:${kleur};border:2px solid var(--white);"></div>
-            <div style="position:absolute;left:0;top:50%;transform:translateY(-50%);height:2px;width:${l.pct}%;background:${kleur};opacity:.25;border-radius:2px;"></div>
-          </div>
-          <div style="width:36px;font-size:11px;font-family:'JetBrains Mono',monospace;color:${kleur};font-weight:600;">${l.pct}%</div>
-        </div>`;
-      }).join('');
-  })();
-
-  // ── ALLIANTIES ────────────────────────────────────────────────────────────
-  const coVote = {}, coTotal = {};
-  metData.forEach(s => {
-    const { voor, tegen } = getStemSets(s);
-    const deelnemers = [...new Set([...voor, ...tegen])];
-    for (let i = 0; i < deelnemers.length; i++) {
-      for (let j = i + 1; j < deelnemers.length; j++) {
-        const [a, b] = [deelnemers[i], deelnemers[j]].sort();
-        const key = `${a}||${b}`;
-        coTotal[key] = (coTotal[key] || 0) + 1;
-        if ((voor.has(a) && voor.has(b)) || (tegen.has(a) && tegen.has(b)))
-          coVote[key] = (coVote[key] || 0) + 1;
-      }
+    if (!el) return;
+    el.innerHTML = ''; // schoonmaken
+    const metData = stemmingen.filter(s => s.fracties_voor || s.fracties_tegen);
+    if (!metData.length) {
+      el.innerHTML = '<div class="viz-empty">Geen stemmingsdata</div>';
+      return;
     }
-  });
-  const alliEl = document.getElementById('stemAllianties');
-  if (!allFracties.length || !Object.keys(coVote).length) {
-    alliEl.innerHTML = '<div class="viz-empty">Onvoldoende data</div>';
-  } else {
-    const n = allFracties.length;
-    const bubbleData = [];
-    allFracties.forEach((fRij, i) => {
-      allFracties.forEach((fKol, j) => {
-        if (i === j) return;
-        const key   = [fRij, fKol].sort().join('||');
-        const samen = coVote[key]  || 0;
-        const tot   = coTotal[key] || 0;
-        const pct   = tot ? samen / tot : 0;
-        const isKruis = COALITIE_FRACTIES.has(fRij) !== COALITIE_FRACTIES.has(fKol);
-        const isC     = COALITIE_FRACTIES.has(fRij) && COALITIE_FRACTIES.has(fKol);
-        bubbleData.push({ x: j, y: i, r: tot ? Math.max(3, Math.round(pct * 12)) : 0, samen, tot, pct, fRij, fKol, isC, isKruis });
+    // Bereken per fractie: hoe vaak meegestemd met meerderheid (voor bij aangenomen, tegen bij verworpen)
+    const fractieMap = {};
+    const allFracties = getAllFracties();
+    allFracties.forEach(f => { fractieMap[f] = { mee: 0, totaal: 0 }; });
+    metData.forEach(s => {
+      const { voor, tegen } = getStemSets(s);
+      const winnaar = (s.voor_pct || 0) >= 50 ? 'voor' : 'tegen';
+      allFracties.forEach(f => {
+        if (voor.has(f) || tegen.has(f)) {
+          fractieMap[f].totaal++;
+          if ((winnaar === 'voor' && voor.has(f)) || (winnaar === 'tegen' && tegen.has(f))) {
+            fractieMap[f].mee++;
+          }
+        }
       });
     });
-    const canvasH = Math.max(340, n * 32 + 100);
-    const shortNames = allFracties.map(f => f.length > 13 ? f.slice(0,13)+'…' : f);
-    alliEl.innerHTML = `<div style="padding:12px 20px 16px;overflow-x:auto;">
-      <div style="position:relative;height:${canvasH}px;">
-        <canvas id="alliCanvas" role="img" aria-label="Bubble matrix stemgedrag fracties">Stemallianties per fractie.</canvas>
-      </div>
-      <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:10px;font-size:10px;color:var(--muted);">
-        <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;background:rgba(23,122,60,.8);border-radius:50%;display:inline-block;"></span>Coalitie-intern</span>
-        <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;background:rgba(13,27,42,.6);border-radius:50%;display:inline-block;"></span>Oppositie-intern</span>
-        <span style="display:flex;align-items:center;gap:4px;"><span style="width:10px;height:10px;background:rgba(184,106,0,.8);border-radius:50%;display:inline-block;"></span>Cross-blok</span>
-        <span style="margin-left:auto;">Grootte = hoe vaak samen gestemd</span>
-      </div>
-    </div>`;
-    if (_chartAllianties) { _chartAllianties.destroy(); _chartAllianties = null; }
-    _chartAllianties = new Chart(document.getElementById('alliCanvas'), {
-      type: 'bubble',
-      data: { datasets: [{ data: bubbleData.map(d => ({ x: d.x, y: d.y, r: d.r })), backgroundColor: bubbleData.map(d => d.isC ? 'rgba(23,122,60,.7)' : d.isKruis ? 'rgba(184,106,0,.7)' : 'rgba(13,27,42,.55)'), borderWidth: 0 }] },
-      options: {
-        responsive: true, maintainAspectRatio: false,
-        plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => { const d = bubbleData[ctx.dataIndex]; return d.tot ? `${d.fRij} + ${d.fKol}: ${d.samen}/${d.tot}x (${Math.round(d.pct*100)}%)` : `${d.fRij} + ${d.fKol}: geen data`; } } } },
-        scales: {
-          x: { min: -.5, max: n-.5, ticks: { callback: v => Number.isInteger(v)&&v>=0&&v<n ? shortNames[v] : '', color: '#6B7280', font: { size: 10 }, maxRotation: 45, autoSkip: false }, grid: { color: '#D8D5CE' } },
-          y: { min: -.5, max: n-.5, ticks: { callback: v => Number.isInteger(v)&&v>=0&&v<n ? shortNames[v] : '', color: '#6B7280', font: { size: 10 } }, grid: { color: '#D8D5CE' } }
-        },
-        layout: { padding: 10 }
+    const rijen = Object.entries(fractieMap)
+      .filter(([, v]) => v.totaal > 0)
+      .sort((a, b) => (b[1].mee / b[1].totaal) - (a[1].mee / a[1].totaal));
+    let html = `<table style="width:100%;border-collapse:collapse;font-size:12px;">
+      <thead><tr><th style="text-align:left;">Fractie</th><th style="text-align:right;">Mee met meerderheid</th><th style="text-align:right;">Totaal stemmingen</th><th style="text-align:right;">%</th></tr></thead><tbody>`;
+    rijen.forEach(([fractie, v]) => {
+      const pct = Math.round(v.mee / v.totaal * 100);
+      html += `<tr>
+        <td>${esc(fractie)}</td>
+        <td style="text-align:right;">${v.mee}</td>
+        <td style="text-align:right;">${v.totaal}</td>
+        <td style="text-align:right;">${pct}%</td>
+      </tr>`;
+    });
+    html += '</tbody></table>';
+    html += '<div style="margin-top:8px;font-size:10px;color:var(--muted);">Een fractie stemde “mee met de meerderheid” als ze vóór stemde bij een aangenomen voorstel, of tegen bij een verworpen voorstel.</div>';
+    el.style.padding = '12px 16px';
+    el.innerHTML = html;
+  })();
+
+    // ── ALLIANTIES (exacte kruistabel) ──────────────────────────────────────
+  (function() {
+    const el = document.getElementById('stemAllianties');
+    if (!el) return;
+    el.innerHTML = '';
+    const metData = stemmingen.filter(s => s.fracties_voor || s.fracties_tegen);
+    if (!metData.length) {
+      el.innerHTML = '<div class="viz-empty">Geen stemmingsdata</div>';
+      return;
+    }
+    const allFracties = getAllFracties();
+    const n = allFracties.length;
+    // Bouw coöccurrentiematrix: key = 'fractieA||fractieB'
+    const coVote = {}, coTotal = {};
+    metData.forEach(s => {
+      const { voor, tegen } = getStemSets(s);
+      const deelnemers = [...new Set([...voor, ...tegen])];
+      for (let i = 0; i < deelnemers.length; i++) {
+        for (let j = i + 1; j < deelnemers.length; j++) {
+          const a = deelnemers[i], b = deelnemers[j];
+          const key = [a, b].sort().join('||');
+          coTotal[key] = (coTotal[key] || 0) + 1;
+          if ((voor.has(a) && voor.has(b)) || (tegen.has(a) && tegen.has(b))) {
+            coVote[key] = (coVote[key] || 0) + 1;
+          }
+        }
       }
     });
-  }
+    // Bouw tabel
+    let html = '<div style="overflow-x:auto;"><table style="border-collapse:collapse;font-size:11px;">';
+    // Header
+    html += '<tr><th style="min-width:120px;"></th>';
+    allFracties.forEach(f => {
+      html += `<th style="writing-mode:vertical-rl;transform:rotate(180deg);padding:4px;font-size:10px;max-height:100px;" title="${esc(f)}">${esc(f)}</th>`;
+    });
+    html += '</tr>';
+    // Rijen
+    const maxCo = Math.max(...Object.values(coVote), 1);
+    allFracties.forEach(fRij => {
+      html += '<tr>';
+      html += `<td style="text-align:right;padding-right:8px;font-weight:600;white-space:nowrap;">${esc(fRij)}</td>`;
+      allFracties.forEach(fKol => {
+        if (fRij === fKol) {
+          html += '<td style="background:#f0f0f0;"></td>';
+        } else {
+          const key = [fRij, fKol].sort().join('||');
+          const samen = coVote[key] || 0;
+          const tot = coTotal[key] || 0;
+          const pct = tot ? Math.round(samen / tot * 100) : 0;
+          const kleur = `hsl(200, ${Math.round(pct * 0.8)}%, ${70 - pct * 0.3}%)`;
+          html += `<td style="text-align:center;padding:6px;background:${kleur};cursor:pointer;" 
+                    onclick="toonAlliantieDetail('${esc(fRij)}', '${esc(fKol)}')" 
+                    title="${fRij} & ${fKol}: ${samen}/${tot} (${pct}%)">${samen}<br><span style="font-size:9px;">${pct}%</span></td>`;
+        }
+      });
+      html += '</tr>';
+    });
+    html += '</table></div>';
+    html += '<div style="margin-top:8px;font-size:10px;color:var(--muted);">Klik op een cel om de bijbehorende stemmingen te zien.</div>';
+    el.innerHTML = html;
+    // Bewaar data voor detailweergave
+    window._alliantieData = { coVote, coTotal, metData };
+  })();
 
   // ── MEEST VERDEELD ────────────────────────────────────────────────────────
 const verdeeld = stemmingen
@@ -1585,114 +1583,121 @@ const verdeeld = stemmingen
     }
   });
 
-  // ── RAADSLID-NIVEAU (actief zodra parsing werkt) ──────────────────────────
-  if (heeftRaadsleden) {
-    const aanw = {};
-    stemmingen.forEach(s => {
-      [...(s.raadsleden_voor || []), ...(s.raadsleden_tegen || []), ...(s.raadsleden_onthouding || [])].forEach(r => {
-        if (!aanw[r.naam]) aanw[r.naam] = { aanwezig: 0, fractie: r.fractie };
-        aanw[r.naam].aanwezig++;
+    // ── AANWEZIGHEID PER STEMDAG ──────────────────────────────────────────
+  (async function() {
+    const container = document.getElementById('stemAanwezigheid');
+    if (!container) return;
+    try {
+      const resp = await fetch('./data/raadsleden_presentie.json');
+      if (!resp.ok) throw new Error('Bestand niet gevonden');
+      const data = await resp.json();
+      if (!data.length) {
+        container.innerHTML = '<div class="viz-empty">Nog geen presentiedata.</div>';
+        return;
+      }
+      data.sort((a, b) => (b.afwezig - a.afwezig) || a.naam.localeCompare(b.naam));
+      let html = `<table style="width:100%;border-collapse:collapse;font-size:12px;">
+        <thead><tr>
+          <th style="text-align:left;">Raadslid</th>
+          <th style="text-align:left;">Fractie</th>
+          <th style="text-align:right;">Aanwezig</th>
+          <th style="text-align:right;">Afwezig</th>
+          <th style="text-align:right;">Totaal dagen</th>
+        </tr></thead><tbody>`;
+      data.forEach(r => {
+        const totaal = r.aanwezig + r.afwezig;
+        html += `<tr>
+          <td>${esc(r.naam)}</td>
+          <td>${esc(r.fractie || '')}</td>
+          <td style="text-align:right;">${r.aanwezig}</td>
+          <td style="text-align:right;">${r.afwezig}</td>
+          <td style="text-align:right;">${totaal}</td>
+        </tr>`;
       });
-    });
-    const maxAanw   = Math.max(...Object.values(aanw).map(v => v.aanwezig), 1);
-    const sortedAanw = Object.entries(aanw).sort((a, b) => b[1].aanwezig - a[1].aanwezig);
-    document.getElementById('stemAanwezigheid').innerHTML =
-      `<div style="padding:8px 20px 12px;">` +
-      sortedAanw.map(([naam, v], i) => {
-        const pct   = Math.round(v.aanwezig / maxAanw * 100);
-        const kleur = pct >= 90 ? '#177A3C' : pct >= 70 ? '#B86A00' : '#B92B27';
-        return `<div style="display:flex;align-items:center;gap:10px;padding:5px 0;border-bottom:1px solid var(--rule);">
-          <div style="width:20px;font-size:10px;color:var(--muted);text-align:right;">${i+1}</div>
-          <div style="flex:1;font-size:12px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="${esc(naam)}">${esc(naam)}</div>
-          <div style="width:42px;font-size:10px;color:var(--muted);">${esc(v.fractie||'')}</div>
-          <div style="width:100px;position:relative;height:16px;">
-            <div style="position:absolute;inset:0;background:var(--paper);border-radius:2px;"></div>
-            <div style="position:absolute;top:0;bottom:0;left:0;width:${pct}%;background:${kleur};opacity:.2;border-radius:2px;"></div>
-            <div style="position:absolute;top:50%;left:${pct}%;transform:translate(-50%,-50%);width:11px;height:11px;border-radius:50%;background:${kleur};border:2px solid var(--white);"></div>
-          </div>
-          <div style="width:24px;font-size:11px;font-family:'JetBrains Mono',monospace;color:${kleur};font-weight:600;">${v.aanwezig}</div>
-        </div>`;
-      }).join('') + `</div>`;
+      html += '</tbody></table>';
+      html += '<div style="margin-top:6px;font-size:10px;color:var(--muted);">Aanwezigheid per stemdag (deelname aan stemmingen). Dagen zonder stemming tellen niet mee.</div>';
+      container.innerHTML = html;
+      container.classList.remove('raadslid-placeholder');
+    } catch (e) {
+      container.innerHTML = '<div class="raadslid-placeholder"><strong>Presentiedata nog niet beschikbaar</strong>Zorg dat de scraper raadsleden_presentie.json genereert.</div>';
+    }
+  })();
 
-    const rebel = {};
+  // ── FRACTIELOYALITEIT ──────────────────────────────────────────────────
+  (function() {
+    const container = document.getElementById('stemLoyaliteitNieuw');
+    if (!container) return;
+    if (!stemmingen.some(s => (s.raadsleden_voor || []).length > 0)) {
+      container.innerHTML = '<div class="raadslid-placeholder"><strong>Geen raadsledendata</strong>Zorg dat de scraper raadsleden per stemming vastlegt.</div>';
+      return;
+    }
+    const allFracties = getAllFracties();
+    const ledenMap = {};
     stemmingen.forEach(s => {
       const { voor: fVoor, tegen: fTegen } = getStemSets(s);
-      [...(s.raadsleden_voor || []), ...(s.raadsleden_tegen || [])].forEach(r => {
-        if (!rebel[r.naam]) rebel[r.naam] = { rebel: 0, total: 0, fractie: r.fractie };
-        rebel[r.naam].total++;
-        const fs = fVoor.has(r.fractie) ? 'voor' : fTegen.has(r.fractie) ? 'tegen' : null;
-        const rs = (s.raadsleden_voor || []).find(x => x.naam === r.naam) ? 'voor' : 'tegen';
-        if (fs && fs !== rs) rebel[r.naam].rebel++;
+      const fractieStandpunt = {};
+      allFracties.forEach(f => {
+        if (fVoor.has(f)) fractieStandpunt[f] = 'voor';
+        else if (fTegen.has(f)) fractieStandpunt[f] = 'tegen';
+      });
+      const aanwezigen = new Set([
+        ...(s.raadsleden_voor || []).map(r => r.naam),
+        ...(s.raadsleden_tegen || []).map(r => r.naam),
+        ...(s.raadsleden_onthouding || []).map(r => r.naam)
+      ]);
+      aanwezigen.forEach(naam => {
+        const raadslid = (s.raadsleden_voor || []).find(r => r.naam === naam) ||
+                         (s.raadsleden_tegen || []).find(r => r.naam === naam) ||
+                         (s.raadsleden_onthouding || []).find(r => r.naam === naam);
+        if (!raadslid) return;
+        if (!ledenMap[naam]) ledenMap[naam] = { naam, fractie: raadslid.fractie, conform: 0, afwijkend: 0, details: [] };
+        const fp = fractieStandpunt[raadslid.fractie];
+        if (!fp) return;
+        const eigenStem = (s.raadsleden_voor || []).find(r => r.naam === naam) ? 'voor' : 'tegen';
+        if (eigenStem === fp) {
+          ledenMap[naam].conform++;
+        } else {
+          ledenMap[naam].afwijkend++;
+          ledenMap[naam].details.push({ stemming: s.titel, datum: s.datum, eigen: eigenStem, fractie: fp });
+        }
       });
     });
-    const rebelLijst = Object.entries(rebel)
-      .filter(([, v]) => v.total >= 2 && v.rebel > 0)
-      .sort((a, b) => b[1].rebel - a[1].rebel)
-      .slice(0, 8);
-    if (rebelLijst.length) {
-      document.getElementById('stemRebels').innerHTML =
-        `<div style="padding:8px 16px 12px;">` +
-        rebelLijst.map(([naam, v]) => {
-          const initiaal = naam.split(',')[0].charAt(0);
-          return `<div style="display:flex;align-items:center;gap:12px;padding:9px 0;border-bottom:1px solid var(--rule);">
-            <div style="width:30px;height:30px;border-radius:50%;background:var(--stop-bg);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--stop);font-weight:600;flex-shrink:0;">${esc(initiaal)}</div>
-            <div style="flex:1;min-width:0;">
-              <div style="font-size:12px;font-weight:600;color:var(--text);">${esc(naam)}</div>
-              <div style="font-size:11px;color:var(--muted);">${esc(v.fractie)}</div>
-            </div>
-            <div style="width:100px;">
-              <div style="height:5px;background:var(--paper);border-radius:3px;overflow:hidden;margin-bottom:4px;">
-                <div style="width:${Math.round(v.rebel/v.total*100)}%;height:100%;background:var(--stop);border-radius:3px;"></div>
-              </div>
-              <div style="font-size:10px;color:var(--muted);font-family:'JetBrains Mono',monospace;">${v.rebel}x afwijkend / ${v.total} stem.</div>
-            </div>
-          </div>`;
-        }).join('') + `</div>`;
-    }
-
-    const trouwMap = {};
-    stemmingen.forEach(s => {
-      const { voor: fVoor, tegen: fTegen } = getStemSets(s);
-      [...(s.raadsleden_voor || []), ...(s.raadsleden_tegen || [])].forEach(r => {
-        if (!trouwMap[r.fractie]) trouwMap[r.fractie] = {};
-        if (!trouwMap[r.fractie][r.naam]) trouwMap[r.fractie][r.naam] = { trouw: 0, total: 0 };
-        trouwMap[r.fractie][r.naam].total++;
-        const fs = fVoor.has(r.fractie) ? 'voor' : fTegen.has(r.fractie) ? 'tegen' : null;
-        const rs = (s.raadsleden_voor || []).find(x => x.naam === r.naam) ? 'voor' : 'tegen';
-        if (fs && fs === rs) trouwMap[r.fractie][r.naam].trouw++;
+    const lijst = Object.values(ledenMap)
+      .filter(l => (l.conform + l.afwijkend) > 0)
+      .sort((a, b) => {
+        const pctA = a.conform / (a.conform + a.afwijkend);
+        const pctB = b.conform / (b.conform + b.afwijkend);
+        return pctA - pctB;
       });
-    });
-    const trouwFracties = Object.entries(trouwMap).map(([fractie, leden]) => {
-      const lijst = Object.entries(leden)
-        .filter(([, v]) => v.total >= 2)
-        .map(([naam, v]) => ({ naam, pct: Math.round(v.trouw / v.total * 100) }))
-        .sort((a, b) => b.pct - a.pct);
-      return { fractie, lijst };
-    }).filter(f => f.lijst.length > 0);
-    if (trouwFracties.length) {
-      document.getElementById('stemTrouw').innerHTML =
-        `<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px 16px;">` +
-        trouwFracties.map(({ fractie, lijst }) => {
-          const isC = COALITIE_FRACTIES.has(fractie);
-          const rows = lijst.map(l => {
-            const kleur = l.pct >= 95 ? '#177A3C' : l.pct >= 80 ? '#B86A00' : '#B92B27';
-            return `<div style="display:flex;align-items:center;gap:6px;margin-bottom:5px;">
-              <div style="font-size:11px;color:var(--muted);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="${esc(l.naam)}">${esc(l.naam)}</div>
-              <div style="width:60px;height:5px;background:var(--paper);border-radius:3px;flex-shrink:0;">
-                <div style="width:${l.pct}%;height:100%;background:${kleur};border-radius:3px;"></div>
-              </div>
-              <div style="width:32px;font-size:10px;font-family:'JetBrains Mono',monospace;color:${kleur};text-align:right;">${l.pct}%</div>
-            </div>`;
-          }).join('');
-          return `<div style="background:var(--white);border:1px solid var(--rule);border-radius:8px;padding:10px 12px;">
-            <div style="font-size:12px;font-weight:600;color:${isC?'var(--teal)':'var(--navy)'};margin-bottom:8px;display:flex;align-items:center;gap:4px;">
-              ${isC?'<span style="font-size:9px;">◆</span>':''}${esc(fractie)}
-            </div>
-            ${rows}
-          </div>`;
-        }).join('') + `</div>`;
+    if (!lijst.length) {
+      container.innerHTML = '<div class="viz-empty">Geen data</div>';
+      return;
     }
-  }
+    let html = '<div style="padding:8px 16px 12px;">';
+    lijst.forEach(l => {
+      const totaal = l.conform + l.afwijkend;
+      const pct = Math.round(l.conform / totaal * 100);
+      const kleur = pct >= 90 ? '#177A3C' : pct >= 70 ? '#B86A00' : '#B92B27';
+      html += `<div style="display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--rule);">
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:13px;font-weight:600;">${esc(l.naam)} <span style="font-size:11px;color:var(--muted);">(${esc(l.fractie)})</span></div>
+          <div style="font-size:11px;color:${kleur};margin-top:2px;">${l.conform}/${totaal} conform fractie (${pct}%)</div>
+          ${l.afwijkend > 0 ? `<div style="font-size:11px;color:var(--muted);">${l.afwijkend}x afwijkend</div>` : ''}
+        </div>
+        <div style="width:120px;height:8px;background:var(--paper);border-radius:4px;overflow:hidden;flex-shrink:0;">
+          <div style="width:${pct}%;height:100%;background:${kleur};border-radius:4px;"></div>
+        </div>
+        <details style="flex-shrink:0;font-size:11px;color:var(--teal);cursor:pointer;">
+          <summary>details</summary>
+          <ul style="margin:4px 0;padding-left:16px;">
+            ${l.details.map(d => `<li>${d.datum}: ${d.stemming} – stemde <strong>${d.eigen}</strong>, fractie <strong>${d.fractie}</strong></li>`).join('')}
+          </ul>
+        </details>
+      </div>`;
+    });
+    html += '</div>';
+    container.innerHTML = html;
+  })();
 
   // ── ALLE STEMMINGEN LIJST ─────────────────────────────────────────────────
   document.getElementById('stemList').innerHTML = stemmingen.map(s => {
@@ -1778,6 +1783,25 @@ function heatmapDetail(i) {
     </div>
   `;
   panel.style.display = 'block';
+}
+function toonAlliantieDetail(fA, fB) {
+  if (!window._alliantieData) return;
+  const { coVote, coTotal, metData } = window._alliantieData;
+  const key = [fA, fB].sort().join('||');
+  const relevant = metData.filter(s => {
+    const { voor, tegen } = getStemSets(s);
+    return (voor.has(fA) || tegen.has(fA)) && (voor.has(fB) || tegen.has(fB));
+  });
+  let msg = `Stemmingen waarin ${fA} en ${fB} allebei aanwezig waren:\n\n`;
+  relevant.forEach(s => {
+    const { voor, tegen } = getStemSets(s);
+    const samenVoor = voor.has(fA) && voor.has(fB);
+    const samenTegen = tegen.has(fA) && tegen.has(fB);
+    const gelijk = samenVoor || samenTegen;
+    const uitslag = gelijk ? 'samen gestemd' : 'verschillend gestemd';
+    msg += `- ${s.datum}: ${s.titel} (${uitslag})\n`;
+  });
+  alert(msg);
 }
 // ── COLLEGEBRIEVEN ────────────────────────────────────────────────────────────
 function renderCbStats() {
