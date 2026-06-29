@@ -1,5 +1,28 @@
 [
   {
+    "id": "285b1142-9e61-41a1-a13f-6cf28c2473ef",
+    "titel": "26A16 Amendement Geen racebaan, geen sluiproute! Bescherm de Russische buurt!",
+    "type": "Amendement",
+    "partij": "SP",
+    "fracties": [
+      "SP",
+      "ROSA",
+      "PvdD"
+    ],
+    "indiener": "Groot, Anna de",
+    "medeondertekenaars": [
+      "Kuyper, Hans",
+      "Pieterson, Stella"
+    ],
+    "datum": "2026-07-01",
+    "agendapunt": "Raadsvergadering 01-07-2026 4.2. Buiten werking stellen poller Czaar Peterstraat Zaandam",
+    "status": null,
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
     "id": "affc9341-94e0-4551-af6f-0ab69109ac81",
     "titel": "26M47 Motie Voorjaarsnota ‘Inloopvoorziening Villa Westerweide’",
     "type": "Motie",
