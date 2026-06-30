@@ -44,14 +44,22 @@
       },
       {
         "nummer": "5",
-        "titel": "Benoeming wethouders"
+        "titel": "Benoeming wethouders gemeente Zaanstad"
       },
       {
         "nummer": "6",
+        "titel": "Installatie raadsleden (onder voorbehoud benoeming wethouders)"
+      },
+      {
+        "nummer": "7",
+        "titel": "Benoeming steunfractieleden (onder voorbehoud installatie raadsleden)"
+      },
+      {
+        "nummer": "8",
         "titel": "Sluiting"
       }
     ],
-    "bijgewerkt": "29-06-2026"
+    "bijgewerkt": "30-06-2026"
   },
   {
     "id": "40625325-f393-43aa-87a3-374af00b0673",
@@ -140,7 +148,7 @@
         "titel": "Buiten werking stellen poller Czaar Peterstraat Zaandam"
       }
     ],
-    "bijgewerkt": "29-06-2026"
+    "bijgewerkt": "30-06-2026"
   },
   {
     "id": "6af5b00b-118b-450e-8a53-21f9be83fda9",
