@@ -23,6 +23,54 @@
     "fracties_tegen": null
   },
   {
+    "id": "025325a0-58b9-41c5-93d6-53c5bb5b01ce",
+    "titel": "26M49 Motie vreemd Hup hitteplan, hup!",
+    "type": "Motie",
+    "partij": "ROSA",
+    "fracties": [
+      "ROSA",
+      "Groenlinks/PvdA",
+      "PvdD"
+    ],
+    "indiener": "Pieterson, Stella",
+    "medeondertekenaars": [
+      "Horst, Liv van der",
+      "Groot, Anna de"
+    ],
+    "datum": "2026-07-01",
+    "agendapunt": "Raadsvergadering 01-07-2026 5.1. 26M49 Motie vreemd Hup hitteplan, hup!",
+    "status": null,
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "97d8006c-5e9c-447f-9470-6b1b1c0b3ad3",
+    "titel": "26M48 Motie Een fietsstraatje erbij",
+    "type": "Motie",
+    "partij": "PvdD",
+    "fracties": [
+      "PvdD",
+      "SP",
+      "ROSA",
+      "Groenlinks/PvdA"
+    ],
+    "indiener": "Pieterson, Stella",
+    "medeondertekenaars": [
+      "Groot, Anna de",
+      "Kuyper, Hans",
+      "Ejder, Zozan"
+    ],
+    "datum": "2026-07-01",
+    "agendapunt": "Raadsvergadering 01-07-2026 4.2. Buiten werking stellen poller Czaar Peterstraat Zaandam",
+    "status": null,
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
     "id": "affc9341-94e0-4551-af6f-0ab69109ac81",
     "titel": "26M47 Motie Voorjaarsnota ‘Inloopvoorziening Villa Westerweide’",
     "type": "Motie",
