@@ -62,24 +62,11 @@
     "bijgewerkt": "01-07-2026"
   },
   {
-    "id": "40625325-f393-43aa-87a3-374af00b0673",
-    "titel": "Raadsvergadering",
-    "type": "Raadsvergadering",
-    "datum": "2026-07-01",
-    "start": "2026-07-01T19:00:00",
-    "eind": "2026-07-01T23:00:00",
-    "locatie": "Raadzaal",
-    "url": "https://zaanstad.bestuurlijkeinformatie.nl/Agenda/Index/40625325-f393-43aa-87a3-374af00b0673",
-    "video_link": null,
-    "agendapunten": [],
-    "bijgewerkt": "25-06-2026"
-  },
-  {
     "id": "b9fbd323-9891-4e20-b9b7-f13b67acaaa8",
     "titel": "Raadsvergadering",
     "type": "Raadsvergadering",
     "datum": "2026-07-01",
-    "start": "2026-07-01T19:00:00",
+    "start": "2026-07-01T21:00:00",
     "eind": "2026-07-01T23:00:00",
     "locatie": "Raadzaal",
     "url": "https://zaanstad.bestuurlijkeinformatie.nl/Agenda/Index/b9fbd323-9891-4e20-b9b7-f13b67acaaa8",
@@ -161,6 +148,19 @@
       }
     ],
     "bijgewerkt": "01-07-2026"
+  },
+  {
+    "id": "40625325-f393-43aa-87a3-374af00b0673",
+    "titel": "Raadsvergadering",
+    "type": "Raadsvergadering",
+    "datum": "2026-07-01",
+    "start": "2026-07-01T19:00:00",
+    "eind": "2026-07-01T23:00:00",
+    "locatie": "Raadzaal",
+    "url": "https://zaanstad.bestuurlijkeinformatie.nl/Agenda/Index/40625325-f393-43aa-87a3-374af00b0673",
+    "video_link": null,
+    "agendapunten": [],
+    "bijgewerkt": "25-06-2026"
   },
   {
     "id": "6af5b00b-118b-450e-8a53-21f9be83fda9",

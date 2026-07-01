@@ -71,6 +71,131 @@
     "fracties_tegen": null
   },
   {
+    "id": "f3250464-b0f6-4537-922c-ed32d29cdb76",
+    "titel": "26M51 Motie Veilig verkeer Russische Buurt",
+    "type": "Motie",
+    "partij": "D66",
+    "fracties": [
+      "D66",
+      "POV",
+      "CDA",
+      "PvdD"
+    ],
+    "indiener": "Vos, Robbert",
+    "medeondertekenaars": [
+      "Keijser, Jaap",
+      "Veer, Julie van 't",
+      "Pieterson, Stella"
+    ],
+    "datum": "2026-07-01",
+    "agendapunt": "Raadsvergadering 01-07-2026 4.2. Buiten werking stellen poller Czaar Peterstraat Zaandam",
+    "status": null,
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "13b15898-3122-47a9-91a7-63cde852005d",
+    "titel": "26M50 Motie Toekomstbestendige uitbreiding Meldpunt en Advies Bijzondere Zorg (MABZ)",
+    "type": "Motie",
+    "partij": "Groenlinks/PvdA",
+    "fracties": [
+      "Groenlinks/PvdA",
+      "PvdD",
+      "ROSA",
+      "SP"
+    ],
+    "indiener": null,
+    "medeondertekenaars": [
+      "Pieterson, Stella",
+      "Schuttevaer, Mariska",
+      "Groot, Anna de"
+    ],
+    "datum": "2026-07-01",
+    "agendapunt": "Raadsvergadering 01-07-2026 4.1. Zienswijzen GGD Zaanstreek Waterland",
+    "status": null,
+    "voor_pct": 34,
+    "tegen_pct": 66,
+    "fracties_voor": "Forum voor Democratie (3), GROENLINKS – PvdA (6), Partij voor de Dieren (1), ROSA (2), SP (1)",
+    "fracties_tegen": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Lokaal Zaans (8), POV (3), PVV (3), VVD (3)"
+  },
+  {
+    "id": "e7889041-3091-436e-a3ba-3f0e9b7a7e1b",
+    "titel": "26A18 Amendement Aanscherping zienswijze GGD juni 2026",
+    "type": "Amendement",
+    "partij": "Groenlinks/PvdA",
+    "fracties": [
+      "Groenlinks/PvdA",
+      "PvdD",
+      "ROSA",
+      "SP"
+    ],
+    "indiener": null,
+    "medeondertekenaars": [
+      "Pieterson, Stella",
+      "Schuttevaer, Mariska",
+      "Groot, Anna de"
+    ],
+    "datum": "2026-07-01",
+    "agendapunt": "Raadsvergadering 01-07-2026 4.1. Zienswijzen GGD Zaanstreek Waterland",
+    "status": null,
+    "voor_pct": 34,
+    "tegen_pct": 66,
+    "fracties_voor": "Forum voor Democratie (3), GROENLINKS – PvdA (6), Partij voor de Dieren (1), ROSA (2), SP (1)",
+    "fracties_tegen": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Lokaal Zaans (8), POV (3), PVV (3), VVD (3)"
+  },
+  {
+    "id": "6da37f6b-b736-4a75-8bf6-707bf840e447",
+    "titel": "26A17 Amendement: Buitenwerking stellen poller pas na instemmen van de buurt",
+    "type": "Amendement",
+    "partij": "Groenlinks/PvdA",
+    "fracties": [
+      "Groenlinks/PvdA",
+      "ROSA",
+      "SP",
+      "PvdD",
+      "DZ"
+    ],
+    "indiener": "Ejder, Zozan",
+    "medeondertekenaars": [
+      "Kuyper, Hans",
+      "Groot, Anna de",
+      "Pieterson, Stella",
+      "Kerkhoven, Jos"
+    ],
+    "datum": "2026-07-01",
+    "agendapunt": "Raadsvergadering 01-07-2026 4.2. Buiten werking stellen poller Czaar Peterstraat Zaandam",
+    "status": null,
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "65ef4436-9477-4876-96eb-f61d0437c2ff",
+    "titel": "26M49 Motie vreemd Hup hitteplan, hup!",
+    "type": "Motie",
+    "partij": "Groenlinks/PvdA",
+    "fracties": [
+      "Groenlinks/PvdA",
+      "PvdD",
+      "SP"
+    ],
+    "indiener": "Pieterson, Stella",
+    "medeondertekenaars": [
+      "Groot, Anna de",
+      "Horst, Liv van der"
+    ],
+    "datum": "2026-07-01",
+    "agendapunt": "Raadsvergadering 01-07-2026 5.1. 26M49 Motie vreemd Hup hitteplan, hup!",
+    "status": null,
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
     "id": "affc9341-94e0-4551-af6f-0ab69109ac81",
     "titel": "26M47 Motie Voorjaarsnota ‘Inloopvoorziening Villa Westerweide’",
     "type": "Motie",

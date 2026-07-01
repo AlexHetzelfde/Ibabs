@@ -22,15 +22,169 @@
     "titel": "RV Initiatiefvoorstel naamswijziging fractie GroenLinks-Partij van de Arbeid naar PRO",
     "datum": "2026-07-01",
     "uitslag": "",
-    "uitslag_tekst": null,
-    "voor_pct": null,
-    "tegen_pct": null,
-    "onthouding_pct": null,
-    "fracties_voor": null,
-    "fracties_tegen": null,
+    "uitslag_tekst": "92% Voor",
+    "voor_pct": 92,
+    "tegen_pct": 8,
+    "onthouding_pct": 0,
+    "fracties_voor": "CDA (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), GROENLINKS – PvdA (6), Lokaal Zaans (8), Partij voor de Dieren (1), POV (3), ROSA (2), SP (1), VVD (3)",
+    "fracties_tegen": "PVV (3)",
     "fracties_onthouding": null,
-    "raadsleden_voor": [],
-    "raadsleden_tegen": [],
+    "raadsleden_voor": [
+      {
+        "naam": "Veer, Julie van &#39;t",
+        "fractie": "CDA"
+      },
+      {
+        "naam": "Haan, Jochem de",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Kingma, Merel",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Vos, Robbert",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Kerkhoven, Jos",
+        "fractie": "Democratisch Zaanstad"
+      },
+      {
+        "naam": "Rot, Juliette",
+        "fractie": "Democratisch Zaanstad"
+      },
+      {
+        "naam": "Koca, Yusuf",
+        "fractie": "DENK"
+      },
+      {
+        "naam": "Sahin, Erdogan",
+        "fractie": "DENK"
+      },
+      {
+        "naam": "Doorn, Dick",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Jahn, Ingrid",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Krijger, Tom de",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Belkasmi, Abdelhak",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Ejder, Zozan",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Horst, Liv van der",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Lenarduzzi, Romana",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Sluis, Jonathan van der",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Zeltsburg, Lilit",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Amesfoort, Kevin van",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Doeves-de Boer, Marianne",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Ineke, Joey",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Karst, Rob",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Klos, Peter",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Kraakman, Ingrid",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Vissers, Leny",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Zaal, Marijke",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Pieterson, Stella",
+        "fractie": "Partij voor de Dieren"
+      },
+      {
+        "naam": "Keijser, Nino",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Laan, Harrie van der",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Velden, Perry van der",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Kuyper, Hans",
+        "fractie": "ROSA"
+      },
+      {
+        "naam": "Schuttevaer, Mariska",
+        "fractie": "ROSA"
+      },
+      {
+        "naam": "Groot, Anna de",
+        "fractie": "SP"
+      },
+      {
+        "naam": "Davelaar, Casper",
+        "fractie": "VVD"
+      },
+      {
+        "naam": "Lopes, Fidel",
+        "fractie": "VVD"
+      },
+      {
+        "naam": "Onclin, Stephanie",
+        "fractie": "VVD"
+      }
+    ],
+    "raadsleden_tegen": [
+      {
+        "naam": "Barends, Menno",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Boomsma, Boy",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Cornelisse, Natasja",
+        "fractie": "PVV"
+      }
+    ],
     "raadsleden_onthouding": [],
     "url": "https://zaanstad.bestuurlijkeinformatie.nl/Reports/Item/50510f3f-fce2-4c37-a375-d77aa13b293d",
     "bijgewerkt": "2026-07-01"
@@ -58,14 +212,167 @@
     "titel": "RV Zienswijzen GGD Zaanstreek Waterland",
     "datum": "2026-07-01",
     "uitslag": "",
-    "uitslag_tekst": null,
-    "voor_pct": null,
-    "tegen_pct": null,
-    "onthouding_pct": null,
-    "fracties_voor": null,
+    "uitslag_tekst": "100% Voor",
+    "voor_pct": 100,
+    "tegen_pct": 0,
+    "onthouding_pct": 0,
+    "fracties_voor": "CDA (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), GROENLINKS – PvdA (6), Lokaal Zaans (8), Partij voor de Dieren (1), POV (3), PVV (3), ROSA (2), SP (1), VVD (3)",
     "fracties_tegen": null,
     "fracties_onthouding": null,
-    "raadsleden_voor": [],
+    "raadsleden_voor": [
+      {
+        "naam": "Veer, Julie van &#39;t",
+        "fractie": "CDA"
+      },
+      {
+        "naam": "Haan, Jochem de",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Kingma, Merel",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Vos, Robbert",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Kerkhoven, Jos",
+        "fractie": "Democratisch Zaanstad"
+      },
+      {
+        "naam": "Rot, Juliette",
+        "fractie": "Democratisch Zaanstad"
+      },
+      {
+        "naam": "Koca, Yusuf",
+        "fractie": "DENK"
+      },
+      {
+        "naam": "Sahin, Erdogan",
+        "fractie": "DENK"
+      },
+      {
+        "naam": "Doorn, Dick",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Jahn, Ingrid",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Krijger, Tom de",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Belkasmi, Abdelhak",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Ejder, Zozan",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Horst, Liv van der",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Lenarduzzi, Romana",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Sluis, Jonathan van der",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Zeltsburg, Lilit",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Amesfoort, Kevin van",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Doeves-de Boer, Marianne",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Ineke, Joey",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Karst, Rob",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Klos, Peter",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Kraakman, Ingrid",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Vissers, Leny",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Zaal, Marijke",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Pieterson, Stella",
+        "fractie": "Partij voor de Dieren"
+      },
+      {
+        "naam": "Keijser, Nino",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Laan, Harrie van der",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Velden, Perry van der",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Barends, Menno",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Boomsma, Boy",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Cornelisse, Natasja",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Kuyper, Hans",
+        "fractie": "ROSA"
+      },
+      {
+        "naam": "Schuttevaer, Mariska",
+        "fractie": "ROSA"
+      },
+      {
+        "naam": "Groot, Anna de",
+        "fractie": "SP"
+      },
+      {
+        "naam": "Davelaar, Casper",
+        "fractie": "VVD"
+      },
+      {
+        "naam": "Lopes, Fidel",
+        "fractie": "VVD"
+      },
+      {
+        "naam": "Onclin, Stephanie",
+        "fractie": "VVD"
+      }
+    ],
     "raadsleden_tegen": [],
     "raadsleden_onthouding": [],
     "url": "https://zaanstad.bestuurlijkeinformatie.nl/Reports/Item/f5c3f313-17d6-46aa-b165-caba0d57fb0e",
@@ -76,14 +383,167 @@
     "titel": "RV Zienswijze gewijzigde begroting 2026 en primaire begroting 2027 Werkom",
     "datum": "2026-07-01",
     "uitslag": "",
-    "uitslag_tekst": null,
-    "voor_pct": null,
-    "tegen_pct": null,
-    "onthouding_pct": null,
-    "fracties_voor": null,
+    "uitslag_tekst": "100% Voor",
+    "voor_pct": 100,
+    "tegen_pct": 0,
+    "onthouding_pct": 0,
+    "fracties_voor": "CDA (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), GROENLINKS – PvdA (6), Lokaal Zaans (8), Partij voor de Dieren (1), POV (3), PVV (3), ROSA (2), SP (1), VVD (3)",
     "fracties_tegen": null,
     "fracties_onthouding": null,
-    "raadsleden_voor": [],
+    "raadsleden_voor": [
+      {
+        "naam": "Veer, Julie van &#39;t",
+        "fractie": "CDA"
+      },
+      {
+        "naam": "Haan, Jochem de",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Kingma, Merel",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Vos, Robbert",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Kerkhoven, Jos",
+        "fractie": "Democratisch Zaanstad"
+      },
+      {
+        "naam": "Rot, Juliette",
+        "fractie": "Democratisch Zaanstad"
+      },
+      {
+        "naam": "Koca, Yusuf",
+        "fractie": "DENK"
+      },
+      {
+        "naam": "Sahin, Erdogan",
+        "fractie": "DENK"
+      },
+      {
+        "naam": "Doorn, Dick",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Jahn, Ingrid",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Krijger, Tom de",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Belkasmi, Abdelhak",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Ejder, Zozan",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Horst, Liv van der",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Lenarduzzi, Romana",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Sluis, Jonathan van der",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Zeltsburg, Lilit",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Amesfoort, Kevin van",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Doeves-de Boer, Marianne",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Ineke, Joey",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Karst, Rob",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Klos, Peter",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Kraakman, Ingrid",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Vissers, Leny",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Zaal, Marijke",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Pieterson, Stella",
+        "fractie": "Partij voor de Dieren"
+      },
+      {
+        "naam": "Keijser, Nino",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Laan, Harrie van der",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Velden, Perry van der",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Barends, Menno",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Boomsma, Boy",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Cornelisse, Natasja",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Kuyper, Hans",
+        "fractie": "ROSA"
+      },
+      {
+        "naam": "Schuttevaer, Mariska",
+        "fractie": "ROSA"
+      },
+      {
+        "naam": "Groot, Anna de",
+        "fractie": "SP"
+      },
+      {
+        "naam": "Davelaar, Casper",
+        "fractie": "VVD"
+      },
+      {
+        "naam": "Lopes, Fidel",
+        "fractie": "VVD"
+      },
+      {
+        "naam": "Onclin, Stephanie",
+        "fractie": "VVD"
+      }
+    ],
     "raadsleden_tegen": [],
     "raadsleden_onthouding": [],
     "url": "https://zaanstad.bestuurlijkeinformatie.nl/Reports/Item/f5f7a7cf-40c6-4fdc-9318-c491d489b8de",
@@ -112,14 +572,167 @@
     "titel": "RV Rapportage 2026 Stand van Zaken Geheimhouding bestuurlijke behandelvoorstellen",
     "datum": "2026-07-01",
     "uitslag": "",
-    "uitslag_tekst": null,
-    "voor_pct": null,
-    "tegen_pct": null,
-    "onthouding_pct": null,
-    "fracties_voor": null,
+    "uitslag_tekst": "100% Voor",
+    "voor_pct": 100,
+    "tegen_pct": 0,
+    "onthouding_pct": 0,
+    "fracties_voor": "CDA (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), GROENLINKS – PvdA (6), Lokaal Zaans (8), Partij voor de Dieren (1), POV (3), PVV (3), ROSA (2), SP (1), VVD (3)",
     "fracties_tegen": null,
     "fracties_onthouding": null,
-    "raadsleden_voor": [],
+    "raadsleden_voor": [
+      {
+        "naam": "Veer, Julie van &#39;t",
+        "fractie": "CDA"
+      },
+      {
+        "naam": "Haan, Jochem de",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Kingma, Merel",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Vos, Robbert",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Kerkhoven, Jos",
+        "fractie": "Democratisch Zaanstad"
+      },
+      {
+        "naam": "Rot, Juliette",
+        "fractie": "Democratisch Zaanstad"
+      },
+      {
+        "naam": "Koca, Yusuf",
+        "fractie": "DENK"
+      },
+      {
+        "naam": "Sahin, Erdogan",
+        "fractie": "DENK"
+      },
+      {
+        "naam": "Doorn, Dick",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Jahn, Ingrid",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Krijger, Tom de",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Belkasmi, Abdelhak",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Ejder, Zozan",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Horst, Liv van der",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Lenarduzzi, Romana",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Sluis, Jonathan van der",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Zeltsburg, Lilit",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Amesfoort, Kevin van",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Doeves-de Boer, Marianne",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Ineke, Joey",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Karst, Rob",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Klos, Peter",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Kraakman, Ingrid",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Vissers, Leny",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Zaal, Marijke",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Pieterson, Stella",
+        "fractie": "Partij voor de Dieren"
+      },
+      {
+        "naam": "Keijser, Nino",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Laan, Harrie van der",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Velden, Perry van der",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Barends, Menno",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Boomsma, Boy",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Cornelisse, Natasja",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Kuyper, Hans",
+        "fractie": "ROSA"
+      },
+      {
+        "naam": "Schuttevaer, Mariska",
+        "fractie": "ROSA"
+      },
+      {
+        "naam": "Groot, Anna de",
+        "fractie": "SP"
+      },
+      {
+        "naam": "Davelaar, Casper",
+        "fractie": "VVD"
+      },
+      {
+        "naam": "Lopes, Fidel",
+        "fractie": "VVD"
+      },
+      {
+        "naam": "Onclin, Stephanie",
+        "fractie": "VVD"
+      }
+    ],
     "raadsleden_tegen": [],
     "raadsleden_onthouding": [],
     "url": "https://zaanstad.bestuurlijkeinformatie.nl/Reports/Item/3563d7ce-b1db-4df7-9f5c-837b9df9676a",
@@ -130,14 +743,167 @@
     "titel": "RV Archiefverordening gemeente Zaanstad 2026",
     "datum": "2026-07-01",
     "uitslag": "",
-    "uitslag_tekst": null,
-    "voor_pct": null,
-    "tegen_pct": null,
-    "onthouding_pct": null,
-    "fracties_voor": null,
+    "uitslag_tekst": "100% Voor",
+    "voor_pct": 100,
+    "tegen_pct": 0,
+    "onthouding_pct": 0,
+    "fracties_voor": "CDA (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), GROENLINKS – PvdA (6), Lokaal Zaans (8), Partij voor de Dieren (1), POV (3), PVV (3), ROSA (2), SP (1), VVD (3)",
     "fracties_tegen": null,
     "fracties_onthouding": null,
-    "raadsleden_voor": [],
+    "raadsleden_voor": [
+      {
+        "naam": "Veer, Julie van &#39;t",
+        "fractie": "CDA"
+      },
+      {
+        "naam": "Haan, Jochem de",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Kingma, Merel",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Vos, Robbert",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Kerkhoven, Jos",
+        "fractie": "Democratisch Zaanstad"
+      },
+      {
+        "naam": "Rot, Juliette",
+        "fractie": "Democratisch Zaanstad"
+      },
+      {
+        "naam": "Koca, Yusuf",
+        "fractie": "DENK"
+      },
+      {
+        "naam": "Sahin, Erdogan",
+        "fractie": "DENK"
+      },
+      {
+        "naam": "Doorn, Dick",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Jahn, Ingrid",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Krijger, Tom de",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Belkasmi, Abdelhak",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Ejder, Zozan",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Horst, Liv van der",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Lenarduzzi, Romana",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Sluis, Jonathan van der",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Zeltsburg, Lilit",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Amesfoort, Kevin van",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Doeves-de Boer, Marianne",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Ineke, Joey",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Karst, Rob",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Klos, Peter",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Kraakman, Ingrid",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Vissers, Leny",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Zaal, Marijke",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Pieterson, Stella",
+        "fractie": "Partij voor de Dieren"
+      },
+      {
+        "naam": "Keijser, Nino",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Laan, Harrie van der",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Velden, Perry van der",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Barends, Menno",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Boomsma, Boy",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Cornelisse, Natasja",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Kuyper, Hans",
+        "fractie": "ROSA"
+      },
+      {
+        "naam": "Schuttevaer, Mariska",
+        "fractie": "ROSA"
+      },
+      {
+        "naam": "Groot, Anna de",
+        "fractie": "SP"
+      },
+      {
+        "naam": "Davelaar, Casper",
+        "fractie": "VVD"
+      },
+      {
+        "naam": "Lopes, Fidel",
+        "fractie": "VVD"
+      },
+      {
+        "naam": "Onclin, Stephanie",
+        "fractie": "VVD"
+      }
+    ],
     "raadsleden_tegen": [],
     "raadsleden_onthouding": [],
     "url": "https://zaanstad.bestuurlijkeinformatie.nl/Reports/Item/be1b90e2-4458-470e-bbb9-3b092918b82a",
@@ -148,14 +914,167 @@
     "titel": "RV Zienswijze financiële jaarstukken 2025 - 2027 CNB Noordzeekanaalgebied",
     "datum": "2026-07-01",
     "uitslag": "",
-    "uitslag_tekst": null,
-    "voor_pct": null,
-    "tegen_pct": null,
-    "onthouding_pct": null,
-    "fracties_voor": null,
+    "uitslag_tekst": "100% Voor",
+    "voor_pct": 100,
+    "tegen_pct": 0,
+    "onthouding_pct": 0,
+    "fracties_voor": "CDA (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), GROENLINKS – PvdA (6), Lokaal Zaans (8), Partij voor de Dieren (1), POV (3), PVV (3), ROSA (2), SP (1), VVD (3)",
     "fracties_tegen": null,
     "fracties_onthouding": null,
-    "raadsleden_voor": [],
+    "raadsleden_voor": [
+      {
+        "naam": "Veer, Julie van &#39;t",
+        "fractie": "CDA"
+      },
+      {
+        "naam": "Haan, Jochem de",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Kingma, Merel",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Vos, Robbert",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Kerkhoven, Jos",
+        "fractie": "Democratisch Zaanstad"
+      },
+      {
+        "naam": "Rot, Juliette",
+        "fractie": "Democratisch Zaanstad"
+      },
+      {
+        "naam": "Koca, Yusuf",
+        "fractie": "DENK"
+      },
+      {
+        "naam": "Sahin, Erdogan",
+        "fractie": "DENK"
+      },
+      {
+        "naam": "Doorn, Dick",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Jahn, Ingrid",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Krijger, Tom de",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Belkasmi, Abdelhak",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Ejder, Zozan",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Horst, Liv van der",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Lenarduzzi, Romana",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Sluis, Jonathan van der",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Zeltsburg, Lilit",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Amesfoort, Kevin van",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Doeves-de Boer, Marianne",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Ineke, Joey",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Karst, Rob",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Klos, Peter",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Kraakman, Ingrid",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Vissers, Leny",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Zaal, Marijke",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Pieterson, Stella",
+        "fractie": "Partij voor de Dieren"
+      },
+      {
+        "naam": "Keijser, Nino",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Laan, Harrie van der",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Velden, Perry van der",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Barends, Menno",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Boomsma, Boy",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Cornelisse, Natasja",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Kuyper, Hans",
+        "fractie": "ROSA"
+      },
+      {
+        "naam": "Schuttevaer, Mariska",
+        "fractie": "ROSA"
+      },
+      {
+        "naam": "Groot, Anna de",
+        "fractie": "SP"
+      },
+      {
+        "naam": "Davelaar, Casper",
+        "fractie": "VVD"
+      },
+      {
+        "naam": "Lopes, Fidel",
+        "fractie": "VVD"
+      },
+      {
+        "naam": "Onclin, Stephanie",
+        "fractie": "VVD"
+      }
+    ],
     "raadsleden_tegen": [],
     "raadsleden_onthouding": [],
     "url": "https://zaanstad.bestuurlijkeinformatie.nl/Reports/Item/92af9037-6230-40c3-9319-1cf93943d909",
@@ -166,15 +1085,169 @@
     "titel": "RV Zienswijze Verordening financieel beheer recreatieschap Alkmaarder- en Uitgeestermeer 2026",
     "datum": "2026-07-01",
     "uitslag": "",
-    "uitslag_tekst": null,
-    "voor_pct": null,
-    "tegen_pct": null,
-    "onthouding_pct": null,
-    "fracties_voor": null,
-    "fracties_tegen": null,
+    "uitslag_tekst": "84% Voor",
+    "voor_pct": 84,
+    "tegen_pct": 16,
+    "onthouding_pct": 0,
+    "fracties_voor": "CDA (1), D66 (3), Democratisch Zaanstad (2), DENK (2), GROENLINKS – PvdA (6), Lokaal Zaans (8), Partij voor de Dieren (1), POV (3), ROSA (2), SP (1), VVD (3)",
+    "fracties_tegen": "Forum voor Democratie (3), PVV (3)",
     "fracties_onthouding": null,
-    "raadsleden_voor": [],
-    "raadsleden_tegen": [],
+    "raadsleden_voor": [
+      {
+        "naam": "Veer, Julie van &#39;t",
+        "fractie": "CDA"
+      },
+      {
+        "naam": "Haan, Jochem de",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Kingma, Merel",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Vos, Robbert",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Kerkhoven, Jos",
+        "fractie": "Democratisch Zaanstad"
+      },
+      {
+        "naam": "Rot, Juliette",
+        "fractie": "Democratisch Zaanstad"
+      },
+      {
+        "naam": "Koca, Yusuf",
+        "fractie": "DENK"
+      },
+      {
+        "naam": "Sahin, Erdogan",
+        "fractie": "DENK"
+      },
+      {
+        "naam": "Belkasmi, Abdelhak",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Ejder, Zozan",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Horst, Liv van der",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Lenarduzzi, Romana",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Sluis, Jonathan van der",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Zeltsburg, Lilit",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Amesfoort, Kevin van",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Doeves-de Boer, Marianne",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Ineke, Joey",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Karst, Rob",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Klos, Peter",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Kraakman, Ingrid",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Vissers, Leny",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Zaal, Marijke",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Pieterson, Stella",
+        "fractie": "Partij voor de Dieren"
+      },
+      {
+        "naam": "Keijser, Nino",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Laan, Harrie van der",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Velden, Perry van der",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Kuyper, Hans",
+        "fractie": "ROSA"
+      },
+      {
+        "naam": "Schuttevaer, Mariska",
+        "fractie": "ROSA"
+      },
+      {
+        "naam": "Groot, Anna de",
+        "fractie": "SP"
+      },
+      {
+        "naam": "Davelaar, Casper",
+        "fractie": "VVD"
+      },
+      {
+        "naam": "Lopes, Fidel",
+        "fractie": "VVD"
+      },
+      {
+        "naam": "Onclin, Stephanie",
+        "fractie": "VVD"
+      }
+    ],
+    "raadsleden_tegen": [
+      {
+        "naam": "Doorn, Dick",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Jahn, Ingrid",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Krijger, Tom de",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Barends, Menno",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Boomsma, Boy",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Cornelisse, Natasja",
+        "fractie": "PVV"
+      }
+    ],
     "raadsleden_onthouding": [],
     "url": "https://zaanstad.bestuurlijkeinformatie.nl/Reports/Item/a619c0ec-0ff2-4f5c-9a11-0fdf24617cb7",
     "bijgewerkt": "2026-07-01"
@@ -184,15 +1257,169 @@
     "titel": "RV Zienswijze Verordening financieel beheer recreatieschap Twiske-Waterland 2026",
     "datum": "2026-07-01",
     "uitslag": "",
-    "uitslag_tekst": null,
-    "voor_pct": null,
-    "tegen_pct": null,
-    "onthouding_pct": null,
-    "fracties_voor": null,
-    "fracties_tegen": null,
+    "uitslag_tekst": "92% Voor",
+    "voor_pct": 92,
+    "tegen_pct": 8,
+    "onthouding_pct": 0,
+    "fracties_voor": "CDA (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), GROENLINKS – PvdA (6), Lokaal Zaans (8), Partij voor de Dieren (1), POV (3), ROSA (2), SP (1), VVD (3)",
+    "fracties_tegen": "PVV (3)",
     "fracties_onthouding": null,
-    "raadsleden_voor": [],
-    "raadsleden_tegen": [],
+    "raadsleden_voor": [
+      {
+        "naam": "Veer, Julie van &#39;t",
+        "fractie": "CDA"
+      },
+      {
+        "naam": "Haan, Jochem de",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Kingma, Merel",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Vos, Robbert",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Kerkhoven, Jos",
+        "fractie": "Democratisch Zaanstad"
+      },
+      {
+        "naam": "Rot, Juliette",
+        "fractie": "Democratisch Zaanstad"
+      },
+      {
+        "naam": "Koca, Yusuf",
+        "fractie": "DENK"
+      },
+      {
+        "naam": "Sahin, Erdogan",
+        "fractie": "DENK"
+      },
+      {
+        "naam": "Doorn, Dick",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Jahn, Ingrid",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Krijger, Tom de",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Belkasmi, Abdelhak",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Ejder, Zozan",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Horst, Liv van der",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Lenarduzzi, Romana",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Sluis, Jonathan van der",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Zeltsburg, Lilit",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Amesfoort, Kevin van",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Doeves-de Boer, Marianne",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Ineke, Joey",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Karst, Rob",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Klos, Peter",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Kraakman, Ingrid",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Vissers, Leny",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Zaal, Marijke",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Pieterson, Stella",
+        "fractie": "Partij voor de Dieren"
+      },
+      {
+        "naam": "Keijser, Nino",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Laan, Harrie van der",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Velden, Perry van der",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Kuyper, Hans",
+        "fractie": "ROSA"
+      },
+      {
+        "naam": "Schuttevaer, Mariska",
+        "fractie": "ROSA"
+      },
+      {
+        "naam": "Groot, Anna de",
+        "fractie": "SP"
+      },
+      {
+        "naam": "Davelaar, Casper",
+        "fractie": "VVD"
+      },
+      {
+        "naam": "Lopes, Fidel",
+        "fractie": "VVD"
+      },
+      {
+        "naam": "Onclin, Stephanie",
+        "fractie": "VVD"
+      }
+    ],
+    "raadsleden_tegen": [
+      {
+        "naam": "Barends, Menno",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Boomsma, Boy",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Cornelisse, Natasja",
+        "fractie": "PVV"
+      }
+    ],
     "raadsleden_onthouding": [],
     "url": "https://zaanstad.bestuurlijkeinformatie.nl/Reports/Item/17e453a3-5801-4e7f-ab60-038cd3c98cf7",
     "bijgewerkt": "2026-07-01"
@@ -220,14 +1447,167 @@
     "titel": "Ontwerpbegroting 2027 Rekenkamer Amsterdam Zaanstad",
     "datum": "2026-07-01",
     "uitslag": "",
-    "uitslag_tekst": null,
-    "voor_pct": null,
-    "tegen_pct": null,
-    "onthouding_pct": null,
-    "fracties_voor": null,
+    "uitslag_tekst": "100% Voor",
+    "voor_pct": 100,
+    "tegen_pct": 0,
+    "onthouding_pct": 0,
+    "fracties_voor": "CDA (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), GROENLINKS – PvdA (6), Lokaal Zaans (8), Partij voor de Dieren (1), POV (3), PVV (3), ROSA (2), SP (1), VVD (3)",
     "fracties_tegen": null,
     "fracties_onthouding": null,
-    "raadsleden_voor": [],
+    "raadsleden_voor": [
+      {
+        "naam": "Veer, Julie van &#39;t",
+        "fractie": "CDA"
+      },
+      {
+        "naam": "Haan, Jochem de",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Kingma, Merel",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Vos, Robbert",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Kerkhoven, Jos",
+        "fractie": "Democratisch Zaanstad"
+      },
+      {
+        "naam": "Rot, Juliette",
+        "fractie": "Democratisch Zaanstad"
+      },
+      {
+        "naam": "Koca, Yusuf",
+        "fractie": "DENK"
+      },
+      {
+        "naam": "Sahin, Erdogan",
+        "fractie": "DENK"
+      },
+      {
+        "naam": "Doorn, Dick",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Jahn, Ingrid",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Krijger, Tom de",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Belkasmi, Abdelhak",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Ejder, Zozan",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Horst, Liv van der",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Lenarduzzi, Romana",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Sluis, Jonathan van der",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Zeltsburg, Lilit",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Amesfoort, Kevin van",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Doeves-de Boer, Marianne",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Ineke, Joey",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Karst, Rob",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Klos, Peter",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Kraakman, Ingrid",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Vissers, Leny",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Zaal, Marijke",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Pieterson, Stella",
+        "fractie": "Partij voor de Dieren"
+      },
+      {
+        "naam": "Keijser, Nino",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Laan, Harrie van der",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Velden, Perry van der",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Barends, Menno",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Boomsma, Boy",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Cornelisse, Natasja",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Kuyper, Hans",
+        "fractie": "ROSA"
+      },
+      {
+        "naam": "Schuttevaer, Mariska",
+        "fractie": "ROSA"
+      },
+      {
+        "naam": "Groot, Anna de",
+        "fractie": "SP"
+      },
+      {
+        "naam": "Davelaar, Casper",
+        "fractie": "VVD"
+      },
+      {
+        "naam": "Lopes, Fidel",
+        "fractie": "VVD"
+      },
+      {
+        "naam": "Onclin, Stephanie",
+        "fractie": "VVD"
+      }
+    ],
     "raadsleden_tegen": [],
     "raadsleden_onthouding": [],
     "url": "https://zaanstad.bestuurlijkeinformatie.nl/Reports/Item/cc80a5ca-9fae-4996-88c6-02f7f522e507",
