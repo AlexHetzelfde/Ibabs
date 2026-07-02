@@ -17,10 +17,10 @@
     "datum": "2026-07-01",
     "agendapunt": "Raadsvergadering 01-07-2026 4.2. Buiten werking stellen poller Czaar Peterstraat Zaandam",
     "status": null,
-    "voor_pct": null,
-    "tegen_pct": null,
-    "fracties_voor": null,
-    "fracties_tegen": null
+    "voor_pct": 39,
+    "tegen_pct": 61,
+    "fracties_voor": "D66 (3), Democratisch Zaanstad (2), GROENLINKS – PvdA (6), Partij voor de Dieren (1), ROSA (2), SP (1)",
+    "fracties_tegen": "CDA  (1), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), POV (3), PVV (3), VVD (3)"
   },
   {
     "id": "025325a0-58b9-41c5-93d6-53c5bb5b01ce",
@@ -65,10 +65,10 @@
     "datum": "2026-07-01",
     "agendapunt": "Raadsvergadering 01-07-2026 4.2. Buiten werking stellen poller Czaar Peterstraat Zaandam",
     "status": null,
-    "voor_pct": null,
-    "tegen_pct": null,
-    "fracties_voor": null,
-    "fracties_tegen": null
+    "voor_pct": 45,
+    "tegen_pct": 55,
+    "fracties_voor": "CDA  (1), D66 (3), GROENLINKS – PvdA (6), Partij voor de Dieren (1), ROSA (2), SP (1), VVD (3)",
+    "fracties_tegen": "Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), POV (3), PVV (3)"
   },
   {
     "id": "f3250464-b0f6-4537-922c-ed32d29cdb76",
@@ -167,10 +167,10 @@
     "datum": "2026-07-01",
     "agendapunt": "Raadsvergadering 01-07-2026 4.2. Buiten werking stellen poller Czaar Peterstraat Zaandam",
     "status": null,
-    "voor_pct": null,
-    "tegen_pct": null,
-    "fracties_voor": null,
-    "fracties_tegen": null
+    "voor_pct": 39,
+    "tegen_pct": 61,
+    "fracties_voor": "D66 (3), Democratisch Zaanstad (2), GROENLINKS – PvdA (6), Partij voor de Dieren (1), ROSA (2), SP (1)",
+    "fracties_tegen": "CDA  (1), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), POV (3), PVV (3), VVD (3)"
   },
   {
     "id": "65ef4436-9477-4876-96eb-f61d0437c2ff",
@@ -194,6 +194,31 @@
     "tegen_pct": null,
     "fracties_voor": null,
     "fracties_tegen": null
+  },
+  {
+    "id": "09a8076a-ee0c-4cba-a3e1-372a0c4fc91c",
+    "titel": "26M51 Motie Veilig verkeer Russische Buurt",
+    "type": "Motie",
+    "partij": "D66",
+    "fracties": [
+      "D66",
+      "POV",
+      "CDA",
+      "PvdD"
+    ],
+    "indiener": "Vos, Robbert",
+    "medeondertekenaars": [
+      "Keijser, Jaap",
+      "Veer, Julie van 't",
+      "Pieterson, Stella"
+    ],
+    "datum": "2026-07-01",
+    "agendapunt": "Raadsvergadering 01-07-2026 4.2. Buiten werking stellen poller Czaar Peterstraat Zaandam",
+    "status": null,
+    "voor_pct": 79,
+    "tegen_pct": 21,
+    "fracties_voor": "CDA  (1), D66 (3), DENK (2), Forum voor Democratie (3), GROENLINKS – PvdA (6), Lokaal Zaans (8), Partij voor de Dieren (1), POV (3), ROSA (2), SP (1)",
+    "fracties_tegen": "Democratisch Zaanstad (2), PVV (3), VVD (3)"
   },
   {
     "id": "affc9341-94e0-4551-af6f-0ab69109ac81",
