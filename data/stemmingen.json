@@ -4,15 +4,173 @@
     "titel": "Besluitpunt 1: ontheffing ingezetenschap Saskia Groenewoud- Koers",
     "datum": "2026-07-02",
     "uitslag": "",
-    "uitslag_tekst": null,
-    "voor_pct": null,
-    "tegen_pct": null,
-    "onthouding_pct": null,
-    "fracties_voor": null,
-    "fracties_tegen": null,
+    "uitslag_tekst": "79% Voor",
+    "voor_pct": 79,
+    "tegen_pct": 21,
+    "onthouding_pct": 0,
+    "fracties_voor": "CDA (1), D66 (3), DENK (2), GROENLINKS – PvdA (6), Lokaal Zaans (8), Partij voor de Dieren (1), POV (4), ROSA (2), SP (1), VVD (3)",
+    "fracties_tegen": "Democratisch Zaanstad (2), Forum voor Democratie (3), PVV (3)",
     "fracties_onthouding": null,
-    "raadsleden_voor": [],
-    "raadsleden_tegen": [],
+    "raadsleden_voor": [
+      {
+        "naam": "Veer, Julie van &#39;t",
+        "fractie": "CDA"
+      },
+      {
+        "naam": "Haan, Jochem de",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Kingma, Merel",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Vos, Robbert",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Koca, Yusuf",
+        "fractie": "DENK"
+      },
+      {
+        "naam": "Sahin, Erdogan (raadslid account)",
+        "fractie": "DENK"
+      },
+      {
+        "naam": "Belkasmi, Abdelhak",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Ejder, Zozan",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Horst, Liv van der",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Lenarduzzi, Romana",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Sluis, Jonathan van der",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Zeltsburg, Lilit",
+        "fractie": "GROENLINKS – PvdA"
+      },
+      {
+        "naam": "Amesfoort, Kevin van",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Doeves-de Boer, Marianne (raadslid account)",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Ineke, Joey",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Karst, Rob(Raadslid account)",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Klos, Peter",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Kraakman, Ingrid",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Vissers, Leny",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Zaal, Marijke",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Pieterson, Stella",
+        "fractie": "Partij voor de Dieren"
+      },
+      {
+        "naam": "Keijser, Jaap",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Keijser, Nino",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Laan, Harrie van der",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Velden, Perry van der",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Kuyper, Hans",
+        "fractie": "ROSA"
+      },
+      {
+        "naam": "Schuttevaer, Mariska",
+        "fractie": "ROSA"
+      },
+      {
+        "naam": "Groot, Anna de",
+        "fractie": "SP"
+      },
+      {
+        "naam": "Davelaar, Casper",
+        "fractie": "VVD"
+      },
+      {
+        "naam": "Lopes, Fidel",
+        "fractie": "VVD"
+      },
+      {
+        "naam": "Onclin, Stephanie",
+        "fractie": "VVD"
+      }
+    ],
+    "raadsleden_tegen": [
+      {
+        "naam": "Kerkhoven, Jos",
+        "fractie": "Democratisch Zaanstad"
+      },
+      {
+        "naam": "Rot, Juliette",
+        "fractie": "Democratisch Zaanstad"
+      },
+      {
+        "naam": "Doorn, Dick",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Jahn, Ingrid",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Krijger, Tom de",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Barends, Menno",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Boomsma, Boy",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Cornelisse, Natasja",
+        "fractie": "PVV"
+      }
+    ],
     "raadsleden_onthouding": [],
     "url": "https://zaanstad.bestuurlijkeinformatie.nl/Reports/Item/2d9cd883-9766-431a-a274-484ad3aa8d26",
     "bijgewerkt": "2026-07-02"
