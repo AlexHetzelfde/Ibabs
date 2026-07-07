@@ -20,7 +20,7 @@
     "voor_pct": 39,
     "tegen_pct": 61,
     "fracties_voor": "D66 (3), Democratisch Zaanstad (2), Partij voor de Dieren (1), ROSA (2), SP (1), GROENLINKS – PvdA (6)",
-    "fracties_tegen": "CDA  (1), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), POV (3), PVV (3), VVD (3)"
+    "fracties_tegen": "DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), POV (3), PVV (3), VVD (3), CDA  (1)"
   },
   {
     "id": "025325a0-58b9-41c5-93d6-53c5bb5b01ce",
@@ -67,7 +67,7 @@
     "status": null,
     "voor_pct": 45,
     "tegen_pct": 55,
-    "fracties_voor": "CDA  (1), D66 (3), Partij voor de Dieren (1), ROSA (2), SP (1), VVD (3), GROENLINKS – PvdA (6)",
+    "fracties_voor": "D66 (3), Partij voor de Dieren (1), ROSA (2), SP (1), VVD (3), CDA  (1), GROENLINKS – PvdA (6)",
     "fracties_tegen": "Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), POV (3), PVV (3)"
   },
   {
@@ -118,7 +118,7 @@
     "voor_pct": 34,
     "tegen_pct": 66,
     "fracties_voor": "Forum voor Democratie (3), Partij voor de Dieren (1), ROSA (2), SP (1), GROENLINKS – PvdA (6)",
-    "fracties_tegen": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Lokaal Zaans (8), POV (3), PVV (3), VVD (3)"
+    "fracties_tegen": "D66 (3), Democratisch Zaanstad (2), DENK (2), Lokaal Zaans (8), POV (3), PVV (3), VVD (3), CDA  (1)"
   },
   {
     "id": "e7889041-3091-436e-a3ba-3f0e9b7a7e1b",
@@ -143,7 +143,7 @@
     "voor_pct": 34,
     "tegen_pct": 66,
     "fracties_voor": "Forum voor Democratie (3), Partij voor de Dieren (1), ROSA (2), SP (1), GROENLINKS – PvdA (6)",
-    "fracties_tegen": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Lokaal Zaans (8), POV (3), PVV (3), VVD (3)"
+    "fracties_tegen": "D66 (3), Democratisch Zaanstad (2), DENK (2), Lokaal Zaans (8), POV (3), PVV (3), VVD (3), CDA  (1)"
   },
   {
     "id": "6da37f6b-b736-4a75-8bf6-707bf840e447",
@@ -170,7 +170,7 @@
     "voor_pct": 39,
     "tegen_pct": 61,
     "fracties_voor": "D66 (3), Democratisch Zaanstad (2), Partij voor de Dieren (1), ROSA (2), SP (1), GROENLINKS – PvdA (6)",
-    "fracties_tegen": "CDA  (1), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), POV (3), PVV (3), VVD (3)"
+    "fracties_tegen": "DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), POV (3), PVV (3), VVD (3), CDA  (1)"
   },
   {
     "id": "65ef4436-9477-4876-96eb-f61d0437c2ff",
@@ -217,7 +217,7 @@
     "status": null,
     "voor_pct": 79,
     "tegen_pct": 21,
-    "fracties_voor": "CDA  (1), D66 (3), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), Partij voor de Dieren (1), POV (3), ROSA (2), SP (1), GROENLINKS – PvdA (6)",
+    "fracties_voor": "D66 (3), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), Partij voor de Dieren (1), POV (3), ROSA (2), SP (1), CDA  (1), GROENLINKS – PvdA (6)",
     "fracties_tegen": "Democratisch Zaanstad (2), PVV (3), VVD (3)"
   },
   {
