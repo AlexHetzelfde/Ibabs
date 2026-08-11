@@ -1,5 +1,20 @@
 [
   {
+    "id": "2cd6fca2-dbbb-4ded-bdec-f54a8737e8b7",
+    "titel": "Raadsvergadering",
+    "type": "Raadsvergadering",
+    "datum": "2026-09-08",
+    "start": "2026-09-08T19:00:00",
+    "eind": "2026-09-08T23:00:00",
+    "locatie": "Raadzaal",
+    "url": "https://zaanstad.bestuurlijkeinformatie.nl/Agenda/Index/2cd6fca2-dbbb-4ded-bdec-f54a8737e8b7",
+    "video_id": null,
+    "video_link": null,
+    "heeft_video": true,
+    "agendapunten": [],
+    "bijgewerkt": "11-08-2026"
+  },
+  {
     "id": "bac6335b-6098-4fd5-88f7-bd7e8096585c",
     "titel": "Raadsvergadering",
     "type": "Raadsvergadering",
