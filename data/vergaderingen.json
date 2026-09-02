@@ -15,6 +15,66 @@
     "bijgewerkt": "01-09-2026"
   },
   {
+    "id": "c61f327c-3367-4cea-bacc-5cf8ab32983c",
+    "titel": "Raadsvergadering",
+    "type": "Raadsvergadering",
+    "datum": "2026-09-08",
+    "start": "2026-09-08T19:00:00",
+    "eind": "2026-09-08T23:00:00",
+    "locatie": "Raadzaal",
+    "url": "https://zaanstad.bestuurlijkeinformatie.nl/Agenda/Index/c61f327c-3367-4cea-bacc-5cf8ab32983c",
+    "video_id": null,
+    "video_link": null,
+    "heeft_video": true,
+    "agendapunten": [
+      {
+        "nummer": "1",
+        "titel": "Opening en mededelingen"
+      },
+      {
+        "nummer": "2",
+        "titel": "Installatie raadslid Elano van Uitert  (FvD) en steunfractielid Jantien Kramer (ROSA)"
+      },
+      {
+        "nummer": "3",
+        "titel": "Vaststellen van de agenda"
+      },
+      {
+        "nummer": "3.1",
+        "titel": "Voorstel spreektijd"
+      },
+      {
+        "nummer": "4",
+        "titel": "Vaststellen verslag en besluitenlijst 11 juni 2026"
+      },
+      {
+        "nummer": "5",
+        "titel": "Stemmingen"
+      },
+      {
+        "nummer": "5.1",
+        "titel": "Vaststellen TAM-Omgevingsplan 22d Behouden Haven Zaandam"
+      },
+      {
+        "nummer": "5.2",
+        "titel": "Opheffen geheimhouding raadsinformatiebrief energiecoöperatie WeSpark"
+      },
+      {
+        "nummer": "5.3",
+        "titel": "Wijziging Algemene -, Leges- en Organisatieverordening Recreatieschap Twiske-Waterland"
+      },
+      {
+        "nummer": "5.4",
+        "titel": "Wijziging Algemene-, Leges- en Organisatieverordening Recreatieschap Alkmaarder- en Uitgeestermeer"
+      },
+      {
+        "nummer": "6",
+        "titel": "Debat"
+      }
+    ],
+    "bijgewerkt": "02-09-2026"
+  },
+  {
     "id": "bac6335b-6098-4fd5-88f7-bd7e8096585c",
     "titel": "Raadsvergadering",
     "type": "Raadsvergadering",
