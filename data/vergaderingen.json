@@ -69,6 +69,34 @@
       },
       {
         "nummer": "6",
+        "titel": "Stemmingen over de te vervullen raadsfuncties"
+      },
+      {
+        "nummer": "6.1",
+        "titel": "Auditcommissie (één vacature)"
+      },
+      {
+        "nummer": "6.2",
+        "titel": "Agendacommissie (twee vacatures)"
+      },
+      {
+        "nummer": "6.3",
+        "titel": "Voorzitters Zaanstad Beraden (onbeperkt)"
+      },
+      {
+        "nummer": "6.4",
+        "titel": "Klankbordgroep burgemeester (één vacature)"
+      },
+      {
+        "nummer": "6.5",
+        "titel": "Vervoerregio (twee vacatures)"
+      },
+      {
+        "nummer": "6.6",
+        "titel": "Stuurgroep Zaans Samenspel (drie vacatures)"
+      },
+      {
+        "nummer": "7",
         "titel": "Debat"
       }
     ],
