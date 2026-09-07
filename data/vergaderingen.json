@@ -60,14 +60,6 @@
         "titel": "Opheffen geheimhouding raadsinformatiebrief energiecoöperatie WeSpark"
       },
       {
-        "nummer": "5.3",
-        "titel": "Wijziging Algemene -, Leges- en Organisatieverordening Recreatieschap Twiske-Waterland"
-      },
-      {
-        "nummer": "5.4",
-        "titel": "Wijziging Algemene-, Leges- en Organisatieverordening Recreatieschap Alkmaarder- en Uitgeestermeer"
-      },
-      {
         "nummer": "6",
         "titel": "Stemmingen over de te vervullen raadsfuncties"
       },
@@ -98,9 +90,17 @@
       {
         "nummer": "7",
         "titel": "Debat"
+      },
+      {
+        "nummer": "7.1",
+        "titel": "Wijziging Algemene -, Leges- en Organisatieverordening Recreatieschap Twiske-Waterland"
+      },
+      {
+        "nummer": "7.2",
+        "titel": "Wijziging Algemene-, Leges- en Organisatieverordening Recreatieschap Alkmaarder- en Uitgeestermeer"
       }
     ],
-    "bijgewerkt": "03-09-2026"
+    "bijgewerkt": "07-09-2026"
   },
   {
     "id": "bac6335b-6098-4fd5-88f7-bd7e8096585c",
