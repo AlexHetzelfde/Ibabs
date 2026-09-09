@@ -12,10 +12,10 @@
     "datum": "2026-09-08",
     "agendapunt": "Raadsvergadering 08-09-2026 7.3. Vaststellen TAM-Omgevingsplan 22d Behouden Haven Zaandam",
     "status": null,
-    "voor_pct": 20,
-    "tegen_pct": 80,
+    "voor_pct": 19,
+    "tegen_pct": 81,
     "fracties_voor": "Democratisch Zaanstad (2), Forum voor Democratie (3), PVV (2)",
-    "fracties_tegen": "CDA  (1), D66 (3), DENK (2), Lokaal Zaans (7), Partij voor de Dieren (1), POV (2), PRO (6), ROSA (2), SP (1), VVD (3)"
+    "fracties_tegen": "CDA  (1), D66 (3), DENK (2), Lokaal Zaans (8), Partij voor de Dieren (1), POV (2), PRO (6), ROSA (2), SP (1), VVD (3)"
   },
   {
     "id": "31962cef-2773-4aa8-add5-62f9ec308114",
@@ -30,9 +30,9 @@
     "datum": "2026-09-08",
     "agendapunt": "Raadsvergadering 08-09-2026 7.1. Wijziging Algemene -, Leges- en Organisatieverordening Recreatieschap Twiske-Waterland",
     "status": null,
-    "voor_pct": 64,
-    "tegen_pct": 36,
-    "fracties_voor": "CDA  (1), DENK (2), Lokaal Zaans (7), Partij voor de Dieren (1), PRO (6), ROSA (2), SP (1), VVD (3)",
+    "voor_pct": 65,
+    "tegen_pct": 35,
+    "fracties_voor": "CDA  (1), DENK (2), Lokaal Zaans (8), Partij voor de Dieren (1), PRO (6), ROSA (2), SP (1), VVD (3)",
     "fracties_tegen": "D66 (3), Democratisch Zaanstad (2), Forum voor Democratie (3), POV (2), PVV (3)"
   },
   {
@@ -125,10 +125,10 @@
     "datum": "2026-09-08",
     "agendapunt": "Raadsvergadering 08-09-2026 7.2. Wijziging Algemene-, Leges- en Organisatieverordening Recreatieschap Alkmaarder- en Uitgeestermeer",
     "status": null,
-    "voor_pct": 47,
-    "tegen_pct": 53,
+    "voor_pct": 46,
+    "tegen_pct": 54,
     "fracties_voor": "D66 (3), DENK (2), Partij voor de Dieren (1), PRO (6), ROSA (2), SP (1), VVD (2)",
-    "fracties_tegen": "CDA  (1), Democratisch Zaanstad (2), Forum voor Democratie (3), Lokaal Zaans (7), POV (2), PVV (3), VVD (1)"
+    "fracties_tegen": "CDA  (1), Democratisch Zaanstad (2), Forum voor Democratie (3), Lokaal Zaans (8), POV (2), PVV (3), VVD (1)"
   },
   {
     "id": "158ad8ac-67c2-4e1f-8354-a0287effdd1f",
@@ -143,10 +143,10 @@
     "datum": "2026-09-08",
     "agendapunt": "Raadsvergadering 08-09-2026 7.1. Wijziging Algemene -, Leges- en Organisatieverordening Recreatieschap Twiske-Waterland",
     "status": null,
-    "voor_pct": 50,
-    "tegen_pct": 50,
+    "voor_pct": 49,
+    "tegen_pct": 51,
     "fracties_voor": "D66 (3), DENK (2), Partij voor de Dieren (1), PRO (6), ROSA (2), SP (1), VVD (3)",
-    "fracties_tegen": "CDA  (1), Democratisch Zaanstad (2), Forum voor Democratie (3), Lokaal Zaans (7), POV (2), PVV (3)"
+    "fracties_tegen": "CDA  (1), Democratisch Zaanstad (2), Forum voor Democratie (3), Lokaal Zaans (8), POV (2), PVV (3)"
   },
   {
     "id": "64e8ef9e-f74a-4597-abd8-3b154d45563f",
@@ -194,7 +194,7 @@
     "voor_pct": 11,
     "tegen_pct": 89,
     "fracties_voor": "Partij voor de Dieren (1), ROSA (2), SP (1)",
-    "fracties_tegen": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (7), POV (2), PRO (6), PVV (3), VVD (3)"
+    "fracties_tegen": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), POV (2), PRO (6), PVV (3), VVD (3)"
   },
   {
     "id": "b0871264-228a-4f47-9ef7-0ae8370a5ea5",
@@ -235,7 +235,7 @@
     "voor_pct": 22,
     "tegen_pct": 78,
     "fracties_voor": "Democratisch Zaanstad (2), Forum voor Democratie (3), ROSA (2), SP (1)",
-    "fracties_tegen": "CDA  (1), D66 (3), DENK (2), Lokaal Zaans (7), Partij voor de Dieren (1), POV (2), PRO (6), PVV (3), VVD (3)"
+    "fracties_tegen": "CDA  (1), D66 (3), DENK (2), Lokaal Zaans (8), Partij voor de Dieren (1), POV (2), PRO (6), PVV (3), VVD (3)"
   },
   {
     "id": "63e5201c-5a85-4aa3-8a25-89192756c54b",
@@ -253,7 +253,7 @@
     "voor_pct": 22,
     "tegen_pct": 78,
     "fracties_voor": "Democratisch Zaanstad (2), Forum voor Democratie (3), ROSA (2), SP (1)",
-    "fracties_tegen": "CDA  (1), D66 (3), DENK (2), Lokaal Zaans (7), Partij voor de Dieren (1), POV (2), PRO (6), PVV (3), VVD (3)"
+    "fracties_tegen": "CDA  (1), D66 (3), DENK (2), Lokaal Zaans (8), Partij voor de Dieren (1), POV (2), PRO (6), PVV (3), VVD (3)"
   },
   {
     "id": "d97c2646-10bb-4435-93ad-7f6b5bf782d9",
