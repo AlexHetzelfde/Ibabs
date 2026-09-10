@@ -667,6 +667,178 @@
     "bijgewerkt": "2026-09-08"
   },
   {
+    "id": "e84324ab-cdd8-44a5-8219-8a79432274e7",
+    "titel": "OV: Motie Vreemd met beraadslaging behandelen",
+    "datum": "2026-09-08",
+    "uitslag": "",
+    "uitslag_tekst": "46% Voor",
+    "voor_pct": 46,
+    "tegen_pct": 54,
+    "onthouding_pct": 0,
+    "fracties_voor": "D66 (3), Democratisch Zaanstad (2), DENK (2), Partij voor de Dieren (1), PRO (6), ROSA (2), SP (1)",
+    "fracties_tegen": "CDA (1), Forum voor Democratie (3), Lokaal Zaans (8), POV (2), PVV (3), VVD (3)",
+    "fracties_onthouding": null,
+    "raadsleden_voor": [
+      {
+        "naam": "Haan, Jochem de",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Kingma, Merel",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Vos, Robbert",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Kerkhoven, Jos",
+        "fractie": "Democratisch Zaanstad"
+      },
+      {
+        "naam": "Rot, Juliette",
+        "fractie": "Democratisch Zaanstad"
+      },
+      {
+        "naam": "Hellings",
+        "fractie": "DENK"
+      },
+      {
+        "naam": "Orlando",
+        "fractie": "DENK"
+      },
+      {
+        "naam": "Koca, Yusuf",
+        "fractie": "DENK"
+      },
+      {
+        "naam": "Pieterson, Marijn",
+        "fractie": "Partij voor de Dieren"
+      },
+      {
+        "naam": "Belkasmi, Abdelhak",
+        "fractie": "PRO"
+      },
+      {
+        "naam": "Ejder, Zozan",
+        "fractie": "PRO"
+      },
+      {
+        "naam": "Horst, Liv van der",
+        "fractie": "PRO"
+      },
+      {
+        "naam": "Lenarduzzi, Romana",
+        "fractie": "PRO"
+      },
+      {
+        "naam": "Sluis, Jonathan van der",
+        "fractie": "PRO"
+      },
+      {
+        "naam": "Zeltsburg, Lilit",
+        "fractie": "PRO"
+      },
+      {
+        "naam": "Kuyper, Hans",
+        "fractie": "ROSA"
+      },
+      {
+        "naam": "Schuttevaer, Mariska",
+        "fractie": "ROSA"
+      },
+      {
+        "naam": "Groot, Anna de",
+        "fractie": "SP"
+      }
+    ],
+    "raadsleden_tegen": [
+      {
+        "naam": "Hendriks, Nick",
+        "fractie": "CDA"
+      },
+      {
+        "naam": "Doorn, Dick",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Jahn, Ingrid",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Uitert, Elano van",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Amesfoort, Kevin van",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Degenhart, Rens",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Doeves, Fanny",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Ineke, Joey",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Klos, Peter",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Kraakman, Ingrid",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Vissers, Leny",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Zaal, Marijke",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Hoffs, Denise",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Velden, Perry van der",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Barends, Menno",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Boomsma, Boy",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Cornelisse, Natasja",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Davelaar, Casper",
+        "fractie": "VVD"
+      },
+      {
+        "naam": "Lopes, Fidel",
+        "fractie": "VVD"
+      },
+      {
+        "naam": "Pollarini, Gianni",
+        "fractie": "VVD"
+      }
+    ],
+    "raadsleden_onthouding": [],
+    "url": "https://zaanstad.bestuurlijkeinformatie.nl/Reports/Item/e84324ab-cdd8-44a5-8219-8a79432274e7",
+    "bijgewerkt": "2026-09-10"
+  },
+  {
     "id": "2d9cd883-9766-431a-a274-484ad3aa8d26",
     "titel": "Besluitpunt 1: ontheffing ingezetenschap Saskia Groenewoud- Koers",
     "datum": "2026-07-02",
