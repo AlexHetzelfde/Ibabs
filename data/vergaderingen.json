@@ -1,5 +1,20 @@
 [
   {
+    "id": "cc6e0d91-9143-44e3-a2c7-f657a2766eb4",
+    "titel": "Raadsvergadering",
+    "type": "Raadsvergadering",
+    "datum": "2026-10-08",
+    "start": "2026-10-08T19:00:00",
+    "eind": "2026-10-08T23:00:00",
+    "locatie": "Raadzaal",
+    "url": "https://zaanstad.bestuurlijkeinformatie.nl/Agenda/Index/cc6e0d91-9143-44e3-a2c7-f657a2766eb4",
+    "video_id": null,
+    "video_link": null,
+    "heeft_video": true,
+    "agendapunten": [],
+    "bijgewerkt": "10-09-2026"
+  },
+  {
     "id": "2cd6fca2-dbbb-4ded-bdec-f54a8737e8b7",
     "titel": "Raadsvergadering",
     "type": "Raadsvergadering",
@@ -124,7 +139,7 @@
         "titel": "26M55 Motie Vreemd aan de orde Lucht voor het Blauwe Pand"
       }
     ],
-    "bijgewerkt": "09-09-2026"
+    "bijgewerkt": "10-09-2026"
   },
   {
     "id": "bac6335b-6098-4fd5-88f7-bd7e8096585c",
