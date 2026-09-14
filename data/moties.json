@@ -256,6 +256,58 @@
     "fracties_tegen": "CDA  (1), D66 (3), DENK (2), Lokaal Zaans (8), Partij voor de Dieren (1), POV (2), PRO (6), PVV (3), VVD (3)"
   },
   {
+    "id": "8c569774-24f6-4bd9-9775-47904c570bac",
+    "titel": "26M56 Motie Vreemd GEWIJZIGD – Een mooiere en groenere Rozengracht mét extra parkeerplaatsen",
+    "type": "Motie",
+    "partij": "PVV",
+    "fracties": [
+      "PVV",
+      "VVD",
+      "Lokaal Zaans",
+      "POV",
+      "Forum voor democratie",
+      "DZ"
+    ],
+    "indiener": "Boomsma, Boy",
+    "medeondertekenaars": [
+      "Davelaar, Casper",
+      "Amesfoort, Kevin van",
+      "Keijser, Nino",
+      "Doorn, Dick",
+      "Kerkhoven, Jos"
+    ],
+    "datum": "2026-09-08",
+    "agendapunt": "Raadsvergadering 08-09-2026 8.1. 26M56 Motie Vreemd – Een mooiere en groenere Rozengracht mét extra parkeerplaatsen",
+    "status": null,
+    "voor_pct": 65,
+    "tegen_pct": 35,
+    "fracties_voor": "CDA  (1), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), POV (2), PVV (3), VVD (3)",
+    "fracties_tegen": "D66 (3), Partij voor de Dieren (1), PRO (6), ROSA (2), SP (1)"
+  },
+  {
+    "id": "1063eb30-28e6-487d-8afa-810379dcf808",
+    "titel": "26M54 Motie Groene en klimaatbestendige Behouden Haven",
+    "type": "Motie",
+    "partij": "PRO",
+    "fracties": [
+      "PRO",
+      "SP",
+      "ROSA"
+    ],
+    "indiener": "Lenarduzzi, Romana",
+    "medeondertekenaars": [
+      "Groot, Anna de",
+      "Kuyper, Hans"
+    ],
+    "datum": "2026-09-08",
+    "agendapunt": "Raadsvergadering 08-09-2026 7.3. Vaststellen TAM-Omgevingsplan 22d Behouden Haven Zaandam",
+    "status": "ingetrokken",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
     "id": "d97c2646-10bb-4435-93ad-7f6b5bf782d9",
     "titel": "26A30 Amendement Verkeersveiligheid laad- en losverkeer",
     "type": "Amendement",
