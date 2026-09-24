@@ -1,5 +1,20 @@
 [
   {
+    "id": "fc86e1cf-98bc-417a-8c73-1d67576a2218",
+    "titel": "Raadsvergadering - Algemene beschouwingen",
+    "type": "Raadsvergadering",
+    "datum": "2026-10-22",
+    "start": "2026-10-22T19:00:00",
+    "eind": "2026-10-22T23:00:00",
+    "locatie": "Raadzaal",
+    "url": "https://zaanstad.bestuurlijkeinformatie.nl/Agenda/Index/fc86e1cf-98bc-417a-8c73-1d67576a2218",
+    "video_id": null,
+    "video_link": null,
+    "heeft_video": true,
+    "agendapunten": [],
+    "bijgewerkt": "24-09-2026"
+  },
+  {
     "id": "cc6e0d91-9143-44e3-a2c7-f657a2766eb4",
     "titel": "Raadsvergadering",
     "type": "Raadsvergadering",
@@ -12,7 +27,7 @@
     "video_link": null,
     "heeft_video": true,
     "agendapunten": [],
-    "bijgewerkt": "23-09-2026"
+    "bijgewerkt": "24-09-2026"
   },
   {
     "id": "2cd6fca2-dbbb-4ded-bdec-f54a8737e8b7",
