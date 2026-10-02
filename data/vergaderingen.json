@@ -12,7 +12,7 @@
     "video_link": null,
     "heeft_video": true,
     "agendapunten": [],
-    "bijgewerkt": "01-10-2026"
+    "bijgewerkt": "02-10-2026"
   },
   {
     "id": "cc6e0d91-9143-44e3-a2c7-f657a2766eb4",
@@ -28,6 +28,106 @@
     "heeft_video": true,
     "agendapunten": [],
     "bijgewerkt": "01-10-2026"
+  },
+  {
+    "id": "a285f27a-0eae-4ed0-a26a-d11bb252e5a6",
+    "titel": "Raadsvergadering",
+    "type": "Raadsvergadering",
+    "datum": "2026-10-08",
+    "start": "2026-10-08T19:00:00",
+    "eind": "2026-10-08T23:00:00",
+    "locatie": "Raadzaal",
+    "url": "https://zaanstad.bestuurlijkeinformatie.nl/Agenda/Index/a285f27a-0eae-4ed0-a26a-d11bb252e5a6",
+    "video_id": null,
+    "video_link": null,
+    "heeft_video": true,
+    "agendapunten": [
+      {
+        "nummer": "1",
+        "titel": "Opening en mededelingen"
+      },
+      {
+        "nummer": "2",
+        "titel": "Installatie steunfractieleden: Hans Stokebrand (PRO), Zakaria van der Veen (DENK), Niels Kuiper (FvD)"
+      },
+      {
+        "nummer": "3",
+        "titel": "Vaststellen van de agenda"
+      },
+      {
+        "nummer": "3.1",
+        "titel": "Voorstel spreektijd"
+      },
+      {
+        "nummer": "4",
+        "titel": "Vaststellen besluitenlijsten 1 en 2 juli 2026"
+      },
+      {
+        "nummer": "5",
+        "titel": "Stemmingen"
+      },
+      {
+        "nummer": "5.1",
+        "titel": "Verzoek om bindend advies voor omgevingsvergunning Zuideinde 150A Westzaan"
+      },
+      {
+        "nummer": "5.2",
+        "titel": "2e wijziging Huisvestingsverordening 2025"
+      },
+      {
+        "nummer": "5.3",
+        "titel": "Gemeenschappelijke regeling Jeugdregio Zaanstreek-Waterland"
+      },
+      {
+        "nummer": "5.4",
+        "titel": "Bestuurlijke vertegenwoordiging en benoeming verbonden partijen"
+      },
+      {
+        "nummer": "5.5",
+        "titel": "Wensen- en bedenkingenprocedure Stichting knooppunt Rijk-Regio's (KCR2)"
+      },
+      {
+        "nummer": "5.6",
+        "titel": "Versnelde investering klimaatinstallaties stadhuis"
+      },
+      {
+        "nummer": "5.7",
+        "titel": "Verslag commissie besteding fractievergoedingen"
+      },
+      {
+        "nummer": "5.8",
+        "titel": "Vaststellen TAM-Omgevingsplan hoofdstuk 22e Krommeniedijk 75"
+      },
+      {
+        "nummer": "5.9",
+        "titel": "Opstellen Omgevingsprogramma Kostenverhaal en Financiële Bijdrage"
+      },
+      {
+        "nummer": "5.10",
+        "titel": "Zienswijze op voorgenomen besluit tot bestuurlijk juridische fusie GGDZW en VrZW"
+      },
+      {
+        "nummer": "5.11",
+        "titel": "Verordening tot wijziging van de Verordening op het beheer en het gebruik van de gemeentelijke begraafplaatsen gemeente Zaanstad 2023"
+      },
+      {
+        "nummer": "6",
+        "titel": "Debat"
+      },
+      {
+        "nummer": "6.1",
+        "titel": "Schetsontwerp Figaro afwijking uitgangspunten"
+      },
+      {
+        "nummer": "7",
+        "titel": "Motie Vreemd"
+      },
+      {
+        "nummer": "7.1",
+        "titel": "26M55 Motie Vreemd Lucht voor het Blauwe Pand"
+      }
+    ],
+    "bijgewerkt": "02-10-2026"
   },
   {
     "id": "2cd6fca2-dbbb-4ded-bdec-f54a8737e8b7",
