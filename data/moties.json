@@ -1,5 +1,23 @@
 [
   {
+    "id": "407b7f5e-5ea0-447a-b24b-663c5624568a",
+    "titel": "26M58 Dames- en herentoiletten",
+    "type": "Motie",
+    "partij": "PVV\nForum voor democratie",
+    "fracties": [
+      "PVV\nForum voor democratie"
+    ],
+    "indiener": "Barends, Menno",
+    "medeondertekenaars": [],
+    "datum": "2026-10-08",
+    "agendapunt": "Raadsvergadering 08-10-2026 7.2. 26M58 Dames- en herentoiletten",
+    "status": "",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
     "id": "9d9d3aa1-48fa-4e74-96a4-1f20f38227be",
     "titel": "26A29 Amendement Parkeermonitoring met terugval-voorziening” Behouden Haven",
     "type": "Amendement",
