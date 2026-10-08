@@ -10,12 +10,108 @@
     "indiener": "Barends, Menno",
     "medeondertekenaars": [],
     "datum": "2026-10-08",
-    "agendapunt": "Raadsvergadering 08-10-2026 7.2. 26M58 Dames- en herentoiletten",
+    "agendapunt": "Raadsvergadering 08-10-2026 7.2. 26M58 Motie Vreemd Dames- en herentoiletten",
     "status": "",
     "voor_pct": null,
     "tegen_pct": null,
     "fracties_voor": null,
     "fracties_tegen": null
+  },
+  {
+    "id": "76d0795b-120c-4a21-aea2-e81539062826",
+    "titel": "26A32 Amendement Veilige routes rond Figaro",
+    "type": "Amendement",
+    "partij": "Lokaal Zaans\nCDA\nDENK\nPOV",
+    "fracties": [
+      "Lokaal Zaans\nCDA\nDENK\nPOV"
+    ],
+    "indiener": "Amesfoort, Kevin van",
+    "medeondertekenaars": [
+      "Hendriks, Nick\nHellings, Orlando\nVelden, Perry van der"
+    ],
+    "datum": "2026-10-08",
+    "agendapunt": "Raadsvergadering 08-10-2026 6.1. Schetsontwerp Figaro afwijking uitgangspunten",
+    "status": "",
+    "voor_pct": 100,
+    "tegen_pct": 0,
+    "fracties_voor": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), Partij voor de Dieren (1), POV (4), PRO (6), PVV (3), ROSA (2), SP (1), VVD (3)",
+    "fracties_tegen": null
+  },
+  {
+    "id": "98a9ada9-cf1d-4654-a93d-4f30f6128f3a",
+    "titel": "26M61 Motie Sociale veiligheid als randvoorwaarde in de ontwikkeling van Figaro en stationsgebied",
+    "type": "Motie",
+    "partij": "PRO\nVVD\nDENK\nROSA\nSP",
+    "fracties": [
+      "PRO\nVVD\nDENK\nROSA\nSP"
+    ],
+    "indiener": "Lenarduzzi, Romana",
+    "medeondertekenaars": [
+      "Pollarini, Gianni\nHellings, Orlando\nSchuttevaer, Mariska \nGroot, Anna de"
+    ],
+    "datum": "2026-10-08",
+    "agendapunt": "Raadsvergadering 08-10-2026 6.1. Schetsontwerp Figaro afwijking uitgangspunten",
+    "status": "",
+    "voor_pct": 95,
+    "tegen_pct": 5,
+    "fracties_voor": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), Partij voor de Dieren (1), POV (4), PRO (6), PVV (1), ROSA (2), SP (1), VVD (3)",
+    "fracties_tegen": "PVV (2)"
+  },
+  {
+    "id": "14bfd897-d1c2-4353-96fb-3c79680125c4",
+    "titel": "26A31 Amendement Regeling dubbele graven uitsluitend voor nieuwe gevallen",
+    "type": "Motie",
+    "partij": "DZ",
+    "fracties": [
+      "DZ"
+    ],
+    "indiener": "Kerkhoven, Jos",
+    "medeondertekenaars": [],
+    "datum": "2026-10-08",
+    "agendapunt": "Raadsvergadering 08-10-2026 6.2. Verordening tot wijziging van de Verordening op het beheer en het gebruik van de gemeentelijke begraafplaatsen gemeente Zaanstad 2023",
+    "status": "",
+    "voor_pct": 15,
+    "tegen_pct": 85,
+    "fracties_voor": "Democratisch Zaanstad (2), DENK (1), Forum voor Democratie (3)",
+    "fracties_tegen": "CDA  (1), D66 (3), DENK (1), Lokaal Zaans (8), Partij voor de Dieren (1), POV (4), PRO (6), PVV (3), ROSA (2), SP (1), VVD (3)"
+  },
+  {
+    "id": "e4b577b4-1446-4c4d-9af6-d2218b6d70d0",
+    "titel": "26M60 Motie Geen kwetsbare doorstroming op de provinciale weg",
+    "type": "Motie",
+    "partij": "PVV",
+    "fracties": [
+      "PVV"
+    ],
+    "indiener": "Barends, Menno",
+    "medeondertekenaars": [],
+    "datum": "2026-10-08",
+    "agendapunt": "Raadsvergadering 08-10-2026 6.1. Schetsontwerp Figaro afwijking uitgangspunten",
+    "status": "",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "eb1cd961-607d-4b97-9659-1b575af00416",
+    "titel": "26M59 Motie Van drempelvrees naar toegankelijkheid. Inclusief en toegankelijk wonen op de Figaro-locatie",
+    "type": "Motie",
+    "partij": "SP\nROSA\nPvdD\nPRO",
+    "fracties": [
+      "SP\nROSA\nPvdD\nPRO"
+    ],
+    "indiener": "Groot, Anna de",
+    "medeondertekenaars": [
+      "Schuttevaer, Mariska \nPieterson, Marijn\nLenarduzzi, Romana"
+    ],
+    "datum": "2026-10-08",
+    "agendapunt": "Raadsvergadering 08-10-2026 6.1. Schetsontwerp Figaro afwijking uitgangspunten",
+    "status": "",
+    "voor_pct": 79,
+    "tegen_pct": 21,
+    "fracties_voor": "D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), Partij voor de Dieren (1), PRO (6), ROSA (2), SP (1), VVD (3)",
+    "fracties_tegen": "CDA  (1), POV (4), PVV (3)"
   },
   {
     "id": "9d9d3aa1-48fa-4e74-96a4-1f20f38227be",
