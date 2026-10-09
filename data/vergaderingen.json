@@ -15,6 +15,46 @@
     "bijgewerkt": "08-10-2026"
   },
   {
+    "id": "eb0a0d6a-489d-427f-b4ca-5ba8f87b7d44",
+    "titel": "Raadsvergadering - Algemene beschouwingen",
+    "type": "Raadsvergadering",
+    "datum": "2026-10-22",
+    "start": "2026-10-22T19:00:00",
+    "eind": "2026-10-22T23:00:00",
+    "locatie": "Raadzaal",
+    "url": "https://zaanstad.bestuurlijkeinformatie.nl/Agenda/Index/eb0a0d6a-489d-427f-b4ca-5ba8f87b7d44",
+    "video_id": null,
+    "video_link": null,
+    "heeft_video": true,
+    "agendapunten": [
+      {
+        "nummer": "1",
+        "titel": "Opening en mededelingen"
+      },
+      {
+        "nummer": "2",
+        "titel": "Vaststellen van de agenda"
+      },
+      {
+        "nummer": "3",
+        "titel": "Vaststellen verslagen 01 en 02 juli 2026"
+      },
+      {
+        "nummer": "4",
+        "titel": "Algemene beschouwingen"
+      },
+      {
+        "nummer": "4.1",
+        "titel": "Begroting 2027-2030"
+      },
+      {
+        "nummer": "4.2",
+        "titel": "Tariefvoorstellen en Verordeningen belastingen en rechten begroting 2027"
+      }
+    ],
+    "bijgewerkt": "09-10-2026"
+  },
+  {
     "id": "cc6e0d91-9143-44e3-a2c7-f657a2766eb4",
     "titel": "Raadsvergadering",
     "type": "Raadsvergadering",
