@@ -114,6 +114,122 @@
     "fracties_tegen": "CDA  (1), POV (4), PVV (3)"
   },
   {
+    "id": "dd57f326-89b2-4b54-b2f9-6de19961846c",
+    "titel": "26A32 Amendement Veilige routes rond Figaro",
+    "type": "Amendement",
+    "partij": "Lokaal Zaans\nCDA\nDENK\nPOV",
+    "fracties": [
+      "Lokaal Zaans\nCDA\nDENK\nPOV"
+    ],
+    "indiener": "Amesfoort, Kevin van",
+    "medeondertekenaars": [
+      "Hendriks, Nick\nHellings, Orlando\nVelden, Perry van der"
+    ],
+    "datum": "2026-10-08",
+    "agendapunt": "Raadsvergadering 08-10-2026 6.1. Schetsontwerp Figaro afwijking uitgangspunten",
+    "status": "aangenomen",
+    "voor_pct": 100,
+    "tegen_pct": 0,
+    "fracties_voor": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), Partij voor de Dieren (1), POV (4), PRO (6), PVV (3), ROSA (2), SP (1), VVD (3)",
+    "fracties_tegen": null
+  },
+  {
+    "id": "d73fab75-a094-4c40-bf09-4f8cf0ffdc20",
+    "titel": "26M61 Motie Sociale veiligheid als randvoorwaarde in de ontwikkeling van Figaro en stationsgebied",
+    "type": "Motie",
+    "partij": "PRO\nVVD\nDENK\nROSA\nSP",
+    "fracties": [
+      "PRO\nVVD\nDENK\nROSA\nSP"
+    ],
+    "indiener": "Lenarduzzi, Romana",
+    "medeondertekenaars": [
+      "Pollarini, Gianni\nHellings, Orlando\nSchuttevaer, Mariska \nGroot, Anna de"
+    ],
+    "datum": "2026-10-08",
+    "agendapunt": "Raadsvergadering 08-10-2026 6.1. Schetsontwerp Figaro afwijking uitgangspunten",
+    "status": "aangenomen",
+    "voor_pct": 95,
+    "tegen_pct": 5,
+    "fracties_voor": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), Partij voor de Dieren (1), POV (4), PRO (6), PVV (1), ROSA (2), SP (1), VVD (3)",
+    "fracties_tegen": "PVV (2)"
+  },
+  {
+    "id": "84f7e4db-0d7a-4223-8509-2f0d50456e74",
+    "titel": "26A31 Amendement Regeling dubbele graven uitsluitend voor nieuwe gevallen",
+    "type": "Motie",
+    "partij": "DZ",
+    "fracties": [
+      "DZ"
+    ],
+    "indiener": "Kerkhoven, Jos",
+    "medeondertekenaars": [],
+    "datum": "2026-10-08",
+    "agendapunt": "Raadsvergadering 08-10-2026 6.2. Verordening tot wijziging van de Verordening op het beheer en het gebruik van de gemeentelijke begraafplaatsen gemeente Zaanstad 2023",
+    "status": "verworpen",
+    "voor_pct": 15,
+    "tegen_pct": 85,
+    "fracties_voor": "Democratisch Zaanstad (2), DENK (1), Forum voor Democratie (3)",
+    "fracties_tegen": "CDA  (1), D66 (3), DENK (1), Lokaal Zaans (8), Partij voor de Dieren (1), POV (4), PRO (6), PVV (3), ROSA (2), SP (1), VVD (3)"
+  },
+  {
+    "id": "106ac2f6-f128-47a6-9982-bb833fddaa07",
+    "titel": "26M60 Motie Geen kwetsbare doorstroming op de provinciale weg",
+    "type": "Motie",
+    "partij": "PVV",
+    "fracties": [
+      "PVV"
+    ],
+    "indiener": "Barends, Menno",
+    "medeondertekenaars": [],
+    "datum": "2026-10-08",
+    "agendapunt": "Raadsvergadering 08-10-2026 6.1. Schetsontwerp Figaro afwijking uitgangspunten",
+    "status": "ingetrokken",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "2fb0aac2-08f4-4925-bc08-7da7000dcc97",
+    "titel": "26M59 Motie Van drempelvrees naar toegankelijkheid. Inclusief en toegankelijk wonen op de Figaro-locatie",
+    "type": "Motie",
+    "partij": "SP\nROSA\nPvdD\nPRO",
+    "fracties": [
+      "SP\nROSA\nPvdD\nPRO"
+    ],
+    "indiener": "Groot, Anna de",
+    "medeondertekenaars": [
+      "Schuttevaer, Mariska \nPieterson, Marijn\nLenarduzzi, Romana"
+    ],
+    "datum": "2026-10-08",
+    "agendapunt": "Raadsvergadering 08-10-2026 6.1. Schetsontwerp Figaro afwijking uitgangspunten",
+    "status": "aangenomen",
+    "voor_pct": 79,
+    "tegen_pct": 21,
+    "fracties_voor": "D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), Partij voor de Dieren (1), PRO (6), ROSA (2), SP (1), VVD (3)",
+    "fracties_tegen": "CDA  (1), POV (4), PVV (3)"
+  },
+  {
+    "id": "f0b1f50a-a19e-412d-9493-909b7016c2ee",
+    "titel": "26M58 Dames- en herentoiletten",
+    "type": "Motie",
+    "partij": "PVV\nForum voor democratie",
+    "fracties": [
+      "PVV\nForum voor democratie"
+    ],
+    "indiener": "Barends, Menno",
+    "medeondertekenaars": [
+      "Uitert, Elano van"
+    ],
+    "datum": "2026-10-08",
+    "agendapunt": "Raadsvergadering 08-10-2026 7.2. 26M58 Motie Vreemd Dames- en herentoiletten",
+    "status": "ingetrokken",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
     "id": "9d9d3aa1-48fa-4e74-96a4-1f20f38227be",
     "titel": "26A29 Amendement Parkeermonitoring met terugval-voorziening” Behouden Haven",
     "type": "Amendement",
