@@ -1,5 +1,20 @@
 [
   {
+    "id": "a15a2d8f-e250-4ea1-a48c-ea919fb34248",
+    "titel": "Raadsvergadering - Begroting",
+    "type": "Raadsvergadering",
+    "datum": "2026-11-10",
+    "start": "2026-11-10T19:00:00",
+    "eind": "2026-11-10T23:00:00",
+    "locatie": "Raadzaal",
+    "url": "https://zaanstad.bestuurlijkeinformatie.nl/Agenda/Index/a15a2d8f-e250-4ea1-a48c-ea919fb34248",
+    "video_id": null,
+    "video_link": null,
+    "heeft_video": true,
+    "agendapunten": [],
+    "bijgewerkt": "13-10-2026"
+  },
+  {
     "id": "fc86e1cf-98bc-417a-8c73-1d67576a2218",
     "titel": "Raadsvergadering - Algemene beschouwingen",
     "type": "Raadsvergadering",
@@ -52,7 +67,7 @@
         "titel": "Tariefvoorstellen en Verordeningen belastingen en rechten begroting 2027"
       }
     ],
-    "bijgewerkt": "12-10-2026"
+    "bijgewerkt": "13-10-2026"
   },
   {
     "id": "cc6e0d91-9143-44e3-a2c7-f657a2766eb4",
@@ -171,7 +186,7 @@
         "titel": "26M58 Motie Vreemd Dames- en herentoiletten"
       }
     ],
-    "bijgewerkt": "12-10-2026"
+    "bijgewerkt": "13-10-2026"
   },
   {
     "id": "2cd6fca2-dbbb-4ded-bdec-f54a8737e8b7",
