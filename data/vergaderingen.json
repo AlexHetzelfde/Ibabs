@@ -85,6 +85,21 @@
     "bijgewerkt": "21-10-2026"
   },
   {
+    "id": "a73c8374-17cc-4abd-b79c-9cb171e6db2e",
+    "titel": "Raadsvergadering - TEST",
+    "type": "Raadsvergadering",
+    "datum": "2026-10-22",
+    "start": "2026-10-22T16:00:00",
+    "eind": "2026-10-22T16:30:00",
+    "locatie": "Raadzaal",
+    "url": "https://zaanstad.bestuurlijkeinformatie.nl/Agenda/Index/a73c8374-17cc-4abd-b79c-9cb171e6db2e",
+    "video_id": null,
+    "video_link": null,
+    "heeft_video": true,
+    "agendapunten": [],
+    "bijgewerkt": "21-10-2026"
+  },
+  {
     "id": "8fe69c88-637e-4af6-8203-84c4d8f059b4",
     "titel": "Raadsvergadering - TEST",
     "type": "Raadsvergadering",
