@@ -1,5 +1,20 @@
 [
   {
+    "id": "2c84f676-8892-405e-a499-f6de20845cee",
+    "titel": "Raadsvergadering",
+    "type": "Raadsvergadering",
+    "datum": "2026-11-26",
+    "start": "2026-11-26T19:00:00",
+    "eind": "2026-11-26T23:00:00",
+    "locatie": "Raadzaal",
+    "url": "https://zaanstad.bestuurlijkeinformatie.nl/Agenda/Index/2c84f676-8892-405e-a499-f6de20845cee",
+    "video_id": null,
+    "video_link": null,
+    "heeft_video": true,
+    "agendapunten": [],
+    "bijgewerkt": "29-10-2026"
+  },
+  {
     "id": "f21140f3-a6bd-476f-a41c-ed77afb5a952",
     "titel": "Raadsvergadering - Reservedatum begroting",
     "type": "Raadsvergadering",
@@ -12,7 +27,7 @@
     "video_link": null,
     "heeft_video": true,
     "agendapunten": [],
-    "bijgewerkt": "28-10-2026"
+    "bijgewerkt": "29-10-2026"
   },
   {
     "id": "a15a2d8f-e250-4ea1-a48c-ea919fb34248",
@@ -27,7 +42,7 @@
     "video_link": null,
     "heeft_video": true,
     "agendapunten": [],
-    "bijgewerkt": "28-10-2026"
+    "bijgewerkt": "29-10-2026"
   },
   {
     "id": "fc86e1cf-98bc-417a-8c73-1d67576a2218",
@@ -82,7 +97,7 @@
         "titel": "Tariefvoorstellen en Verordeningen belastingen en rechten begroting 2027"
       }
     ],
-    "bijgewerkt": "28-10-2026"
+    "bijgewerkt": "29-10-2026"
   },
   {
     "id": "a73c8374-17cc-4abd-b79c-9cb171e6db2e",
