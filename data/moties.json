@@ -1,5 +1,103 @@
 [
   {
+    "id": "2e1a909b-cc52-4208-bb48-621d51df3435",
+    "titel": "26A35 Amendement Waardeer de waakhond",
+    "type": "Amendement",
+    "partij": null,
+    "fracties": [],
+    "indiener": "Kuyper, Hans",
+    "medeondertekenaars": [
+      "Groot, Anna de\nJahn, Ingrid\nBelkasmi, Abdelhak"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "1e96cfbb-2f99-43f1-9ae5-a0a03bd0762f",
+    "titel": "26A34 Amendement We lobbyen al genoeg",
+    "type": "Amendement",
+    "partij": "ROSA\nSP\nForum voor democratie",
+    "fracties": [
+      "ROSA\nSP\nForum voor democratie"
+    ],
+    "indiener": "Kuyper, Hans",
+    "medeondertekenaars": [
+      "Groot, Anna de\nJahn, Ingrid"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "ecba4707-924f-463b-b0a1-c05fb248cfd1",
+    "titel": "26A33 Amendement Hou je aan je woord",
+    "type": "Amendement",
+    "partij": "ROSA\nSP",
+    "fracties": [
+      "ROSA\nSP"
+    ],
+    "indiener": "Kuyper, Hans",
+    "medeondertekenaars": [
+      "Groot, Anna de"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "2900a69d-2a6f-4157-88bd-b9fd23763442",
+    "titel": "26M63 Motie Versterk onze dijken (en linten en paden)",
+    "type": "Motie",
+    "partij": "ROSA\nSP\nPRO",
+    "fracties": [
+      "ROSA\nSP\nPRO"
+    ],
+    "indiener": "Kuyper, Hans",
+    "medeondertekenaars": [
+      "Groot, Anna de\nSluis, Jonathan van der"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "8751fcd6-f859-49b3-bb70-a3381666c9f6",
+    "titel": "26M62 Motie Ethische commissie",
+    "type": "Motie",
+    "partij": "ROSA\nSP\nDZ\nPRO",
+    "fracties": [
+      "ROSA\nSP\nDZ\nPRO"
+    ],
+    "indiener": "Kuyper, Hans",
+    "medeondertekenaars": [
+      "Groot, Anna de\nRot, Juliette\nBelkasmi, Abdelhak"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
     "id": "407b7f5e-5ea0-447a-b24b-663c5624568a",
     "titel": "26M58 Dames- en herentoiletten",
     "type": "Motie",
