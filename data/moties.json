@@ -134,6 +134,102 @@
     "fracties_tegen": null
   },
   {
+    "id": "1e60aef8-f88a-486c-b7ae-9c43752ae026",
+    "titel": "26A38 Amendement BOA’s op straat in plaats van achter een scherm",
+    "type": "Amendement",
+    "partij": "SP\nPRO\nROSA\nPvdD",
+    "fracties": [
+      "SP\nPRO\nROSA\nPvdD"
+    ],
+    "indiener": "Groot, Anna de",
+    "medeondertekenaars": [
+      "Belkasmi, Abdelhak\nKuyper, Hans\nPieterson, Marijn"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "6a6ad5d1-6683-4ed3-af43-e8cb544107b5",
+    "titel": "26A37 Amendement Individuele Inkomenstoeslag",
+    "type": "Amendement",
+    "partij": "SP\nROSA\nPvdD\nPRO",
+    "fracties": [
+      "SP\nROSA\nPvdD\nPRO"
+    ],
+    "indiener": "Groot, Anna de",
+    "medeondertekenaars": [
+      "Horst, Liv van der\nKuyper, Hans\nPieterson, Marijn"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "e4b50fb7-ee3a-4fa6-86ce-b0557f53c9c3",
+    "titel": "26A36 Amendement Geen zorgmijding in Zaanstad: Behoud de gemeentelijke zorgpolis!",
+    "type": "Amendement",
+    "partij": "SP\nPRO\nROSA\nPvdD",
+    "fracties": [
+      "SP\nPRO\nROSA\nPvdD"
+    ],
+    "indiener": "Groot, Anna de",
+    "medeondertekenaars": [
+      "Horst, Liv van der\nPieterson, Marijn\nKuyper, Hans"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "f4e2a97a-d357-4685-842f-2a3f7c19ed45",
+    "titel": "26M65 Motie Voeding voor de toekomst Gelijke kansen en een gezonde schoollunch voor elk kind",
+    "type": "Motie",
+    "partij": "SP",
+    "fracties": [
+      "SP"
+    ],
+    "indiener": "Groot, Anna de",
+    "medeondertekenaars": [],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "f4c379d2-058e-4af2-b5eb-31ac4f6dee1b",
+    "titel": "26A35 Amendement Waardeer de waakhond",
+    "type": "Amendement",
+    "partij": null,
+    "fracties": [],
+    "indiener": "Kuyper, Hans",
+    "medeondertekenaars": [
+      "Groot, Anna de\nJahn, Ingrid\nBelkasmi, Abdelhak"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
     "id": "407b7f5e-5ea0-447a-b24b-663c5624568a",
     "titel": "26M58 Dames- en herentoiletten",
     "type": "Motie",
