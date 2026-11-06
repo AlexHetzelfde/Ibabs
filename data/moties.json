@@ -230,6 +230,86 @@
     "fracties_tegen": null
   },
   {
+    "id": "7ed8a6cb-679e-45ff-8666-6b8ba684cbd3",
+    "titel": "26A40 Amendement Tekstwijziging CDOKE",
+    "type": "Amendement",
+    "partij": "ROSA\nPRO\nSP",
+    "fracties": [
+      "ROSA\nPRO\nSP"
+    ],
+    "indiener": "Schuttevaer, Mariska",
+    "medeondertekenaars": [
+      "Groot, Anna de\nSluis, Jonathan van der"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "f918f0c3-092d-483b-8b52-04e90fda87a7",
+    "titel": "26M67 Motie Meer groen door minder tuintegels",
+    "type": "Motie",
+    "partij": "ROSA\nPvdD\nSP",
+    "fracties": [
+      "ROSA\nPvdD\nSP"
+    ],
+    "indiener": "Schuttevaer, Mariska",
+    "medeondertekenaars": [
+      "Groot, Anna de\nPieterson, Marijn"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "e1324d59-a4b6-437c-9115-e423a70b95a5",
+    "titel": "26A39 Amendement Geen bezuiniging op biodivers maaien",
+    "type": "Amendement",
+    "partij": "ROSA\nPRO\nSP",
+    "fracties": [
+      "ROSA\nPRO\nSP"
+    ],
+    "indiener": "Schuttevaer, Mariska",
+    "medeondertekenaars": [
+      "Sluis, Jonathan van der\nGroot, Anna de"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "844fdd83-7517-44f3-a39c-52e86765c685",
+    "titel": "26M66 Motie Bewonersoverleggroepen bij de warmtetransitie",
+    "type": "Motie",
+    "partij": "ROSA\nPvdD\nSP",
+    "fracties": [
+      "ROSA\nPvdD\nSP"
+    ],
+    "indiener": "Schuttevaer, Mariska",
+    "medeondertekenaars": [
+      "Pieterson, Marijn\nGroot, Anna de"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
     "id": "407b7f5e-5ea0-447a-b24b-663c5624568a",
     "titel": "26M58 Dames- en herentoiletten",
     "type": "Motie",
