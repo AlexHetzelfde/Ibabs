@@ -1,5 +1,353 @@
 [
   {
+    "id": "9ac833af-501d-451a-a6f1-93268d7baa84",
+    "titel": "RV Tariefvoorstellen en Verordeningen belastingen en rechten begroting 2027",
+    "datum": "2026-11-10",
+    "uitslag": "",
+    "uitslag_tekst": "76% Voor",
+    "voor_pct": 76,
+    "tegen_pct": 24,
+    "onthouding_pct": 0,
+    "fracties_voor": "CDA (1), D66 (3), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), POV (4), PVV (3), ROSA (2), VVD (3)",
+    "fracties_tegen": "Democratisch Zaanstad (2), Partij voor de Dieren (1), PRO (5), SP (1)",
+    "fracties_onthouding": null,
+    "raadsleden_voor": [
+      {
+        "naam": "Hendriks, Nick",
+        "fractie": "CDA"
+      },
+      {
+        "naam": "Haan, Jochem de",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Kingma, Merel",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Vos, Robbert",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Hellings",
+        "fractie": "DENK"
+      },
+      {
+        "naam": "Orlando",
+        "fractie": "DENK"
+      },
+      {
+        "naam": "Koca, Yusuf",
+        "fractie": "DENK"
+      },
+      {
+        "naam": "Doorn, Dick",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Jahn, Ingrid",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Uitert, Elano van",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Amesfoort, Kevin van",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Degenhart, Rens",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Doeves, Fanny",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Ineke, Joey",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Klos, Peter",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Kraakman, Ingrid",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Vissers, Leny",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Zaal, Marijke",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Hoffs, Denise",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Keijser, Jaap",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Keijser, Nino",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Velden, Perry van der",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Barends, Menno",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Boomsma, Boy",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Cornelisse, Natasja",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Kuyper, Hans",
+        "fractie": "ROSA"
+      },
+      {
+        "naam": "Schuttevaer, Mariska",
+        "fractie": "ROSA"
+      },
+      {
+        "naam": "Davelaar, Casper",
+        "fractie": "VVD"
+      },
+      {
+        "naam": "Lopes, Fidel",
+        "fractie": "VVD"
+      },
+      {
+        "naam": "Pollarini, Gianni",
+        "fractie": "VVD"
+      }
+    ],
+    "raadsleden_tegen": [
+      {
+        "naam": "Kerkhoven, Jos",
+        "fractie": "Democratisch Zaanstad"
+      },
+      {
+        "naam": "Rot, Juliette",
+        "fractie": "Democratisch Zaanstad"
+      },
+      {
+        "naam": "Pieterson, Marijn",
+        "fractie": "Partij voor de Dieren"
+      },
+      {
+        "naam": "Belkasmi, Abdelhak",
+        "fractie": "PRO"
+      },
+      {
+        "naam": "Ejder, Zozan",
+        "fractie": "PRO"
+      },
+      {
+        "naam": "Horst, Liv van der",
+        "fractie": "PRO"
+      },
+      {
+        "naam": "Lenarduzzi, Romana",
+        "fractie": "PRO"
+      },
+      {
+        "naam": "Zeltsburg, Lilit",
+        "fractie": "PRO"
+      },
+      {
+        "naam": "Groot, Anna de",
+        "fractie": "SP"
+      }
+    ],
+    "raadsleden_onthouding": [],
+    "url": "https://zaanstad.bestuurlijkeinformatie.nl/Reports/Item/9ac833af-501d-451a-a6f1-93268d7baa84",
+    "bijgewerkt": "2026-11-10"
+  },
+  {
+    "id": "9b07752d-61a1-4590-a153-7351229dd50a",
+    "titel": "RV Begroting 2027-2030",
+    "datum": "2026-11-10",
+    "uitslag": "",
+    "uitslag_tekst": "65% Voor",
+    "voor_pct": 65,
+    "tegen_pct": 35,
+    "onthouding_pct": 0,
+    "fracties_voor": "CDA (1), D66 (3), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), POV (4), VVD (3)",
+    "fracties_tegen": "Democratisch Zaanstad (2), Partij voor de Dieren (1), PRO (5), PVV (3), ROSA (2)",
+    "fracties_onthouding": null,
+    "raadsleden_voor": [
+      {
+        "naam": "Hendriks, Nick",
+        "fractie": "CDA"
+      },
+      {
+        "naam": "Haan, Jochem de",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Kingma, Merel",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Vos, Robbert",
+        "fractie": "D66"
+      },
+      {
+        "naam": "Hellings",
+        "fractie": "DENK"
+      },
+      {
+        "naam": "Orlando",
+        "fractie": "DENK"
+      },
+      {
+        "naam": "Koca, Yusuf",
+        "fractie": "DENK"
+      },
+      {
+        "naam": "Doorn, Dick",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Jahn, Ingrid",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Uitert, Elano van",
+        "fractie": "Forum voor Democratie"
+      },
+      {
+        "naam": "Amesfoort, Kevin van",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Degenhart, Rens",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Doeves, Fanny",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Ineke, Joey",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Klos, Peter",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Kraakman, Ingrid",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Vissers, Leny",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Zaal, Marijke",
+        "fractie": "Lokaal Zaans"
+      },
+      {
+        "naam": "Hoffs, Denise",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Keijser, Jaap",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Keijser, Nino",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Velden, Perry van der",
+        "fractie": "POV"
+      },
+      {
+        "naam": "Davelaar, Casper",
+        "fractie": "VVD"
+      },
+      {
+        "naam": "Lopes, Fidel",
+        "fractie": "VVD"
+      },
+      {
+        "naam": "Pollarini, Gianni",
+        "fractie": "VVD"
+      }
+    ],
+    "raadsleden_tegen": [
+      {
+        "naam": "Kerkhoven, Jos",
+        "fractie": "Democratisch Zaanstad"
+      },
+      {
+        "naam": "Rot, Juliette",
+        "fractie": "Democratisch Zaanstad"
+      },
+      {
+        "naam": "Pieterson, Marijn",
+        "fractie": "Partij voor de Dieren"
+      },
+      {
+        "naam": "Belkasmi, Abdelhak",
+        "fractie": "PRO"
+      },
+      {
+        "naam": "Ejder, Zozan",
+        "fractie": "PRO"
+      },
+      {
+        "naam": "Horst, Liv van der",
+        "fractie": "PRO"
+      },
+      {
+        "naam": "Lenarduzzi, Romana",
+        "fractie": "PRO"
+      },
+      {
+        "naam": "Zeltsburg, Lilit",
+        "fractie": "PRO"
+      },
+      {
+        "naam": "Barends, Menno",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Boomsma, Boy",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Cornelisse, Natasja",
+        "fractie": "PVV"
+      },
+      {
+        "naam": "Kuyper, Hans",
+        "fractie": "ROSA"
+      },
+      {
+        "naam": "Schuttevaer, Mariska",
+        "fractie": "ROSA"
+      }
+    ],
+    "raadsleden_onthouding": [],
+    "url": "https://zaanstad.bestuurlijkeinformatie.nl/Reports/Item/9b07752d-61a1-4590-a153-7351229dd50a",
+    "bijgewerkt": "2026-11-10"
+  },
+  {
     "id": "27c3a8bd-1ec8-4507-bf15-3ce5fedbb6b7",
     "titel": "Schetsontwerp Figaro afwijking uitgangspunten",
     "datum": "2026-10-08",
