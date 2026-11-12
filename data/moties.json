@@ -1144,6 +1144,806 @@
     "fracties_tegen": "DENK (1), Lokaal Zaans (8)"
   },
   {
+    "id": "027708f4-7c42-48bf-9eae-3a36d9150dcc",
+    "titel": "26M92 Motie Beetje tijd om vrij te stellen",
+    "type": "Motie",
+    "partij": "VVD",
+    "fracties": [
+      "VVD"
+    ],
+    "indiener": "Davelaar, Casper",
+    "medeondertekenaars": [],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "verworpen",
+    "voor_pct": 29,
+    "tegen_pct": 71,
+    "fracties_voor": "DENK (1), Forum voor Democratie (3), POV (4), VVD (3)",
+    "fracties_tegen": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (1), Lokaal Zaans (8), Partij voor de Dieren (1), PRO (5), PVV (3), ROSA (2), SP (1)"
+  },
+  {
+    "id": "ac39701f-f1ea-4f50-a693-c818731bf11e",
+    "titel": "26A46 Amendement Redelijke leges kinderopvang",
+    "type": "Amendement",
+    "partij": "PRO",
+    "fracties": [
+      "PRO"
+    ],
+    "indiener": "Belkasmi, Abdelhak",
+    "medeondertekenaars": [
+      "Zeltsburg, Lilit"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "verworpen",
+    "voor_pct": 24,
+    "tegen_pct": 76,
+    "fracties_voor": "Forum voor Democratie (3), PRO (5), SP (1)",
+    "fracties_tegen": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Lokaal Zaans (8), Partij voor de Dieren (1), POV (4), PVV (3), ROSA (2), VVD (3)"
+  },
+  {
+    "id": "d8df0b25-ec2c-489c-ac4e-929f737e5c02",
+    "titel": "26M91 Motie Duurzame Schoolgebouwen",
+    "type": "Motie",
+    "partij": "PRO\nROSA\nSP\nPvdD",
+    "fracties": [
+      "PRO\nROSA\nSP\nPvdD"
+    ],
+    "indiener": "Horst, Liv van der",
+    "medeondertekenaars": [
+      "Schuttevaer, Mariska \nGroot, Anna de\nPieterson, Marijn"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "verworpen",
+    "voor_pct": 24,
+    "tegen_pct": 76,
+    "fracties_voor": "Partij voor de Dieren (1), PRO (5), ROSA (2), SP (1)",
+    "fracties_tegen": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), POV (4), PVV (3), VVD (3)"
+  },
+  {
+    "id": "375b0f79-f1f1-473b-b40a-758240043015",
+    "titel": "26M90 Motie Nachttrein",
+    "type": "Motie",
+    "partij": "D66\nPRO\nPOV\nPVV",
+    "fracties": [
+      "D66\nPRO\nPOV\nPVV"
+    ],
+    "indiener": "Haan, Jochem de",
+    "medeondertekenaars": [
+      "Ejder, Zozan\nVelden, Perry van der \nCornelisse, Natasja"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "aangenomen",
+    "voor_pct": 79,
+    "tegen_pct": 21,
+    "fracties_voor": "D66 (3), Democratisch Zaanstad (2), DENK (2), Lokaal Zaans (8), Partij voor de Dieren (1), POV (4), PRO (5), PVV (3), ROSA (2)",
+    "fracties_tegen": "CDA  (1), Forum voor Democratie (3), SP (1), VVD (3)"
+  },
+  {
+    "id": "34d3d30e-7411-4b88-891c-71b8d5415863",
+    "titel": "26M89 Motie Focus op Fluxus bij bezuinigingen Kunst en Cultuur",
+    "type": "Motie",
+    "partij": null,
+    "fracties": [],
+    "indiener": "Barends, Menno",
+    "medeondertekenaars": [],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "verworpen",
+    "voor_pct": 13,
+    "tegen_pct": 87,
+    "fracties_voor": "Democratisch Zaanstad (2), PVV (3)",
+    "fracties_tegen": "CDA  (1), D66 (3), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), Partij voor de Dieren (1), POV (4), PRO (5), ROSA (2), SP (1), VVD (3)"
+  },
+  {
+    "id": "85e5768d-fd9b-44cb-83b8-4a1104f283da",
+    "titel": "26A45 Amendement Maak genoeg middelen vrij voor noodzakelijke hulp bij huiselijk geweld!",
+    "type": "Amendement",
+    "partij": "PRO\nPvdD\nROSA",
+    "fracties": [
+      "PRO\nPvdD\nROSA"
+    ],
+    "indiener": "Lenarduzzi, Romana",
+    "medeondertekenaars": [
+      "Pieterson, Marijn\nSchuttevaer, Mariska"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "verworpen",
+    "voor_pct": 24,
+    "tegen_pct": 76,
+    "fracties_voor": "Partij voor de Dieren (1), PRO (5), ROSA (2), SP (1)",
+    "fracties_tegen": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), POV (4), PVV (3), VVD (3)"
+  },
+  {
+    "id": "5f420318-84a0-45a2-b593-d4f1425a773c",
+    "titel": "26M88 Motie Eerst kaders, dan extra camera’s",
+    "type": "Motie",
+    "partij": "PRO",
+    "fracties": [
+      "PRO"
+    ],
+    "indiener": "Belkasmi, Abdelhak",
+    "medeondertekenaars": [],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "verworpen",
+    "voor_pct": 29,
+    "tegen_pct": 71,
+    "fracties_voor": "Democratisch Zaanstad (2), Forum voor Democratie (3), Partij voor de Dieren (1), PRO (5)",
+    "fracties_tegen": "CDA  (1), D66 (3), DENK (2), Lokaal Zaans (8), POV (4), PVV (3), ROSA (2), SP (1), VVD (3)"
+  },
+  {
+    "id": "b38e5816-1a54-4baa-86d3-6dacbece31a0",
+    "titel": "26A44 Amendement Behoud van voldoende capaciteit voor de Rekenkamer en Ombudsman",
+    "type": "Amendement",
+    "partij": "DZ\nForum voor democratie",
+    "fracties": [
+      "DZ\nForum voor democratie"
+    ],
+    "indiener": "Rot, Juliette",
+    "medeondertekenaars": [
+      "Jahn, Ingrid"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "verworpen",
+    "voor_pct": 34,
+    "tegen_pct": 66,
+    "fracties_voor": "Democratisch Zaanstad (2), Forum voor Democratie (3), PRO (5), ROSA (2), SP (1)",
+    "fracties_tegen": "CDA  (1), D66 (3), DENK (2), Lokaal Zaans (8), Partij voor de Dieren (1), POV (4), PVV (3), VVD (3)"
+  },
+  {
+    "id": "9d868618-da61-4d14-b0db-1b4ef2487f7d",
+    "titel": "26M86 Motie Versterk de wildopvang",
+    "type": "Motie",
+    "partij": "PvdD\nROSA\nSP",
+    "fracties": [
+      "PvdD\nROSA\nSP"
+    ],
+    "indiener": "Pieterson, Marijn",
+    "medeondertekenaars": [
+      "Groot, Anna de\nSchuttevaer, Mariska"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "ingetrokken",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "68500545-c12c-4272-875c-5875ae6967e4",
+    "titel": "26A43 Amendement Maatregelen voor dieren in de openbare ruimte",
+    "type": "Amendement",
+    "partij": "PvdD\nSP\nROSA",
+    "fracties": [
+      "PvdD\nSP\nROSA"
+    ],
+    "indiener": "Pieterson, Marijn",
+    "medeondertekenaars": [
+      "Groot, Anna de\nSchuttevaer, Mariska"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "verworpen",
+    "voor_pct": 24,
+    "tegen_pct": 76,
+    "fracties_voor": "Partij voor de Dieren (1), PRO (5), ROSA (2), SP (1)",
+    "fracties_tegen": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), POV (4), PVV (3), VVD (3)"
+  },
+  {
+    "id": "b164466c-b427-47f1-b1f9-df90505e2a83",
+    "titel": "26A42 Amendement: Bomenfonds voor de gezondheid",
+    "type": "Amendement",
+    "partij": "PvdD\nSP\nROSA",
+    "fracties": [
+      "PvdD\nSP\nROSA"
+    ],
+    "indiener": "Pieterson, Marijn",
+    "medeondertekenaars": [
+      "Groot, Anna de\nSchuttevaer, Mariska"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "verworpen",
+    "voor_pct": 24,
+    "tegen_pct": 76,
+    "fracties_voor": "Partij voor de Dieren (1), PRO (5), ROSA (2), SP (1)",
+    "fracties_tegen": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), POV (4), PVV (3), VVD (3)"
+  },
+  {
+    "id": "a564e6c1-9889-4063-8c37-11989d89a5bd",
+    "titel": "26M85 Motie Betrek cultuurinstellingen bij de inrichting van bezuinigingsmaatregelen",
+    "type": "Motie",
+    "partij": "PRO\nSP\nD66\nLokaal Zaans",
+    "fracties": [
+      "PRO\nSP\nD66\nLokaal Zaans"
+    ],
+    "indiener": "Zeltsburg, Lilit",
+    "medeondertekenaars": [
+      "Groot, Anna de\nHaan, Jochem de\nKlos, Peter"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "aangenomen",
+    "voor_pct": 68,
+    "tegen_pct": 32,
+    "fracties_voor": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Lokaal Zaans (8), POV (4), PRO (5), SP (1)",
+    "fracties_tegen": "Forum voor Democratie (3), Partij voor de Dieren (1), PVV (3), ROSA (2), VVD (3)"
+  },
+  {
+    "id": "29433dbc-70bc-4b5e-a92a-2c4c6397b0a6",
+    "titel": "26M84 (gewijzigd) Motie Gezonde schoolmaaltijden bereikbaar voor ieder kind in Zaanstad",
+    "type": "Motie",
+    "partij": "D66\nCDA\nPRO",
+    "fracties": [
+      "D66\nCDA\nPRO"
+    ],
+    "indiener": "Vos, Robbert",
+    "medeondertekenaars": [
+      "Hendriks, Nick\nHorst, Liv van der"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "aangenomen",
+    "voor_pct": 63,
+    "tegen_pct": 37,
+    "fracties_voor": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Lokaal Zaans (8), PRO (5), ROSA (2), SP (1)",
+    "fracties_tegen": "Forum voor Democratie (3), Partij voor de Dieren (1), POV (4), PVV (3), VVD (3)"
+  },
+  {
+    "id": "4bd2276a-549e-48f8-9adf-08f6f330df2a",
+    "titel": "26M83 Motie Energiezekerheid voor Zaanstad: onafhankelijke SMR-verkenning",
+    "type": "Motie",
+    "partij": "PVV",
+    "fracties": [
+      "PVV"
+    ],
+    "indiener": "Boomsma, Boy",
+    "medeondertekenaars": [],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "aangenomen",
+    "voor_pct": 58,
+    "tegen_pct": 42,
+    "fracties_voor": "CDA  (1), Forum voor Democratie (3), Lokaal Zaans (8), POV (4), PVV (3), VVD (3)",
+    "fracties_tegen": "D66 (3), Democratisch Zaanstad (2), DENK (2), Partij voor de Dieren (1), PRO (5), ROSA (2), SP (1)"
+  },
+  {
+    "id": "98b5b096-ab24-4d57-993b-7f520a63283c",
+    "titel": "26M82 (gewijzigd) Motie parkeerenquête betaald parkeren in de Burgemeestersbuurt, Rosmolenbuurt en Zaan-eiland",
+    "type": "Motie",
+    "partij": "POV\nCDA\nROSA\nPRO",
+    "fracties": [
+      "POV\nCDA\nROSA\nPRO"
+    ],
+    "indiener": "Keijser, Jaap",
+    "medeondertekenaars": [
+      "Hendriks, Nick\nKuyper, Hans\nEjder, Zozan"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "aangenomen",
+    "voor_pct": 76,
+    "tegen_pct": 24,
+    "fracties_voor": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (1), Forum voor Democratie (3), Partij voor de Dieren (1), POV (4), PRO (5), PVV (3), ROSA (2), SP (1), VVD (3)",
+    "fracties_tegen": "DENK (1), Lokaal Zaans (8)"
+  },
+  {
+    "id": "e0c16839-7b40-4fc3-b376-6e2bc7728b0f",
+    "titel": "26M81 Motie Tijdelijk gas om door te bouwen",
+    "type": "Motie",
+    "partij": "PVV\nForum voor democratie\nPOV\nLokaal Zaans\nCDA\nVVD\nDZ",
+    "fracties": [
+      "PVV\nForum voor democratie\nPOV\nLokaal Zaans\nCDA\nVVD\nDZ"
+    ],
+    "indiener": "Boomsma, Boy",
+    "medeondertekenaars": [
+      "Uitert, Elano van\nKeijser, Jaap\nKlos, Peter\nHendriks, Nick\nPollarini, Gianni\nKerkhoven, Jos"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "aangenomen",
+    "voor_pct": 71,
+    "tegen_pct": 29,
+    "fracties_voor": "CDA  (1), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), POV (4), PVV (3), SP (1), VVD (3)",
+    "fracties_tegen": "D66 (3), Partij voor de Dieren (1), PRO (5), ROSA (2)"
+  },
+  {
+    "id": "e192129c-9f9a-4895-836d-89e17c1f75e0",
+    "titel": "26M80 Motie Zaans Preventiemodel",
+    "type": "Motie",
+    "partij": "DENK",
+    "fracties": [
+      "DENK"
+    ],
+    "indiener": "Hellings, Orlando",
+    "medeondertekenaars": [],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "aangenomen",
+    "voor_pct": 100,
+    "tegen_pct": 0,
+    "fracties_voor": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), Partij voor de Dieren (1), POV (4), PRO (5), PVV (3), ROSA (2), SP (1), VVD (3)",
+    "fracties_tegen": null
+  },
+  {
+    "id": "ca61511f-b49b-482d-af9e-cd83513faacb",
+    "titel": "26M79 Motie Tijdig een passend vangnet voor huishoudelijke hulp",
+    "type": "Motie",
+    "partij": "CDA\nD66",
+    "fracties": [
+      "CDA\nD66"
+    ],
+    "indiener": "Hendriks, Nick",
+    "medeondertekenaars": [
+      "Kingma, Merel"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "ingetrokken",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "203e16de-316e-4ed2-b3ff-0c8387ff3e90",
+    "titel": "26M78 Motie Eerst een visie",
+    "type": "Motie",
+    "partij": "PRO\nPvdD\nROSA\nSP\nPVV",
+    "fracties": [
+      "PRO\nPvdD\nROSA\nSP\nPVV"
+    ],
+    "indiener": "Belkasmi, Abdelhak",
+    "medeondertekenaars": [
+      "Pieterson, Marijn\nGroot, Anna de\nKuyper, Hans\nCornelisse, Natasja"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "verworpen",
+    "voor_pct": 37,
+    "tegen_pct": 63,
+    "fracties_voor": "Democratisch Zaanstad (2), Partij voor de Dieren (1), PRO (5), PVV (3), ROSA (2), SP (1)",
+    "fracties_tegen": "CDA  (1), D66 (3), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), POV (4), VVD (3)"
+  },
+  {
+    "id": "07ddd8a4-7fac-47e6-8bf6-1d297be26b62",
+    "titel": "26M77 Motie A8-A9 Te groot voor de provincie, te belangrijk om te laten liggen",
+    "type": "Motie",
+    "partij": "CDA\nForum voor democratie\nPVV\nVVD\nLokaal Zaans",
+    "fracties": [
+      "CDA\nForum voor democratie\nPVV\nVVD\nLokaal Zaans"
+    ],
+    "indiener": "Davelaar, Casper",
+    "medeondertekenaars": [
+      "Boomsma, Boy\nHendriks, Nick\nUitert, Elano van\nKlos, Peter"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "aangenomen",
+    "voor_pct": 71,
+    "tegen_pct": 29,
+    "fracties_voor": "CDA  (1), D66 (3), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), POV (4), PVV (3), VVD (3)",
+    "fracties_tegen": "Democratisch Zaanstad (2), Partij voor de Dieren (1), PRO (5), ROSA (2), SP (1)"
+  },
+  {
+    "id": "c27ad020-2d08-4dde-9028-bde24792ba36",
+    "titel": "26M76 Motie Niet omrijden, maar vrijstellen",
+    "type": "Motie",
+    "partij": "VVD\nPVV\nLokaal Zaans\nCDA\nPOV\nDZ\nForum voor democratie",
+    "fracties": [
+      "VVD\nPVV\nLokaal Zaans\nCDA\nPOV\nDZ\nForum voor democratie"
+    ],
+    "indiener": "Davelaar, Casper",
+    "medeondertekenaars": [
+      "Boomsma, Boy\nAmesfoort, Kevin van \nHendriks, Nick\nKeijser, Nino \nKerkhoven, Jos\nUitert, Elano van"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "aangenomen",
+    "voor_pct": 68,
+    "tegen_pct": 32,
+    "fracties_voor": "CDA  (1), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), POV (4), PVV (3), VVD (3)",
+    "fracties_tegen": "D66 (3), Partij voor de Dieren (1), PRO (5), ROSA (2), SP (1)"
+  },
+  {
+    "id": "0356b107-1412-4c26-ad74-49af1c01ddd8",
+    "titel": "26M75 Motie Wie niets geeft, kan niet terugverwachten",
+    "type": "Motie",
+    "partij": "CDA\nVVD\nPVV\nLokaal Zaans\nPOV\nDZ\nForum voor democratie",
+    "fracties": [
+      "CDA\nVVD\nPVV\nLokaal Zaans\nPOV\nDZ\nForum voor democratie"
+    ],
+    "indiener": "Davelaar, Casper",
+    "medeondertekenaars": [
+      "Boomsma, Boy\nAmesfoort, Kevin van \nHendriks, Nick\nKeijser, Nino \nKerkhoven, Jos\nUitert, Elano van"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "aangenomen",
+    "voor_pct": 68,
+    "tegen_pct": 32,
+    "fracties_voor": "CDA  (1), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), POV (4), PVV (3), VVD (3)",
+    "fracties_tegen": "D66 (3), Partij voor de Dieren (1), PRO (5), ROSA (2), SP (1)"
+  },
+  {
+    "id": "03776406-a1dc-415a-bcf1-69e4268f7115",
+    "titel": "26M74 Motie Niet over de Zaan maar onder de Zaan",
+    "type": "Motie",
+    "partij": "VVD\nPVV\nCDA",
+    "fracties": [
+      "VVD\nPVV\nCDA"
+    ],
+    "indiener": "Davelaar, Casper",
+    "medeondertekenaars": [
+      "Boomsma, Boy\nHendriks, Nick"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "verworpen",
+    "voor_pct": 39,
+    "tegen_pct": 61,
+    "fracties_voor": "CDA  (1), Democratisch Zaanstad (2), DENK (2), POV (4), PVV (3), VVD (3)",
+    "fracties_tegen": "D66 (3), Forum voor Democratie (3), Lokaal Zaans (8), Partij voor de Dieren (1), PRO (5), ROSA (2), SP (1)"
+  },
+  {
+    "id": "3b5bbf65-a67c-4f44-867e-333e631fc542",
+    "titel": "26A41 Amendement Nog betere dienstverlening op het Servicepunt Noord",
+    "type": "Amendement",
+    "partij": "PVV\nForum voor democratie",
+    "fracties": [
+      "PVV\nForum voor democratie"
+    ],
+    "indiener": "Barends, Menno",
+    "medeondertekenaars": [
+      "Uitert, Elano van"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "verworpen",
+    "voor_pct": 16,
+    "tegen_pct": 84,
+    "fracties_voor": "Forum voor Democratie (3), PVV (3)",
+    "fracties_tegen": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Lokaal Zaans (8), Partij voor de Dieren (1), POV (4), PRO (5), ROSA (2), SP (1), VVD (3)"
+  },
+  {
+    "id": "2470be28-b1f8-4dd5-8566-56933346c5a7",
+    "titel": "26M72 Motie Voorkom stapeling van financiële lasten bij kwetsbare inwoners",
+    "type": "Motie",
+    "partij": "PVV",
+    "fracties": [
+      "PVV"
+    ],
+    "indiener": "Cornelisse, Natasja",
+    "medeondertekenaars": [],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "verworpen",
+    "voor_pct": 29,
+    "tegen_pct": 71,
+    "fracties_voor": "PRO (5), PVV (3), ROSA (2), SP (1)",
+    "fracties_tegen": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), Partij voor de Dieren (1), POV (4), VVD (3)"
+  },
+  {
+    "id": "5dc958c5-cb2e-4804-bb4e-e04d240a031f",
+    "titel": "26M71 Motie Tiny Forest",
+    "type": "Motie",
+    "partij": "Lokaal Zaans",
+    "fracties": [
+      "Lokaal Zaans"
+    ],
+    "indiener": "Vissers, Leny",
+    "medeondertekenaars": [],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "ingetrokken",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "c533a6af-21a3-4d7b-b6df-7226f6ffae66",
+    "titel": "26M70 Motie Meer betaalbare koop, ook met één inkomen",
+    "type": "Motie",
+    "partij": "CDA\nD66\nPVV",
+    "fracties": [
+      "CDA\nD66\nPVV"
+    ],
+    "indiener": "Hendriks, Nick",
+    "medeondertekenaars": [
+      "Kingma, Merel\nCornelisse, Natasja"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "ingetrokken",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "ec402218-7ee7-4a5f-a539-db4fd4fe553d",
+    "titel": "26M68 Motie Inzicht in de resultaten van de Zaanse veiligheidsaanpak",
+    "type": "Motie",
+    "partij": "PVV\nDZ",
+    "fracties": [
+      "PVV\nDZ"
+    ],
+    "indiener": "Cornelisse, Natasja",
+    "medeondertekenaars": [
+      "Rot, Juliette"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "ingetrokken",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "2081195f-6ac6-436c-aed1-d4cf3ee1c48b",
+    "titel": "26A40 Amendement Tekstwijziging CDOKE",
+    "type": "Amendement",
+    "partij": "ROSA\nPRO\nSP",
+    "fracties": [
+      "ROSA\nPRO\nSP"
+    ],
+    "indiener": "Schuttevaer, Mariska",
+    "medeondertekenaars": [
+      "Groot, Anna de\nSluis, Jonathan van der"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "verworpen",
+    "voor_pct": 24,
+    "tegen_pct": 76,
+    "fracties_voor": "Partij voor de Dieren (1), PRO (5), ROSA (2), SP (1)",
+    "fracties_tegen": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), POV (4), PVV (3), VVD (3)"
+  },
+  {
+    "id": "6e2f304e-8f1b-49db-bb05-62cbb97be17d",
+    "titel": "26M67 Motie Meer groen door minder tuintegels",
+    "type": "Motie",
+    "partij": "ROSA\nPvdD\nSP",
+    "fracties": [
+      "ROSA\nPvdD\nSP"
+    ],
+    "indiener": "Schuttevaer, Mariska",
+    "medeondertekenaars": [
+      "Groot, Anna de\nPieterson, Marijn"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "verworpen",
+    "voor_pct": 11,
+    "tegen_pct": 89,
+    "fracties_voor": "Partij voor de Dieren (1), ROSA (2), SP (1)",
+    "fracties_tegen": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), POV (4), PRO (5), PVV (3), VVD (3)"
+  },
+  {
+    "id": "5580b3b3-303d-4cad-89c0-7d9f1ef140ce",
+    "titel": "26A39 Amendement Geen bezuiniging op biodivers maaien",
+    "type": "Amendement",
+    "partij": "ROSA\nPRO\nSP",
+    "fracties": [
+      "ROSA\nPRO\nSP"
+    ],
+    "indiener": "Schuttevaer, Mariska",
+    "medeondertekenaars": [
+      "Sluis, Jonathan van der\nGroot, Anna de"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "verworpen",
+    "voor_pct": 21,
+    "tegen_pct": 79,
+    "fracties_voor": "PRO (5), ROSA (2), SP (1)",
+    "fracties_tegen": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), Partij voor de Dieren (1), POV (4), PVV (3), VVD (3)"
+  },
+  {
+    "id": "15cafe7e-7cbe-4283-ac84-160f6bce19c5",
+    "titel": "26M66 Motie Bewonersoverleggroepen bij de warmtetransitie",
+    "type": "Motie",
+    "partij": "ROSA\nPvdD\nSP",
+    "fracties": [
+      "ROSA\nPvdD\nSP"
+    ],
+    "indiener": "Schuttevaer, Mariska",
+    "medeondertekenaars": [
+      "Pieterson, Marijn\nGroot, Anna de"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "ingetrokken",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "1d86e6ea-03f9-4f57-a705-8fd594cd86aa",
+    "titel": "26A38 Amendement BOA’s op straat in plaats van achter een scherm",
+    "type": "Amendement",
+    "partij": "SP\nPRO\nROSA\nPvdD",
+    "fracties": [
+      "SP\nPRO\nROSA\nPvdD"
+    ],
+    "indiener": "Groot, Anna de",
+    "medeondertekenaars": [
+      "Belkasmi, Abdelhak\nKuyper, Hans\nPieterson, Marijn"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "verworpen",
+    "voor_pct": 37,
+    "tegen_pct": 63,
+    "fracties_voor": "Democratisch Zaanstad (2), Forum voor Democratie (3), Partij voor de Dieren (1), PRO (5), ROSA (2), SP (1)",
+    "fracties_tegen": "CDA  (1), D66 (3), DENK (2), Lokaal Zaans (8), POV (4), PVV (3), VVD (3)"
+  },
+  {
+    "id": "0a5a7580-0df5-436e-b4a6-0572988c92ab",
+    "titel": "26A37 Amendement Individuele Inkomenstoeslag",
+    "type": "Amendement",
+    "partij": "SP\nROSA\nPvdD\nPRO",
+    "fracties": [
+      "SP\nROSA\nPvdD\nPRO"
+    ],
+    "indiener": "Groot, Anna de",
+    "medeondertekenaars": [
+      "Horst, Liv van der\nKuyper, Hans\nPieterson, Marijn"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "verworpen",
+    "voor_pct": 24,
+    "tegen_pct": 76,
+    "fracties_voor": "Partij voor de Dieren (1), PRO (5), ROSA (2), SP (1)",
+    "fracties_tegen": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), POV (4), PVV (3), VVD (3)"
+  },
+  {
+    "id": "3531b0c6-d364-4999-9c01-ad31aa025bd0",
+    "titel": "26A36 Amendement Geen zorgmijding in Zaanstad: Behoud de gemeentelijke zorgpolis!",
+    "type": "Amendement",
+    "partij": "SP\nPRO\nROSA\nPvdD",
+    "fracties": [
+      "SP\nPRO\nROSA\nPvdD"
+    ],
+    "indiener": "Groot, Anna de",
+    "medeondertekenaars": [
+      "Horst, Liv van der\nPieterson, Marijn\nKuyper, Hans"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "verworpen",
+    "voor_pct": 24,
+    "tegen_pct": 76,
+    "fracties_voor": "Partij voor de Dieren (1), PRO (5), ROSA (2), SP (1)",
+    "fracties_tegen": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), POV (4), PVV (3), VVD (3)"
+  },
+  {
+    "id": "fbc710d3-53b1-4b70-aafa-b87f49e1d465",
+    "titel": "26M65 Motie Voeding voor de toekomst Gelijke kansen en een gezonde schoollunch voor elk kind",
+    "type": "Motie",
+    "partij": "SP",
+    "fracties": [
+      "SP"
+    ],
+    "indiener": "Groot, Anna de",
+    "medeondertekenaars": [],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "verworpen",
+    "voor_pct": 21,
+    "tegen_pct": 79,
+    "fracties_voor": "PRO (5), ROSA (2), SP (1)",
+    "fracties_tegen": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), Partij voor de Dieren (1), POV (4), PVV (3), VVD (3)"
+  },
+  {
+    "id": "22bcc976-148e-44fc-8bb4-86d92b8f1434",
+    "titel": "26M64 Motie Goed voorbereid op noodsituaties, ongeacht inkomen",
+    "type": "Motie",
+    "partij": "SP",
+    "fracties": [
+      "SP"
+    ],
+    "indiener": "Groot, Anna de",
+    "medeondertekenaars": [],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "verworpen",
+    "voor_pct": 21,
+    "tegen_pct": 79,
+    "fracties_voor": "PRO (5), ROSA (2), SP (1)",
+    "fracties_tegen": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), Partij voor de Dieren (1), POV (4), PVV (3), VVD (3)"
+  },
+  {
+    "id": "630fc9c0-9423-4e0c-a825-7eb3fe8df23c",
+    "titel": "26A35 Amendement Waardeer de waakhond",
+    "type": "Amendement",
+    "partij": "Forum voor democratie\nROSA",
+    "fracties": [
+      "Forum voor democratie\nROSA"
+    ],
+    "indiener": "Kuyper, Hans",
+    "medeondertekenaars": [
+      "Jahn, Ingrid"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "verworpen",
+    "voor_pct": 34,
+    "tegen_pct": 66,
+    "fracties_voor": "Democratisch Zaanstad (2), Forum voor Democratie (3), PRO (5), ROSA (2), SP (1)",
+    "fracties_tegen": "CDA  (1), D66 (3), DENK (2), Lokaal Zaans (8), Partij voor de Dieren (1), POV (4), PVV (3), VVD (3)"
+  },
+  {
+    "id": "67adf38f-0b5e-4c51-a73a-ec922dbabaec",
+    "titel": "26A34 Amendement We lobbyen al genoeg",
+    "type": "Amendement",
+    "partij": "Forum voor democratie\nROSA",
+    "fracties": [
+      "Forum voor democratie\nROSA"
+    ],
+    "indiener": "Kuyper, Hans",
+    "medeondertekenaars": [
+      "Jahn, Ingrid"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "verworpen",
+    "voor_pct": 34,
+    "tegen_pct": 66,
+    "fracties_voor": "Democratisch Zaanstad (2), Forum voor Democratie (3), PRO (5), ROSA (2), SP (1)",
+    "fracties_tegen": "CDA  (1), D66 (3), DENK (2), Lokaal Zaans (8), Partij voor de Dieren (1), POV (4), PVV (3), VVD (3)"
+  },
+  {
+    "id": "6464294d-2ebf-4765-87cd-05d48a3586a8",
+    "titel": "26A33 Amendement Hou je aan je woord",
+    "type": "Amendement",
+    "partij": "ROSA\nSP\nPvdD",
+    "fracties": [
+      "ROSA\nSP\nPvdD"
+    ],
+    "indiener": "Kuyper, Hans",
+    "medeondertekenaars": [
+      "Groot, Anna de\nPieterson, Marijn"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "verworpen",
+    "voor_pct": 24,
+    "tegen_pct": 76,
+    "fracties_voor": "Partij voor de Dieren (1), PRO (5), ROSA (2), SP (1)",
+    "fracties_tegen": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), POV (4), PVV (3), VVD (3)"
+  },
+  {
+    "id": "c0ced122-c125-458a-b9a1-e455ecfb3e46",
+    "titel": "26M63 Motie Versterk onze dijken (en linten en paden)",
+    "type": "Motie",
+    "partij": "ROSA\nSP\nPRO",
+    "fracties": [
+      "ROSA\nSP\nPRO"
+    ],
+    "indiener": "Kuyper, Hans",
+    "medeondertekenaars": [
+      "Groot, Anna de\nSluis, Jonathan van der"
+    ],
+    "datum": "2026-11-10",
+    "agendapunt": "Raadsvergadering 10-11-2026 4.1. Begroting 2027-2030",
+    "status": "ingetrokken",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
     "id": "407b7f5e-5ea0-447a-b24b-663c5624568a",
     "titel": "26M58 Dames- en herentoiletten",
     "type": "Motie",
