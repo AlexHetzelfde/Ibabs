@@ -30,6 +30,90 @@
     "bijgewerkt": "20-11-2026"
   },
   {
+    "id": "54ef83e6-3f2c-49cf-8284-e8270fd74fb5",
+    "titel": "Raadsvergadering",
+    "type": "Raadsvergadering",
+    "datum": "2026-11-26",
+    "start": "2026-11-26T19:00:00",
+    "eind": "2026-11-26T23:00:00",
+    "locatie": "Raadzaal",
+    "url": "https://zaanstad.bestuurlijkeinformatie.nl/Agenda/Index/54ef83e6-3f2c-49cf-8284-e8270fd74fb5",
+    "video_id": null,
+    "video_link": null,
+    "heeft_video": true,
+    "agendapunten": [
+      {
+        "nummer": "1",
+        "titel": "Opening en mededelingen"
+      },
+      {
+        "nummer": "2",
+        "titel": "Vaststellen van de agenda"
+      },
+      {
+        "nummer": "2.1",
+        "titel": "Voorstel spreektijd"
+      },
+      {
+        "nummer": "3",
+        "titel": "Vaststellen verslag en besluitenlijst 22 oktober 2026"
+      },
+      {
+        "nummer": "4",
+        "titel": "Stemmingen"
+      },
+      {
+        "nummer": "4.1",
+        "titel": "Zienswijze ontwerp-voorkeursbeslissing 380 kV Netuitbreiding Noord-Holland Noord"
+      },
+      {
+        "nummer": "4.2",
+        "titel": "Voorbereidingsbesluit Hembrugterrein zuidelijk deel 2026"
+      },
+      {
+        "nummer": "4.3",
+        "titel": "Verzoek om bindend advies voor omgevingsvergunning Zuideinde 150A Westzaan"
+      },
+      {
+        "nummer": "4.4",
+        "titel": "Controleprotocol en normenkader controle jaarrekening 2026"
+      },
+      {
+        "nummer": "4.5",
+        "titel": "Regiovisie \"Samenwerken vanuit vertrouwen en partnerschap met resultaat voor jeugdigen en gezinnen\""
+      },
+      {
+        "nummer": "4.6",
+        "titel": "Controle besteding fractievergoedingen over het jaar 2025 en 2026 Q1"
+      },
+      {
+        "nummer": "5",
+        "titel": "Stemmingen over de te vervullen raadsfuncties"
+      },
+      {
+        "nummer": "5.1",
+        "titel": "Lid commissie besteding fractievergoedingen"
+      },
+      {
+        "nummer": "5.2",
+        "titel": "Voorzitter Zaanstad Beraad"
+      },
+      {
+        "nummer": "6",
+        "titel": "Debat"
+      },
+      {
+        "nummer": "6.1",
+        "titel": "Zaanse Schans bestuursopdracht en opschorten raadsbesluit"
+      },
+      {
+        "nummer": "6.2",
+        "titel": "Participatieverordening gemeente Zaanstad 2027"
+      }
+    ],
+    "bijgewerkt": "20-11-2026"
+  },
+  {
     "id": "f21140f3-a6bd-476f-a41c-ed77afb5a952",
     "titel": "Raadsvergadering - Niet benodigd: Reservedatum begroting",
     "type": "Raadsvergadering",
