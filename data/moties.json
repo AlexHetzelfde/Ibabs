@@ -1,5 +1,63 @@
 [
   {
+    "id": "1bd5705a-7108-43a4-8b3e-e0ad6a6c8848",
+    "titel": "26A48 Amendement Participatieverordening – wijziging artikel 3, vierde lid, onderdeel a",
+    "type": "Amendement",
+    "partij": "SP\nDZ\nROSA",
+    "fracties": [
+      "SP\nDZ\nROSA"
+    ],
+    "indiener": "Schuttevaer, Mariska",
+    "medeondertekenaars": [
+      "Kerkhoven, Jos\nGroot, Anna de"
+    ],
+    "datum": "2026-11-26",
+    "agendapunt": "Raadsvergadering 26-11-2026 6.2. Participatieverordening gemeente Zaanstad 2027",
+    "status": "",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "4aae7ef3-b1c6-4d55-b1f4-6dbed2082b16",
+    "titel": "26A47 Amendement Evaluatie Participatieverordening in 2029",
+    "type": "Amendement",
+    "partij": "CDA\nD66\nPOV",
+    "fracties": [
+      "CDA\nD66\nPOV"
+    ],
+    "indiener": "Hendriks, Nick",
+    "medeondertekenaars": [
+      "Hoffs, Denise\nVos, Robbert"
+    ],
+    "datum": "2026-11-26",
+    "agendapunt": "Raadsvergadering 26-11-2026 6.2. Participatieverordening gemeente Zaanstad 2027",
+    "status": "",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "b36bd088-1962-4d97-937b-f2ffc478e2ca",
+    "titel": "26M93 Motie Regie met een duidelijke grens geen voldongen feiten in de Assendelverpolder",
+    "type": "Motie",
+    "partij": "SP",
+    "fracties": [
+      "SP"
+    ],
+    "indiener": "Groot, Anna de",
+    "medeondertekenaars": [],
+    "datum": "2026-11-24",
+    "agendapunt": "Raadsvergadering 26-11-2026 4.1. Zienswijze ontwerp-voorkeursbeslissing 380 kV Netuitbreiding Noord-Holland Noord",
+    "status": "",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
     "id": "2e1a909b-cc52-4208-bb48-621d51df3435",
     "titel": "26A35 Amendement Waardeer de waakhond",
     "type": "Amendement",
