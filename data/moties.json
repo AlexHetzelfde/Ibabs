@@ -40,6 +40,220 @@
     "fracties_tegen": null
   },
   {
+    "id": "12b18f44-23f6-4095-9f6b-53c778a5abc4",
+    "titel": "26M100 Motie - Waarborg de inzichtelijkheid van beleidskeuzes, veranker onze gedeelde uitgangspunten",
+    "type": "Motie",
+    "partij": "PRO\nPvdD",
+    "fracties": [
+      "PRO\nPvdD"
+    ],
+    "indiener": "Zeltsburg, Lilit",
+    "medeondertekenaars": [
+      "Pieterson, Marijn"
+    ],
+    "datum": "2026-11-26",
+    "agendapunt": "Raadsvergadering 26-11-2026 6.1. Zaanse Schans bestuursopdracht en opschorten raadsbesluit",
+    "status": "",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "b8de4ab0-799c-47ab-a539-bca0d23252a6",
+    "titel": "26M99 Motie vrijwillig blijft vrijwillig",
+    "type": "Motie",
+    "partij": "DZ",
+    "fracties": [
+      "DZ"
+    ],
+    "indiener": "Kerkhoven, Jos",
+    "medeondertekenaars": [],
+    "datum": "2026-11-26",
+    "agendapunt": "Raadsvergadering 26-11-2026 6.1. Zaanse Schans bestuursopdracht en opschorten raadsbesluit",
+    "status": "",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "8ec5ae00-5c90-4cdb-b9c1-426f4aedb562",
+    "titel": "26A52 amendement erfgoed voorop",
+    "type": "Amendement",
+    "partij": "ROSA\nSP\nPvdD\nPRO",
+    "fracties": [
+      "ROSA\nSP\nPvdD\nPRO"
+    ],
+    "indiener": "Kuyper, Hans",
+    "medeondertekenaars": [
+      "Groot, Anna de\nPieterson, Marijn\nZeltsburg, Lilit"
+    ],
+    "datum": "2026-11-26",
+    "agendapunt": "Raadsvergadering 26-11-2026 6.1. Zaanse Schans bestuursopdracht en opschorten raadsbesluit",
+    "status": "",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "c10b884e-a835-46d5-a7f4-824ffb421179",
+    "titel": "26M98 Motie Volg de visie op participatie, ook voor de Zaanse Schans",
+    "type": "Motie",
+    "partij": "SP\nROSA",
+    "fracties": [
+      "SP\nROSA"
+    ],
+    "indiener": "Groot, Anna de",
+    "medeondertekenaars": [
+      "Kuyper, Hans"
+    ],
+    "datum": "2026-11-26",
+    "agendapunt": "Raadsvergadering 26-11-2026 6.1. Zaanse Schans bestuursopdracht en opschorten raadsbesluit",
+    "status": "",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "b95316c2-01c1-4f0b-a74f-7cf1076f25a7",
+    "titel": "26M97 Motie Verbreed de commitmentmatrix: neem wijken, buurten en natuurorganisaties mee",
+    "type": "Motie",
+    "partij": "SP\nROSA",
+    "fracties": [
+      "SP\nROSA"
+    ],
+    "indiener": "Groot, Anna de",
+    "medeondertekenaars": [
+      "Kuyper, Hans"
+    ],
+    "datum": "2026-11-26",
+    "agendapunt": "Raadsvergadering 26-11-2026 6.1. Zaanse Schans bestuursopdracht en opschorten raadsbesluit",
+    "status": "",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "6893e854-c0cb-4282-8c9d-b54055bd7fa7",
+    "titel": "26A51 Amendement Evaluatie Zaanse Schans uiterlijk Q1 2029",
+    "type": "Amendement",
+    "partij": "VVD\nPOV\nLokaal Zaans\nDENK\nD66\nCDA",
+    "fracties": [
+      "VVD\nPOV\nLokaal Zaans\nDENK\nD66\nCDA"
+    ],
+    "indiener": "Lopes, Fidel",
+    "medeondertekenaars": [
+      "Klos, Peter\nVelden, Perry van der \nHendriks, Nick\nVos, Robbert\nHellings, Orlando"
+    ],
+    "datum": "2026-11-26",
+    "agendapunt": "Raadsvergadering 26-11-2026 6.1. Zaanse Schans bestuursopdracht en opschorten raadsbesluit",
+    "status": "",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "fe5d57af-98b3-4ddc-9a86-936cd4e81d1b",
+    "titel": "26A50 Amendement Terug naar Plan A als Plan B niet werkt",
+    "type": "Amendement",
+    "partij": "PvdD",
+    "fracties": [
+      "PvdD"
+    ],
+    "indiener": "Pieterson, Marijn",
+    "medeondertekenaars": [],
+    "datum": "2026-11-26",
+    "agendapunt": "Raadsvergadering 26-11-2026 6.1. Zaanse Schans bestuursopdracht en opschorten raadsbesluit",
+    "status": "",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "eff53966-d660-4fea-894e-4fc287b53758",
+    "titel": "26M96 Motie: Eerst meten, dan €180.000 uitgeven!",
+    "type": "Motie",
+    "partij": "VVD",
+    "fracties": [
+      "VVD"
+    ],
+    "indiener": "Davelaar, Casper",
+    "medeondertekenaars": [],
+    "datum": "2026-11-25",
+    "agendapunt": "Raadsvergadering 26-11-2026 7.1. Motie vreemd aan de orde: Eerst meten, dan €180.000 uitgeven!",
+    "status": "",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "e9aac39b-7795-4fb7-a44a-e3810ebe0ec8",
+    "titel": "26M95 Motie: Kies voor leefbaarheid en daarom tegen erfgoedstatus schootsvelden",
+    "type": "Motie",
+    "partij": "CDA\nVVD\nPOV\nPVV",
+    "fracties": [
+      "CDA\nVVD\nPOV\nPVV"
+    ],
+    "indiener": "Davelaar, Casper",
+    "medeondertekenaars": [
+      "Boomsma, Boy\nKeijser, Nino \nHendriks, Nick"
+    ],
+    "datum": "2026-11-25",
+    "agendapunt": "Raadsvergadering 26-11-2026 6.3. Zienswijze ontwerp-voorkeursbeslissing 380 kV Netuitbreiding Noord-Holland Noord",
+    "status": "",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "398e3feb-4cdf-438d-b284-5fd7a41d2bca",
+    "titel": "26A49 Amendement De Hollandse Waterlinies",
+    "type": "Amendement",
+    "partij": "ROSA\nSP",
+    "fracties": [
+      "ROSA\nSP"
+    ],
+    "indiener": "Schuttevaer, Mariska",
+    "medeondertekenaars": [
+      "Groot, Anna de"
+    ],
+    "datum": "2026-11-25",
+    "agendapunt": "Raadsvergadering 26-11-2026 6.3. Zienswijze ontwerp-voorkeursbeslissing 380 kV Netuitbreiding Noord-Holland Noord",
+    "status": "",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "98f2596a-661e-4a04-b229-d5a48d205ff0",
+    "titel": "26M94 Motie vreemd: Bescherm onze inwoners tegen geluidhinder vliegverkeer",
+    "type": "Motie",
+    "partij": "PvdD\nROSA\nPRO\nSP\nDENK",
+    "fracties": [
+      "PvdD\nROSA\nPRO\nSP\nDENK"
+    ],
+    "indiener": "Pieterson, Marijn",
+    "medeondertekenaars": [
+      "Koca, Yusuf\nEjder, Zozan\nSchuttevaer, Mariska \nGroot, Anna de"
+    ],
+    "datum": "2026-11-25",
+    "agendapunt": "Raadsvergadering 26-11-2026 7.2. Motie vreemd aan de orde: Bescherm onze inwoners tegen geluidhinder vliegverkeer",
+    "status": "",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
     "id": "b36bd088-1962-4d97-937b-f2ffc478e2ca",
     "titel": "26M93 Motie Regie met een duidelijke grens geen voldongen feiten in de Assendelverpolder",
     "type": "Motie",
@@ -51,6 +265,26 @@
     "medeondertekenaars": [],
     "datum": "2026-11-24",
     "agendapunt": "Raadsvergadering 26-11-2026 4.1. Zienswijze ontwerp-voorkeursbeslissing 380 kV Netuitbreiding Noord-Holland Noord",
+    "status": "",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "1a0dcfe0-a688-4448-bcc1-58cb1ef34a98",
+    "titel": "26M93 Motie Regie met een duidelijke grens geen voldongen feiten in de Assendelverpolder",
+    "type": "Motie",
+    "partij": "SP\nPRO\nROSA",
+    "fracties": [
+      "SP\nPRO\nROSA"
+    ],
+    "indiener": "Groot, Anna de",
+    "medeondertekenaars": [
+      "Marlen, David van\nSchuttevaer, Mariska"
+    ],
+    "datum": "2026-11-24",
+    "agendapunt": "Raadsvergadering 26-11-2026 6.3. Zienswijze ontwerp-voorkeursbeslissing 380 kV Netuitbreiding Noord-Holland Noord",
     "status": "",
     "voor_pct": null,
     "tegen_pct": null,
