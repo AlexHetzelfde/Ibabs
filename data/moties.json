@@ -72,10 +72,10 @@
     "datum": "2026-11-26",
     "agendapunt": "Raadsvergadering 26-11-2026 7.1. Zaanse Schans bestuursopdracht en opschorten raadsbesluit",
     "status": "",
-    "voor_pct": null,
-    "tegen_pct": null,
-    "fracties_voor": null,
-    "fracties_tegen": null
+    "voor_pct": 22,
+    "tegen_pct": 78,
+    "fracties_voor": "Democratisch Zaanstad (2), Forum voor Democratie (3), PVV (3)",
+    "fracties_tegen": "CDA  (1), D66 (3), DENK (2), Lokaal Zaans (8), Partij voor de Dieren (1), POV (3), PRO (6), ROSA (2), SP (1), VVD (2)"
   },
   {
     "id": "8ec5ae00-5c90-4cdb-b9c1-426f4aedb562",
@@ -112,10 +112,10 @@
     "datum": "2026-11-26",
     "agendapunt": "Raadsvergadering 26-11-2026 7.1. Zaanse Schans bestuursopdracht en opschorten raadsbesluit",
     "status": "",
-    "voor_pct": null,
-    "tegen_pct": null,
-    "fracties_voor": null,
-    "fracties_tegen": null
+    "voor_pct": 27,
+    "tegen_pct": 73,
+    "fracties_voor": "Partij voor de Dieren (1), PRO (6), ROSA (2), SP (1)",
+    "fracties_tegen": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), POV (3), PVV (3), VVD (2)"
   },
   {
     "id": "b95316c2-01c1-4f0b-a74f-7cf1076f25a7",
@@ -152,9 +152,9 @@
     "datum": "2026-11-26",
     "agendapunt": "Raadsvergadering 26-11-2026 7.1. Zaanse Schans bestuursopdracht en opschorten raadsbesluit",
     "status": "",
-    "voor_pct": null,
-    "tegen_pct": null,
-    "fracties_voor": null,
+    "voor_pct": 100,
+    "tegen_pct": 0,
+    "fracties_voor": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), Partij voor de Dieren (1), POV (3), PRO (6), PVV (3), ROSA (2), SP (1), VVD (2)",
     "fracties_tegen": null
   },
   {
@@ -170,10 +170,10 @@
     "datum": "2026-11-26",
     "agendapunt": "Raadsvergadering 26-11-2026 7.1. Zaanse Schans bestuursopdracht en opschorten raadsbesluit",
     "status": "",
-    "voor_pct": null,
-    "tegen_pct": null,
-    "fracties_voor": null,
-    "fracties_tegen": null
+    "voor_pct": 27,
+    "tegen_pct": 73,
+    "fracties_voor": "Partij voor de Dieren (1), PRO (6), ROSA (2), SP (1)",
+    "fracties_tegen": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), POV (3), PVV (3), VVD (2)"
   },
   {
     "id": "9022abef-4640-4877-8a7a-39c73eafed7d",
@@ -210,10 +210,10 @@
     "datum": "2026-11-26",
     "agendapunt": "Raadsvergadering 26-11-2026 7.2. Participatieverordening gemeente Zaanstad 2027",
     "status": "",
-    "voor_pct": null,
-    "tegen_pct": null,
-    "fracties_voor": null,
-    "fracties_tegen": null
+    "voor_pct": 95,
+    "tegen_pct": 5,
+    "fracties_voor": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), Partij voor de Dieren (1), POV (3), PRO (6), PVV (3), ROSA (2), SP (1)",
+    "fracties_tegen": "VVD (2)"
   },
   {
     "id": "28dfec6b-fdce-4cec-b9cb-31fc2259f7ea",
@@ -230,10 +230,10 @@
     "datum": "2026-11-26",
     "agendapunt": "Raadsvergadering 26-11-2026 7.2. Participatieverordening gemeente Zaanstad 2027",
     "status": "",
-    "voor_pct": null,
-    "tegen_pct": null,
-    "fracties_voor": null,
-    "fracties_tegen": null
+    "voor_pct": 92,
+    "tegen_pct": 8,
+    "fracties_voor": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (1), Forum voor Democratie (3), Lokaal Zaans (8), Partij voor de Dieren (1), POV (3), PRO (6), PVV (3), ROSA (2), SP (1)",
+    "fracties_tegen": "DENK (1), VVD (2)"
   },
   {
     "id": "2927219f-b710-45e6-91e1-d4b2ebe7f537",
@@ -250,9 +250,9 @@
     "datum": "2026-11-26",
     "agendapunt": "Raadsvergadering 26-11-2026 7.2. Participatieverordening gemeente Zaanstad 2027",
     "status": "",
-    "voor_pct": null,
-    "tegen_pct": null,
-    "fracties_voor": null,
+    "voor_pct": 100,
+    "tegen_pct": 0,
+    "fracties_voor": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), Partij voor de Dieren (1), POV (3), PRO (6), PVV (3), ROSA (2), SP (1), VVD (2)",
     "fracties_tegen": null
   },
   {
@@ -270,10 +270,10 @@
     "datum": "2026-11-26",
     "agendapunt": "Raadsvergadering 26-11-2026 7.2. Participatieverordening gemeente Zaanstad 2027",
     "status": "",
-    "voor_pct": null,
-    "tegen_pct": null,
-    "fracties_voor": null,
-    "fracties_tegen": null
+    "voor_pct": 95,
+    "tegen_pct": 5,
+    "fracties_voor": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), Partij voor de Dieren (1), POV (3), PRO (6), PVV (3), ROSA (2), SP (1)",
+    "fracties_tegen": "VVD (2)"
   },
   {
     "id": "1fe57ff1-348b-4379-a340-bbaeee905df1",
@@ -290,10 +290,10 @@
     "datum": "2026-11-26",
     "agendapunt": "Raadsvergadering 26-11-2026 7.2. Participatieverordening gemeente Zaanstad 2027",
     "status": "",
-    "voor_pct": null,
-    "tegen_pct": null,
-    "fracties_voor": null,
-    "fracties_tegen": null
+    "voor_pct": 84,
+    "tegen_pct": 16,
+    "fracties_voor": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (1), Forum voor Democratie (3), Lokaal Zaans (8), Partij voor de Dieren (1), POV (3), PRO (6), ROSA (2), SP (1)",
+    "fracties_tegen": "DENK (1), PVV (3), VVD (2)"
   },
   {
     "id": "1987dba4-6358-4254-aea4-3f2806a09762",
@@ -310,9 +310,9 @@
     "datum": "2026-11-26",
     "agendapunt": "Raadsvergadering 26-11-2026 7.2. Participatieverordening gemeente Zaanstad 2027",
     "status": "",
-    "voor_pct": null,
-    "tegen_pct": null,
-    "fracties_voor": null,
+    "voor_pct": 100,
+    "tegen_pct": 0,
+    "fracties_voor": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), Partij voor de Dieren (1), POV (3), PRO (6), PVV (3), ROSA (2), SP (1), VVD (2)",
     "fracties_tegen": null
   },
   {
@@ -368,10 +368,10 @@
     "datum": "2026-11-26",
     "agendapunt": "Raadsvergadering 26-11-2026 7.1. Zaanse Schans bestuursopdracht en opschorten raadsbesluit",
     "status": "",
-    "voor_pct": null,
-    "tegen_pct": null,
-    "fracties_voor": null,
-    "fracties_tegen": null
+    "voor_pct": 27,
+    "tegen_pct": 73,
+    "fracties_voor": "Partij voor de Dieren (1), PRO (6), ROSA (2), SP (1)",
+    "fracties_tegen": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), POV (3), PVV (3), VVD (2)"
   },
   {
     "id": "3b1075f5-0b74-46b9-a005-3ea55b7a5249",
@@ -388,9 +388,69 @@
     "datum": "2026-11-26",
     "agendapunt": "Raadsvergadering 26-11-2026 7.1. Zaanse Schans bestuursopdracht en opschorten raadsbesluit",
     "status": "",
-    "voor_pct": null,
-    "tegen_pct": null,
-    "fracties_voor": null,
+    "voor_pct": 27,
+    "tegen_pct": 73,
+    "fracties_voor": "Partij voor de Dieren (1), PRO (6), ROSA (2), SP (1)",
+    "fracties_tegen": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), POV (3), PVV (3), VVD (2)"
+  },
+  {
+    "id": "84d67eec-ad6e-4f1b-902d-7cdb50b78e66",
+    "titel": "26M103 Motie verplichte participatie bij afwijkende bouwplannen",
+    "type": "Motie",
+    "partij": "DZ\nROSA",
+    "fracties": [
+      "DZ\nROSA"
+    ],
+    "indiener": "Kerkhoven, Jos",
+    "medeondertekenaars": [
+      "Schuttevaer, Mariska"
+    ],
+    "datum": "2026-11-26",
+    "agendapunt": "Raadsvergadering 26-11-2026 7.2. Participatieverordening gemeente Zaanstad 2027",
+    "status": "",
+    "voor_pct": 41,
+    "tegen_pct": 59,
+    "fracties_voor": "Democratisch Zaanstad (2), Forum voor Democratie (3), Partij voor de Dieren (1), PRO (6), ROSA (2), SP (1)",
+    "fracties_tegen": "CDA  (1), D66 (3), DENK (2), Lokaal Zaans (8), POV (3), PVV (3), VVD (2)"
+  },
+  {
+    "id": "9b97f9f1-477b-4c9a-9d7f-c8641a328f5b",
+    "titel": "26A53 Amendement Evalueren en informeren Bestuursopdracht Zaanse Schans en opschorten raadsbesluit",
+    "type": "Amendement",
+    "partij": "POV\nD66",
+    "fracties": [
+      "POV\nD66"
+    ],
+    "indiener": "Velden, Perry van der",
+    "medeondertekenaars": [
+      "Vos, Robbert"
+    ],
+    "datum": "2026-11-26",
+    "agendapunt": "Raadsvergadering 26-11-2026 7.1. Zaanse Schans bestuursopdracht en opschorten raadsbesluit",
+    "status": "",
+    "voor_pct": 100,
+    "tegen_pct": 0,
+    "fracties_voor": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), Partij voor de Dieren (1), POV (3), PRO (6), PVV (3), ROSA (2), SP (1), VVD (2)",
+    "fracties_tegen": null
+  },
+  {
+    "id": "a04f3d82-200a-411b-8e64-2d32277d0867",
+    "titel": "26A47 Amendement Evaluatie Participatieverordening in 2029",
+    "type": "Amendement",
+    "partij": "CDA\nD66\nPOV\nDZ",
+    "fracties": [
+      "CDA\nD66\nPOV\nDZ"
+    ],
+    "indiener": "Hendriks, Nick",
+    "medeondertekenaars": [
+      "Hoffs, Denise\nVos, Robbert\nKerkhoven, Jos"
+    ],
+    "datum": "2026-11-26",
+    "agendapunt": "Raadsvergadering 26-11-2026 7.2. Participatieverordening gemeente Zaanstad 2027",
+    "status": "",
+    "voor_pct": 100,
+    "tegen_pct": 0,
+    "fracties_voor": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), Lokaal Zaans (8), Partij voor de Dieren (1), POV (3), PRO (6), PVV (3), ROSA (2), SP (1), VVD (2)",
     "fracties_tegen": null
   },
   {
@@ -504,10 +564,10 @@
     "datum": "2026-11-25",
     "agendapunt": "Raadsvergadering 26-11-2026 7.3. Zienswijze ontwerp-voorkeursbeslissing 380 kV Netuitbreiding Noord-Holland Noord",
     "status": "",
-    "voor_pct": null,
-    "tegen_pct": null,
-    "fracties_voor": null,
-    "fracties_tegen": null
+    "voor_pct": 43,
+    "tegen_pct": 57,
+    "fracties_voor": "CDA  (1), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), POV (3), PVV (3), VVD (2)",
+    "fracties_tegen": "D66 (3), Lokaal Zaans (8), Partij voor de Dieren (1), PRO (6), ROSA (2), SP (1)"
   },
   {
     "id": "a96ba914-f210-41ca-91a5-b29686786214",
@@ -581,7 +641,7 @@
     ],
     "datum": "2026-11-24",
     "agendapunt": "Raadsvergadering 26-11-2026 7.3. Zienswijze ontwerp-voorkeursbeslissing 380 kV Netuitbreiding Noord-Holland Noord",
-    "status": "",
+    "status": null,
     "voor_pct": null,
     "tegen_pct": null,
     "fracties_voor": null,
