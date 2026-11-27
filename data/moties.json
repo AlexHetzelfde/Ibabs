@@ -454,6 +454,124 @@
     "fracties_tegen": null
   },
   {
+    "id": "36993bd6-d374-42ee-b659-2b329de1acf8",
+    "titel": "26M102 Motie Vreemd eerlijke bijdragen voor evenementen",
+    "type": "Motie",
+    "partij": "CDA\nLokaal Zaans\nPRO",
+    "fracties": [
+      "CDA\nLokaal Zaans\nPRO"
+    ],
+    "indiener": "Hendriks, Nick",
+    "medeondertekenaars": [
+      "Degenhart, Rens\nZeltsburg, Lilit"
+    ],
+    "datum": "2026-11-26",
+    "agendapunt": "Raadsvergadering 26-11-2026 8.2. Motie Vreemd eerlijke bijdragen voor evenementen",
+    "status": "ingetrokken",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "f786da42-ca66-4bf1-a57c-9bc2f2f057b9",
+    "titel": "26M100 Motie Waarborg de inzichtelijkheid van beleidskeuzes, veranker onze gedeelde uitgangspunten",
+    "type": "Motie",
+    "partij": "PRO\nPvdD",
+    "fracties": [
+      "PRO\nPvdD"
+    ],
+    "indiener": "Zeltsburg, Lilit",
+    "medeondertekenaars": [
+      "Pieterson, Marijn"
+    ],
+    "datum": "2026-11-26",
+    "agendapunt": "Raadsvergadering 26-11-2026 7.1. Zaanse Schans bestuursopdracht en opschorten raadsbesluit",
+    "status": "ingetrokken",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "19cd0156-bf8e-44a1-855a-46386ec555a3",
+    "titel": "26M96 Motie Eerst meten dan €180.000 uitgeven",
+    "type": "Motie",
+    "partij": "VVD",
+    "fracties": [
+      "VVD"
+    ],
+    "indiener": "Davelaar, Casper",
+    "medeondertekenaars": [],
+    "datum": "2026-11-26",
+    "agendapunt": "Raadsvergadering 26-11-2026 8.1. Motie vreemd aan de orde: Eerst meten, dan €180.000 uitgeven!",
+    "status": "ingetrokken",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "4b6ce4b9-f340-42c8-93c2-ac43599b2f3f",
+    "titel": "26M95 Motie Kies voor leefbaarheid en daarom tegen erfgoedstatus schootsvelden",
+    "type": "Motie",
+    "partij": "CDA\nVVD\nPOV\nPVV",
+    "fracties": [
+      "CDA\nVVD\nPOV\nPVV"
+    ],
+    "indiener": "Davelaar, Casper",
+    "medeondertekenaars": [
+      "Boomsma, Boy\nKeijser, Nino \nHendriks, Nick"
+    ],
+    "datum": "2026-11-26",
+    "agendapunt": "Raadsvergadering 26-11-2026 7.3. Zienswijze ontwerp-voorkeursbeslissing 380 kV Netuitbreiding Noord-Holland Noord",
+    "status": "",
+    "voor_pct": 43,
+    "tegen_pct": 57,
+    "fracties_voor": "CDA  (1), Democratisch Zaanstad (2), DENK (2), Forum voor Democratie (3), POV (3), PVV (3), VVD (2)",
+    "fracties_tegen": "D66 (3), Lokaal Zaans (8), Partij voor de Dieren (1), PRO (6), ROSA (2), SP (1)"
+  },
+  {
+    "id": "9bbf8806-675a-4503-a4f2-8ddf923dd01b",
+    "titel": "26M94 Motie vreemd: Bescherm onze inwoners tegen geluidhinder vliegverkeer",
+    "type": "Motie",
+    "partij": "PvdD\nROSA\nPRO\nSP\nDENK",
+    "fracties": [
+      "PvdD\nROSA\nPRO\nSP\nDENK"
+    ],
+    "indiener": "Pieterson, Marijn",
+    "medeondertekenaars": [
+      "Koca, Yusuf\nEjder, Zozan\nSchuttevaer, Mariska \nGroot, Anna de"
+    ],
+    "datum": "2026-11-26",
+    "agendapunt": "Raadsvergadering 26-11-2026 8.3. Motie vreemd aan de orde: Bescherm onze inwoners tegen geluidhinder vliegverkeer",
+    "status": "ingetrokken",
+    "voor_pct": null,
+    "tegen_pct": null,
+    "fracties_voor": null,
+    "fracties_tegen": null
+  },
+  {
+    "id": "c757efec-bc55-40d1-a12f-b789f8cb0df3",
+    "titel": "26M93 Motie Regie met een duidelijke grens geen voldongen feiten in de Assendelverpolder",
+    "type": "Motie",
+    "partij": "SP\nPRO\nROSA",
+    "fracties": [
+      "SP\nPRO\nROSA"
+    ],
+    "indiener": "Groot, Anna de",
+    "medeondertekenaars": [
+      "Marlen, David van\nSchuttevaer, Mariska"
+    ],
+    "datum": "2026-11-26",
+    "agendapunt": "Raadsvergadering 26-11-2026 7.3. Zienswijze ontwerp-voorkeursbeslissing 380 kV Netuitbreiding Noord-Holland Noord",
+    "status": "",
+    "voor_pct": 35,
+    "tegen_pct": 65,
+    "fracties_voor": "Forum voor Democratie (3), Partij voor de Dieren (1), PRO (6), ROSA (2), SP (1)",
+    "fracties_tegen": "CDA  (1), D66 (3), Democratisch Zaanstad (2), DENK (2), Lokaal Zaans (8), POV (3), PVV (3), VVD (2)"
+  },
+  {
     "id": "eff53966-d660-4fea-894e-4fc287b53758",
     "titel": "26M96 Motie: Eerst meten, dan €180.000 uitgeven!",
     "type": "Motie",
